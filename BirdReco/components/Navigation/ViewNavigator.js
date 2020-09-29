@@ -2,11 +2,11 @@ import React from 'react';
 
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { StyleSheet } from 'react-native';
-import SearchView from "../View/SearchView";
-import HistoriqueView from "../View/HistoriqueView";
-import StatsView from "../View/StatsView";
-import TipsView from "../View/TipsView";
-import ParametresView from "../View/ParametresView";
+import SearchView from "../View/search/SearchView";
+import HistoriqueView from "../View/historique/HistoriqueView";
+import StatsView from "../View/stats/StatsView";
+import TipsView from "../View/tips/TipsView";
+import ParametresView from "../View/parametres/ParametresView";
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faList } from '@fortawesome/free-solid-svg-icons'

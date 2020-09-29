@@ -1,9 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
 import {useNavigation, CommonActions} from "@react-navigation/native";
-import ProfileView from "../View/ProfileView";
 import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
+import ProfileNavigatpr from "./ProfileNavigator";
 
 const Stack = createStackNavigator()
 
@@ -27,7 +27,7 @@ function HeaderNavigator({navigation}) {
             />
             <Stack.Screen
                 name="Profile"
-                component={ProfileView}
+                component={ProfileNavigatpr}
                 options={{
                     title: "Profile"
                 }}
