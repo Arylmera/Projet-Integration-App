@@ -2,20 +2,18 @@ import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 
-class SearchView extends React.Component {
+class DetailView extends React.Component {
     render() {
         const { navigation } = this.props
         return (
             <View style={styles.main_container}>
-                <Text>Search Works</Text>
-
+                <Text>Details Works</Text>
                 <TouchableOpacity
-                    style={styles.detailButton}
-                    onPress={() => navigation.navigate('DetailView', { params: {} }) }
+                    style={styles.backButton}
+                    onPress={() => navigation.navigate('SearchView', { params: {} }) }
                 >
-                    <Text>Details Oiseau</Text>
+                    <Text>Retour</Text>
                 </TouchableOpacity>
-
             </View>
         )
     }
@@ -27,7 +25,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    detailButton: {
+    backButton: {
         borderRadius: 5,
         width: "25%",
         padding: 3,
@@ -39,5 +37,5 @@ const styles = StyleSheet.create({
 export default function(props) {
     const navigation = useNavigation();
 
-    return <SearchView {...props} navigation={navigation}/>
+    return <DetailView {...props} navigation={navigation}/>
 }

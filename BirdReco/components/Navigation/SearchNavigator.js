@@ -1,14 +1,14 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import ProfileView from "../View/profile/ProfileView";
-import ProfileModificationView from "../View/profile/ProfileModificationView";
+import SearchView from "../View/search/SearchView";
+import DetailView from "../View/details/detailView";
 
 const Stack = createStackNavigator()
 
-function ProfileNavigator({navigation}) {
+function SearchNavigator({navigation}) {
     return (
         <Stack.Navigator
-            initialRouteName="Profile"
+            initialRouteName="SearchView"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: "rgba(126,211,33,1)"
@@ -16,22 +16,22 @@ function ProfileNavigator({navigation}) {
             }}
         >
             <Stack.Screen
-                name="Profile"
-                component={ProfileView}
+                name="SearchView"
+                component={SearchView}
                 options={{
-                    title: "Profile"
+                    title: "Recherche"
                 }}
 
             />
             <Stack.Screen
-                name="ModidifProfile"
-                component={ProfileModificationView}
+                name="DetailView"
+                component={DetailView}
                 options={{
-                    title: "Modification du profile"
+                    title: "Detail"
                 }}
             />
         </Stack.Navigator>
     )
 }
 
-export default ProfileNavigator
+export default SearchNavigator

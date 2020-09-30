@@ -14,13 +14,14 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
+import SearchNavigator from "./SearchNavigator";
 
 const Tab = createBottomTabNavigator()
 
 function ViewNavigator({ navigation }) {
         return (
                 <Tab.Navigator
-                    initialRouteName="Statistiques"
+                    initialRouteName="StatsView"
                     tabBarOptions = {{
                         activeTintColor: 'rgb(85,143,22)',
                         inactiveTintColor: 'gray',
@@ -29,7 +30,7 @@ function ViewNavigator({ navigation }) {
                     }}
                 >
                     <Tab.Screen style = {styles.screen}
-                                name = 'Statistiques'
+                                name = 'StatsView'
                                 component = {StatsView}
                                 options = {{
                                     tabBarLabel: 'Statistiques',
@@ -38,8 +39,8 @@ function ViewNavigator({ navigation }) {
                                     ),
                                 }}/>
                     <Tab.Screen style = {styles.screen}
-                                name = 'Recherche'
-                                component = {SearchView}
+                                name = 'SearchNavigator'
+                                component = {SearchNavigator}
                                 options = {{
                                     tabBarLabel: 'Recherche',
                                     tabBarIcon: (tabInfo) => (
@@ -47,7 +48,7 @@ function ViewNavigator({ navigation }) {
                                     ),
                                 }}/>
                     <Tab.Screen style = {styles.screen}
-                                name = 'Historique'
+                                name = 'HistoriqueView'
                                 component = {HistoriqueView}
                                 options = {{
                                     tabBarLabel: 'Historique',
@@ -56,7 +57,7 @@ function ViewNavigator({ navigation }) {
                                     ),
                                 }}/>
                     <Tab.Screen style = {styles.screen}
-                                name = 'Tips'
+                                name = 'TipsView'
                                 component = {TipsView}
                                 options = {{
                                     tabBarLabel: 'Tips',
@@ -65,7 +66,7 @@ function ViewNavigator({ navigation }) {
                                     ),
                                 }}/>
                     <Tab.Screen style = {styles.screen}
-                                name = 'Paramètres'
+                                name = 'ParametresView'
                                 component = {ParametresView}
                                 options = {{
                                     tabBarLabel: 'Paramètres',

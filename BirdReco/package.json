@@ -30,7 +30,8 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
-    "@expo/vector-icons": "^10.2.1"
+    "@expo/vector-icons": "^10.2.1",
+    "@react-navigation/core": "^5.12.4"
   },
   "private": true
 }

@@ -7,7 +7,7 @@ class ProfileView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nickName: "UserName",
+            nickName: "NickName",
             name: "User name",
             lastName: "User lastName",
             profileIcon: "../../assets/images/profileIcon.png"
