@@ -8,7 +8,7 @@ class SearchView extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            oiseauxListe: ["Mésange"]
+            oiseauxListe: ["Mésange","Moineau","Pic vert"]
         }
     }
 
@@ -23,7 +23,7 @@ class SearchView extends React.Component {
                     renderItem={({item}) => (
                         <DetailItem data={item}/>
                     )}
-                    
+
                 />
             </View>
         )
@@ -33,14 +33,14 @@ class SearchView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        flexDirection: "row",
     },
     detailButton: {
         borderRadius: 5,
         width: "25%",
         padding: 3,
         alignItems: "center",
+        justifyContent: 'center',
         backgroundColor: "rgba(126,211,33,0.5)"
     },
     FlatlistItem: {

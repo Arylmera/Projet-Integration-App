@@ -3,25 +3,15 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 
 class DetailItem extends React.Component {
-
-_loadinfo(){
-    getWikiInfo(this.oiseaux_nom).then(data => {
-        if(data) {
-            this.setState({wikiInfo: data});
-        }
-    });
-    console.log(this.state.wikiInfo);
-}
-
     render() {
         const oiseaux_nom = this.props.data
         const { navigation } = this.props
         return (
             <View style={styles.main_container}>
-                <Text> Oiseau Item </Text>
+                <Text style={styles.Title}> {oiseaux_nom} </Text>
                 <TouchableOpacity
-                    style={styles.detailButton}
-                    onPress={() => navigation.navigate('DetailOiseaux', { params: {oiseaux_nom : this.state.oiseaux_nom} }) }
+                    style={styles.touchableOpacity}
+                    onPress={() => navigation.navigate('DetailOiseaux', { oiseaux_nom : oiseaux_nom }) }
                 >
                     <Text>Details Oiseau</Text>
                 </TouchableOpacity>
@@ -33,12 +23,17 @@ _loadinfo(){
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        margin: 10,
+        backgroundColor: "grey"
     },
-    backButton: {
+    Title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
+    touchableOpacity: {
         borderRadius: 5,
-        width: "25%",
+        marginLeft: "auto",
+        width: "30%",
         padding: 3,
         alignItems: "center",
         backgroundColor: "rgba(126,211,33,0.5)"

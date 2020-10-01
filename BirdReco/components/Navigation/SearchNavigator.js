@@ -25,13 +25,6 @@ function SearchNavigator({navigation}) {
 
             />
             <Stack.Screen
-                name="detailItem"
-                component={detailItem}
-                options={{
-                    title: "Detail"
-                }}
-            />
-            <Stack.Screen
                 name="DetailOiseaux"
                 component={DetailOiseaux}
                 options={{
