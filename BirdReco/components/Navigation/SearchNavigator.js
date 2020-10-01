@@ -1,7 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
 import SearchView from "../View/search/SearchView";
-import DetailView from "../View/details/detailView";
+import detailItem from '../View/details/detailItem';
+import DetailOiseaux from '../View/details/detailOiseaux';
 
 const Stack = createStackNavigator()
 
@@ -24,8 +25,15 @@ function SearchNavigator({navigation}) {
 
             />
             <Stack.Screen
-                name="DetailView"
-                component={DetailView}
+                name="detailItem"
+                component={detailItem}
+                options={{
+                    title: "Detail"
+                }}
+            />
+            <Stack.Screen
+                name="DetailOiseaux"
+                component={DetailOiseaux}
                 options={{
                     title: "Detail"
                 }}

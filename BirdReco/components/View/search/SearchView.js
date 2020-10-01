@@ -1,21 +1,30 @@
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
+import DetailItem from '../details/detailItem'
 
 class SearchView extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state={
+            oiseauxListe: ["Mésange"]
+        }
+    }
+
     render() {
         const { navigation } = this.props
         return (
             <View style={styles.main_container}>
-                <Text>Search Works</Text>
-
-                <TouchableOpacity
-                    style={styles.detailButton}
-                    onPress={() => navigation.navigate('DetailView', { params: {} }) }
-                >
-                    <Text>Details Oiseau</Text>
-                </TouchableOpacity>
-
+                <FlatList
+                    data={this.state.oiseauxListe}
+                    style={styles.FlatlistItem}
+                    keyExtractor={(item) => item}
+                    renderItem={({item}) => (
+                        <DetailItem data={item}/>
+                    )}
+                    
+                />
             </View>
         )
     }
@@ -33,6 +42,11 @@ const styles = StyleSheet.create({
         padding: 3,
         alignItems: "center",
         backgroundColor: "rgba(126,211,33,0.5)"
+    },
+    FlatlistItem: {
+        flex: 1,
+        marginLeft: 10,
+        marginRight: 10,
     }
 })
 
@@ -41,3 +55,5 @@ export default function(props) {
 
     return <SearchView {...props} navigation={navigation}/>
 }
+
+
