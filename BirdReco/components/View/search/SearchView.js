@@ -8,7 +8,7 @@ class SearchView extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            oiseauxListe: ["Mésange","Moineau","Pic vert"]
+            oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
         }
     }
 
