@@ -4,14 +4,14 @@ import {useNavigation} from "@react-navigation/core";
 
 class DetailItem extends React.Component {
     render() {
-        const oiseaux_nom = this.props.data
+        const oiseaux_nom = this.props.data.oiseau_nom
         const { navigation } = this.props
         return (
             <View style={styles.main_container}>
                 <Text style={styles.Title}> {oiseaux_nom} </Text>
                 <TouchableOpacity
                     style={styles.touchableOpacity}
-                    onPress={() => navigation.navigate('DetailOiseaux', { oiseaux_nom : oiseaux_nom }) }
+                    onPress={() => navigation.navigate('DetailOiseaux', { oiseaux_nom : oiseaux_nom, root : this.props.data.root }) }
                 >
                     <Text>Details Oiseau</Text>
                 </TouchableOpacity>

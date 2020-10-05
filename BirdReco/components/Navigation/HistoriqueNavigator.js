@@ -1,14 +1,14 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import SearchView from "../View/search/SearchView";
+import HistoriqueView from "../View/historique/HistoriqueView";
 import DetailOiseaux from '../View/details/detailOiseaux';
 
 const Stack = createStackNavigator()
 
-function SearchNavigator({navigation}) {
+function HistoriqueNavigator({navigation}) {
     return (
         <Stack.Navigator
-            initialRouteName="SearchView"
+            initialRouteName="HistoriqueView"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: "rgba(126,211,33,1)"
@@ -16,8 +16,8 @@ function SearchNavigator({navigation}) {
             }}
         >
             <Stack.Screen
-                name="SearchView"
-                component={SearchView}
+                name="HistoriqueView"
+                component={HistoriqueView}
                 options={{
                     title: "Recherche"
                 }}
@@ -34,4 +34,4 @@ function SearchNavigator({navigation}) {
     )
 }
 
-export default SearchNavigator
+export default HistoriqueNavigator

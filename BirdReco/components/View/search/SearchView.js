@@ -21,7 +21,7 @@ class SearchView extends React.Component {
                     style={styles.FlatlistItem}
                     keyExtractor={(item) => item}
                     renderItem={({item}) => (
-                        <DetailItem data={item}/>
+                        <DetailItem data={{oiseau_nom: item, root: 'SearchView'}}/>
                     )}
 
                 />
@@ -33,7 +33,7 @@ class SearchView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        flexDirection: "row",
+        flexDirection: "column",
     },
     detailButton: {
         borderRadius: 5,

@@ -140,7 +140,7 @@ class DetailOiseaux extends React.Component {
             <View style={styles.main_container}>
                 <TouchableOpacity
                     style={styles.touchableOpacity}
-                    onPress={() => navigation.navigate('SearchView') }>
+                    onPress={() => navigation.navigate(this.props.route.params.root) }>
                     <FontAwesomeIcon icon = {faAngleLeft} size={25}/>
                 </TouchableOpacity>
                 <ScrollView style={styles.scrollView_container} key={this.state.windowW} onLayout={(event) => { this._find_dimesions(event.nativeEvent.layout) }}>

@@ -2,8 +2,6 @@ import React from 'react';
 
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import { StyleSheet } from 'react-native';
-import SearchView from "../View/search/SearchView";
-import HistoriqueView from "../View/historique/HistoriqueView";
 import StatsView from "../View/stats/StatsView";
 import TipsView from "../View/tips/TipsView";
 import ParametresView from "../View/parametres/ParametresView";
@@ -15,6 +13,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import SearchNavigator from "./SearchNavigator";
+import HistoriqueNavigator from "./HistoriqueNavigator";
 
 const Tab = createBottomTabNavigator()
 
@@ -49,7 +48,7 @@ function ViewNavigator({ navigation }) {
                                 }}/>
                     <Tab.Screen style = {styles.screen}
                                 name = 'HistoriqueView'
-                                component = {HistoriqueView}
+                                component = {HistoriqueNavigator}
                                 options = {{
                                     tabBarLabel: 'Historique',
                                     tabBarIcon: (tabInfo) => (
