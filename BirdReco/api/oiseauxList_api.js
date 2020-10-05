@@ -1,24 +1,13 @@
 
-const url_getOiseauxList = "";
+const url_getOiseauxList = "https://fr.wikipedia.org/api/rest_v1/page/summary/";
 
-export function getOiseauxListWithSearchedText (text) {
-
-    function onerror(error){
-        console.log(error);
-        for(let i=0; i<data.length; i++){
-            if(data[i].name === text){
-                return data[i]
-            }
-        }
-    }
-
-    return fetch( url_getOiseauxList + text )
+export function getOiseauxListWithSearchedText(text){
+    return fetch(url_getOiseauxList + text )
         .then((response) => response.json())
-        .catch((error) => onerror(error) )
-
-
+        .catch((error) => console.log(error))
 }
-const data  = [
+
+const piaf  = [
     {
         id: 1,
         name: "Mésange",
@@ -31,3 +20,39 @@ const data  = [
     }
 ]
 
+
+/*
+export function getOiseauxListWithSearchedText (text) {
+
+    function onerror(error){
+        console.log(error);
+        for(let i=0; i<data.length; i++){
+            if(data[i].name === text){
+                return JSON.stringify(data[i])
+            }
+        }
+    }
+
+    return fetch( url_getOiseauxList + text )
+        .then((response) => response.json())
+        .catch((error) => onerror(error) )
+
+
+}
+
+
+export function getOiseauxListWithSearchedText(text) {
+
+
+        for(let i=0; i<piaf.length; i++){
+            if(piaf[i].name === text){
+                return JSON.stringify(piaf[i])
+            }
+        }
+
+
+
+
+}
+
+ */
