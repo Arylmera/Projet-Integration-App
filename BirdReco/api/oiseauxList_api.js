@@ -1,24 +1,23 @@
 
-const url_getOiseauxList = "https://fr.wikipedia.org/api/rest_v1/page/summary/";
+const url_getOiseauxList = "";
 
-export function getOiseauxListWithSearchedText(text){
-    return fetch(url_getOiseauxList + text )
-        .then((response) => response.json())
-        .catch((error) => console.log(error))
+
+export function getOiseauxListWithSearchedText(text) {
+
+    let tab = [];
+    for(let i=0; i<oiseau.length; i++){
+        if(oiseau[i].toLowerCase().includes(text.toLowerCase())){
+            tab.push(oiseau[i])
+        }
+    }
+    return tab
+
+
+
+
 }
 
-const piaf  = [
-    {
-        id: 1,
-        name: "Mésange",
-        description: "Les mésanges sont des passereaux, pour la plupart de la famille des Paridés"
-    },
-    {
-        id: 2,
-        name: "Pic vert",
-        description: "Le Pic vert, aussi connu sous le nom Pivert, est une espèce d'oiseaux appartenant à la famille des Picidae."
-    }
-]
+const oiseau  = [ "Mésange", "Mésange bleu", "Mésange verte", "Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae", "Merle"]
 
 
 /*
@@ -41,18 +40,10 @@ export function getOiseauxListWithSearchedText (text) {
 }
 
 
-export function getOiseauxListWithSearchedText(text) {
-
-
-        for(let i=0; i<piaf.length; i++){
-            if(piaf[i].name === text){
-                return JSON.stringify(piaf[i])
-            }
-        }
-
-
-
-
+export function getOiseauxListWithSearchedText(text){
+    return fetch(url_getOiseauxList + text )
+        .then((response) => response.json())
+        .catch((error) => console.log(error))
 }
 
  */
