@@ -1,11 +1,60 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native'
+
+
+const Saisons = [
+    {
+        id: '01',
+        saison: 'Aider les oiseaux en automne',
+        tips: 'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
+            '\n' +
+            '–> Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.'
+    },
+    {
+        id: '02',
+        saison: 'Aider les oiseaux en hiver',
+        tips: 'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
+            '\n' +
+            '–> Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.'
+    },
+    {
+        id: '03',
+        saison: 'Aider les oiseaux au printemps',
+        tips: 'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
+            '\n' +
+            '–> Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.'
+    },
+    {
+        id: '04',
+        saison: 'Aider les oiseaux en été',
+        tips: 'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
+            '\n' +
+            '–> Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.'
+    },
+];
+
+const Item = ({ saison }) => (
+    <View style={styles.item}>
+        <Text style={styles.saison}>{saison}</Text>
+    </View>
+);
+
+
 
 class TipsView extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>Tips Works</Text>
+                <Text style={styles.context}>
+                    Vous pouvez aider les oiseaux de la nature et favoriser leur survie en les aidant à trouver facilement une alimentation adaptée et à garder un habitat approprié.
+                </Text>
+                <FlatList
+                    data={Saisons}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <Item saison={item.saison}/>
+                        )}
+                />
             </View>
         )
     }
@@ -16,7 +65,29 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
-    }
+    },
+    item: {
+        backgroundColor: '#6DB565',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+    },
+    context: {
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
+        height: 110,
+        borderColor: '#9ACD32',
+        borderWidth: 5,
+        borderRadius: 10,
+        paddingLeft: 10,
+        paddingRight: 10,
+        fontSize: 20,
+        textAlign: 'justify'
+    },
+    saison: {
+        fontSize: 28,
+    },
 })
 
 export default TipsView
