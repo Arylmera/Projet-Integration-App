@@ -1,13 +1,22 @@
 
 import React from 'react';
-import {StyleSheet} from "react-native";
-import {NavigationContainer} from "@react-navigation/native";
+import { YellowBox } from "react-native";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import HeaderNavigator from "./components/Navigation/HeaderNavigator";
-import setUpStyleSheet from "./components/StyleSheet";
+import { getStyleSheet } from "./components/StyleSheet";
 
 export default class App extends React.Component{
+
+    constructor(props){
+        YellowBox.ignoreWarnings([""]);
+        super(props);
+        this.state= {
+            seasonStyle : getStyleSheet()
+        }
+    }
+
     render() {
-        setUpStyleSheet('winter');
         return(
             <NavigationContainer style = {styles.main_container}>
                 <HeaderNavigator/>
