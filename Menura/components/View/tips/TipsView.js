@@ -40,18 +40,7 @@ class TipsView extends React.Component {
 
 }
 
-
-
-
     render() {
-/*
-        const Item = ({ saison }) => (
-            <View style={infos_saison}>
-                <Text style={styles.saison}>{saison}</Text>
-            </View>
-        );
-*/
-
         return (
             <View style={styles.main_container}>
                 <Text style={styles.context}>
@@ -75,12 +64,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    item: {
-        backgroundColor: '#6DB565',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-    },
     context: {
         marginLeft: 5,
         marginRight: 5,
@@ -93,9 +76,6 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         fontSize: 20,
         textAlign: 'justify'
-    },
-    saison: {
-        fontSize: 28,
     },
 })
 
