@@ -14,7 +14,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import SearchNavigator from "./SearchNavigator";
 import HistoriqueNavigator from "./HistoriqueNavigator";
-import {getStyleSheet, getThemeColor} from "../StyleSheet";
+import {getStyleSheet, getThemeAccent, getThemeHigLight, getThemePrimary} from "../StyleSheet";
 
 const Tab = createBottomTabNavigator()
 
@@ -32,10 +32,12 @@ class ViewNavigator extends React.Component {
             <Tab.Navigator
                 initialRouteName = "StatsView"
                 tabBarOptions = {{
-                    activeTintColor: getThemeColor(),
-                    inactiveTintColor: 'gray',
+                    activeTintColor: getThemeHigLight(),
+                    activeBackgroundColor: getThemePrimary(),
+                    inactiveTintColor: getThemePrimary(),
+                    inactiveBackgroundColor: getThemeHigLight(),
                     showIcon: true,
-                    labelStyle: {fontSize: 13}
+                    labelStyle: {fontSize: 13},
                 }}
             >
                 <Tab.Screen style = {styles.screen}
@@ -44,7 +46,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Statistiques',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faChartBar} size = {25}/>
+                                    <FontAwesomeIcon icon = {faChartBar} size = {25} color={getThemeAccent()}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -53,7 +55,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Recherche',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faSearch} size = {23}/>
+                                    <FontAwesomeIcon icon = {faSearch} size = {23} color={getThemeAccent()}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -62,7 +64,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Historique',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faList} size = {23}/>
+                                    <FontAwesomeIcon icon = {faList} size = {23} color={getThemeAccent()}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -71,7 +73,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Tips',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faInfoCircle} size = {23}/>
+                                    <FontAwesomeIcon icon = {faInfoCircle} size = {23} color={getThemeAccent()}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -80,7 +82,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Paramètres',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faCog} size = {23}/>
+                                    <FontAwesomeIcon icon = {faCog} size = {23} color={getThemeAccent()}/>
                                 ),
                             }}/>
             </Tab.Navigator>
@@ -88,7 +90,7 @@ class ViewNavigator extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     screen: {
 
     }

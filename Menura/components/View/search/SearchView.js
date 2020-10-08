@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, FlatList, TextInput, Button }
 import {useNavigation} from "@react-navigation/core";
 import DetailItem from '../details/detailItem'
 import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api'
-import {getStyleSheet, getThemeColor} from "../../StyleSheet";
+import {getStyleSheet, getThemeSecondary, getThemeHigLight} from "../../StyleSheet";
 
 class SearchView extends React.Component {
 
@@ -34,12 +34,12 @@ class SearchView extends React.Component {
         return (
             <View style={[styles.main_container, this.state.seasonStyle.primary]}>
                 <TextInput
-                    style={styles.textinput}
+                    style={[styles.textinput, {borderColor: getThemeSecondary()}]}
                     placeholder="Nom de l'oiseau"
                     onChangeText={(text) => this._searchTextInputChanged(text)}
                     onSubmitEditing={() => this._loadOiseaux()}
                 />
-                <Button color="#9ACD32"  title='Rechercher' onPress={() => this._loadOiseaux()}/>
+                <Button color={getThemeHigLight()} title='Rechercher' onPress={() => this._loadOiseaux()}/>
                 <FlatList
                     data={this.state.oiseauxListe}
                     style={styles.FlatlistItem}
@@ -54,18 +54,10 @@ class SearchView extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     main_container: {
         flex: 1,
         flexDirection: "column",
-    },
-    detailButton: {
-        borderRadius: 5,
-        width: "25%",
-        padding: 3,
-        alignItems: "center",
-        justifyContent: 'center',
-        backgroundColor: getThemeColor()
     },
     FlatlistItem: {
         flex: 1,
@@ -77,7 +69,6 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginTop: 5,
         height: 50,
-        borderColor: getThemeColor(),
         borderWidth: 5,
         borderRadius: 10,
         paddingLeft: 10

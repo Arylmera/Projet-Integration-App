@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
-import {getStyleSheet} from "../../StyleSheet";
+import {getStyleSheet, getThemeSecondary} from "../../StyleSheet";
 
 class DetailItem extends React.Component {
 
@@ -16,7 +16,7 @@ class DetailItem extends React.Component {
         const oiseaux_nom = this.props.data.oiseau_nom
         const { navigation } = this.props
         return (
-            <View style={[styles.main_container, this.state.seasonStyle.secondary]}>
+            <View style={[styles.main_container,{backgroundColor: getThemeSecondary()}]}>
                 <TouchableOpacity
                     style={styles.touchableOpacity}
                     onPress={() => navigation.navigate('DetailOiseaux', { oiseaux_nom : oiseaux_nom, root : this.props.data.root }) }
@@ -28,13 +28,12 @@ class DetailItem extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     main_container: {
         flex: 1,
         margin: 5,
         padding: 5,
-        borderRadius: 5,
-        backgroundColor: "#dddddd"
+        borderRadius: 5
     },
     Title: {
         fontSize: 30,
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
         marginLeft: "auto",
         width: "100%",
         padding: 3,
-        alignItems: "center"
+        alignItems: "center",
     }
 })
 

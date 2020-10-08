@@ -7,11 +7,11 @@ import setUpStyleSheet from "./components/StyleSheet";
 
 export default class App extends React.Component{
     render() {
-        setUpStyleSheet('autumn');
-    return(
-        <NavigationContainer style = {styles.main_container}>
-            <HeaderNavigator/>
-        </NavigationContainer>
+        setUpStyleSheet('winter');
+        return(
+            <NavigationContainer style = {styles.main_container}>
+                <HeaderNavigator/>
+            </NavigationContainer>
         )
     }
 }

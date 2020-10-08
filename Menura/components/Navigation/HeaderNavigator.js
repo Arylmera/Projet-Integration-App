@@ -4,7 +4,7 @@ import {useNavigation, CommonActions} from "@react-navigation/native";
 import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import ProfileNavigator from "./ProfileNavigator";
-import {getStyleSheet} from "../StyleSheet";
+import {getStyleSheet, getThemeHigLight} from "../StyleSheet";
 
 const Stack = createStackNavigator()
 
@@ -23,7 +23,9 @@ class HeaderNavigator extends React.Component {
             <Stack.Navigator
                 initialRouteName="Views"
                 screenOptions={{
-                    headerStyle: this.state.seasonStyle.accent
+                    headerStyle: {
+                        backgroundColor: getThemeHigLight(),
+                    }
                 }}
             >
                 <Stack.Screen
@@ -65,7 +67,7 @@ const HeaderRight = () => {
     );
 };
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     headerIcon: {
         flexDirection: 'row',
         alignItems: 'center',

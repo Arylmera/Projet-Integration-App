@@ -5,7 +5,7 @@ import {useNavigation} from "@react-navigation/core";
 
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faAngleLeft, faFileAlt} from '@fortawesome/free-solid-svg-icons'
-import {getStyleSheet} from "../../StyleSheet";
+import {getStyleSheet, getThemeHigLight} from "../../StyleSheet";
 
 
 class DetailOiseaux extends React.Component {
@@ -156,7 +156,7 @@ class DetailOiseaux extends React.Component {
         return (
             <View style={[styles.main_container, this.state.seasonStyle.primary]}>
                 <TouchableOpacity
-                    style={[styles.touchableOpacity, this.state.seasonStyle.highlight]}
+                    style={[styles.touchableOpacity, this.state.seasonStyle.secondaryColor]}
                     onPress={() => navigation.navigate(this.props.route.params.root) }>
                     <FontAwesomeIcon icon = {faAngleLeft} size={25}/>
                 </TouchableOpacity>
