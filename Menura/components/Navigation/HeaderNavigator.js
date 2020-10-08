@@ -4,36 +4,46 @@ import {useNavigation, CommonActions} from "@react-navigation/native";
 import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import ProfileNavigator from "./ProfileNavigator";
+import {getStyleSheet} from "../StyleSheet";
 
 const Stack = createStackNavigator()
 
-function HeaderNavigator({navigation}) {
-    return (
-        <Stack.Navigator
-            initialRouteName="Views"
-            screenOptions={{
-                headerStyle: {
-                    backgroundColor: "rgba(126,211,33,1)"
-                }
-            }}
-        >
-            <Stack.Screen
-                name=" "
-                component={ViewNavigator}
-                options={{
-                    headerRight: () => <HeaderRight/>
-                }}
+class HeaderNavigator extends React.Component {
 
-            />
-            <Stack.Screen
-                name="Profile"
-                component={ProfileNavigator}
-                options={{
-                    title: "Profile"
+    constructor(props){
+        super(props);
+        console.disableYellowBox = true;
+        this.state= {
+            seasonStyle : getStyleSheet()
+        }
+    }
+
+    render(){
+        return (
+            <Stack.Navigator
+                initialRouteName="Views"
+                screenOptions={{
+                    headerStyle: this.state.seasonStyle.accent
                 }}
-            />
-        </Stack.Navigator>
-    )
+            >
+                <Stack.Screen
+                    name=" "
+                    component={ViewNavigator}
+                    options={{
+                        headerRight: () => <HeaderRight/>
+                    }}
+
+                />
+                <Stack.Screen
+                    name="Profile"
+                    component={ProfileNavigator}
+                    options={{
+                        title: "Profile"
+                    }}
+                />
+            </Stack.Navigator>
+        )
+    }
 }
 
 const HeaderRight = () => {

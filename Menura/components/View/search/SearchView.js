@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, FlatList, TextInput, Button }
 import {useNavigation} from "@react-navigation/core";
 import DetailItem from '../details/detailItem'
 import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api'
+import {getStyleSheet, getThemeColor} from "../../StyleSheet";
 
 class SearchView extends React.Component {
 
@@ -10,6 +11,7 @@ class SearchView extends React.Component {
         super(props);
         this.searchedText = "";
         this.state={
+            seasonStyle : getStyleSheet(),
             oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
         }
     }
@@ -29,9 +31,8 @@ class SearchView extends React.Component {
 
     render() {
         const { navigation } = this.props
-        //console.log(this.state.oiseauxListe)
         return (
-            <View style={styles.main_container}>
+            <View style={[styles.main_container, this.state.seasonStyle.primary]}>
                 <TextInput
                     style={styles.textinput}
                     placeholder="Nom de l'oiseau"
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
         padding: 3,
         alignItems: "center",
         justifyContent: 'center',
-        backgroundColor: "rgba(126,211,33,0.5)"
+        backgroundColor: getThemeColor()
     },
     FlatlistItem: {
         flex: 1,
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginTop: 5,
         height: 50,
-        borderColor: '#9ACD32',
+        borderColor: getThemeColor(),
         borderWidth: 5,
         borderRadius: 10,
         paddingLeft: 10

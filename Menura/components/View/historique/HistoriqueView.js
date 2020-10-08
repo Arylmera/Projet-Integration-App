@@ -1,19 +1,21 @@
 import React from 'react'
 import { StyleSheet, View, Text, FlatList } from 'react-native'
 import DetailItem from "../details/detailItem";
+import {getStyleSheet} from "../../StyleSheet";
 
 class HistoriqueView extends React.Component {
 
     constructor(props){
         super(props);
         this.state={
+            seasonStyle : getStyleSheet(),
             oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
         }
     }
 
     render() {
         return (
-            <View style={styles.main_container}>
+            <View style={[styles.main_container, this.state.seasonStyle.primary]}>
                 <FlatList
                     data={this.state.oiseauxListe}
                     style={styles.FlatlistItem}
