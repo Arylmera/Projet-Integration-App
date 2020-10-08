@@ -29,7 +29,7 @@ class SearchView extends React.Component {
 
     render() {
         const { navigation } = this.props
-        console.log(this.state.oiseauxListe)
+        //console.log(this.state.oiseauxListe)
         return (
             <View style={styles.main_container}>
                 <TextInput

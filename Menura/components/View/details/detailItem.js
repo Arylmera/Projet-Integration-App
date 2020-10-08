@@ -23,8 +23,10 @@ class DetailItem extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        margin: 10,
-        backgroundColor: "grey"
+        margin: 5,
+        padding: 5,
+        borderRadius: 5,
+        backgroundColor: "#dddddd"
     },
     Title: {
         fontSize: 30,

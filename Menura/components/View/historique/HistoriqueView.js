@@ -14,7 +14,6 @@ class HistoriqueView extends React.Component {
     render() {
         return (
             <View style={styles.main_container}>
-                <Text>Page Historique Temporaire</Text>
                 <FlatList
                     data={this.state.oiseauxListe}
                     style={styles.FlatlistItem}

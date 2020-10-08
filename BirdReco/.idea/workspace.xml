@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="629d90b8-dcd9-4018-bd2e-3e32ea7d352e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.expo-shared/assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BirdReco.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/oiseauxList_api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/wikiapi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/mesange.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/profileIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navigation/HeaderNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navigation/HistoriqueNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navigation/ProfileNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navigation/SearchNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navigation/ViewNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/details/detailItem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/details/detailOiseaux.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/historique/HistoriqueView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/parametres/ParametresView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/profile/ProfileModificationView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/profile/ProfileView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/search/SearchView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/stats/StatsView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/View/tips/TipsView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SprintsReview/SprintReview-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/../SprintsReview/SprintReview-1.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1iSUUCSzcbm4t8ArGWjXcYj1pWO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="629d90b8-dcd9-4018-bd2e-3e32ea7d352e" name="Default Changelist" comment="" />
+      <created>1601900499913</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601900499913</updated>
+      <workItem from="1601900503557" duration="2108000" />
+      <workItem from="1602140806770" duration="2372000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>
