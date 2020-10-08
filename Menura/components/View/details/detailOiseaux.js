@@ -26,6 +26,10 @@ class DetailOiseaux extends React.Component {
         this._loadinfo();
     }
 
+    /**
+     * load info into state from api request
+     * @private
+     */
     _loadinfo() {
         getWikiInfo(this.state.oiseaux_nom).then(data => {
             if (data) {
@@ -64,11 +68,21 @@ class DetailOiseaux extends React.Component {
 
     }
 
+    /**
+     * récupération de la dimension de l'écran après le render de lapp
+     * @param layout
+     * @private
+     */
     _find_dimesions(layout){
         const {width, height} = layout;
         this.setState({windowW: width, windowH: height});
     }
 
+    /**
+     * helper du render de l'infoBox
+     * @return {null|*}
+     * @private
+     */
     _render_infobox(){
         if (this.state.wikiWTFInfobox) {
             if(this.state.wikiWTFInfobox.length === 5) {
