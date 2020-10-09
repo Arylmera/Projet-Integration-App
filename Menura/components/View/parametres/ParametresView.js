@@ -2,66 +2,102 @@ import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import Menu, { MenuItem } from 'react-native-material-menu';
 import setUpStyleSheet, {getCurrentTheme, getStyleSheet, getThemePrimary, getThemeSecondary } from "../../StyleSheet";
+import {connect} from "react-redux"
 
 class ParametresView extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            currentTheme : getCurrentTheme(),
+            currentTheme : 'winter',
             seasonStyle : getStyleSheet()
         }
     }
 
+    /*
+    déclaration variables globales
+     */
     _menu = null;
 
+    /**
+     * helper link menu
+     * @param ref
+     */
     setMenuRef = ref => {
         this._menu = ref;
     };
 
+    /**
+     * helper affichage menu
+     */
     showMenu = () => {
         this._menu.show();
     };
 
+    /**
+     * helper set theme hiver
+     * @private
+     */
     _setThemeWinter() {
-        console.log("theme set to winter");
-        this.setState({
-            currentTheme: 'winter'
-        });
-        setUpStyleSheet('winter');
         this._menu.hide();
+
+        this.setState({currentTheme : 'hiver'});
+        const action = {type: 'SET_WINTER'};
+        this.props.dispatch(action);
     }
 
+    /**
+     * helper set theme automne
+     * @private
+     */
     _setThemeAutomne() {
-        console.log("theme set to autumn");
-        this.setState({
-            currentTheme: 'autumn'
-        });
-        setUpStyleSheet('autumn');
         this._menu.hide();
+
+        this.setState({currentTheme : 'automne'});
+        const action = {type: 'SET_AUTUMN'};
+        this.props.dispatch(action);
     }
 
+    /**
+     * helper set theme printemps
+     * @private
+     */
     _setThemePrintemps() {
-        console.log("theme set to spring");
-        this.setState({
-            currentTheme: 'spring'
-        });
-        setUpStyleSheet('spring');
         this._menu.hide();
+
+        this.setState({currentTheme : 'primtemps'});
+        const action = {type: 'SET_SPRING'};
+        this.props.dispatch(action);
     }
 
+    /**
+     * helper set theme été
+     * @private
+     */
     _setThemeEte() {
-        console.log("theme set to summer");
-        this.setState({
-            currentTheme: 'summer'
-        });
-        setUpStyleSheet('summer');
         this._menu.hide();
+
+        this.setState({currentTheme : 'été'});
+        const action = {type: 'SET_SUMMER'};
+        this.props.dispatch(action);
+    }
+
+    /**
+     * helper set theme Dark
+     * @private
+     */
+    _setThemeDark() {
+        this._menu.hide();
+
+        this.setState({currentTheme : 'nuit'});
+        const action = {type: 'SET_DARK'};
+        this.props.dispatch(action);
     }
 
     render() {
+        let theme = this.props.currentStyle;
         return (
-            <View style={styles.main_container}>
+            <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <View style={styles.theme_container}>
                     <Text>Choix du thème :</Text>
                         <Menu
@@ -69,10 +105,11 @@ class ParametresView extends React.Component {
                             ref={this.setMenuRef}
                             button={<Text onPress={this.showMenu}>{this.state.currentTheme}</Text>}
                         >
-                            <MenuItem onPress={this._setThemeWinter.bind(this)}>Hiver</MenuItem>
-                            <MenuItem onPress={this._setThemeAutomne.bind(this)}>Automne</MenuItem>
-                            <MenuItem onPress={this._setThemePrintemps.bind(this)}>Printemps</MenuItem>
-                            <MenuItem onPress={this._setThemeEte.bind(this)}>Eté</MenuItem>
+                            <MenuItem onPress={this._setThemeWinter.bind(this)} style={{backgroundColor: theme.secondary}}>Hiver</MenuItem>
+                            <MenuItem onPress={this._setThemeAutomne.bind(this)} style={{backgroundColor: theme.secondary}}>Automne</MenuItem>
+                            <MenuItem onPress={this._setThemePrintemps.bind(this)} style={{backgroundColor: theme.secondary}}>Printemps</MenuItem>
+                            <MenuItem onPress={this._setThemeEte.bind(this)} style={{backgroundColor: theme.secondary}}>Eté</MenuItem>
+                            <MenuItem onPress={this._setThemeDark.bind(this)} style={{backgroundColor: theme.secondary}}>Noir</MenuItem>
                         </Menu>
                 </View>
             </View>
@@ -83,7 +120,6 @@ class ParametresView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        backgroundColor: getThemePrimary()
     },
     theme_container: {
         flex: 1,
@@ -91,8 +127,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     theme_menu: {
-        backgroundColor: getThemeSecondary()
+
     }
 })
 
-export default ParametresView
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(ParametresView)

@@ -3,7 +3,7 @@ import { StyleSheet, View, FlatList, TextInput, Button } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 import DetailItem from '../details/detailItem'
 import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api'
-import {getStyleSheet, getThemeSecondary, getThemeHigLight, getCurrentTheme} from "../../StyleSheet";
+import {connect} from "react-redux"
 
 class SearchView extends React.Component {
 
@@ -11,8 +11,6 @@ class SearchView extends React.Component {
         super(props);
         this.searchedText = "";
         this.state={
-            seasonStyle : getStyleSheet(),
-            currentTheme : getCurrentTheme(),
             oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
         }
     }
@@ -32,15 +30,16 @@ class SearchView extends React.Component {
 
     render() {
         const { navigation } = this.props;
+        let theme = this.props.currentStyle;
         return (
-            <View style={[styles.main_container, this.state.seasonStyle.primary]}>
+            <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <TextInput
-                    style={[styles.textinput, {borderColor: getThemeSecondary()}]}
+                    style={[styles.textinput, {borderColor: theme.accent}]}
                     placeholder="Nom de l'oiseau"
                     onChangeText={(text) => this._searchTextInputChanged(text)}
                     onSubmitEditing={() => this._loadOiseaux()}
                 />
-                <Button color={getThemeHigLight()} title='Rechercher' onPress={() => this._loadOiseaux()}/>
+                <Button color={theme.accent} title='Rechercher' onPress={() => this._loadOiseaux()}/>
                 <FlatList
                     data={this.state.oiseauxListe}
                     style={styles.FlatlistItem}
@@ -76,10 +75,15 @@ let styles = StyleSheet.create({
     }
 })
 
-export default function(props) {
-    const navigation = useNavigation();
-
-    return <SearchView {...props} navigation={navigation}/>
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
 }
+
+export default connect(mapStateToProps)(function(props) {
+    const navigation = useNavigation();
+    return <SearchView {...props} navigation={navigation}/>
+})
 
 

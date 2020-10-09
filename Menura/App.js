@@ -5,40 +5,35 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import HeaderNavigator from "./components/Navigation/HeaderNavigator";
 import {getCurrentTheme, getStyleSheet} from "./components/StyleSheet";
+import {Provider} from "react-redux";
+import Store from './Store/configureStore'
 
 class App extends React.Component{
 
     constructor(props){
         //YellowBox.ignoreWarnings([""]);
         super(props);
-        this.refreshAppHelper = this.refreshAppHelper.bind(this);
         this.state= {
             seasonStyle : getStyleSheet(),
             currentTheme : getCurrentTheme()
         }
     }
 
-    refreshAppHelper(){
-        this.setState({
-            currentTheme : getCurrentTheme()
-        })
-        console.log("refresh count : " + this.state.refresh)
-    }
-
     render() {
         return(
-            <NavigationContainer style = {styles.main_container}>
-                <HeaderNavigator/>
-            </NavigationContainer>
+            <Provider store={Store}>
+                <NavigationContainer style = {styles.main_container}>
+                    <HeaderNavigator/>
+                </NavigationContainer>
+            </Provider>
         )
     }
 }
 
 const styles = StyleSheet.create({
     main_container: {
-        flex: 1,
-        backgroundColor: '#fff',
+        flex: 1
     }
-})
+});
 
 export default App

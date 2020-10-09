@@ -14,7 +14,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import SearchNavigator from "./SearchNavigator";
 import HistoriqueNavigator from "./HistoriqueNavigator";
-import {getCurrentTheme, getStyleSheet, getThemeAccent, getThemeHigLight, getThemePrimary} from "../StyleSheet";
+import {connect} from "react-redux"
 
 const Tab = createBottomTabNavigator()
 
@@ -23,22 +23,39 @@ class ViewNavigator extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            seasonStyle : getStyleSheet(),
-            currentTheme : getCurrentTheme()
+
         }
     }
 
     render() {
+        let theme = this.props.currentStyle;
         return (
             <Tab.Navigator
                 initialRouteName = "StatsView"
                 tabBarOptions = {{
-                    activeTintColor: getThemeHigLight(),
-                    activeBackgroundColor: getThemePrimary(),
-                    inactiveTintColor: getThemePrimary(),
-                    inactiveBackgroundColor: getThemeHigLight(),
+                    activeTintColor: theme.highlight,
+                    activeBackgroundColor: theme.primary,
+                    inactiveTintColor: theme.primary,
+                    inactiveBackgroundColor: theme.highlight,
                     showIcon: true,
-                    labelStyle: {fontSize: 13},
+                    labelStyle: {
+                        fontSize: 13,
+                        padding: 1
+                    },
+                    style : {
+                        borderRadius: 0,
+                        ...Platform.select({
+                            ios: {
+                                shadowColor: 'rgba(0,0,0, .7)',
+                                shadowOffset: { height:0, width: 0 },
+                                shadowOpacity: 1,
+                                shadowRadius: 5,
+                            },
+                            android: {
+                                elevation: 5
+                            },
+                        })
+                    }
                 }}
             >
                 <Tab.Screen style = {styles.screen}
@@ -47,7 +64,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Statistiques',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faChartBar} size = {25} color={getThemeAccent()}/>
+                                    <FontAwesomeIcon icon = {faChartBar} size = {25} color={theme.accent}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -56,7 +73,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Recherche',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faSearch} size = {23} color={getThemeAccent()}/>
+                                    <FontAwesomeIcon icon = {faSearch} size = {23} color={theme.accent}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -65,7 +82,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Historique',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faList} size = {23} color={getThemeAccent()}/>
+                                    <FontAwesomeIcon icon = {faList} size = {23} color={theme.accent}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -74,7 +91,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Tips',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faInfoCircle} size = {23} color={getThemeAccent()}/>
+                                    <FontAwesomeIcon icon = {faInfoCircle} size = {23} color={theme.accent}/>
                                 ),
                             }}/>
                 <Tab.Screen style = {styles.screen}
@@ -83,7 +100,7 @@ class ViewNavigator extends React.Component {
                             options = {{
                                 tabBarLabel: 'Paramètres',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faCog} size = {23} color={getThemeAccent()}/>
+                                    <FontAwesomeIcon icon = {faCog} size = {23} color={theme.accent}/>
                                 ),
                             }}
                 />
@@ -98,4 +115,10 @@ let styles = StyleSheet.create({
     }
 })
 
-export default ViewNavigator
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(ViewNavigator)

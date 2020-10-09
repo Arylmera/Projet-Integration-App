@@ -2,14 +2,18 @@ import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView, ActivityIndicator } from 'react-native'
 import {getWikiInfo, getWTFWikipedia} from "../../../api/wikiapi";
 import {useNavigation} from "@react-navigation/core";
+import {connect} from "react-redux"
 
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faAngleLeft, faFileAlt} from '@fortawesome/free-solid-svg-icons'
-import {getStyleSheet, getThemeHigLight} from "../../StyleSheet";
 
 
 class DetailOiseaux extends React.Component {
 
+    /**
+     * constructor
+     * @param props
+     */
     constructor(props){
         super(props);
         this.state={
@@ -24,7 +28,6 @@ class DetailOiseaux extends React.Component {
             image : " ",
             imageH : 0,
             isLoading : true,
-            seasonStyle : getStyleSheet()
         }
         this._loadinfo();
     }
@@ -87,30 +90,31 @@ class DetailOiseaux extends React.Component {
      * @private
      */
     _render_infobox(){
+        let theme = this.props.currentStyle;
         if (this.state.wikiWTFInfobox) {
             if(this.state.wikiWTFInfobox.length === 5) {
                 return (
-                    <View style = {[styles.infoBox_container, this.state.seasonStyle.accent]}>
-                        <Text style = {[styles.infoBox_Title, this.state.seasonStyle.accent]}>
-                            <FontAwesomeIcon icon = {faFileAlt} size={15} style={this.state.seasonStyle.accent}/> Classification
+                    <View style = {[styles.infoBox_container, {backgroundColor: theme.secondary}]}>
+                        <Text style = {[styles.infoBox_Title, {color: theme.highlight}]}>
+                            <FontAwesomeIcon icon = {faFileAlt} size={15} style={{color: theme.highlight}}/> Classification
                         </Text>
                         <View style = {styles.infoBox_class}>
                             <View style = {styles.infoBox_class_categ}>
-                                <Text style={this.state.seasonStyle.accent}>Règne :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Embranchement :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Classe :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Ordre :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Famille :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Genre :</Text>
+                                <Text style={{color: theme.highlight}}>Règne :</Text>
+                                <Text style={{color: theme.highlight}}>Embranchement :</Text>
+                                <Text style={{color: theme.highlight}}>Classe :</Text>
+                                <Text style={{color: theme.highlight}}>Ordre :</Text>
+                                <Text style={{color: theme.highlight}}>Famille :</Text>
+                                <Text style={{color: theme.highlight}}>Genre :</Text>
                             </View>
                             <View style = {styles.infoBox_class_sizer}/>
                             <View style = {styles.infoBox_class_info}>
-                                <Text style={this.state.seasonStyle.accent}>Animalia</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[0].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[1].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[2].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[3].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[4].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>Animalia</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[0].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[1].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[2].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[3].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[4].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
                             </View>
                         </View>
                     </View>
@@ -118,29 +122,29 @@ class DetailOiseaux extends React.Component {
             }
             else {
                 return (
-                    <View style = {[styles.infoBox_container, this.state.seasonStyle.accent]}>
-                        <Text style = {[styles.infoBox_Title, this.state.seasonStyle.accent]}>
-                            <FontAwesomeIcon icon = {faFileAlt} size={15} style={this.state.seasonStyle.accent}/> Classification
+                    <View style = {[styles.infoBox_container, {backgroundColor: theme.secondary}]}>
+                        <Text style = {[styles.infoBox_Title, {color: theme.highlight}]}>
+                            <FontAwesomeIcon icon = {faFileAlt} size={15} style={{color: theme.highlight}}/> Classification
                         </Text>
                         <View style = {[styles.infoBox_class]}>
                             <View style = {styles.infoBox_class_categ}>
-                                <Text style={this.state.seasonStyle.accent}>Règne :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Embranchement :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Sous-Embr :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Classe :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Ordre :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Famille :</Text>
-                                <Text style={this.state.seasonStyle.accent}>Genre :</Text>
+                                <Text style={{color: theme.highlight}}>Règne :</Text>
+                                <Text style={{color: theme.highlight}}>Embranchement :</Text>
+                                <Text style={{color: theme.highlight}}>Sous-Embr :</Text>
+                                <Text style={{color: theme.highlight}}>Classe :</Text>
+                                <Text style={{color: theme.highlight}}>Ordre :</Text>
+                                <Text style={{color: theme.highlight}}>Famille :</Text>
+                                <Text style={{color: theme.highlight}}>Genre :</Text>
                             </View>
                             <View style = {styles.infoBox_class_sizer}/>
                             <View style = {styles.infoBox_class_info}>
-                                <Text style={this.state.seasonStyle.accent}>Animalia</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[0].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[1].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[2].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[3].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[4].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
-                                <Text style={this.state.seasonStyle.accent}>{this.state.wikiWTFInfobox[5].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>Animalia</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[0].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[1].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[2].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[3].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[4].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
+                                <Text style={{color: theme.highlight}}>{this.state.wikiWTFInfobox[5].[Object.keys(this.state.wikiWTFInfobox[0])[0]].text}</Text>
                             </View>
                         </View>
                     </View>
@@ -152,11 +156,12 @@ class DetailOiseaux extends React.Component {
 
     render() {
         const { navigation } = this.props
-
+        let theme = this.props.currentStyle;
+        console.log(theme);
         return (
-            <View style={[styles.main_container, this.state.seasonStyle.primary]}>
+            <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <TouchableOpacity
-                    style={[styles.touchableOpacity, this.state.seasonStyle.secondaryColor]}
+                    style={[styles.touchableOpacity, theme.secondary]}
                     onPress={() => navigation.navigate(this.props.route.params.root) }>
                     <FontAwesomeIcon icon = {faAngleLeft} size={25}/>
                 </TouchableOpacity>
@@ -246,7 +251,17 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         margin: 10,
         padding: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .7)',
+                shadowOffset: { height:0, width: 0 },
+                shadowOpacity: 0.5,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 2
+            }})
     },
     infoBox_Title: {
         flex: 1,
@@ -278,8 +293,13 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function(props) {
-    const navigation = useNavigation();
-
-    return <DetailOiseaux {...props} navigation={navigation}/>
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
 }
+
+export default connect(mapStateToProps)(function(props) {
+    const navigation = useNavigation();
+    return <DetailOiseaux {...props} navigation={navigation}/>
+})

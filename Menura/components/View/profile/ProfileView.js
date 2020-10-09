@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
-import {getStyleSheet, getThemeHigLight} from "../../StyleSheet";
+import {connect} from "react-redux"
 
 class ProfileView extends React.Component {
 
@@ -12,21 +12,21 @@ class ProfileView extends React.Component {
             name: "User name",
             lastName: "User lastName",
             profileIcon: "../../assets/images/profileIcon.png",
-            seasonStyle : getStyleSheet()
         }
     }
 
     render() {
-        const { navigation } = this.props
+        const { navigation } = this.props;
+        let theme = this.props.currentStyle;
         return (
-            <ScrollView style={[styles.main_container, this.state.seasonStyle.primary]}>
+            <ScrollView style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <View style={styles.container_row}>
                     <View style={styles.headerProfile}>
                         <Text style={styles.nickNameStyle}> {this.state.nickName} </Text>
                         <Text style={styles.nameStyle}> {this.state.name} </Text>
                         <Text style={styles.lastNameStyle}> {this.state.lastName} </Text>
                     </View>
-                    <Image source={{uri: this.state.profileIcon }} style={styles.profileIcon}/>
+                    <Image source={{uri: this.state.profileIcon }} style={[styles.profileIcon, {backgroundColor: theme.highlight}]}/>
                 </View>
                 <View style={styles.container_row}>
                     <View style={styles.body_container}>
@@ -35,7 +35,7 @@ class ProfileView extends React.Component {
                         </View>
                         <View style={styles.body_footer}>
                         <TouchableOpacity
-                            style={styles.modifButton}
+                            style={[styles.modifButton, {backgroundColor: theme.secondary}]}
                             onPress={() => navigation.navigate('ModidifProfile', { params: {} }) }
                         >
                             <Text>Modifier</Text>
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     profileIcon: {
         flex: 1,
         marginTop: 10,
-        backgroundColor: getThemeHigLight(),
         borderRadius: 100,
         width: 150,
         height: 150
@@ -100,12 +99,17 @@ const styles = StyleSheet.create({
         width: "25%",
         padding: 3,
         alignItems: "center",
-        backgroundColor: getThemeHigLight()
     }
 })
 
-export default function(props) {
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(function(props) {
     const navigation = useNavigation();
 
     return <ProfileView {...props} navigation={navigation}/>
-}
+});

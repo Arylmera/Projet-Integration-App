@@ -11,7 +11,6 @@ function HistoriqueNavigator({navigation}) {
             initialRouteName="HistoriqueView"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: "rgba(126,211,33,1)"
                 }
             }}
         >
