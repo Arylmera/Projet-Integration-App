@@ -4,16 +4,25 @@ import { YellowBox } from "react-native";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import HeaderNavigator from "./components/Navigation/HeaderNavigator";
-import { getStyleSheet } from "./components/StyleSheet";
+import {getCurrentTheme, getStyleSheet} from "./components/StyleSheet";
 
-export default class App extends React.Component{
+class App extends React.Component{
 
     constructor(props){
-        YellowBox.ignoreWarnings([""]);
+        //YellowBox.ignoreWarnings([""]);
         super(props);
+        this.refreshAppHelper = this.refreshAppHelper.bind(this);
         this.state= {
-            seasonStyle : getStyleSheet()
+            seasonStyle : getStyleSheet(),
+            currentTheme : getCurrentTheme()
         }
+    }
+
+    refreshAppHelper(){
+        this.setState({
+            currentTheme : getCurrentTheme()
+        })
+        console.log("refresh count : " + this.state.refresh)
     }
 
     render() {
@@ -29,8 +38,7 @@ const styles = StyleSheet.create({
     main_container: {
         flex: 1,
         backgroundColor: '#fff',
-    },
-    screen: {
-
     }
 })
+
+export default App

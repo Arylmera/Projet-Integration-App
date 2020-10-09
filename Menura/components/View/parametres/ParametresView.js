@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
-import setUpStyleSheet, {getStyleSheet} from "../../StyleSheet";
+import Menu, { MenuItem } from 'react-native-material-menu';
+import setUpStyleSheet, {getCurrentTheme, getStyleSheet, getThemePrimary, getThemeSecondary } from "../../StyleSheet";
 
 class ParametresView extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            currentTheme : 'autumn',
+            currentTheme : getCurrentTheme(),
             seasonStyle : getStyleSheet()
         }
     }
@@ -29,6 +29,7 @@ class ParametresView extends React.Component {
             currentTheme: 'winter'
         });
         setUpStyleSheet('winter');
+        this._menu.hide();
     }
 
     _setThemeAutomne() {
@@ -37,6 +38,7 @@ class ParametresView extends React.Component {
             currentTheme: 'autumn'
         });
         setUpStyleSheet('autumn');
+        this._menu.hide();
     }
 
     _setThemePrintemps() {
@@ -45,6 +47,7 @@ class ParametresView extends React.Component {
             currentTheme: 'spring'
         });
         setUpStyleSheet('spring');
+        this._menu.hide();
     }
 
     _setThemeEte() {
@@ -53,6 +56,7 @@ class ParametresView extends React.Component {
             currentTheme: 'summer'
         });
         setUpStyleSheet('summer');
+        this._menu.hide();
     }
 
     render() {
@@ -79,9 +83,16 @@ class ParametresView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        backgroundColor: getThemePrimary()
     },
     theme_container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
+    theme_menu: {
+        backgroundColor: getThemeSecondary()
+    }
 })
 
 export default ParametresView

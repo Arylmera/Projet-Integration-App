@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, FlatList, TextInput, Button } from 'react-native'
+import { StyleSheet, View, FlatList, TextInput, Button } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 import DetailItem from '../details/detailItem'
 import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api'
-import {getStyleSheet, getThemeSecondary, getThemeHigLight} from "../../StyleSheet";
+import {getStyleSheet, getThemeSecondary, getThemeHigLight, getCurrentTheme} from "../../StyleSheet";
 
 class SearchView extends React.Component {
 
@@ -12,6 +12,7 @@ class SearchView extends React.Component {
         this.searchedText = "";
         this.state={
             seasonStyle : getStyleSheet(),
+            currentTheme : getCurrentTheme(),
             oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
         }
     }
@@ -30,7 +31,7 @@ class SearchView extends React.Component {
     }
 
     render() {
-        const { navigation } = this.props
+        const { navigation } = this.props;
         return (
             <View style={[styles.main_container, this.state.seasonStyle.primary]}>
                 <TextInput

@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
+import {getStyleSheet, getThemeHigLight} from "../../StyleSheet";
 
 class ProfileView extends React.Component {
 
@@ -10,14 +11,15 @@ class ProfileView extends React.Component {
             nickName: "NickName",
             name: "User name",
             lastName: "User lastName",
-            profileIcon: "../../assets/images/profileIcon.png"
+            profileIcon: "../../assets/images/profileIcon.png",
+            seasonStyle : getStyleSheet()
         }
     }
 
     render() {
         const { navigation } = this.props
         return (
-            <ScrollView style={styles.main_container}>
+            <ScrollView style={[styles.main_container, this.state.seasonStyle.primary]}>
                 <View style={styles.container_row}>
                     <View style={styles.headerProfile}>
                         <Text style={styles.nickNameStyle}> {this.state.nickName} </Text>
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
     profileIcon: {
         flex: 1,
         marginTop: 10,
-        backgroundColor: "rgba(126,211,33,0.5)",
+        backgroundColor: getThemeHigLight(),
         borderRadius: 100,
         width: 150,
         height: 150
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
         width: "25%",
         padding: 3,
         alignItems: "center",
-        backgroundColor: "rgba(126,211,33,0.5)"
+        backgroundColor: getThemeHigLight()
     }
 })
 

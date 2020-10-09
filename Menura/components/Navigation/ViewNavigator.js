@@ -14,7 +14,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import SearchNavigator from "./SearchNavigator";
 import HistoriqueNavigator from "./HistoriqueNavigator";
-import {getStyleSheet, getThemeAccent, getThemeHigLight, getThemePrimary} from "../StyleSheet";
+import {getCurrentTheme, getStyleSheet, getThemeAccent, getThemeHigLight, getThemePrimary} from "../StyleSheet";
 
 const Tab = createBottomTabNavigator()
 
@@ -23,7 +23,8 @@ class ViewNavigator extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            seasonStyle : getStyleSheet()
+            seasonStyle : getStyleSheet(),
+            currentTheme : getCurrentTheme()
         }
     }
 
@@ -78,13 +79,14 @@ class ViewNavigator extends React.Component {
                             }}/>
                 <Tab.Screen style = {styles.screen}
                             name = 'ParametresView'
-                            component = {ParametresView}
+                            component={ParametresView}
                             options = {{
                                 tabBarLabel: 'Paramètres',
                                 tabBarIcon: (tabInfo) => (
                                     <FontAwesomeIcon icon = {faCog} size = {23} color={getThemeAccent()}/>
                                 ),
-                            }}/>
+                            }}
+                />
             </Tab.Navigator>
         )
     }

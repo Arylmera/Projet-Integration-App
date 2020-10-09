@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
+import {getThemePrimary} from "../../StyleSheet";
 
 class ProfileModificationView extends React.Component {
     render() {
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
         width: "25%",
         padding: 3,
         alignItems: "center",
-        backgroundColor: "rgba(126,211,33,0.5)"
+        backgroundColor: getThemePrimary()
     }
 })
 

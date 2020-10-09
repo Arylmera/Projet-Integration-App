@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, View, Text, FlatList } from 'react-native'
+import { StyleSheet, View, FlatList } from 'react-native'
 import DetailItem from "../details/detailItem";
-import {getStyleSheet} from "../../StyleSheet";
+import {getCurrentTheme, getStyleSheet} from "../../StyleSheet";
 
 class HistoriqueView extends React.Component {
 
@@ -9,6 +9,7 @@ class HistoriqueView extends React.Component {
         super(props);
         this.state={
             seasonStyle : getStyleSheet(),
+            currentTheme : getCurrentTheme(),
             oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
         }
     }

@@ -4,7 +4,7 @@ import {useNavigation, CommonActions} from "@react-navigation/native";
 import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import ProfileNavigator from "./ProfileNavigator";
-import {getStyleSheet, getThemeHigLight} from "../StyleSheet";
+import {getCurrentTheme, getStyleSheet, getThemeHigLight, getThemePrimary, getThemeSecondary} from "../StyleSheet";
 
 const Stack = createStackNavigator()
 
@@ -13,7 +13,9 @@ class HeaderNavigator extends React.Component {
     constructor(props){
         super(props);
         this.state= {
-            seasonStyle : getStyleSheet()
+            seasonStyle : getStyleSheet(),
+            currentTheme : getCurrentTheme(),
+            title : ""
         }
     }
 
@@ -22,18 +24,19 @@ class HeaderNavigator extends React.Component {
             <Stack.Navigator
                 initialRouteName="Views"
                 screenOptions={{
+                    headerTintColor : getThemePrimary(),
                     headerStyle: {
                         backgroundColor: getThemeHigLight(),
                     }
                 }}
             >
                 <Stack.Screen
-                    name=" "
+                    name="Views"
                     component={ViewNavigator}
                     options={{
+                        title : this.state.title,
                         headerRight: () => <HeaderRight/>
                     }}
-
                 />
                 <Stack.Screen
                     name="Profile"
