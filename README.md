@@ -24,6 +24,16 @@ permettre une action directe de l'utilisateur adaptée aux besoins des populatio
 Electronique (boitier avec microphone et microcontrôleur, Traitement des signauxet données (reconnaissance du chant d'oiseau dans le bruit et comparaison du signal avec une base de données), développement mobile et web (application mobile, web, API), Base de données.
 
 ----------
+### Membres
+
+- Crenier Amaury
+- Lemer Guillaume
+- Nilens Arnaud
+- Janssens Florent
+- Cornil Jean
+- Antoine Grégoire
+
+----------
 ### Liens du projet
 
 Github :
