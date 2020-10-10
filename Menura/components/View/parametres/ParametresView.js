@@ -1,7 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import Menu, { MenuItem } from 'react-native-material-menu';
-import setUpStyleSheet, {getCurrentTheme, getStyleSheet, getThemePrimary, getThemeSecondary } from "../../StyleSheet";
 import {connect} from "react-redux"
 
 class ParametresView extends React.Component {
@@ -10,7 +9,6 @@ class ParametresView extends React.Component {
         super(props);
         this.state = {
             currentTheme : 'winter',
-            seasonStyle : getStyleSheet()
         }
     }
 
@@ -98,20 +96,24 @@ class ParametresView extends React.Component {
         let theme = this.props.currentStyle;
         return (
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-                <View style={styles.theme_container}>
-                    <Text>Choix du thème :</Text>
+
+                <View style={[styles.lineBox, {backgroundColor: theme.secondary}]}>
+                    <Text style={styles.theme_caption}>Choix du thème :</Text>
+                    <View style={[styles.theme_menuBox, {backgroundColor: theme.accent}]}>
                         <Menu
                             style={styles.theme_menu}
                             ref={this.setMenuRef}
                             button={<Text onPress={this.showMenu}>{this.state.currentTheme}</Text>}
                         >
-                            <MenuItem onPress={this._setThemeWinter.bind(this)} style={{backgroundColor: theme.secondary}}>Hiver</MenuItem>
-                            <MenuItem onPress={this._setThemeAutomne.bind(this)} style={{backgroundColor: theme.secondary}}>Automne</MenuItem>
-                            <MenuItem onPress={this._setThemePrintemps.bind(this)} style={{backgroundColor: theme.secondary}}>Printemps</MenuItem>
-                            <MenuItem onPress={this._setThemeEte.bind(this)} style={{backgroundColor: theme.secondary}}>Eté</MenuItem>
-                            <MenuItem onPress={this._setThemeDark.bind(this)} style={{backgroundColor: theme.secondary}}>Noir</MenuItem>
+                            <MenuItem onPress={this._setThemeWinter.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Hiver</MenuItem>
+                            <MenuItem onPress={this._setThemeAutomne.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Automne</MenuItem>
+                            <MenuItem onPress={this._setThemePrintemps.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Printemps</MenuItem>
+                            <MenuItem onPress={this._setThemeEte.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Eté</MenuItem>
+                            <MenuItem onPress={this._setThemeDark.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Noir</MenuItem>
                         </Menu>
+                    </View>
                 </View>
+
             </View>
         );
     }
@@ -120,14 +122,31 @@ class ParametresView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        paddingTop: 10,
+        flexDirection: "column"
     },
-    theme_container: {
+    lineBox: {
         flex: 1,
-        justifyContent: "center",
+        maxHeight: "10%",
         alignItems: "center",
+        flexDirection: "row",
+        borderRadius: 20,
+        margin: "5%"
+    },
+    theme_caption: {
+        flex: 2,
+        textAlign: "center",
+    },
+    theme_menuBox: {
+        flex: 1,
+        padding: "2%",
+        borderRadius: 20,
+        alignItems: "center",
+        marginRight: "5%"
     },
     theme_menu: {
-
+    },
+    theme_menu_entry: {
     }
 })
 

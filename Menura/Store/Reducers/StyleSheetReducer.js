@@ -4,8 +4,8 @@ Définition des themes
  */
 const winterStyle = {
     primary: "#FFFFFF",
-    secondary: "#BAE8E8",
-    accent: "#a7c3e5",
+    secondary: "#E7F6F5",
+    accent: "#C3E7E7",
     highlight: "#272343"
 };
 const autumnStyle = {
@@ -23,14 +23,14 @@ const springStyle = {
 const summerStyle = {
     primary: "#87DFD6",
     secondary: "#FBFD8A",
-    accent: "#086972",
-    highlight: "#01A9B4"
+    accent: "#01A9B4",
+    highlight: "#086972"
 };
 const darkStyle = {
-    primary: "#ffffff",
-    secondary: "#868686",
-    accent: "#5b5b5b",
-    highlight: "#000000"
+    primary: "#868686",
+    secondary: "#5b5b5b",
+    accent: "#000000",
+    highlight: "#ffffff"
 };
 
 /*

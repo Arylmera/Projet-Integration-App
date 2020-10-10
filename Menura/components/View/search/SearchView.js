@@ -57,6 +57,7 @@ class SearchView extends React.Component {
 let styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        paddingTop: 5,
         flexDirection: "column",
     },
     FlatlistItem: {

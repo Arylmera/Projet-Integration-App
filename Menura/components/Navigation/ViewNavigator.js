@@ -111,7 +111,6 @@ class ViewNavigator extends React.Component {
 
 let styles = StyleSheet.create({
     screen: {
-
     }
 })
 

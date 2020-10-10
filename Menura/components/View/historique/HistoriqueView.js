@@ -32,6 +32,7 @@ class HistoriqueView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        paddingTop: 10,
         flexDirection: "column",
     },
     detailButton: {
