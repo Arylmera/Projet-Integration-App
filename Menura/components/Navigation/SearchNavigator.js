@@ -11,7 +11,6 @@ function SearchNavigator({navigation}) {
             initialRouteName="SearchView"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: "rgba(126,211,33,1)"
                 }
             }}
         >

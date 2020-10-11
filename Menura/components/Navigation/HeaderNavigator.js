@@ -4,7 +4,7 @@ import {useNavigation, CommonActions} from "@react-navigation/native";
 import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import ProfileNavigator from "./ProfileNavigator";
-import {getStyleSheet, getThemeHigLight} from "../StyleSheet";
+import {connect} from "react-redux"
 
 const Stack = createStackNavigator()
 
@@ -12,29 +12,41 @@ class HeaderNavigator extends React.Component {
 
     constructor(props){
         super(props);
-        console.disableYellowBox = true;
         this.state= {
-            seasonStyle : getStyleSheet()
+            title : ""
         }
     }
 
     render(){
+        let theme = this.props.currentStyle
         return (
             <Stack.Navigator
                 initialRouteName="Views"
                 screenOptions={{
+                    headerTintColor : theme.highlight,
                     headerStyle: {
-                        backgroundColor: getThemeHigLight(),
+                        backgroundColor: theme.primary,
+                        ...Platform.select({
+                            ios: {
+                                shadowColor: 'rgba(0,0,0, .7)',
+                                shadowOffset: { height:0, width: 0 },
+                                shadowOpacity: 1,
+                                shadowRadius: 5,
+                            },
+                            android: {
+                                elevation: 5
+                            },
+                        }),
                     }
                 }}
             >
                 <Stack.Screen
-                    name=" "
+                    name="Views"
                     component={ViewNavigator}
                     options={{
+                        title : this.state.title,
                         headerRight: () => <HeaderRight/>
                     }}
-
                 />
                 <Stack.Screen
                     name="Profile"
@@ -62,7 +74,6 @@ const HeaderRight = () => {
                     style={styles.profileIcon}
                 />
             </TouchableOpacity>
-
         </View>
     );
 };
@@ -78,4 +89,10 @@ let styles = StyleSheet.create({
     }
 })
 
-export default HeaderNavigator
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(HeaderNavigator)

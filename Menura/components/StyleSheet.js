@@ -175,8 +175,37 @@ export function getThemeHigLight() {
 let seasonStyle = autumnStyle;
 let currentTheme = 'autumn';
 
+export function getCurrentTheme(){
+    return currentTheme;
+}
+
 export function getStyleSheet(){
     return seasonStyle;
+}
+
+export function getThemeTestHigliht(theme){
+    console.log("test highlight " + theme);
+    switch (theme) {
+        case 'winter':
+            return "#272343"
+            break;
+
+        case 'autumn':
+            return "#622B35"
+            break;
+
+        case 'spring':
+            return "#F3AEA8"
+            break;
+
+        case 'summer':
+            return "#086972"
+            break;
+
+        default:
+            return "#8A3F3C"
+            break;
+        }
 }
 
 export default function setUpStyleSheet(theme) {

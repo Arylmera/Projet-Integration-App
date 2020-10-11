@@ -1,27 +1,39 @@
 
 import React from 'react';
-import {StyleSheet} from "react-native";
-import {NavigationContainer} from "@react-navigation/native";
+import { YellowBox } from "react-native";
+import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import HeaderNavigator from "./components/Navigation/HeaderNavigator";
-import setUpStyleSheet from "./components/StyleSheet";
+import {getCurrentTheme, getStyleSheet} from "./components/StyleSheet";
+import {Provider} from "react-redux";
+import Store from './Store/configureStore'
 
-export default class App extends React.Component{
+class App extends React.Component{
+
+    constructor(props){
+        //YellowBox.ignoreWarnings([""]);
+        super(props);
+        this.state= {
+            seasonStyle : getStyleSheet(),
+            currentTheme : getCurrentTheme()
+        }
+    }
+
     render() {
-        setUpStyleSheet('winter');
         return(
-            <NavigationContainer style = {styles.main_container}>
-                <HeaderNavigator/>
-            </NavigationContainer>
+            <Provider store={Store}>
+                <NavigationContainer style = {styles.main_container}>
+                    <HeaderNavigator/>
+                </NavigationContainer>
+            </Provider>
         )
     }
 }
 
 const styles = StyleSheet.create({
     main_container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    screen: {
-
+        flex: 1
     }
-})
+});
+
+export default App
