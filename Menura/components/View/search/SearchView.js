@@ -14,10 +14,19 @@ class SearchView extends React.Component {
         }
     }
 
+    /**
+     *Récupere le text du TextInput et attribue la valeur text a searchedText
+     * @param text
+     * @private
+     */
     _searchTextInputChanged(text) {
         this.searchedText = text
     }
 
+    /**
+     *Vérifie le text entré pour searchedText  et  Fait appel a la fonction getOiseauxListWithSearchedText de oiseauxList_api qui renvoit en object avec les noms des oiseaux
+     * @private
+     */
     _loadOiseaux() {
         if (this.searchedText.length > 0) {
             let data = getOiseauxListWithSearchedText(this.searchedText);

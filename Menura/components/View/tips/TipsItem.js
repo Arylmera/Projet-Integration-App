@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
+
 class TipsItem extends React.Component {
     render() {
         const saison = this.props.data.infos_saison.saison
