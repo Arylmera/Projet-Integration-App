@@ -1,15 +1,25 @@
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-
+import { StyleSheet, View, Text } from 'react-native'
+import {connect} from "react-redux"
+import {Divider} from "react-native-paper";
 
 class TipsItem extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+        }
+    }
+
     render() {
+        let theme = this.props.currentStyle;
         const saison = this.props.data.infos_saison.saison
         const tips = this.props.data.infos_saison.tips
         return (
-            <View style={styles.main_container}>
+            <View style={[styles.main_container, {backgroundColor: theme.secondary}]}>
                 <Text style={styles.saison}>{saison}</Text>
-                <Text style={styles.item}>{tips}</Text>
+                <Divider/>
+                <Text style={[styles.item, {backgroundColor: theme.secondary}]}>{tips}</Text>
             </View>
         )
     }
@@ -17,16 +27,29 @@ class TipsItem extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
-        flex: 1,
+        flexDirection: 'column',
         margin: 10,
-        backgroundColor: '#6DB565'
+        borderRadius: 10,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .7)',
+                shadowOffset: { height:0, width: 0 },
+                shadowOpacity: 0.5,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 2
+            }}),
+
     },
     saison: {
+        flex: 1,
         fontSize: 28,
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: 5,
     },
     item: {
-        backgroundColor: '#6DB565',
+        flex : 3,
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
@@ -35,4 +58,10 @@ const styles = StyleSheet.create({
 
 })
 
-export default TipsItem
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(TipsItem)
