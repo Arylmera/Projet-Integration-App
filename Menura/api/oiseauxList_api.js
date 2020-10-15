@@ -1,7 +1,11 @@
 
 const url_getOiseauxList = "";
 
-
+/**
+ *
+ * @param text
+ * @returns {[]}
+ */
 export function getOiseauxListWithSearchedText(text) {
 
     let tab = [];

@@ -183,9 +183,11 @@ class DetailOiseaux extends React.Component {
                                 : null
                         }
                     </View>
-                    <View style={styles.body_container}>
+                    <View style={[styles.body_container]}>
                         {this._render_infobox()}
-                        <Text>{this.state.wikiInfo.extract}</Text>
+                        <Text style={[styles.text_extract, {backgroundColor: theme.secondary}]}>
+                            {this.state.wikiInfo.extract}
+                        </Text>
                     </View>
                 </ScrollView>
                 { this.state.isLoading ?
@@ -281,6 +283,23 @@ const styles = StyleSheet.create({
     },
     infoBox_class_info: {
         flex: 2
+    },
+    text_extract: {
+        textAlign: 'center',
+        margin: 5,
+        padding: 10,
+        borderRadius: 20,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .7)',
+                shadowOffset: { height:0, width: 0 },
+                shadowOpacity: 0.5,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 2
+            },
+        }),
     },
     loading_container: {
         position: 'absolute',
