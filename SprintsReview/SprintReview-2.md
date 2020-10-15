@@ -1,51 +1,24 @@
-
-
-
-#Demo Sprint :
-
-##Sujet :
-Nous voulons proposez un outil simple et accessible à tous permettant de recenser les espèces d'oiseaux réellement présentes dans son environnement.
-Concrètement, il s'agit d'un boitier que l'on dépose à l'endroit souhaité et qui reconnaitra les espèces d'oiseaux présentes grâce à leur chant. Les données sont présentées de manière intuitives et éducatives sur une application mobile et via le web. En fonction des espèces détectées, des conseils seront affichés comme par exemple s'il est bon de les nourrir et comment, quelles plantations faut-il privilégier pour préserver leur habitat, ...
-##Done this sprint :
-Nous avons décidé ensemble de donner le nom de Menura a notre app
-### Choix des technos :
-https://github.com/Arylmera/Projet-Integration-App/wiki/Choix-techniques
-###L'inteface utilisateur de l'application à été impléméntée :
-- Partie recherche et détail 
-- Base de donnée : https://github.com/Arylmera/Projet-Integration-App/blob/develop/Images/schemaDB.png
-- API : Mise en place des services de l'API REST sur la DB menura en localhost pour l'instant et doc en cours de prépa
-        /`utilisateurs`
-        /`capteurs`
-        /`historiques`
-        /`oiseaux`
-- Tips
-- Mise en place des themes pour laisser le choix à l'utilisateur ( `Hiver`, `Automne`, `Printemps`, `Eté`, `dark theme`)
-- Détection et enregistrement capteur simuler grace a un script python 
-(pour l'instant on injecte un samplate d'un champs d'oiseaux
-
-### Le Backlog : 
-https://github.com/Arylmera/Projet-Integration-App/wiki/Backlog
-
-
-
-
-
-
-
 # Sprint Review  2
 
 ## Fonctionnalités terminées
-
-- 
-
+- Partie recherche et détail des différents oiseaux
+- API : Mise en place des services de l'API REST sur la DB menura en localhost
+- Détection et enregistrement capteur simuler grace a un script python 
+- Mise en place de theme pour l'utilisateur
 
 ## Etat d'avancement
-
-
+- Nous avons décidé de donner le nom de Menura à notre application.
+- Recherche sur les pistes de traitement de signaux
+- Documentation de l'API en cours de réaction
+- Il reste a rajouter le lien de l'API pour la recherche sur les oiseaux 
+- Nous avons deja la possibilité de voir un spectrogramme de notre samplate d'oiseau
 
 ## FeedBack 
-
+Nous avons respecté ce qui a été prévus pour le sprint. Certaines US ont été réaliser plus rapidement que prévu. C'est pour cela qu'on a laissé la possibilité de rajouter certaine US non prévu pour ce sprint et laisser du temps pour que tout le monde puisse se former sur la realisation du capteur .
 
 
 ## Prévision et Suite du projet
+- Mise en place de l'authentification avec Firebase pour les comptes utilisateurs et l'accès à l'API.
+- Déployement de l'API et de la DB sur VPS.
+- Suite analyse traitement de signal au niveau du capteur 
 
