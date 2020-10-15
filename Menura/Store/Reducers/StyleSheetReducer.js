@@ -1,3 +1,4 @@
+import ls from "local-storage";
 
 /*
 Définition des themes
@@ -53,32 +54,40 @@ function switchTheme(state = currentStyle, action) {
                 ...state,
                 currentStyle: winterStyle
             };
+            ls.set("theme_key", "winterStyle");
             return nextState || state
         case 'SET_AUTUMN' :
             nextState = {
                 ...state,
                 currentStyle: autumnStyle
             };
+            ls.set("theme_key", "autumnStyle");
             return nextState || state
         case 'SET_SPRING' :
             nextState = {
                 ...state,
                 currentStyle: springStyle
             };
+            ls.set("theme_key", "springStyle");
             return nextState || state
         case 'SET_SUMMER' :
             nextState = {
                 ...state,
                 currentStyle: summerStyle
             };
+            ls.set("theme_key", "summerStyle");
             return nextState || state
         case 'SET_DARK' :
             nextState = {
                 ...state,
                 currentStyle: darkStyle
             }
+            ls.set("theme_key", "darkStyle");
             return nextState || state
         default:
+            if (ls.get("theme_key")){
+                return  {...state, currentStyle: ls.get("theme_key")};
+            }
             return  {...state, currentStyle: winterStyle}
     }
 }

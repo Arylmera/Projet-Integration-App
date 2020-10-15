@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import Menu, { MenuItem } from 'react-native-material-menu';
-import {connect} from "react-redux"
+import {connect} from "react-redux";
 
 class ParametresView extends React.Component {
 
