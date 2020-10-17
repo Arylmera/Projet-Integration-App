@@ -2,6 +2,8 @@
 /*
 Définition des themes
  */
+import {getDataStorage, storeDataStorage} from "../../functions/storageHelper";
+
 const winterStyle = {
     primary: "#FFFFFF",
     secondary: "#E7F6F5",
@@ -47,39 +49,50 @@ let currentStyle = {};
 function switchTheme(state = currentStyle, action) {
     let nextState = winterStyle;
 
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_WINTER' :
             nextState = {
                 ...state,
                 currentStyle: winterStyle
             };
+            storeDataStorage("theme_key","winterStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         case 'SET_AUTUMN' :
             nextState = {
                 ...state,
                 currentStyle: autumnStyle
             };
+            storeDataStorage("theme_key","autumnStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         case 'SET_SPRING' :
             nextState = {
                 ...state,
                 currentStyle: springStyle
             };
+            storeDataStorage("theme_key","springStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         case 'SET_SUMMER' :
             nextState = {
                 ...state,
                 currentStyle: summerStyle
             };
+            storeDataStorage("theme_key","summerStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         case 'SET_DARK' :
             nextState = {
                 ...state,
                 currentStyle: darkStyle
             }
+            storeDataStorage("theme_key", "darkStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         default:
-            return  {...state, currentStyle: winterStyle}
+            getDataStorage("theme_key").then(r => {
+                    if (r !== null) {
+                        return {...state, currentStyle: r}
+                    }
+                }
+            );
+            return {...state, currentStyle: winterStyle}
     }
 }
 

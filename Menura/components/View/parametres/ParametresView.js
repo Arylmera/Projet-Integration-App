@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import Menu, { MenuItem } from 'react-native-material-menu';
-import {connect} from "react-redux"
+import {connect} from "react-redux";
 
 class ParametresView extends React.Component {
 
@@ -130,17 +130,18 @@ const styles = StyleSheet.create({
         maxHeight: "10%",
         alignItems: "center",
         flexDirection: "row",
-        borderRadius: 20,
+        borderRadius: 15,
         margin: "5%"
     },
     theme_caption: {
         flex: 2,
+        fontSize: 16,
         textAlign: "center",
     },
     theme_menuBox: {
         flex: 1,
         padding: "2%",
-        borderRadius: 20,
+        borderRadius: 10,
         alignItems: "center",
         marginRight: "5%"
     },
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     },
     theme_menu_entry: {
     }
-})
+});
 
 const mapStateToProps = state => {
     return {
