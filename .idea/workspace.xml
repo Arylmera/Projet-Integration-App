@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SprintsReview/SprintReview-2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/tips/TipsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +55,7 @@
       <workItem from="1602000662892" duration="8459000" />
       <workItem from="1602669015950" duration="1905000" />
       <workItem from="1602693734739" duration="3079000" />
+      <workItem from="1602969175634" duration="481000" />
     </task>
     <servers />
   </component>
