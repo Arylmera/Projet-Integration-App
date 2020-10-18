@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
@@ -19,6 +20,8 @@
     "@react-navigation/stack": "^5.9.1",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
+    "jest": "^26.5.3",
+    "jest-expo": "^39.0.0",
     "local-storage": "^2.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -29,6 +32,7 @@
     "react-native-paper": "^4.2.0",
     "react-native-screens": "~2.10.1",
     "react-native-svg": "^12.1.0",
+    "react-native-testing-library": "^6.0.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.1",
@@ -39,6 +43,9 @@
     "@babel/core": "~7.9.0",
     "@expo/vector-icons": "^10.2.1",
     "@react-navigation/core": "^5.12.4"
+  },
+  "jest" : {
+    "preset": "jest-expo/universal"
   },
   "private": true
 }
