@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, FlatList, TextInput, Button } from 'react-native'
+import {StyleSheet, View, FlatList, TextInput, Button, ActivityIndicator, Image, Text} from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 import DetailItem from '../details/detailItem'
 import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api'
 import {connect} from "react-redux"
+
 
 class SearchView extends React.Component {
 
@@ -11,7 +12,9 @@ class SearchView extends React.Component {
         super(props);
         this.searchedText = "";
         this.state={
-            oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
+            oiseauxListe: [],
+            oiseauxListeNom: [],
+            isLoading: true
         }
     }
 
@@ -24,18 +27,22 @@ class SearchView extends React.Component {
         this.searchedText = text
     }
 
-    /**
-     *Vérifie le text entré pour searchedText  et  Fait appel a la fonction getOiseauxListWithSearchedText de oiseauxList_api qui renvoit en object avec les noms des oiseaux
-     * @private
-     */
     _loadOiseaux() {
         if (this.searchedText.length > 0) {
-            let data = getOiseauxListWithSearchedText(this.searchedText);
-            this.setState({ oiseauxListe: data });
-
+            getOiseauxListWithSearchedText(this.searchedText).then(data => {
+                this.setState({ oiseauxListe: data.data });
+                let oiseauxListNom_loading = [];
+                data.data.forEach( oiseau =>
+                    oiseauxListNom_loading.push(oiseau.nom)
+                );
+                this.setState( {oiseauxListeNom : oiseauxListNom_loading, isLoading : false});
+            })
         }
-        else(this.setState({ oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"] }));
     }
+
+
+
+
 
     render() {
         const { navigation } = this.props;
@@ -49,15 +56,19 @@ class SearchView extends React.Component {
                     onSubmitEditing={() => this._loadOiseaux()}
                 />
                 <Button color={theme.accent} title='Rechercher' onPress={() => this._loadOiseaux()}/>
-                <FlatList
-                    data={this.state.oiseauxListe}
-                    style={styles.FlatlistItem}
-                    keyExtractor={(item) => item}
-                    renderItem={({item}) => (
-                        <DetailItem data={{oiseau_nom: item, root: 'SearchView'}}/>
-                    )}
+                { this.state.isLoading ?
+                   <Text>hojflnzlefnl</Text>
+                    :
+                    <FlatList
+                        data={this.state.oiseauxListeNom}
+                        style={styles.FlatlistItem}
+                        keyExtractor={(item) => item}
+                        renderItem={({item}) => (
+                            <DetailItem data={{oiseau_nom: item, root: 'SearchView'}}/>
+                        )}
 
-                />
+                    />
+                }
             </View>
         )
     }
@@ -82,7 +93,7 @@ let styles = StyleSheet.create({
         borderWidth: 5,
         borderRadius: 10,
         paddingLeft: 10
-    }
+    },
 })
 
 const mapStateToProps = state => {
