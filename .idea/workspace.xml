@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menura/components/View/profile/inscriptionProfilView.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menura/components/View/profile/resetPasswordProfilView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/Navigation/ProfileNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/Navigation/ProfileNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/ProfileModificationView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ProfilModificationView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/ProfileView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" afterDir="false" />
-    </list>
+    <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +61,7 @@
       <workItem from="1602693734739" duration="3079000" />
       <workItem from="1602969175634" duration="1665000" />
       <workItem from="1603203017273" duration="1055000" />
-      <workItem from="1603356571358" duration="2291000" />
+      <workItem from="1603356571358" duration="2616000" />
     </task>
     <servers />
   </component>
