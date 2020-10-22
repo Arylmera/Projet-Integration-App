@@ -57,7 +57,7 @@ class SearchView extends React.Component {
                 />
                 <Button color={theme.accent} title='Rechercher' onPress={() => this._loadOiseaux()}/>
                 { this.state.isLoading ?
-                   <Text>hojflnzlefnl</Text>
+                    <Image style={styles.image} source={require('../../../assets/images/ShearchOiseau.png') }/>
                     :
                     <FlatList
                         data={this.state.oiseauxListeNom}
@@ -93,6 +93,12 @@ let styles = StyleSheet.create({
         borderWidth: 5,
         borderRadius: 10,
         paddingLeft: 10
+    },
+    image: {
+        flex: 1,
+        resizeMode: "contain",
+        height: "100%",
+        width: "100%",
     },
 })
 
