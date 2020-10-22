@@ -1,14 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import ProfileView from "../View/profile/ProfileView";
-import ProfileModificationView from "../View/profile/ProfileModificationView";
+import ProfilView from "../View/profile/ProfilView";
+import ProfilModificationView from "../View/profile/ProfilModificationView";
+import inscriptionProfilView from "../View/profile/inscriptionProfilView";
+import resetPasswordProfilView from "../View/profile/resetPasswordProfilView";
+import connexionProfilView from "../View/profile/connexionProfilView";
 
 const Stack = createStackNavigator()
 
 function ProfileNavigator({navigation}) {
     return (
         <Stack.Navigator
-            initialRouteName="Profile"
+            initialRouteName="Profil"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: "rgba(126,211,33,1)"
@@ -16,18 +19,39 @@ function ProfileNavigator({navigation}) {
             }}
         >
             <Stack.Screen
-                name="Profile"
-                component={ProfileView}
+                name="Profil"
+                component={ProfilView}
                 options={{
-                    title: "Profile"
+                    title: "Profil"
                 }}
 
             />
             <Stack.Screen
-                name="ModidifProfile"
-                component={ProfileModificationView}
+                name="ModidifProfil"
+                component={ProfilModificationView}
                 options={{
                     title: "Modification du profile"
+                }}
+            />
+            <Stack.Screen
+                name="connexionProfil"
+                component={connexionProfilView}
+                options={{
+                    title: "Modification du profil"
+                }}
+            />
+            <Stack.Screen
+                name="resetPasswordProfil"
+                component={resetPasswordProfilView}
+                options={{
+                    title: "Modification du profil"
+                }}
+            />
+            <Stack.Screen
+                name="inscriptionProfil"
+                component={inscriptionProfilView}
+                options={{
+                    title: "Modification du profil"
                 }}
             />
         </Stack.Navigator>
