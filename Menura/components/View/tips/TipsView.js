@@ -54,7 +54,7 @@ class TipsView extends React.Component {
         let theme = this.props.currentStyle;
         return (
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-                <Text style={[styles.context, {borderColor: theme.highlight, backgroundColor: theme.secondary}]}>
+                <Text style={[styles.context, {borderColor: theme.highlight, backgroundColor: theme.secondary}]} testID={'text'}>
                     Vous pouvez aider les oiseaux de la nature et favoriser leur survie en les aidant à trouver facilement une alimentation adaptée et à garder un habitat approprié.
                 </Text>
                 <FlatList
