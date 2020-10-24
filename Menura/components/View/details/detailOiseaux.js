@@ -46,7 +46,6 @@ class DetailOiseaux extends React.Component {
                         wikiWTFInfobox: this.state.wikiWTF.sections[0].infoboxes
                     })
                 }
-                //console.log(this.state.wikiWTF.sections[0])
                 try {
                     let nom_latin = null;
                     if (this.state.wikiWTF.sections[0]) {
@@ -59,6 +58,28 @@ class DetailOiseaux extends React.Component {
                     this.setState({
                         oiseaux_latin: nom_latin
                     })
+
+                    if (this.state.wikiWTF.sections[1].paragraphs[0].sentences[0] && this.state.wikiWTF.sections[1].paragraphs[0].sentences[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : "\n \n" + this.state.wikiWTF.sections[1].paragraphs[0].sentences[0].text})
+                    }
+                    else if (this.state.wikiWTF.sections[1].paragraphs[0].text && this.state.wikiWTF.sections[1].paragraphs[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : "\n \n" + this.state.wikiWTF.sections[1].paragraphs[0].text})
+                    }
+
+                    if (this.state.wikiWTF.sections[2].paragraphs[0].sentences[0] && this.state.wikiWTF.sections[2].paragraphs[0].sentences[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[2].paragraphs[0].sentences[0].text})
+                    }
+                    else if (this.state.wikiWTF.sections[2].paragraphs[0].text && this.state.wikiWTF.sections[2].paragraphs[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[2].paragraphs[0].text})
+                    }
+
+                    if (this.state.wikiWTF.sections[3].paragraphs[0].sentences[0] && this.state.wikiWTF.sections[3].paragraphs[0].sentences[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[3].paragraphs[0].sentences[0].text})
+                    }
+                    else if (this.state.wikiWTF.sections[3].paragraphs[0].text && this.state.wikiWTF.sections[3].paragraphs[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[3].paragraphs[0].text})
+                    }
+
                 }
                 catch (e) {
                     console.log("Can't read wikiWTF")
@@ -149,7 +170,11 @@ class DetailOiseaux extends React.Component {
 
     render() {
         const { navigation } = this.props
+<<<<<<< Updated upstream
 
+=======
+        let theme = this.props.currentStyle;
+>>>>>>> Stashed changes
         return (
             <View style={styles.main_container}>
                 <TouchableOpacity
@@ -177,7 +202,14 @@ class DetailOiseaux extends React.Component {
                     </View>
                     <View style={styles.body_container}>
                         {this._render_infobox()}
+<<<<<<< Updated upstream
                         <Text>{this.state.wikiInfo.extract}</Text>
+=======
+                        <Text style={[styles.text_extract, {backgroundColor: theme.secondary, color: theme.highlight}]}>
+                            {this.state.wikiInfo.extract}
+                            {this.state.wikiWTFtext}
+                        </Text>
+>>>>>>> Stashed changes
                     </View>
                 </ScrollView>
                 { this.state.isLoading ?
@@ -266,6 +298,26 @@ const styles = StyleSheet.create({
     infoBox_class_info: {
         flex: 2
     },
+<<<<<<< Updated upstream
+=======
+    text_extract: {
+        textAlign: 'center',
+        margin: 5,
+        padding: 20,
+        borderRadius: 20,
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0, .7)',
+                shadowOffset: { height:0, width: 0 },
+                shadowOpacity: 0.5,
+                shadowRadius: 2,
+            },
+            android: {
+                elevation: 2
+            },
+        }),
+    },
+>>>>>>> Stashed changes
     loading_container: {
         position: 'absolute',
         left: 0,
