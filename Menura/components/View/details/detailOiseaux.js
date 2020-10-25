@@ -23,11 +23,12 @@ class DetailOiseaux extends React.Component {
             oiseaux_latin: null,
             wikiInfo:[],
             wikiWTF: [],
-            wikiWTFtext: '',
+            wikiWTFtext: null,
             wikiWTFInfobox : null,
             image : " ",
             imageH : 0,
             isLoading : true,
+            dataFound : false
         }
         this._loadinfo();
     }
@@ -39,11 +40,32 @@ class DetailOiseaux extends React.Component {
     _loadinfo() {
         getWikiInfo(this.state.oiseaux_nom).then(data => {
             if (data) {
-                //console.log(data);
-                this.setState({wikiInfo: data, image: data.originalimage.source, imageH: data.originalimage.height});
-                this.setState({isLoading: false})
+                //console.log(data)
+                if(data.title !== "Not found.") {
+                    this.setState({
+                        dataFound: true,
+                        wikiInfo: data,
+                        image: data.originalimage.source,
+                        imageH: data.originalimage.height
+                    });
+                    this._WtfRequest()
+                    this.setState({isLoading: false})
+                }
+                else{
+                    this.setState({
+                        isLoading: false,
+                        dataFound : false
+                    });
+                }
             }
         });
+    }
+
+    /**
+     * gestion des requêtes par le plugin WTF wikipedia
+     * @private
+     */
+    _WtfRequest(){
         getWTFWikipedia(this.state.oiseaux_nom).then(data => {
             if (data) {
                 this.setState({wikiWTF: data})
@@ -92,7 +114,6 @@ class DetailOiseaux extends React.Component {
                 }
             }
         });
-
     }
 
     /**
@@ -185,37 +206,53 @@ class DetailOiseaux extends React.Component {
                     onPress={() => navigation.navigate(this.props.route.params.root) }>
                     <FontAwesomeIcon icon = {faAngleLeft} size={25}/>
                 </TouchableOpacity>
-                <ScrollView style={styles.scrollView_container} key={this.state.windowW} onLayout={(event) => { this._find_dimesions(event.nativeEvent.layout) }}>
-                    <View style={[styles.header_container]}>
-                        { this.state.isLoading ?
-                            <View style={styles.loading_container}>
-                                <ActivityIndicator size='large' />
-                            </View>
+                {
+                    this.state.isLoading ?
+                        <View style = {styles.loading_container}>
+                            <ActivityIndicator size = 'large'/>
+                        </View>
+                        :
+                        this.state.dataFound ?
+                            <ScrollView style = {styles.scrollView_container} key = {this.state.windowW}
+                                        onLayout = {(event) => {
+                                            this._find_dimesions(event.nativeEvent.layout)
+                                        }}>
+                                <View style = {[styles.header_container]}>
+                                    {this.state.isLoading || this.state.image !== null ?
+                                        <Image style = {[styles.image, {height: this.state.windowW}]}
+                                               source = {{uri: this.state.image}}/>
+                                        : null
+                                    }
+                                    <Text style = {styles.Title}>{this.state.wikiInfo.displaytitle}</Text>
+                                    {
+                                        this.state.oiseaux_latin ?
+                                            <Text style = {styles.Title_latin}>
+                                                {this.state.oiseaux_latin}
+                                            </Text>
+                                            : null
+                                    }
+                                </View>
+                                <View style = {[styles.body_container]}>
+                                    {this._render_infobox()}
+                                    {
+                                        this.state.wikiInfo.extract || this.state.wikiWTFtext ?
+                                            <View style = {[styles.text_extract_container, {backgroundColor: theme.secondary}]}>
+                                                <Text style = {[styles.text_extract, {
+                                                    color: theme.highlight,
+                                                }]}>
+                                                    {this.state.wikiInfo.extract}
+                                                    {this.state.wikiWTFtext}
+                                                </Text>
+                                            </View>
+                                            : null
+                                    }
+                                </View>
+                            </ScrollView>
                             :
-                            <Image style={[styles.image, {height: this.state.windowW}]} source={{uri : this.state.image }}/>
-                        }
-                        <Text style={styles.Title}>{this.state.wikiInfo.displaytitle}</Text>
-                        {
-                            this.state.oiseaux_latin ?
-                                <Text style={styles.Title_latin}>
-                                    {this.state.oiseaux_latin}
-                                </Text>
-                                : null
-                        }
-                    </View>
-                    <View style={[styles.body_container]}>
-                        {this._render_infobox()}
-                        <Text style={[styles.text_extract, {backgroundColor: theme.secondary, color: theme.highlight}]}>
-                            {this.state.wikiInfo.extract}
-                            {this.state.wikiWTFtext}
-                        </Text>
-                    </View>
-                </ScrollView>
-                { this.state.isLoading ?
-                    <View style={styles.loading_container}>
-                        <ActivityIndicator size='large' />
-                    </View>
-                    : null
+                            <View style = {[styles.error_container, {backgroundColor: theme.secondary}]}>
+                                <Text style = {[styles.error_text, {color: theme.highlight}]}>Veuillez nous excuser </Text>
+                                <Text style = {[styles.error_text, {color: theme.highlight}]}>aucune information n'a trouvée pour cette oiseau</Text>
+                            </View>
                 }
             </View>
         )
@@ -236,7 +273,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     body_container: {
-        margin: 10,
+        margin: 10
     },
     Title : {
         fontSize: 30,
@@ -305,11 +342,11 @@ const styles = StyleSheet.create({
     infoBox_class_info: {
         flex: 2
     },
-    text_extract: {
-        textAlign: 'center',
-        margin: 5,
+    text_extract_container: {
+        margin: 10,
+        marginTop: 0,
         padding: 20,
-        borderRadius: 20,
+        borderRadius: 10,
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .7)',
@@ -322,6 +359,9 @@ const styles = StyleSheet.create({
             },
         }),
     },
+    text_extract: {
+        textAlign: 'left',
+    },
     loading_container: {
         position: 'absolute',
         left: 0,
@@ -330,6 +370,14 @@ const styles = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    error_container: {
+        padding: 10,
+        borderRadius: 10,
+    },
+    error_text: {
+        textAlign: 'center',
+        fontSize: 15
     }
 })
 

@@ -44,6 +44,7 @@ class ViewNavigator extends React.Component {
                     },
                     style : {
                         borderRadius: 0,
+                        backgroundColor: theme.primary,
                         ...Platform.select({
                             ios: {
                                 shadowColor: 'rgba(0,0,0, .7)',
@@ -58,16 +59,16 @@ class ViewNavigator extends React.Component {
                     }
                 }}
             >
-                <Tab.Screen style = {styles.screen}
+                <Tab.Screen style = {[styles.screen,{backgroundColor: theme.primary}]}
                             name = 'StatsView'
                             component = {StatsView}
                             options = {{
                                 tabBarLabel: 'Statistiques',
                                 tabBarIcon: (tabInfo) => (
-                                    <FontAwesomeIcon icon = {faChartBar} size = {25} color={theme.accent}/>
+                                    <FontAwesomeIcon icon = {faChartBar} size = {27} color={theme.accent}/>
                                 ),
                             }}/>
-                <Tab.Screen style = {styles.screen}
+                <Tab.Screen style = {[styles.screen,{backgroundColor: theme.primary}]}
                             name = 'SearchNavigator'
                             component = {SearchNavigator}
                             options = {{
@@ -76,7 +77,7 @@ class ViewNavigator extends React.Component {
                                     <FontAwesomeIcon icon = {faSearch} size = {23} color={theme.accent}/>
                                 ),
                             }}/>
-                <Tab.Screen style = {styles.screen}
+                <Tab.Screen style = {[styles.screen,{backgroundColor: theme.primary}]}
                             name = 'HistoriqueView'
                             component = {HistoriqueNavigator}
                             options = {{
@@ -85,7 +86,7 @@ class ViewNavigator extends React.Component {
                                     <FontAwesomeIcon icon = {faList} size = {23} color={theme.accent}/>
                                 ),
                             }}/>
-                <Tab.Screen style = {styles.screen}
+                <Tab.Screen style = {[styles.screen,{backgroundColor: theme.primary}]}
                             name = 'TipsView'
                             component = {TipsView}
                             options = {{
@@ -94,7 +95,7 @@ class ViewNavigator extends React.Component {
                                     <FontAwesomeIcon icon = {faInfoCircle} size = {23} color={theme.accent}/>
                                 ),
                             }}/>
-                <Tab.Screen style = {styles.screen}
+                <Tab.Screen style = {[styles.screen,{backgroundColor: theme.primary}]}
                             name = 'ParametresView'
                             component={ParametresView}
                             options = {{
