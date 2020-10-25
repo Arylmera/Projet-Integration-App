@@ -8,10 +8,10 @@ import connexionProfilView from "../View/profile/connexionProfilView";
 
 const Stack = createStackNavigator()
 
-function ProfileNavigator({navigation}) {
+function ProfilNavigator({navigation}) {
     return (
         <Stack.Navigator
-            initialRouteName="Profil"
+            initialRouteName="ConnexionProfil"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: "rgba(126,211,33,1)"
@@ -30,11 +30,11 @@ function ProfileNavigator({navigation}) {
                 name="ModidifProfil"
                 component={ProfilModificationView}
                 options={{
-                    title: "Modification du profile"
+                    title: "Modification du profil"
                 }}
             />
             <Stack.Screen
-                name="connexionProfil"
+                name="ConnexionProfil"
                 component={connexionProfilView}
                 options={{
                     title: "Modification du profil"
@@ -58,4 +58,4 @@ function ProfileNavigator({navigation}) {
     )
 }
 
-export default ProfileNavigator
+export default ProfilNavigator
