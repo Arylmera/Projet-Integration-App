@@ -22,7 +22,7 @@ class TipsView extends React.Component {
                     '\n' +
                     'Proposez de la nourriture telle que les graines ou/et des boules de graisse pour aider les oiseaux à résister à la période hivernale.\n' +
                     '\n' +
-                    'nstallez une baignoire à oiseaux et veillez à ce que l’eau ne soit pas gelée et toujours propre, changez l’eau régulièrement.'
+                    'Installez une baignoire à oiseaux et veillez à ce que l’eau ne soit pas gelée et toujours propre, changez l’eau régulièrement.'
             },
             {
                 id: '03',
@@ -54,9 +54,11 @@ class TipsView extends React.Component {
         let theme = this.props.currentStyle;
         return (
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-                <Text style={[styles.context, {backgroundColor: theme.secondary, color: theme.highlight}]} testID={'text'}>
-                    Vous pouvez aider les oiseaux de la nature et favoriser leur survie en les aidant à trouver facilement une alimentation adaptée et à garder un habitat approprié.
-                </Text>
+                <View style={[styles.context, {backgroundColor: theme.secondary}]}>
+                    <Text style={[styles.context_text, {color: theme.highlight}]} testID={'text'}>
+                        Vous pouvez aider les oiseaux de la nature et favoriser leur survie en les aidant à trouver facilement une alimentation adaptée et à garder un habitat approprié.
+                    </Text>
+                </View>
                 <FlatList
                     style={[styles.tips_list]}
                     data={this.Saisons}
@@ -78,10 +80,12 @@ const styles = StyleSheet.create({
     },
     context: {
         margin: 10,
-        borderRadius: 10,
+        borderRadius: 5,
         padding: 10,
-        fontSize: 18,
         textAlign: 'center',
+    },
+    context_text: {
+        fontSize: 18
     },
     tips_list: {
         margin: 5
