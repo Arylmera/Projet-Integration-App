@@ -52,7 +52,6 @@ class DetailOiseaux extends React.Component {
                         wikiWTFInfobox: this.state.wikiWTF.sections[0].infoboxes
                     })
                 }
-                //console.log(this.state.wikiWTF.sections[0])
                 try {
                     let nom_latin = null;
                     if (this.state.wikiWTF.sections[0]) {
@@ -65,6 +64,28 @@ class DetailOiseaux extends React.Component {
                     this.setState({
                         oiseaux_latin: nom_latin
                     })
+
+                    if (this.state.wikiWTF.sections[1].paragraphs[0].sentences[0] && this.state.wikiWTF.sections[1].paragraphs[0].sentences[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : "\n \n" + this.state.wikiWTF.sections[1].paragraphs[0].sentences[0].text})
+                    }
+                    else if (this.state.wikiWTF.sections[1].paragraphs[0].text && this.state.wikiWTF.sections[1].paragraphs[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : "\n \n" + this.state.wikiWTF.sections[1].paragraphs[0].text})
+                    }
+
+                    if (this.state.wikiWTF.sections[2].paragraphs[0].sentences[0] && this.state.wikiWTF.sections[2].paragraphs[0].sentences[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[2].paragraphs[0].sentences[0].text})
+                    }
+                    else if (this.state.wikiWTF.sections[2].paragraphs[0].text && this.state.wikiWTF.sections[2].paragraphs[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[2].paragraphs[0].text})
+                    }
+
+                    if (this.state.wikiWTF.sections[3].paragraphs[0].sentences[0] && this.state.wikiWTF.sections[3].paragraphs[0].sentences[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[3].paragraphs[0].sentences[0].text})
+                    }
+                    else if (this.state.wikiWTF.sections[3].paragraphs[0].text && this.state.wikiWTF.sections[3].paragraphs[0].text.slice(-1) !== ":"){
+                        this.setState({wikiWTFtext : this.state.wikiWTFtext + "\n \n" + this.state.wikiWTF.sections[3].paragraphs[0].text})
+                    }
+
                 }
                 catch (e) {
                     console.log("Can't read wikiWTF")
@@ -157,7 +178,6 @@ class DetailOiseaux extends React.Component {
     render() {
         const { navigation } = this.props
         let theme = this.props.currentStyle;
-        console.log(theme);
         return (
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <TouchableOpacity
@@ -185,8 +205,10 @@ class DetailOiseaux extends React.Component {
                     </View>
                     <View style={[styles.body_container]}>
                         {this._render_infobox()}
-                        <Text style={[styles.text_extract, {backgroundColor: theme.secondary}]}>
+                        <Text>{this.state.wikiInfo.extract}</Text>
+                        <Text style={[styles.text_extract, {backgroundColor: theme.secondary, color: theme.highlight}]}>
                             {this.state.wikiInfo.extract}
+                            {this.state.wikiWTFtext}
                         </Text>
                     </View>
                 </ScrollView>
@@ -287,7 +309,7 @@ const styles = StyleSheet.create({
     text_extract: {
         textAlign: 'center',
         margin: 5,
-        padding: 10,
+        padding: 20,
         borderRadius: 20,
         ...Platform.select({
             ios: {
