@@ -13,7 +13,7 @@ const winterStyle = {
 const autumnStyle = {
     primary: "#FAE1AC",
     secondary: "#D58647",
-    accent: "#8A3F3C",
+    accent: "#c16a4f",
     highlight: "#622B35"
 };
 const springStyle = {
@@ -24,15 +24,9 @@ const springStyle = {
 };
 const summerStyle = {
     primary: "#87DFD6",
-    secondary: "#FBFD8A",
-    accent: "#01A9B4",
+    secondary: "#01c3cf",
+    accent: "#FBFD8A",
     highlight: "#086972"
-};
-const darkStyle = {
-    primary: "#868686",
-    secondary: "#5b5b5b",
-    accent: "#000000",
-    highlight: "#ffffff"
 };
 
 /*
@@ -77,13 +71,6 @@ function switchTheme(state = currentStyle, action) {
                 currentStyle: summerStyle
             };
             storeDataStorage("theme_key","summerStyle").then(r =>{ console.log("theme saved")});
-            return nextState || state
-        case 'SET_DARK' :
-            nextState = {
-                ...state,
-                currentStyle: darkStyle
-            }
-            storeDataStorage("theme_key", "darkStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         default:
             getDataStorage("theme_key").then(r => {

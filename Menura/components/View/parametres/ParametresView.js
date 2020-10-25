@@ -39,7 +39,7 @@ class ParametresView extends React.Component {
     _setThemeWinter() {
         this._menu.hide();
 
-        this.setState({currentTheme : 'hiver'});
+        this.setState({currentTheme : 'Hiver'});
         const action = {type: 'SET_WINTER'};
         this.props.dispatch(action);
     }
@@ -51,7 +51,7 @@ class ParametresView extends React.Component {
     _setThemeAutomne() {
         this._menu.hide();
 
-        this.setState({currentTheme : 'automne'});
+        this.setState({currentTheme : 'Automne'});
         const action = {type: 'SET_AUTUMN'};
         this.props.dispatch(action);
     }
@@ -63,7 +63,7 @@ class ParametresView extends React.Component {
     _setThemePrintemps() {
         this._menu.hide();
 
-        this.setState({currentTheme : 'primtemps'});
+        this.setState({currentTheme : 'Primtemps'});
         const action = {type: 'SET_SPRING'};
         this.props.dispatch(action);
     }
@@ -75,20 +75,8 @@ class ParametresView extends React.Component {
     _setThemeEte() {
         this._menu.hide();
 
-        this.setState({currentTheme : 'été'});
+        this.setState({currentTheme : 'Eté'});
         const action = {type: 'SET_SUMMER'};
-        this.props.dispatch(action);
-    }
-
-    /**
-     * helper set theme Dark
-     * @private
-     */
-    _setThemeDark() {
-        this._menu.hide();
-
-        this.setState({currentTheme : 'nuit'});
-        const action = {type: 'SET_DARK'};
         this.props.dispatch(action);
     }
 
@@ -98,18 +86,17 @@ class ParametresView extends React.Component {
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
 
                 <View style={[styles.lineBox, {backgroundColor: theme.secondary}]}>
-                    <Text style={styles.theme_caption}>Choix du thème :</Text>
+                    <Text style={[styles.theme_caption, {color: theme.highlight}]}>Choix du thème :</Text>
                     <View style={[styles.theme_menuBox, {backgroundColor: theme.accent}]}>
                         <Menu
                             style={styles.theme_menu}
                             ref={this.setMenuRef}
-                            button={<Text onPress={this.showMenu}>{this.state.currentTheme}</Text>}
+                            button={<Text style={[styles.theme_caption_text, {color: theme.highlight, fontSize: 15}]} onPress={this.showMenu}>{this.state.currentTheme}</Text>}
                         >
-                            <MenuItem onPress={this._setThemeWinter.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Hiver</MenuItem>
-                            <MenuItem onPress={this._setThemeAutomne.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Automne</MenuItem>
-                            <MenuItem onPress={this._setThemePrintemps.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Printemps</MenuItem>
-                            <MenuItem onPress={this._setThemeEte.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Eté</MenuItem>
-                            <MenuItem onPress={this._setThemeDark.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}>Noir</MenuItem>
+                            <MenuItem onPress={this._setThemeWinter.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}><Text style={{color: theme.highlight}}>Hiver</Text></MenuItem>
+                            <MenuItem onPress={this._setThemeAutomne.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}><Text style={{color: theme.highlight}}>Automne</Text></MenuItem>
+                            <MenuItem onPress={this._setThemePrintemps.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}><Text style={{color: theme.highlight}}>Printemps</Text></MenuItem>
+                            <MenuItem onPress={this._setThemeEte.bind(this)} style={[styles.theme_menu_entry ,{backgroundColor: theme.secondary}]}><Text style={{color: theme.highlight}}>Eté</Text></MenuItem>
                         </Menu>
                     </View>
                 </View>
@@ -140,15 +127,17 @@ const styles = StyleSheet.create({
     },
     theme_menuBox: {
         flex: 1,
-        padding: "2%",
         borderRadius: 10,
         alignItems: "center",
-        marginRight: "5%"
+        marginRight: "5%",
+    },
+    theme_caption_text: {
+        padding : "5%"
     },
     theme_menu: {
     },
     theme_menu_entry: {
-    }
+    },
 });
 
 const mapStateToProps = state => {
