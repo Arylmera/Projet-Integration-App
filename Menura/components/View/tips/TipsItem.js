@@ -17,9 +17,11 @@ class TipsItem extends React.Component {
         const tips = this.props.data.infos_saison.tips
         return (
             <View style={[styles.main_container, {backgroundColor: theme.secondary}]}>
-                <Text style={styles.saison}>{saison}</Text>
+                <View style={[styles.saison, {backgroundColor: theme.accent}]}>
+                <Text style={[styles.saison_text, {color: theme.highlight}]}>{saison}</Text>
+                </View>
                 <Divider/>
-                <Text style={[styles.item, {backgroundColor: theme.secondary}]}>{tips}</Text>
+                <Text style={[styles.item, {backgroundColor: theme.secondary, color: theme.highlight}]}>{tips}</Text>
             </View>
         )
     }
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     main_container: {
         flexDirection: 'column',
         margin: 10,
-        borderRadius: 10,
+        borderRadius: 5,
         ...Platform.select({
             ios: {
                 shadowColor: 'rgba(0,0,0, .7)',
@@ -44,6 +46,10 @@ const styles = StyleSheet.create({
     },
     saison: {
         flex: 1,
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5
+    },
+    saison_text: {
         fontSize: 28,
         textAlign: 'center',
         padding: 5,
