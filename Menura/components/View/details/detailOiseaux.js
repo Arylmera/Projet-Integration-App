@@ -205,7 +205,6 @@ class DetailOiseaux extends React.Component {
                     </View>
                     <View style={[styles.body_container]}>
                         {this._render_infobox()}
-                        <Text>{this.state.wikiInfo.extract}</Text>
                         <Text style={[styles.text_extract, {backgroundColor: theme.secondary, color: theme.highlight}]}>
                             {this.state.wikiInfo.extract}
                             {this.state.wikiWTFtext}
