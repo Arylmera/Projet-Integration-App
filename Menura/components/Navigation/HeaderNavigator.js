@@ -3,7 +3,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {useNavigation, CommonActions} from "@react-navigation/native";
 import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
-import ProfileNavigator from "./ProfileNavigator";
+import ProfilNavigator from "./ProfilNavigator";
 import {connect} from "react-redux"
 
 const Stack = createStackNavigator()
@@ -49,10 +49,10 @@ class HeaderNavigator extends React.Component {
                     }}
                 />
                 <Stack.Screen
-                    name="Profile"
-                    component={ProfileNavigator}
+                    name="Profil"
+                    component={ProfilNavigator}
                     options={{
-                        title: "Profile"
+                        title: "Profil"
                     }}
                 />
             </Stack.Navigator>
@@ -67,7 +67,7 @@ const HeaderRight = () => {
         <View style={styles.headerIcon}>
             <TouchableOpacity
                 style={{ marginRight: 5 }}
-                onPress={() => { navigation.dispatch(CommonActions.navigate('Profile')); }}
+                onPress={() => { navigation.dispatch(CommonActions.navigate('Profil')); }}
             >
                 <Image
                     source={require('../../assets/images/profileIcon.png')}

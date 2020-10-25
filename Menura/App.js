@@ -7,6 +7,11 @@ import HeaderNavigator from "./components/Navigation/HeaderNavigator";
 import {getCurrentTheme, getStyleSheet} from "./components/StyleSheet";
 import {Provider} from "react-redux";
 import Store from './Store/configureStore'
+import firebase from "firebase"
+import {firebaseConfig} from "./config";
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 class App extends React.Component{
 

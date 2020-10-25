@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'rea
 import {useNavigation} from "@react-navigation/core";
 import {connect} from "react-redux"
 
-class ProfileView extends React.Component {
+class ProfilView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -36,7 +36,7 @@ class ProfileView extends React.Component {
                         <View style={styles.body_footer}>
                         <TouchableOpacity
                             style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-                            onPress={() => navigation.navigate('ModidifProfile', { params: {} }) }
+                            onPress={() => navigation.navigate('ModidifProfil', { params: {} }) }
                         >
                             <Text>Modifier</Text>
                         </TouchableOpacity>
@@ -111,5 +111,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(function(props) {
     const navigation = useNavigation();
 
-    return <ProfileView {...props} navigation={navigation}/>
+    return <ProfilView {...props} navigation={navigation}/>
 });
