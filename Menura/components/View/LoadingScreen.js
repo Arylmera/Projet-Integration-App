@@ -1,6 +1,8 @@
 import React from 'react'
-import { StyleSheet, View, ActivityIndicator } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 import firebase from "firebase"
+import {connect} from "react-redux";
+import {useNavigation} from "@react-navigation/core";
 
 
 class LoadingScreen extends React.Component {
@@ -30,4 +32,14 @@ class LoadingScreen extends React.Component {
 
 }
 
-export default LoadingScreen
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(function(props) {
+    const navigation = useNavigation();
+
+    return <LoadingScreen {...props} navigation={navigation}/>
+});

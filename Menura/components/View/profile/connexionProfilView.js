@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, TextInput, Text, TouchableOpacity } from 'react-native'
+import { Alert, StyleSheet, View, TextInput, Text, TouchableOpacity } from 'react-native'
 import {useNavigation} from "@react-navigation/core"
 import {connect} from "react-redux"
 import firebase from 'firebase'
@@ -12,34 +12,43 @@ class ConnexionProfilView extends React.Component {
         this.email = ""
         this.password = ""
         this.state = {
-            email: "",
-            password: ""
         }
+    }
+
+    componentDidMount() {
+        this._checkIfLoggedIn()
+    }
+
+    _checkIfLoggedIn() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.props.navigation.navigate('Profil')
+            }
+            else {
+                this.props.navigation.navigate('ConnexionProfil')
+            }
+        })
     }
 
     _emailTextInputChanged(email) {
         this.email = email
-        console.log(this.email)
     }
 
     _passwordTextInputChanged(password) {
         this.password = password
     }
 
-    _signIn(email, password) {
+    _signIn(email, password, navigation) {
         firebase.auth()
             .signInWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User signed in!')
+                navigation.navigate('Profil', { params: {} })
             })
             .catch(error => {
-                if (error.code === 'auth/operation-not-allowed') {
-                    console.log('Enable email and password sign in your firebase console.')
-                }
-
                 console.error(error)
-            }
-            )
+                Alert.alert(error.toString())
+            })
     }
 
     render() {
@@ -56,17 +65,17 @@ class ConnexionProfilView extends React.Component {
                     onChangeText={(password) => this._passwordTextInputChanged(password)}
                 />
                 <TouchableOpacity
-                    onPress={() => this._signIn(this.email, this.password)}
+                    onPress={() => this._signIn(this.email, this.password, navigation)}
                 >
                     <Text>Connexion</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-
+                    onPress={() => navigation.navigate('InscriptionProfil')}
                 >
                     <Text>inscription</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-
+                    onPress={() => navigation.navigate('ResetPasswordProfil')}
                 >
                     <Text>mot de passe oublié ?</Text>
                 </TouchableOpacity>

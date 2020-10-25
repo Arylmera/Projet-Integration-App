@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Menura/components/View/LoadingScreen.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Menura/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/Navigation/HeaderNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/Navigation/HeaderNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/Navigation/ProfileNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/LoadingScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/LoadingScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/inscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/InscriptionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/resetPasswordProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ResetPasswordProfilView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
       <workItem from="1603313571303" duration="6415000" />
       <workItem from="1603557200708" duration="52000" />
       <workItem from="1603572053910" duration="4861000" />
-      <workItem from="1603619064057" duration="10750000" />
+      <workItem from="1603619064057" duration="25616000" />
     </task>
     <servers />
   </component>
