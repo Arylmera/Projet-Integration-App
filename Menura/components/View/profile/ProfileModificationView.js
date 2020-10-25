@@ -1,15 +1,17 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
+import {connect} from "react-redux"
 
 class ProfileModificationView extends React.Component {
     render() {
         const { navigation } = this.props
+        let theme = this.props.currentStyle;
         return (
             <View style={styles.main_container}>
                 <Text>Modification du profile Works</Text>
                 <TouchableOpacity
-                    style={styles.modifButton}
+                    style={[styles.modifButton, {backgroundColor: theme.primary}]}
                     onPress={() => navigation.navigate('Profile', { params: {} }) }
                 >
                     <Text>Save</Text>
@@ -30,13 +32,18 @@ const styles = StyleSheet.create({
         width: "25%",
         padding: 3,
         alignItems: "center",
-        backgroundColor: "rgba(126,211,33,0.5)"
     }
 })
 
-export default function(props) {
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(function(props) {
     const navigation = useNavigation();
 
     return <ProfileModificationView {...props} navigation={navigation}/>
-}
+});
 

@@ -14,73 +14,110 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faChartBar } from '@fortawesome/free-solid-svg-icons'
 import SearchNavigator from "./SearchNavigator";
 import HistoriqueNavigator from "./HistoriqueNavigator";
+import {connect} from "react-redux"
 
 const Tab = createBottomTabNavigator()
 
-function ViewNavigator({ navigation }) {
+class ViewNavigator extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state= {
+
+        }
+    }
+
+    render() {
+        let theme = this.props.currentStyle;
         return (
-                <Tab.Navigator
-                    initialRouteName="StatsView"
-                    tabBarOptions = {{
-                        activeTintColor: 'rgb(85,143,22)',
-                        inactiveTintColor: 'gray',
-                        showIcon: true,
-                        labelStyle: { fontSize: 13}
-                    }}
-                >
-                    <Tab.Screen style = {styles.screen}
-                                name = 'StatsView'
-                                component = {StatsView}
-                                options = {{
-                                    tabBarLabel: 'Statistiques',
-                                    tabBarIcon: (tabInfo) => (
-                                        <FontAwesomeIcon icon = {faChartBar} size={25}/>
-                                    ),
-                                }}/>
-                    <Tab.Screen style = {styles.screen}
-                                name = 'SearchNavigator'
-                                component = {SearchNavigator}
-                                options = {{
-                                    tabBarLabel: 'Recherche',
-                                    tabBarIcon: (tabInfo) => (
-                                        <FontAwesomeIcon icon = {faSearch} size={23}/>
-                                    ),
-                                }}/>
-                    <Tab.Screen style = {styles.screen}
-                                name = 'HistoriqueView'
-                                component = {HistoriqueNavigator}
-                                options = {{
-                                    tabBarLabel: 'Historique',
-                                    tabBarIcon: (tabInfo) => (
-                                        <FontAwesomeIcon icon = {faList} size={23}/>
-                                    ),
-                                }}/>
-                    <Tab.Screen style = {styles.screen}
-                                name = 'TipsView'
-                                component = {TipsView}
-                                options = {{
-                                    tabBarLabel: 'Tips',
-                                    tabBarIcon: (tabInfo) => (
-                                        <FontAwesomeIcon icon = {faInfoCircle} size={23}/>
-                                    ),
-                                }}/>
-                    <Tab.Screen style = {styles.screen}
-                                name = 'ParametresView'
-                                component = {ParametresView}
-                                options = {{
-                                    tabBarLabel: 'Paramètres',
-                                    tabBarIcon: (tabInfo) => (
-                                        <FontAwesomeIcon icon = {faCog} size={23}/>
-                                    ),
-                                }}/>
-                </Tab.Navigator>
+            <Tab.Navigator
+                initialRouteName = "StatsView"
+                tabBarOptions = {{
+                    activeTintColor: theme.highlight,
+                    activeBackgroundColor: theme.primary,
+                    inactiveTintColor: theme.primary,
+                    inactiveBackgroundColor: theme.highlight,
+                    showIcon: true,
+                    labelStyle: {
+                        fontSize: 13,
+                        padding: 1
+                    },
+                    style : {
+                        borderRadius: 0,
+                        ...Platform.select({
+                            ios: {
+                                shadowColor: 'rgba(0,0,0, .7)',
+                                shadowOffset: { height:0, width: 0 },
+                                shadowOpacity: 1,
+                                shadowRadius: 5,
+                            },
+                            android: {
+                                elevation: 5
+                            },
+                        })
+                    }
+                }}
+            >
+                <Tab.Screen style = {styles.screen}
+                            name = 'StatsView'
+                            component = {StatsView}
+                            options = {{
+                                tabBarLabel: 'Statistiques',
+                                tabBarIcon: (tabInfo) => (
+                                    <FontAwesomeIcon icon = {faChartBar} size = {25} color={theme.accent}/>
+                                ),
+                            }}/>
+                <Tab.Screen style = {styles.screen}
+                            name = 'SearchNavigator'
+                            component = {SearchNavigator}
+                            options = {{
+                                tabBarLabel: 'Recherche',
+                                tabBarIcon: (tabInfo) => (
+                                    <FontAwesomeIcon icon = {faSearch} size = {23} color={theme.accent}/>
+                                ),
+                            }}/>
+                <Tab.Screen style = {styles.screen}
+                            name = 'HistoriqueView'
+                            component = {HistoriqueNavigator}
+                            options = {{
+                                tabBarLabel: 'Historique',
+                                tabBarIcon: (tabInfo) => (
+                                    <FontAwesomeIcon icon = {faList} size = {23} color={theme.accent}/>
+                                ),
+                            }}/>
+                <Tab.Screen style = {styles.screen}
+                            name = 'TipsView'
+                            component = {TipsView}
+                            options = {{
+                                tabBarLabel: 'Tips',
+                                tabBarIcon: (tabInfo) => (
+                                    <FontAwesomeIcon icon = {faInfoCircle} size = {23} color={theme.accent}/>
+                                ),
+                            }}/>
+                <Tab.Screen style = {styles.screen}
+                            name = 'ParametresView'
+                            component={ParametresView}
+                            options = {{
+                                tabBarLabel: 'Paramètres',
+                                tabBarIcon: (tabInfo) => (
+                                    <FontAwesomeIcon icon = {faCog} size = {23} color={theme.accent}/>
+                                ),
+                            }}
+                />
+            </Tab.Navigator>
         )
+    }
 }
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     screen: {
-
     }
 })
 
-export default ViewNavigator
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
+}
+
+export default connect(mapStateToProps)(ViewNavigator)

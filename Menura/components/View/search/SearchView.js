@@ -1,8 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, FlatList, TextInput, Button } from 'react-native'
+import {StyleSheet, View, FlatList, TextInput, Button, ActivityIndicator, Image, Text} from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 import DetailItem from '../details/detailItem'
 import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api'
+import {connect} from "react-redux"
+
 
 class SearchView extends React.Component {
 
@@ -10,61 +12,73 @@ class SearchView extends React.Component {
         super(props);
         this.searchedText = "";
         this.state={
-            oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"]
+            oiseauxListe: [],
+            oiseauxListeNom: [],
+            isLoading: true
         }
     }
 
+    /**
+     *Récupere le text du TextInput et attribue la valeur text a searchedText
+     * @param text
+     * @private
+     */
     _searchTextInputChanged(text) {
         this.searchedText = text
     }
 
     _loadOiseaux() {
         if (this.searchedText.length > 0) {
-            let data = getOiseauxListWithSearchedText(this.searchedText);
-            this.setState({ oiseauxListe: data });
-
+            getOiseauxListWithSearchedText(this.searchedText).then(data => {
+                this.setState({ oiseauxListe: data.data });
+                let oiseauxListNom_loading = [];
+                data.data.forEach( oiseau =>
+                    oiseauxListNom_loading.push(oiseau.nom)
+                );
+                this.setState( {oiseauxListeNom : oiseauxListNom_loading, isLoading : false});
+            })
         }
-        else(this.setState({ oiseauxListe: ["Mésange","Pic vert","Moineau","Bergeronnette grise","Buse variable","Chardonneret élégant","Bruant Jaune","Paridae"] }));
     }
 
+
+
+
+
     render() {
-        const { navigation } = this.props
-        //console.log(this.state.oiseauxListe)
+        const { navigation } = this.props;
+        let theme = this.props.currentStyle;
         return (
-            <View style={styles.main_container}>
+            <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <TextInput
-                    style={styles.textinput}
+                    style={[styles.textinput, {borderColor: theme.accent}]}
                     placeholder="Nom de l'oiseau"
                     onChangeText={(text) => this._searchTextInputChanged(text)}
                     onSubmitEditing={() => this._loadOiseaux()}
                 />
-                <Button color="#9ACD32"  title='Rechercher' onPress={() => this._loadOiseaux()}/>
-                <FlatList
-                    data={this.state.oiseauxListe}
-                    style={styles.FlatlistItem}
-                    keyExtractor={(item) => item}
-                    renderItem={({item}) => (
-                        <DetailItem data={{oiseau_nom: item, root: 'SearchView'}}/>
-                    )}
+                <Button color={theme.accent} title='Rechercher' onPress={() => this._loadOiseaux()}/>
+                { this.state.isLoading ?
+                    <Image style={styles.image} source={require('../../../assets/images/ShearchOiseau.png') }/>
+                    :
+                    <FlatList
+                        data={this.state.oiseauxListeNom}
+                        style={styles.FlatlistItem}
+                        keyExtractor={(item) => item}
+                        renderItem={({item}) => (
+                            <DetailItem data={{oiseau_nom: item, root: 'SearchView'}}/>
+                        )}
 
-                />
+                    />
+                }
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({
+let styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        paddingTop: 5,
         flexDirection: "column",
-    },
-    detailButton: {
-        borderRadius: 5,
-        width: "25%",
-        padding: 3,
-        alignItems: "center",
-        justifyContent: 'center',
-        backgroundColor: "rgba(126,211,33,0.5)"
     },
     FlatlistItem: {
         flex: 1,
@@ -76,17 +90,27 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginTop: 5,
         height: 50,
-        borderColor: '#9ACD32',
         borderWidth: 5,
         borderRadius: 10,
         paddingLeft: 10
-    }
+    },
+    image: {
+        flex: 1,
+        resizeMode: "contain",
+        height: "100%",
+        width: "100%",
+    },
 })
 
-export default function(props) {
-    const navigation = useNavigation();
-
-    return <SearchView {...props} navigation={navigation}/>
+const mapStateToProps = state => {
+    return {
+        currentStyle: state.currentStyle
+    }
 }
+
+export default connect(mapStateToProps)(function(props) {
+    const navigation = useNavigation();
+    return <SearchView {...props} navigation={navigation}/>
+})
 
 
