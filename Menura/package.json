@@ -35,11 +35,8 @@
     "@expo/vector-icons": "^10.2.1",
     "@react-navigation/core": "^5.12.4"
   },
-<<<<<<< Updated upstream
-=======
   "jest": {
     "preset": "jest-expo/universal"
   },
->>>>>>> Stashed changes
   "private": true
 }

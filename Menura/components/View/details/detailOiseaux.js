@@ -170,11 +170,7 @@ class DetailOiseaux extends React.Component {
 
     render() {
         const { navigation } = this.props
-<<<<<<< Updated upstream
-
-=======
         let theme = this.props.currentStyle;
->>>>>>> Stashed changes
         return (
             <View style={styles.main_container}>
                 <TouchableOpacity
@@ -202,14 +198,11 @@ class DetailOiseaux extends React.Component {
                     </View>
                     <View style={styles.body_container}>
                         {this._render_infobox()}
-<<<<<<< Updated upstream
                         <Text>{this.state.wikiInfo.extract}</Text>
-=======
                         <Text style={[styles.text_extract, {backgroundColor: theme.secondary, color: theme.highlight}]}>
                             {this.state.wikiInfo.extract}
                             {this.state.wikiWTFtext}
                         </Text>
->>>>>>> Stashed changes
                     </View>
                 </ScrollView>
                 { this.state.isLoading ?
@@ -298,8 +291,6 @@ const styles = StyleSheet.create({
     infoBox_class_info: {
         flex: 2
     },
-<<<<<<< Updated upstream
-=======
     text_extract: {
         textAlign: 'center',
         margin: 5,
@@ -317,7 +308,6 @@ const styles = StyleSheet.create({
             },
         }),
     },
->>>>>>> Stashed changes
     loading_container: {
         position: 'absolute',
         left: 0,
