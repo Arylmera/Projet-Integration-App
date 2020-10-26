@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "BirdReco",
-    "slug": "BirdReco",
+    "name": "Menura",
+    "slug": "Menura",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,10 +17,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "app.expo.client"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "app.expo.client"
     }
   }
 }

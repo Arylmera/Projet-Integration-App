@@ -79,7 +79,7 @@ function switchTheme(state = currentStyle, action) {
                     }
                 }
             );
-            return {...state, currentStyle: winterStyle}
+            return {...state, currentStyle: autumnStyle}
     }
 }
 
