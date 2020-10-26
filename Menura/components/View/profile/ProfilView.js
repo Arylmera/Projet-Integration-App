@@ -2,8 +2,9 @@ import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 import {connect} from "react-redux"
+import firebase from "firebase";
 
-class ProfileView extends React.Component {
+class ProfilView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -13,6 +14,17 @@ class ProfileView extends React.Component {
             lastName: "User lastName",
             profileIcon: "../../assets/images/profileIcon.png",
         }
+    }
+
+    _logOut() {
+        firebase.auth()
+            .signOut()
+            .then( () => {
+                console.log("déconnecté")
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     render() {
@@ -36,13 +48,19 @@ class ProfileView extends React.Component {
                         <View style={styles.body_footer}>
                         <TouchableOpacity
                             style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-                            onPress={() => navigation.navigate('ModidifProfile', { params: {} }) }
+                            onPress={() => navigation.navigate('ModidifProfil', { params: {} }) }
                         >
                             <Text>Modifier</Text>
                         </TouchableOpacity>
                         </View>
                     </View>
                 </View>
+                <TouchableOpacity
+                    style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+                    onPress={() => this._logOut() }
+                >
+                    <Text>déconnexion</Text>
+                </TouchableOpacity>
             </ScrollView>
         )
     }
@@ -111,5 +129,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(function(props) {
     const navigation = useNavigation();
 
-    return <ProfileView {...props} navigation={navigation}/>
+    return <ProfilView {...props} navigation={navigation}/>
 });

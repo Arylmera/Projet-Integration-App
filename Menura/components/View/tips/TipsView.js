@@ -10,23 +10,23 @@ class TipsView extends React.Component {
         this.Saisons = [
             {
                 id: '01',
-                saison: 'Aider les oiseaux en automne',
+                saison: 'Automne',
                 tips: 'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
                     '\n' +
                     'Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.'
             },
             {
                 id: '02',
-                saison: 'Aider les oiseaux en hiver',
+                saison: 'Hiver',
                 tips: 'Le gel et la neige limitent l’accès des oiseaux à l’eau et à la nourriture.\n' +
                     '\n' +
                     'Proposez de la nourriture telle que les graines ou/et des boules de graisse pour aider les oiseaux à résister à la période hivernale.\n' +
                     '\n' +
-                    'nstallez une baignoire à oiseaux et veillez à ce que l’eau ne soit pas gelée et toujours propre, changez l’eau régulièrement.'
+                    'Installez une baignoire à oiseaux et veillez à ce que l’eau ne soit pas gelée et toujours propre, changez l’eau régulièrement.'
             },
             {
                 id: '03',
-                saison: 'Aider les oiseaux au printemps',
+                saison: 'Printemps',
                 tips: 'Il y a 4 fois plus d’oiseaux qu’en hiver, donc les besoins en alimentation augmentent. C’est aussi le début de la période de nidification.\n' +
                     '\n' +
                     'Remplissez régulièrement les mangeoires de nourriture.\n' +
@@ -35,7 +35,7 @@ class TipsView extends React.Component {
             },
             {
                 id: '04',
-                saison: 'Aider les oiseaux en été',
+                saison: 'Été',
                 tips: 'La période de nidification se poursuit pour aboutir à la naissance des petits, qui vont avoir besoin d’une alimentation spécifique pour leur croissance.\n' +
                     '\n' +
                     'De plus, avec la chaleur estivale, l’accès à l’eau pure, vitale pour l’oiseau, est de plus en plus difficile.\n' +
@@ -54,10 +54,13 @@ class TipsView extends React.Component {
         let theme = this.props.currentStyle;
         return (
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-                <Text style={[styles.context, {borderColor: theme.highlight, backgroundColor: theme.secondary}]}>
-                    Vous pouvez aider les oiseaux de la nature et favoriser leur survie en les aidant à trouver facilement une alimentation adaptée et à garder un habitat approprié.
-                </Text>
+                <View style={[styles.context, {backgroundColor: theme.secondary}]}>
+                    <Text style={[styles.context_text, {color: theme.highlight}]} testID={'text'}>
+                        Vous pouvez aider les oiseaux de la nature et favoriser leur survie en les aidant à trouver facilement une alimentation adaptée et à garder un habitat approprié.
+                    </Text>
+                </View>
                 <FlatList
+                    style={[styles.tips_list]}
                     data={this.Saisons}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
@@ -76,20 +79,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     context: {
-        width: "95%",
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 10,
-        marginBottom: 10,
-        borderWidth: 5,
-        borderRadius: 10,
-        paddingTop : 5,
-        paddingBottom : 5,
-        paddingLeft: 10,
-        paddingRight: 10,
-        fontSize: 18,
+        margin: 10,
+        borderRadius: 5,
+        padding: 10,
         textAlign: 'center',
     },
+    context_text: {
+        fontSize: 18
+    },
+    tips_list: {
+        margin: 5
+    }
 })
 
 const mapStateToProps = state => {
