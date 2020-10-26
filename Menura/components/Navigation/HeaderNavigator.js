@@ -5,6 +5,8 @@ import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import ProfilNavigator from "./ProfilNavigator";
 import {connect} from "react-redux"
+import ProfilModificationView from "../View/profile/ProfilModificationView";
+import LoadingScreen from "../View/LoadingScreen";
 
 const Stack = createStackNavigator()
 
@@ -21,7 +23,7 @@ class HeaderNavigator extends React.Component {
         let theme = this.props.currentStyle
         return (
             <Stack.Navigator
-                initialRouteName="Views"
+                initialRouteName="LoadingScreen"
                 screenOptions={{
                     headerTintColor : theme.highlight,
                     headerStyle: {
@@ -40,6 +42,13 @@ class HeaderNavigator extends React.Component {
                     }
                 }}
             >
+                <Stack.Screen
+                    name="LoadingScreen"
+                    component={LoadingScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
                 <Stack.Screen
                     name="Views"
                     component={ViewNavigator}

@@ -2,8 +2,8 @@ import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
 import ProfilView from "../View/profile/ProfilView";
 import ProfilModificationView from "../View/profile/ProfilModificationView";
-import inscriptionProfilView from "../View/profile/inscriptionProfilView";
-import resetPasswordProfilView from "../View/profile/resetPasswordProfilView";
+import InscriptionProfilView from "../View/profile/InscriptionProfilView";
+import ResetPasswordProfilView from "../View/profile/ResetPasswordProfilView";
 import connexionProfilView from "../View/profile/connexionProfilView";
 
 const Stack = createStackNavigator()
@@ -41,15 +41,15 @@ function ProfilNavigator({navigation}) {
                 }}
             />
             <Stack.Screen
-                name="resetPasswordProfil"
-                component={resetPasswordProfilView}
+                name="ResetPasswordProfil"
+                component={ResetPasswordProfilView}
                 options={{
                     title: "Modification du profil"
                 }}
             />
             <Stack.Screen
-                name="inscriptionProfil"
-                component={inscriptionProfilView}
+                name="InscriptionProfil"
+                component={InscriptionProfilView}
                 options={{
                     title: "Modification du profil"
                 }}
