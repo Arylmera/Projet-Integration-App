@@ -8,7 +8,7 @@ class ParametresView extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            currentTheme : 'winter',
+            currentTheme : 'Theme',
         }
     }
 
