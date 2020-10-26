@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import {useNavigation} from "@react-navigation/core";
 import {connect} from "react-redux"
+import firebase from "firebase";
 
 class ProfilView extends React.Component {
 
@@ -13,6 +14,17 @@ class ProfilView extends React.Component {
             lastName: "User lastName",
             profileIcon: "../../assets/images/profileIcon.png",
         }
+    }
+
+    _logOut() {
+        firebase.auth()
+            .signOut()
+            .then( () => {
+                console.log("déconnecté")
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
     render() {
@@ -43,6 +55,12 @@ class ProfilView extends React.Component {
                         </View>
                     </View>
                 </View>
+                <TouchableOpacity
+                    style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+                    onPress={() => this._logOut() }
+                >
+                    <Text>déconnexion</Text>
+                </TouchableOpacity>
             </ScrollView>
         )
     }
