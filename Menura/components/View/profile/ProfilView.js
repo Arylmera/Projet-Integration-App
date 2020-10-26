@@ -3,17 +3,42 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'rea
 import {useNavigation} from "@react-navigation/core";
 import {connect} from "react-redux"
 import firebase from "firebase";
+import {getUtilisateur} from "../../../api/utilisateur_api";
 
 class ProfilView extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            nickName: "NickName",
-            name: "User name",
-            lastName: "User lastName",
+            prenom: "User name",
+            nom: "User lastName",
+            email: "email",
             profileIcon: "../../assets/images/profileIcon.png",
+            password: ""
         }
+    }
+
+    componentDidMount() {
+        this._checkIfLoggedIn()
+    }
+
+    _getUtilisateur(email) {
+        getUtilisateur(email).then(data =>
+            this.setState({nom: data.data[0].nom, prenom: data.data[0].prenom})
+        )
+    }
+
+    _checkIfLoggedIn() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                let email = user.email
+                this._getUtilisateur(email)
+                this.setState({email: email})
+            }
+            else {
+                this.props.navigation.navigate('ConnexionProfil')
+            }
+        })
     }
 
     _logOut() {
@@ -27,6 +52,25 @@ class ProfilView extends React.Component {
             })
     }
 
+    _deleteAccount() {
+        const user = firebase.auth().currentUser
+        const credential = firebase.auth.EmailAuthProvider.credential(
+            user.email,
+            this.state.password
+        );
+        user.reauthenticateWithCredential(credential)
+            .then(() => console.log("authentifié !"))
+            .catch((error) => console.log(error))
+        user.delete()
+            .then(() => {
+                console.log("compte supprimé")
+                this.props.navigation.navigate('ConnexionProfil')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     render() {
         const { navigation } = this.props;
         let theme = this.props.currentStyle;
@@ -34,16 +78,15 @@ class ProfilView extends React.Component {
             <ScrollView style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <View style={styles.container_row}>
                     <View style={styles.headerProfile}>
-                        <Text style={styles.nickNameStyle}> {this.state.nickName} </Text>
-                        <Text style={styles.nameStyle}> {this.state.name} </Text>
-                        <Text style={styles.lastNameStyle}> {this.state.lastName} </Text>
+                        <Text style={styles.nameStyle}> {this.state.prenom} </Text>
+                        <Text style={styles.lastNameStyle}> {this.state.nom} </Text>
                     </View>
                     <Image source={{uri: this.state.profileIcon }} style={[styles.profileIcon, {backgroundColor: theme.highlight}]}/>
                 </View>
                 <View style={styles.container_row}>
                     <View style={styles.body_container}>
                         <View style={styles.body_info}>
-                            <Text>Body infos</Text>
+                            <Text>{this.state.email}</Text>
                         </View>
                         <View style={styles.body_footer}>
                         <TouchableOpacity
@@ -60,6 +103,12 @@ class ProfilView extends React.Component {
                     onPress={() => this._logOut() }
                 >
                     <Text>déconnexion</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+                    onPress={() => this._deleteAccount() }
+                >
+                    <Text>supprimer compte</Text>
                 </TouchableOpacity>
             </ScrollView>
         )
@@ -89,18 +138,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center"
     },
-    nickNameStyle: {
+    nameStyle: {
         marginRight: 'auto',
         fontSize: 25,
         fontWeight: 'bold'
     },
-    nameStyle: {
-        marginTop: 20,
-        marginRight: 'auto',
-        fontSize: 20
-    },
     lastNameStyle: {
-        marginTop: 5,
+        marginTop: 20,
         marginRight: 'auto',
         fontSize: 20
     },
@@ -113,8 +157,10 @@ const styles = StyleSheet.create({
     },
     modifButton: {
         marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 10,
         borderRadius: 5,
-        width: "25%",
+        width: "35%",
         padding: 3,
         alignItems: "center",
     }
