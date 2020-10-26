@@ -57,24 +57,29 @@ class ConnexionProfilView extends React.Component {
         return (
             <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
                 <TextInput
+                    style={[styles.textinput]}
                     placeholder="email"
                     onChangeText={(email) => this._emailTextInputChanged(email)}
                 />
                 <TextInput
+                    style={[styles.textinput]}
                     placeholder="mot de passe"
                     onChangeText={(password) => this._passwordTextInputChanged(password)}
                 />
                 <TouchableOpacity
+                    style={[styles.modifButton, {backgroundColor: theme.secondary}]}
                     onPress={() => this._signIn(this.email, this.password, navigation)}
                 >
                     <Text>Connexion</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                    style={[styles.modifButton, {backgroundColor: theme.secondary}]}
                     onPress={() => navigation.navigate('InscriptionProfil')}
                 >
                     <Text>inscription</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                    style={[styles.modifButton, {backgroundColor: theme.secondary}]}
                     onPress={() => navigation.navigate('ResetPasswordProfil')}
                 >
                     <Text>mot de passe oublié ?</Text>
@@ -87,6 +92,27 @@ class ConnexionProfilView extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        paddingTop: 5,
+        flexDirection: "column"
+    },
+    textinput: {
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 5,
+        height: 50,
+        borderWidth: 5,
+        borderRadius: 10,
+        paddingLeft: 10
+    },
+    modifButton: {
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 20,
+        borderWidth: 2,
+        borderRadius: 5,
+        width: "50%",
+        padding: 3,
+        alignItems: "center"
     }
 })
 
