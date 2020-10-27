@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Menura/api/utilisateur_api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/InscriptionProfilView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +69,7 @@
       <workItem from="1603619064057" duration="31542000" />
       <workItem from="1603710087424" duration="26162000" />
       <workItem from="1603753786193" duration="490000" />
+      <workItem from="1603797939267" duration="8996000" />
     </task>
     <servers />
   </component>
@@ -79,9 +77,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601558718420">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603814520164">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603814520164" />
     <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1601558718420" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603743595349">
       <screen x="0" y="0" width="1920" height="1040" />
