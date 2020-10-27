@@ -64,6 +64,7 @@ class ConnexionProfilView extends React.Component {
                 <TextInput
                     style={[styles.textinput]}
                     placeholder="mot de passe"
+                    secureTextEntry={true}
                     onChangeText={(password) => this._passwordTextInputChanged(password)}
                 />
                 <TouchableOpacity

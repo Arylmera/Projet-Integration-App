@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, TouchableOpacity, TextInput, Alert} from 'react-
 import {useNavigation} from "@react-navigation/core";
 import {connect} from "react-redux"
 import firebase from "firebase";
+import {createUtilisateur} from "../../../api/utilisateur_api";
 
 class InscriptionProfilView extends React.Component {
 
@@ -44,6 +45,7 @@ class InscriptionProfilView extends React.Component {
                 .createUserWithEmailAndPassword(email, password)
                 .then(() => {
                     console.log('User created and signed in!')
+                    createUtilisateur(nom, prenom, email).then(data => console.log(data))
                     navigation.navigate('Profil')
                 })
                 .catch(error => {
@@ -79,11 +81,13 @@ class InscriptionProfilView extends React.Component {
                 <TextInput
                     style={[styles.textinput]}
                     placeholder="mot de passe"
+                    secureTextEntry={true}
                     onChangeText={(password) => this._passwordTextInputChanged(password)}
                 />
                 <TextInput
                     style={[styles.textinput]}
                     placeholder="mot de passe"
+                    secureTextEntry={true}
                     onChangeText={(password2) => this._password2TextInputChanged(password2)}
                 />
                 <TouchableOpacity
