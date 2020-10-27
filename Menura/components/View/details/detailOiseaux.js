@@ -295,33 +295,24 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         height: "100%",
         width: "100%",
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: { height:0, width: 0 },
-                shadowOpacity: 1,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 5
-            },
-        }),
+        // shadow
+        shadowColor: 'rgba(0,0,0, .7)',
+        shadowOffset: { height:0, width: 0 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        elevation: 3
     },
     infoBox_container: {
         flexDirection: "column",
         margin: 10,
         padding: 10,
         borderRadius: 10,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: { height:0, width: 0 },
-                shadowOpacity: 0.5,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 2
-            }})
+        // shadow
+        shadowColor: 'rgba(0,0,0, .7)',
+        shadowOffset: { height:0, width: 0 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        elevation: 3
     },
     infoBox_Title: {
         flex: 1,
@@ -347,17 +338,12 @@ const styles = StyleSheet.create({
         marginTop: 0,
         padding: 20,
         borderRadius: 10,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: { height:0, width: 0 },
-                shadowOpacity: 0.5,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 2
-            },
-        }),
+        // shadow
+        shadowColor: 'rgba(0,0,0, .7)',
+        shadowOffset: { height:0, width: 0 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        elevation: 3
     },
     text_extract: {
         textAlign: 'left',
