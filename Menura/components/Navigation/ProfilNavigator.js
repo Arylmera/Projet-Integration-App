@@ -27,31 +27,24 @@ function ProfilNavigator({navigation}) {
 
             />
             <Stack.Screen
-                name="ModidifProfil"
-                component={ProfilModificationView}
-                options={{
-                    title: "Modification du profil"
-                }}
-            />
-            <Stack.Screen
                 name="ConnexionProfil"
                 component={connexionProfilView}
                 options={{
-                    title: "Modification du profil"
+                    title: "Connexion du profil"
                 }}
             />
             <Stack.Screen
                 name="ResetPasswordProfil"
                 component={ResetPasswordProfilView}
                 options={{
-                    title: "Modification du profil"
+                    title: "Reset Password"
                 }}
             />
             <Stack.Screen
                 name="InscriptionProfil"
                 component={InscriptionProfilView}
                 options={{
-                    title: "Modification du profil"
+                    title: "Inscription Utilisateur"
                 }}
             />
         </Stack.Navigator>
