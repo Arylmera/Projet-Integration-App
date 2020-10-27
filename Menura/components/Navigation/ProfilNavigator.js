@@ -1,7 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
 import ProfilView from "../View/profile/ProfilView";
-import ProfilModificationView from "../View/profile/ProfilModificationView";
 import InscriptionProfilView from "../View/profile/InscriptionProfilView";
 import ResetPasswordProfilView from "../View/profile/ResetPasswordProfilView";
 import connexionProfilView from "../View/profile/connexionProfilView";
