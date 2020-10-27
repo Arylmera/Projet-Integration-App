@@ -5,7 +5,6 @@ import ViewNavigator from "./ViewNavigator";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import ProfilNavigator from "./ProfilNavigator";
 import {connect} from "react-redux"
-import ProfilModificationView from "../View/profile/ProfilModificationView";
 import LoadingScreen from "../View/LoadingScreen";
 
 const Stack = createStackNavigator()
