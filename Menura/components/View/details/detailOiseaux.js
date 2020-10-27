@@ -299,8 +299,7 @@ const styles = StyleSheet.create({
         shadowColor: 'rgba(0,0,0, .7)',
         shadowOffset: { height:0, width: 0 },
         shadowOpacity: 0.5,
-        shadowRadius: 2,
-        elevation: 3
+        shadowRadius: 2
     },
     infoBox_container: {
         flexDirection: "column",
