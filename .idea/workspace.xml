@@ -5,7 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menura/components/Navigation/HeaderNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/Navigation/HeaderNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menura/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/parametres/ParametresView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/parametres/ParametresView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/InscriptionProfilView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/ResetPasswordProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/ResetPasswordProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/components/View/profile/connexionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Menura/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +39,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projet-Integration-API" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Menura/assets/images/icons" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -71,7 +82,9 @@
       <workItem from="1603619064057" duration="31542000" />
       <workItem from="1603710087424" duration="26162000" />
       <workItem from="1603753786193" duration="490000" />
-      <workItem from="1603797939267" duration="10554000" />
+      <workItem from="1603797939267" duration="13532000" />
+      <workItem from="1603881271825" duration="1242000" />
+      <workItem from="1603898864373" duration="2999000" />
     </task>
     <servers />
   </component>
@@ -79,10 +92,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603814520164">
+    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603900251906">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603814520164" />
+    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603900251906" />
     <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1601558718420" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603743595349">
       <screen x="0" y="0" width="1920" height="1040" />

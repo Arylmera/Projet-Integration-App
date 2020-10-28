@@ -46,7 +46,7 @@ class InscriptionProfilView extends React.Component {
                 .then(() => {
                     console.log('User created and signed in!')
                     createUtilisateur(nom, prenom, email).then(data => console.log(data))
-                    navigation.navigate('Profil')
+                    navigation.navigate('modificationProfil')
                 })
                 .catch(error => {
                     console.error(error)

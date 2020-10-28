@@ -53,7 +53,10 @@ class HeaderNavigator extends React.Component {
                     component={ViewNavigator}
                     options={{
                         title : this.state.title,
-                        headerRight: () => <HeaderRight/>
+                        headerRight: () => <HeaderRight/>,
+                        headerLeft: () => {
+                            return null;
+                        }
                     }}
                 />
                 <Stack.Screen

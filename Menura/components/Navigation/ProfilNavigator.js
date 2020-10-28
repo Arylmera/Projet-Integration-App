@@ -18,7 +18,7 @@ function ProfilNavigator({navigation}) {
             }}
         >
             <Stack.Screen
-                name="Profil"
+                name="modificationProfil"
                 component={ProfilView}
                 options={{
                     title: "Profil"

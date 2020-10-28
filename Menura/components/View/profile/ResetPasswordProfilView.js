@@ -18,11 +18,12 @@ class ResetPasswordProfilView extends React.Component {
         this.email = email
     }
 
-    _resetPassword(email) {
+    _resetPassword(email, navigation) {
         firebase.auth()
             .sendPasswordResetEmail(email)
             .then(() => {
                 console.log('email sent')
+                navigation.navigate('modificationProfil')
             })
             .catch(error => {
                 console.error(error)
@@ -42,7 +43,7 @@ class ResetPasswordProfilView extends React.Component {
                 />
                 <TouchableOpacity
                     style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-                    onPress={() => this._resetPassword(this.email)}
+                    onPress={() => this._resetPassword(this.email, navigation)}
                 >
                     <Text>Reset par email</Text>
                 </TouchableOpacity>

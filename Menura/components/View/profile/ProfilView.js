@@ -104,7 +104,7 @@ class ProfilView extends React.Component {
             .then(() => {
                 console.log("mot de passe modifié")
                 this.setState({updatePasswordModal: false})
-                this.props.navigation.navigate('Profil')
+                this.props.navigation.navigate('modificationProfil')
             })
             .catch((error) => {
                 console.log(error)

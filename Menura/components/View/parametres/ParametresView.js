@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import Menu, { MenuItem } from 'react-native-material-menu';
 import {connect} from "react-redux";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 class ParametresView extends React.Component {
 
@@ -100,7 +102,7 @@ class ParametresView extends React.Component {
                         </Menu>
                     </View>
                 </View>
-
+                <Icon name="add" size={30} color="#900" style={{marginLeft: "auto", marginRight: "auto"}}/>
             </View>
         );
     }

@@ -22,7 +22,7 @@ class ConnexionProfilView extends React.Component {
     _checkIfLoggedIn() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                this.props.navigation.navigate('Profil')
+                this.props.navigation.navigate('modificationProfil')
             }
             else {
                 this.props.navigation.navigate('ConnexionProfil')
@@ -43,7 +43,7 @@ class ConnexionProfilView extends React.Component {
             .signInWithEmailAndPassword(email, password)
             .then(() => {
                 console.log('User signed in!')
-                navigation.navigate('Profil', { params: {} })
+                navigation.navigate('modificationProfil', { params: {} })
             })
             .catch(error => {
                 console.error(error)
