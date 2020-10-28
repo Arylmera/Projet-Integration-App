@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     tips_list: {
-        margin: 5
+        marginLeft: 5,
+        marginRight: 5,
     }
 })
 

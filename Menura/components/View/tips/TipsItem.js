@@ -32,17 +32,12 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         margin: 10,
         borderRadius: 5,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: { height:0, width: 0 },
-                shadowOpacity: 0.5,
-                shadowRadius: 2,
-            },
-            android: {
-                elevation: 2
-            }}),
-
+        // shadow
+        shadowColor: 'rgba(0,0,0, .7)',
+        shadowOffset: { height:0, width: 0 },
+        shadowOpacity: 0.5,
+        shadowRadius: 2,
+        elevation: 3
     },
     saison: {
         flex: 1,

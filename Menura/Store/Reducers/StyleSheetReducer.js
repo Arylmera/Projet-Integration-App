@@ -41,7 +41,7 @@ let currentStyle = {};
  * @return {{currentStyle: {secondary: string, highlight: string, accent: string, primary: string}}|{}|{currentStyle: {secondary: string, highlight: string, accent: string, primary: string}}}
  */
 function switchTheme(state = currentStyle, action) {
-    let nextState = winterStyle;
+    let nextState = {};
 
     switch (action.type) {
         case 'SET_WINTER' :
@@ -73,13 +73,23 @@ function switchTheme(state = currentStyle, action) {
             storeDataStorage("theme_key","summerStyle").then(r =>{ console.log("theme saved")});
             return nextState || state
         default:
+            nextState = {
+                ...state,
+                currentStyle: autumnStyle
+            };
             getDataStorage("theme_key").then(r => {
                     if (r !== null) {
-                        return {...state, currentStyle: r}
+                        nextState = {
+                            ...state,
+                            currentStyle: r
+                        }
+                        console.log("Theme : " + r + " from the localStorage (AsyncStorage)");
+                        return nextState || state
                     }
                 }
             );
-            return {...state, currentStyle: winterStyle}
+            console.log("set default theme || switch default not in localStorage");
+            return nextState || state
     }
 }
 
