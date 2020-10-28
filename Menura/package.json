@@ -26,6 +26,7 @@
     "jest": "^26.5.3",
     "jest-expo": "^39.0.0",
     "local-storage": "^2.0.0",
+    "material-design-icons": "^3.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
