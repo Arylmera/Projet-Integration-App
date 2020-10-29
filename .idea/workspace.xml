@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/ios/Menura.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/ios/Menura.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/ios/Menura/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/ios/Menura/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/ios/Menura/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/ios/Menura/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/ios/Menura/Supporting/Expo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/ios/Menura/Supporting/Expo.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/ios/Menura/client.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/ios/Menura/client.entitlements" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menura/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Menura/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +81,7 @@
       <workItem from="1603898864373" duration="2999000" />
       <workItem from="1603926625298" duration="2669000" />
       <workItem from="1603929463533" duration="7000" />
+      <workItem from="1603961824490" duration="1170000" />
     </task>
     <servers />
   </component>
@@ -105,10 +98,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="166" y="124" width="1200" height="800" key="AVDManager/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603928290216" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603929468653">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603962930118">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603929468653" />
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603962930118" />
     <state width="1771" height="299" key="GridCell.Tab.0.bottom" timestamp="1602672013568">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
