@@ -28,6 +28,9 @@ function ProfilNavigator({navigation}) {
         component={connexionProfilView}
         options={{
           title: 'Connexion du profil',
+            headerLeft: () => {
+                return null;
+            }
         }}
       />
       <Stack.Screen
