@@ -1,4 +1,4 @@
-import { createStore} from "redux";
-import switchTheme from "./Reducers/StyleSheetReducer";
+import {createStore} from 'redux';
+import switchTheme from './Reducers/StyleSheetReducer';
 
-export default createStore(switchTheme)
+export default createStore(switchTheme);
