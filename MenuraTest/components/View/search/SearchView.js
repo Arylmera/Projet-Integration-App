@@ -52,17 +52,19 @@ class SearchView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <TextInput
-          style={[styles.textinput, {borderColor: theme.accent}]}
-          placeholder="Entrez un nom d'oiseau"
-          onChangeText={(text) => this._searchTextInputChanged(text)}
-          onSubmitEditing={() => this._loadOiseaux()}
-        />
-        <Button
-          color={theme.accent}
-          title="Rechercher"
-          onPress={() => this._loadOiseaux()}
-        />
+        <View style={[styles.search_container]}>
+          <TextInput
+            style={[styles.textinput, {borderColor: theme.highlight, backgroundColor: theme.primary}]}
+            placeholder="Entrez un nom d'oiseau"
+            onChangeText={(text) => this._searchTextInputChanged(text)}
+            onSubmitEditing={() => this._loadOiseaux()}
+          />
+          <Button
+            color={theme.highlight}
+            title="Rechercher"
+            onPress={() => this._loadOiseaux()}
+          />
+        </View>
         {this.state.isLoading ? (
           <View style={styles.loading_placeholder}>
             <Image
@@ -88,8 +90,10 @@ class SearchView extends React.Component {
 let styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    paddingTop: 5,
     flexDirection: 'column',
+  },
+  search_container: {
+    paddingTop: 5,
   },
   FlatlistItem: {
     flex: 1,
@@ -114,7 +118,7 @@ let styles = StyleSheet.create({
     resizeMode: 'contain',
     height: '100%',
     width: '100%',
-    opacity: 0.5,
+    opacity: 0.4,
   },
 });
 

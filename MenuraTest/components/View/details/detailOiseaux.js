@@ -208,7 +208,9 @@ class DetailOiseaux extends React.Component {
                 size={15}
                 color={theme.highlight}
                 style={{
-                  verticalAlign: 'middle',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 5,
                 }}
               />
               Classification
@@ -277,7 +279,9 @@ class DetailOiseaux extends React.Component {
                 size={15}
                 color={theme.highlight}
                 style={{
-                  verticalAlign: 'middle',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 5,
                 }}
               />
               Classification

@@ -60,9 +60,13 @@ class ViewNavigator extends React.Component {
             tabBarIcon: (tabInfo) => (
               <Icon
                 name="view-week"
-                size={30}
+                size={35}
                 color={theme.accent}
-                style={{marginLeft: 'auto', marginRight: 'auto'}}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 0,
+                }}
               />
             ),
           }}
@@ -76,9 +80,13 @@ class ViewNavigator extends React.Component {
             tabBarIcon: (tabInfo) => (
               <Icon
                 name="search"
-                size={30}
+                size={33}
                 color={theme.accent}
-                style={{marginLeft: 'auto', marginRight: 'auto'}}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 0,
+                }}
               />
             ),
           }}
@@ -92,9 +100,13 @@ class ViewNavigator extends React.Component {
             tabBarIcon: (tabInfo) => (
               <Icon
                 name="list"
-                size={30}
+                size={40}
                 color={theme.accent}
-                style={{marginLeft: 'auto', marginRight: 'auto'}}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: -3,
+                }}
               />
             ),
           }}
@@ -108,9 +120,13 @@ class ViewNavigator extends React.Component {
             tabBarIcon: (tabInfo) => (
               <Icon
                 name="info"
-                size={30}
+                size={28}
                 color={theme.accent}
-                style={{marginLeft: 'auto', marginRight: 'auto'}}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 3,
+                }}
               />
             ),
           }}
@@ -124,9 +140,13 @@ class ViewNavigator extends React.Component {
             tabBarIcon: (tabInfo) => (
               <Icon
                 name="build"
-                size={30}
+                size={27}
                 color={theme.accent}
-                style={{marginLeft: 'auto', marginRight: 'auto'}}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 3,
+                }}
               />
             ),
           }}
