@@ -6,15 +6,10 @@ import StatsView from '../View/stats/StatsView';
 import TipsView from '../View/tips/TipsView';
 import ParametresView from '../View/parametres/ParametresView';
 
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faList} from '@fortawesome/free-solid-svg-icons';
-import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
-import {faCog} from '@fortawesome/free-solid-svg-icons';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {faChartBar} from '@fortawesome/free-solid-svg-icons';
 import SearchNavigator from './SearchNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
 import {connect} from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -63,10 +58,15 @@ class ViewNavigator extends React.Component {
           options={{
             tabBarLabel: 'Statistiques',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon
-                icon={faChartBar}
-                size={27}
+              <Icon
+                name="view-week"
+                size={35}
                 color={theme.accent}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 0,
+                }}
               />
             ),
           }}
@@ -78,7 +78,16 @@ class ViewNavigator extends React.Component {
           options={{
             tabBarLabel: 'Recherche',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon icon={faSearch} size={23} color={theme.accent} />
+              <Icon
+                name="search"
+                size={33}
+                color={theme.accent}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 0,
+                }}
+              />
             ),
           }}
         />
@@ -89,7 +98,16 @@ class ViewNavigator extends React.Component {
           options={{
             tabBarLabel: 'Historique',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon icon={faList} size={23} color={theme.accent} />
+              <Icon
+                name="list"
+                size={40}
+                color={theme.accent}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: -3,
+                }}
+              />
             ),
           }}
         />
@@ -100,10 +118,15 @@ class ViewNavigator extends React.Component {
           options={{
             tabBarLabel: 'Tips',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon
-                icon={faInfoCircle}
-                size={23}
+              <Icon
+                name="info"
+                size={28}
                 color={theme.accent}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 3,
+                }}
               />
             ),
           }}
@@ -115,7 +138,16 @@ class ViewNavigator extends React.Component {
           options={{
             tabBarLabel: 'Paramètres',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon icon={faCog} size={23} color={theme.accent} />
+              <Icon
+                name="build"
+                size={27}
+                color={theme.accent}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 3,
+                }}
+              />
             ),
           }}
         />

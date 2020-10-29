@@ -52,20 +52,21 @@ class SearchView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <TextInput
-          style={[styles.textinput, {borderColor: theme.accent}]}
-          placeholder="Nom de l'oiseau"
-          onChangeText={(text) => this._searchTextInputChanged(text)}
-          onSubmitEditing={() => this._loadOiseaux()}
-        />
-        <Button
-          color={theme.accent}
-          title="Rechercher"
-          onPress={() => this._loadOiseaux()}
-        />
+        <View style={[styles.search_container]}>
+          <TextInput
+            style={[styles.textinput, {borderColor: theme.highlight, backgroundColor: theme.primary}]}
+            placeholder="Entrez un nom d'oiseau"
+            onChangeText={(text) => this._searchTextInputChanged(text)}
+            onSubmitEditing={() => this._loadOiseaux()}
+          />
+          <Button
+            color={theme.highlight}
+            title="Rechercher"
+            onPress={() => this._loadOiseaux()}
+          />
+        </View>
         {this.state.isLoading ? (
           <View style={styles.loading_placeholder}>
-            <Text style={[styles.text_placeholder, {color: theme.highlight}]}> Entrez un nom d'oiseau </Text>
             <Image
               style={[styles.image_placeholder, {tintColor: theme.highlight}]}
               source={require('../../../assets/images/searchImage.png')}
@@ -89,8 +90,10 @@ class SearchView extends React.Component {
 let styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    paddingTop: 5,
     flexDirection: 'column',
+  },
+  search_container: {
+    paddingTop: 5,
   },
   FlatlistItem: {
     flex: 1,
@@ -110,21 +113,12 @@ let styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  text_placeholder: {
-    flex: 1,
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontSize: 20,
-    opacity: 0.5,
-    marginTop: '5%',
-  },
   image_placeholder: {
-    flex: 8,
+    flex: 1,
     resizeMode: 'contain',
-    height: '90%',
-    width: '90%',
-    marginLeft: '5%',
-    opacity: 0.5,
+    height: '100%',
+    width: '100%',
+    opacity: 0.4,
   },
 });
 

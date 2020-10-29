@@ -11,9 +11,7 @@ import {
 import {getWikiInfo, getWTFWikipedia} from '../../../api/wikiapi';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
-
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faAngleLeft, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class DetailOiseaux extends React.Component {
   /**
@@ -205,11 +203,16 @@ class DetailOiseaux extends React.Component {
               {backgroundColor: theme.secondary},
             ]}>
             <Text style={[styles.infoBox_Title, {color: theme.highlight}]}>
-              <FontAwesomeIcon
-                icon={faFileAlt}
+              <Icon
+                name="insert-drive-file"
                 size={15}
-                style={{color: theme.highlight}}
-              />{' '}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 5,
+                }}
+              />
               Classification
             </Text>
             <View style={styles.infoBox_class}>
@@ -271,11 +274,16 @@ class DetailOiseaux extends React.Component {
               {backgroundColor: theme.secondary},
             ]}>
             <Text style={[styles.infoBox_Title, {color: theme.highlight}]}>
-              <FontAwesomeIcon
-                icon={faFileAlt}
+              <Icon
+                name="insert-drive-file"
                 size={15}
-                style={{color: theme.highlight}}
-              />{' '}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 5,
+                }}
+              />
               Classification
             </Text>
             <View style={[styles.infoBox_class]}>
@@ -350,7 +358,7 @@ class DetailOiseaux extends React.Component {
         <TouchableOpacity
           style={[styles.touchableOpacity, theme.secondary]}
           onPress={() => navigation.navigate(this.props.route.params.root)}>
-          <FontAwesomeIcon icon={faAngleLeft} size={25} />
+          <Icon name="keyboard-arrow-left" size={35} color={theme.accent} />
         </TouchableOpacity>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
