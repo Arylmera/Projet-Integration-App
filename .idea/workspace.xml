@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,13 +34,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/mipmap-xxxhdpi" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\Images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xxxhdpi" />
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xxhdpi" />
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xhdpi" />
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-mdpi" />
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-hdpi" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -86,7 +93,7 @@
       <workItem from="1603963188303" duration="110000" />
       <workItem from="1603963331015" duration="256000" />
       <workItem from="1603964021653" duration="34000" />
-      <workItem from="1603965154416" duration="3123000" />
+      <workItem from="1603965154416" duration="10079000" />
     </task>
     <servers />
   </component>
