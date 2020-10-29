@@ -6,6 +6,7 @@ import {
   TextInput,
   Button,
   Image,
+  Text,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
@@ -63,10 +64,13 @@ class SearchView extends React.Component {
           onPress={() => this._loadOiseaux()}
         />
         {this.state.isLoading ? (
-          <Image
-            style={styles.image}
-            source={require('../../../assets/images/ShearchOiseau.png')}
-          />
+          <View style={styles.loading_placeholder}>
+            <Text style={[styles.text_placeholder, {color: theme.highlight}]}> Entrez un nom d'oiseau </Text>
+            <Image
+              style={[styles.image_placeholder, {tintColor: theme.highlight}]}
+              source={require('../../../assets/images/searchImage.png')}
+            />
+          </View>
         ) : (
           <FlatList
             data={this.state.oiseauxListeNom}
@@ -98,16 +102,29 @@ let styles = StyleSheet.create({
     marginRight: 5,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
+    borderWidth: 1.5,
     borderRadius: 10,
     paddingLeft: 10,
   },
-  image: {
+  loading_placeholder: {
     flex: 1,
+    flexDirection: 'column',
+  },
+  text_placeholder: {
+    flex: 1,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 20,
+    opacity: 0.5,
+    marginTop: '5%',
+  },
+  image_placeholder: {
+    flex: 8,
     resizeMode: 'contain',
     height: '90%',
     width: '90%',
     marginLeft: '5%',
+    opacity: 0.5,
   },
 });
 

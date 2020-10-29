@@ -354,7 +354,7 @@ class DetailOiseaux extends React.Component {
         </TouchableOpacity>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
-            <ActivityIndicator size="large" />
+            <ActivityIndicator size="large" color="#000000" />
           </View>
         ) : this.state.dataFound ? (
           <ScrollView
