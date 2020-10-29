@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/mipmap-hdpi/menura_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/mipmap-mdpi/menura_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/mipmap-xhdpi/menura_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/mipmap-xxhdpi/menura_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/mipmap-xxxhdpi/menura_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/Menura-Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/Menura-Icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +93,7 @@
       <workItem from="1603963188303" duration="110000" />
       <workItem from="1603963331015" duration="256000" />
       <workItem from="1603964021653" duration="34000" />
-      <workItem from="1603965154416" duration="7937000" />
+      <workItem from="1603965154416" duration="10079000" />
     </task>
     <servers />
   </component>
