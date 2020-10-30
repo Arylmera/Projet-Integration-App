@@ -86,6 +86,15 @@ class ConnexionProfilView extends React.Component {
           onPress={() => navigation.navigate('ResetPasswordProfil')}>
           <Text>mot de passe oublié ?</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+            style={[styles.modifButton, {backgroundColor: "#FFFFFF"}]}
+            onPress={() => navigation.navigate('Profil')}>
+          <Text
+              style={{color: "#e30b0b", fontWeight: "bold"}}
+          >
+            Google
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

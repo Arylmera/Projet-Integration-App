@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Switch} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -142,6 +142,21 @@ class ParametresView extends React.Component {
           size={30}
           color="#900"
           style={{marginLeft: 'auto', marginRight: 'auto'}}
+        />
+        <Icon
+            name="sync"
+            size={30}
+            color="#900"
+            style={{marginLeft: 'auto', marginRight: 'auto'}}
+        />
+        <Icon
+            name="search"
+            size={30}
+            color="#900"
+            style={{marginLeft: 'auto', marginRight: 'auto'}}
+        />
+        <Switch
+            style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
       </View>
     );

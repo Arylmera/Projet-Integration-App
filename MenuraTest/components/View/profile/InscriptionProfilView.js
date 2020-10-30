@@ -50,9 +50,17 @@ class InscriptionProfilView extends React.Component {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           console.log('User created and signed in!');
+          const user = firebase.auth().currentUser;
           createUtilisateur(nom, prenom, email).then((data) =>
-            console.log(data),
+            console.log(data)
           );
+          user.sendEmailVerification()
+              .then(() => {
+            // Email sent.
+              })
+              .catch((error) => {
+                console.log(error)
+              });
           navigation.navigate('modificationProfil');
         })
         .catch((error) => {

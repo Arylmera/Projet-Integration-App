@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +95,8 @@
       <workItem from="1603963188303" duration="110000" />
       <workItem from="1603963331015" duration="256000" />
       <workItem from="1603964021653" duration="34000" />
-      <workItem from="1603965154416" duration="10079000" />
+      <workItem from="1603965154416" duration="17646000" />
+      <workItem from="1604064116406" duration="4378000" />
     </task>
     <servers />
   </component>
@@ -110,10 +113,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="166" y="124" width="1200" height="800" key="AVDManager/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603928290216" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603964053553">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1603991980730">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603964053553" />
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603991980730" />
     <state width="1771" height="299" key="GridCell.Tab.0.bottom" timestamp="1602672013568">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
