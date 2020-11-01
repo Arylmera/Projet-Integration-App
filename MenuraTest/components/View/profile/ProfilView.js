@@ -46,7 +46,7 @@ class ProfilView extends React.Component {
         this._getUtilisateur(email);
         this.setState({email: email});
       } else {
-        this.props.navigation.navigate('ConnexionProfil');
+        this.props.navigation.navigate('connexion');
       }
     });
   }
@@ -94,7 +94,7 @@ class ProfilView extends React.Component {
       .then(() => {
         console.log('compte supprimé');
         this.setState({deleteAccountModal: false});
-        this.props.navigation.navigate('ConnexionProfil');
+        this.props.navigation.navigate('connexion');
       })
       .catch((error) => {
         console.log(error);

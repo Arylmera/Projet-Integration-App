@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/LoadingNavigator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MenuraTest/assets/images/google.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/HeaderNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/HeaderNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/LoadingNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/LoadingNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/LoadingScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/LoadingScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" afterDir="false" />
@@ -48,16 +49,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\MenuraTest\assets\images" />
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\drawable" />
+      <recent name="C:\Site-perso\Images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xxxhdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xxhdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xhdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-mdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-hdpi" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\drawable" />
-      <recent name="C:\Site-perso\Images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -105,7 +107,9 @@
       <workItem from="1603964021653" duration="34000" />
       <workItem from="1603965154416" duration="17646000" />
       <workItem from="1604064116406" duration="6017000" />
-      <workItem from="1604162952079" duration="11980000" />
+      <workItem from="1604162952079" duration="12652000" />
+      <workItem from="1604191748631" duration="64000" />
+      <workItem from="1604232193911" duration="10983000" />
     </task>
     <servers />
   </component>

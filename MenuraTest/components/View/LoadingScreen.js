@@ -24,7 +24,7 @@ class LoadingScreen extends React.Component {
       if (user) {
         this.props.navigation.navigate('Views');
       } else {
-        this.props.navigation.navigate('Profil');
+        this.props.navigation.navigate('connexion');
       }
     });
   }
