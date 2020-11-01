@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/LoadingNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/HeaderNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/HeaderNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/LoadingScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/LoadingScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ResetPasswordProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ResetPasswordProfilView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,12 +30,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1iGccPH2spY2N2yd2UjqF9KdS9d" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -41,15 +48,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Site-perso\Images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xxxhdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xxhdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-xhdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-mdpi" />
       <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\mipmap-hdpi" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\MenuraTest\android\app\src\main\res\drawable" />
+      <recent name="C:\Site-perso\Images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -96,12 +104,16 @@
       <workItem from="1603963331015" duration="256000" />
       <workItem from="1603964021653" duration="34000" />
       <workItem from="1603965154416" duration="17646000" />
-      <workItem from="1604064116406" duration="4378000" />
+      <workItem from="1604064116406" duration="6017000" />
+      <workItem from="1604162952079" duration="11980000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603900251906">

@@ -21,7 +21,7 @@ class ProfilView extends React.Component {
       prenom: 'User name',
       nom: 'User lastName',
       email: 'email',
-      profileIcon: '../../assets/images/profileIcon.png',
+      profileIcon: require('../../../assets/images/profileIcon.png'),
       password: '',
       newPassword: '',
       updatePasswordModal: false,
@@ -135,8 +135,8 @@ class ProfilView extends React.Component {
             <Text style={styles.lastNameStyle}> {this.state.nom} </Text>
           </View>
           <Image
-            source={{uri: this.state.profileIcon}}
-            style={[styles.profileIcon, {backgroundColor: theme.highlight}]}
+            source={this.state.profileIcon}
+            style={[styles.profileIcon, {backgroundColor: theme.secondary}]}
           />
         </View>
         <View style={styles.container_row}>
@@ -262,19 +262,20 @@ const styles = StyleSheet.create({
   modifButton: {
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: 10,
-    borderRadius: 5,
+    marginTop: 20,
+    borderWidth: 1,
+    borderRadius: 4,
     width: '50%',
     padding: 3,
     alignItems: 'center',
   },
   textinput: {
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
-    borderRadius: 10,
+    borderRadius: 4,
+    borderWidth: 1,
     paddingLeft: 10,
   },
   text: {

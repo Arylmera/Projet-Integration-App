@@ -5,7 +5,7 @@ import ViewNavigator from './ViewNavigator';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import ProfilNavigator from './ProfilNavigator';
 import {connect} from 'react-redux';
-import LoadingScreen from '../View/LoadingScreen';
+import LoadingNavigator from "./LoadingNavigator";
 
 const Stack = createStackNavigator();
 
@@ -42,9 +42,9 @@ class HeaderNavigator extends React.Component {
         }}>
         <Stack.Screen
           name="LoadingScreen"
-          component={LoadingScreen}
+          component={LoadingNavigator}
           options={{
-            title: '',
+              headerShown: false,
           }}
         />
         <Stack.Screen

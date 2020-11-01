@@ -16,7 +16,10 @@ class ConnexionProfilView extends React.Component {
     super(props);
     this.email = '';
     this.password = '';
-    this.state = {};
+    this.state = {
+      errorMessage: "",
+      errorBorder: "#000000"
+    };
   }
 
   componentDidMount() {
@@ -51,7 +54,7 @@ class ConnexionProfilView extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-        Alert.alert(error.toString());
+        this.setState({errorMessage: error.message, errorBorder: '#c20000'})
       });
   }
 
@@ -60,17 +63,30 @@ class ConnexionProfilView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
+        <View>
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textinput, {borderColor: this.state.errorBorder}]}
           placeholder="email"
+          keyboardType="email-address"
           onChangeText={(email) => this._emailTextInputChanged(email)}
+          onFocus={() => console.log('focus')}
         />
+        <Text></Text>
+        </View>
+        <View>
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textinput, {borderColor: this.state.errorBorder}]}
           placeholder="mot de passe"
           secureTextEntry={true}
           onChangeText={(password) => this._passwordTextInputChanged(password)}
+          onFocus={() => console.log('focus')}
         />
+        <Text
+            style={styles.errorText}
+        >
+          {this.state.errorMessage}
+        </Text>
+        </View>
         <TouchableOpacity
           style={[styles.modifButton, {backgroundColor: theme.secondary}]}
           onPress={() => this._signIn(this.email, this.password, navigation)}>
@@ -107,23 +123,28 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   textinput: {
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
-    borderRadius: 10,
+    borderRadius: 4,
+    borderWidth: 1,
     paddingLeft: 10,
   },
   modifButton: {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 20,
-    borderWidth: 2,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 4,
     width: '50%',
     padding: 3,
     alignItems: 'center',
+  },
+  errorText: {
+    marginLeft: 25,
+    marginTop: 15,
+    color: '#c20000'
   },
 });
 

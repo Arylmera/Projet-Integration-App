@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   ImageBackground,
-  Text,
   View,
   ActivityIndicator,
   StyleSheet,
@@ -32,12 +31,11 @@ class LoadingScreen extends React.Component {
 
   render() {
     return (
-      <View style={[styles.main_container, {backgroundColor: '#d9d3b6'}]}>
+      <View style={[styles.main_container, {backgroundColor: '#FFFFFF'}]}>
         <ImageBackground
           style={styles.image}
-          resizeMode="cover"
-          source={require('../../assets/images/Accueil.png')}>
-          <Text style={styles.text}>Menura</Text>
+          resizeMode="center"
+          source={require('../../assets/images/searchImage.png')}>
           <ActivityIndicator
             style={styles.loading}
             size="large"
@@ -56,18 +54,6 @@ const styles = StyleSheet.create({
   },
   loading: {
     marginTop: 150,
-  },
-  text: {
-    letterSpacing: 1,
-    textShadowColor: '#bf770a',
-    textShadowRadius: 50,
-    textShadowOffset: {width: -1, height: -1},
-    marginTop: 75,
-    color: '#754600',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 50,
-    opacity: 0.4,
   },
   image: {
     flex: 1,
