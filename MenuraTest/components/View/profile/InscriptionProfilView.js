@@ -50,9 +50,17 @@ class InscriptionProfilView extends React.Component {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           console.log('User created and signed in!');
+          const user = firebase.auth().currentUser;
           createUtilisateur(nom, prenom, email).then((data) =>
-            console.log(data),
+            console.log(data)
           );
+          user.sendEmailVerification()
+              .then(() => {
+            // Email sent.
+              })
+              .catch((error) => {
+                console.log(error)
+              });
           navigation.navigate('modificationProfil');
         })
         .catch((error) => {
@@ -66,9 +74,8 @@ class InscriptionProfilView extends React.Component {
 
   render() {
     const {navigation} = this.props;
-    let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
+      <View style={styles.main_container}>
         <TextInput
           style={[styles.textinput]}
           placeholder="nom"
@@ -99,7 +106,7 @@ class InscriptionProfilView extends React.Component {
           }
         />
         <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+          style={styles.modifButton}
           onPress={() =>
             this._register(
               this.nom,
@@ -124,23 +131,23 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   textinput: {
-    marginLeft: 5,
-    marginRight: 5,
-    marginTop: 5,
-    height: 50,
-    borderWidth: 5,
-    borderRadius: 10,
-    paddingLeft: 10,
+      marginLeft: 10,
+      marginRight: 10,
+      marginTop: 5,
+      height: 50,
+      borderRadius: 4,
+      borderWidth: 1,
+      paddingLeft: 10,
   },
   modifButton: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 20,
-    borderWidth: 2,
-    borderRadius: 5,
-    width: '50%',
-    padding: 3,
-    alignItems: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginTop: 20,
+      borderWidth: 1,
+      borderRadius: 4,
+      width: '50%',
+      padding: 3,
+      alignItems: 'center',
   },
 });
 
