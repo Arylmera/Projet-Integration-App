@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, Switch} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Bluetooth from '../../../functions/bluetooth';
 
 class ParametresView extends React.Component {
   constructor(props) {
@@ -84,7 +85,20 @@ class ParametresView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <View style={[styles.lineBox, {backgroundColor: theme.secondary}]}>
+        <View
+          style={[
+            styles.bluetooth_component,
+            styles.lineBox,
+            {backgroundColor: theme.secondary},
+          ]}>
+          <Bluetooth />
+        </View>
+        <View
+          style={[
+            styles.lineBox,
+            styles.theme_component,
+            {backgroundColor: theme.secondary},
+          ]}>
           <Text style={[styles.theme_caption, {color: theme.highlight}]}>
             Choix du thème :
           </Text>
@@ -141,23 +155,21 @@ class ParametresView extends React.Component {
           name="add"
           size={30}
           color="#900"
+          style={{marginLeft: 'auto', marginRight: 'auto', marginTop: '5%'}}
+        />
+        <Icon
+          name="sync"
+          size={30}
+          color="#900"
           style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
         <Icon
-            name="sync"
-            size={30}
-            color="#900"
-            style={{marginLeft: 'auto', marginRight: 'auto'}}
+          name="search"
+          size={30}
+          color="#900"
+          style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
-        <Icon
-            name="search"
-            size={30}
-            color="#900"
-            style={{marginLeft: 'auto', marginRight: 'auto'}}
-        />
-        <Switch
-            style={{marginLeft: 'auto', marginRight: 'auto'}}
-        />
+        <Switch style={{marginLeft: 'auto', marginRight: 'auto'}} />
       </View>
     );
   }
@@ -171,11 +183,17 @@ const styles = StyleSheet.create({
   },
   lineBox: {
     flex: 1,
-    maxHeight: '10%',
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 15,
     margin: '5%',
+    marginBottom: 0,
+  },
+  theme_component: {
+    maxHeight: '10%',
+  },
+  bluetooth_component: {
+    maxHeight: '50%',
   },
   theme_caption: {
     flex: 2,
