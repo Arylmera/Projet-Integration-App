@@ -34,7 +34,6 @@ class Bluetooth extends React.Component {
       if (state === 'PoweredOn') {
         this.scan_bluetooth_device();
         subscription.remove();
-        console.log(this.state.bl_device_list);
       }
     }, true);
   }
@@ -47,7 +46,6 @@ class Bluetooth extends React.Component {
         if (device.name != null) {
           let already_found = false;
           this.state.bl_device_list.forEach((e) => {
-            console.log(e.name);
             if (e.name === device.name) {
               already_found = true;
             }
@@ -98,13 +96,11 @@ class Bluetooth extends React.Component {
             <FlatList
               data={this.state.bl_device_list}
               style={styles.FlatlistItem}
-              keyExtractor={(item) => item}
+              keyExtractor={(item) => item.name}
               renderItem={({item}) => (
                 <BlueTooth_Item
-                  disconnectDevice={this.disconnect_devices}
                   data={{
                     device: item,
-                    connected: this.state.bl_manager.isDeviceConnected(item.id),
                   }}
                 />
               )}
