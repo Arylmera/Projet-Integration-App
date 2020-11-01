@@ -5,7 +5,6 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
@@ -20,7 +19,15 @@ class InscriptionProfilView extends React.Component {
     this.email = '';
     this.password = '';
     this.password2 = '';
-    this.state = {};
+    this.state = {
+        helperText: "",
+        errorMessage: "",
+        borderNom: "#b8b8b8",
+        borderPrenom: "#b8b8b8",
+        borderEmail: "#b8b8b8",
+        borderPassword1: "#b8b8b8",
+        borderPassword2: "#b8b8b8"
+    };
   }
 
   _nomTextInputChanged(nom) {
@@ -61,14 +68,14 @@ class InscriptionProfilView extends React.Component {
               .catch((error) => {
                 console.log(error)
               });
-          navigation.navigate('modificationProfil');
+          navigation.navigate('Views');
         })
         .catch((error) => {
           console.error(error);
-          Alert.alert(error.toString());
+            this.setState({errorMessage: error.message, borderEmail: '#c20000', borderPassword1: '#c20000', borderPassword2: '#c20000'})
         });
     } else {
-      Alert.alert('le mot de passe doit être identique');
+        this.setState({errorMessage: "les mots de passe ne sont pas identiques", borderPassword1: '#c20000', borderPassword2: '#c20000'})
     }
   }
 
@@ -77,36 +84,55 @@ class InscriptionProfilView extends React.Component {
     return (
       <View style={styles.main_container}>
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textInput, {borderColor: this.state.borderNom}]}
           placeholder="nom"
           onChangeText={(nom) => this._nomTextInputChanged(nom)}
+          onFocus={() => this.setState({borderNom: '#000000'})}
+          onBlur={() => this.setState({borderNom: '#b8b8b8'})}
         />
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textInput, {borderColor: this.state.borderPrenom}]}
           placeholder="prénom"
           onChangeText={(prenom) => this._prenomTextInputChanged(prenom)}
+          onFocus={() => this.setState({borderPrenom: '#000000'})}
+          onBlur={() => this.setState({borderPrenom: '#b8b8b8'})}
         />
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textInput, {borderColor: this.state.borderEmail}]}
           placeholder="email"
           onChangeText={(email) => this._emailTextInputChanged(email)}
+          onFocus={() => this.setState({borderEmail: '#000000'})}
+          onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
         />
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textInput, {borderColor: this.state.borderPassword1}]}
           placeholder="mot de passe"
           secureTextEntry={true}
           onChangeText={(password) => this._passwordTextInputChanged(password)}
+          onFocus={() => this.setState({borderPassword1: '#000000', helperText: "minimum 6 caractères"})}
+          onBlur={() => this.setState({borderPassword1: '#b8b8b8', helperText: ""})}
         />
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textInput, {borderColor: this.state.borderPassword2}]}
           placeholder="mot de passe"
           secureTextEntry={true}
           onChangeText={(password2) =>
-            this._password2TextInputChanged(password2)
-          }
+            this._password2TextInputChanged(password2)}
+          onFocus={() => this.setState({borderPassword2: '#000000', helperText: "Veuillez confirmer le mot de passe"})}
+          onBlur={() => this.setState({borderPassword2: '#b8b8b8', helperText: ""})}
         />
+        <Text
+            style={styles.helperText}
+        >
+            {this.state.helperText}
+        </Text>
+          <Text
+              style={styles.errorText}
+          >
+              {this.state.errorMessage}
+          </Text>
         <TouchableOpacity
-          style={styles.modifButton}
+          style={styles.button}
           onPress={() =>
             this._register(
               this.nom,
@@ -128,9 +154,8 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
     paddingTop: 5,
-    flexDirection: 'column',
   },
-  textinput: {
+  textInput: {
       marginLeft: 10,
       marginRight: 10,
       marginTop: 5,
@@ -139,7 +164,7 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       paddingLeft: 10,
   },
-  modifButton: {
+  button: {
       marginLeft: 'auto',
       marginRight: 'auto',
       marginTop: 20,
@@ -149,6 +174,15 @@ const styles = StyleSheet.create({
       padding: 3,
       alignItems: 'center',
   },
+  helperText: {
+      marginLeft: 25,
+      marginTop: 10
+  },
+    errorText: {
+        marginLeft: 25,
+        marginTop: 10,
+        color: '#c20000'
+    },
 });
 
 const mapStateToProps = (state) => {

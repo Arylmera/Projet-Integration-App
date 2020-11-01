@@ -5,7 +5,6 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
@@ -15,7 +14,10 @@ class ResetPasswordProfilView extends React.Component {
   constructor(props) {
     super(props);
     this.email = '';
-    this.state = {};
+    this.state = {
+      errorMessage: "",
+      borderEmail: "#b8b8b8"
+    };
   }
 
   _emailTextInputChanged(email) {
@@ -32,7 +34,7 @@ class ResetPasswordProfilView extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-        Alert.alert(error.toString());
+        this.setState({errorMessage: error.message, borderEmail: '#c20000'})
       });
   }
 
@@ -41,12 +43,19 @@ class ResetPasswordProfilView extends React.Component {
     return (
       <View style={styles.main_container}>
         <TextInput
-          style={[styles.textinput]}
+          style={[styles.textInput, {borderColor: this.state.borderEmail}]}
           placeholder="email"
           onChangeText={(email) => this._emailTextInputChanged(email)}
+          onFocus={() => this.setState({borderEmail: '#000000'})}
+          onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
         />
+        <Text
+            style={styles.errorText}
+        >
+          {this.state.errorMessage}
+        </Text>
         <TouchableOpacity
-          style={styles.modifButton}
+          style={styles.button}
           onPress={() => this._resetPassword(this.email, navigation)}>
           <Text>Reset par email</Text>
         </TouchableOpacity>
@@ -59,9 +68,8 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
     paddingTop: 5,
-    flexDirection: 'column',
   },
-  textinput: {
+  textInput: {
     marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
@@ -70,7 +78,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingLeft: 10,
   },
-  modifButton: {
+  button: {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 20,
@@ -79,6 +87,11 @@ const styles = StyleSheet.create({
     width: '50%',
     padding: 3,
     alignItems: 'center',
+  },
+  errorText: {
+    marginLeft: 25,
+    marginTop: 10,
+    color: '#c20000'
   },
 });
 

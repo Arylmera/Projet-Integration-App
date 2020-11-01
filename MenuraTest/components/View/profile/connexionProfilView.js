@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  StyleSheet,
-  View,
-  TextInput,
-  Text,
-  TouchableOpacity,
+    StyleSheet,
+    View,
+    TextInput,
+    Text,
+    TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
@@ -36,6 +36,7 @@ class ConnexionProfilView extends React.Component {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User signed in!');
+          this.setState({errorMessage: "", borderEmail: '#b8b8b8', borderPassword: '#b8b8b8'})
         navigation.navigate('Views', {params: {}});
       })
       .catch((error) => {
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
   googleText: {
       color: "#e30b0b",
       fontWeight: "bold"
-  }
+  },
 });
 
 const mapStateToProps = (state) => {
