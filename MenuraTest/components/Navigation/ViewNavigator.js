@@ -35,20 +35,15 @@ class ViewNavigator extends React.Component {
             padding: 1,
           },
           style: {
+            borderTopWidth: 0,
             borderRadius: 0,
             backgroundColor: theme.primary,
-            // eslint-disable-next-line no-undef
-            ...Platform.select({
-              ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: {height: 0, width: 0},
-                shadowOpacity: 1,
-                shadowRadius: 5,
-              },
-              android: {
-                elevation: 5,
-              },
-            }),
+            // shadow
+            shadowColor: 'rgba(0,0,0, .7)',
+            shadowOffset: {height: 0, width: 0},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 3,
           },
         }}>
         <Tab.Screen

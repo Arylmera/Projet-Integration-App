@@ -158,20 +158,18 @@ class ParametresView extends React.Component {
           style={{marginLeft: 'auto', marginRight: 'auto', marginTop: '5%'}}
         />
         <Icon
-            name="sync"
-            size={30}
-            color="#900"
-            style={{marginLeft: 'auto', marginRight: 'auto'}}
+          name="sync"
+          size={30}
+          color="#900"
+          style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
         <Icon
-            name="search"
-            size={30}
-            color="#900"
-            style={{marginLeft: 'auto', marginRight: 'auto'}}
+          name="search"
+          size={30}
+          color="#900"
+          style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
-        <Switch
-            style={{marginLeft: 'auto', marginRight: 'auto'}}
-        />
+        <Switch style={{marginLeft: 'auto', marginRight: 'auto'}} />
       </View>
     );
   }
@@ -189,7 +187,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 15,
     margin: '5%',
-    marginBottom: 0
+    marginBottom: 0,
   },
   theme_component: {
     maxHeight: '10%',
