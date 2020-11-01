@@ -38,16 +38,15 @@ class ResetPasswordProfilView extends React.Component {
 
   render() {
     const {navigation} = this.props;
-    let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
+      <View style={styles.main_container}>
         <TextInput
           style={[styles.textinput]}
           placeholder="email"
           onChangeText={(email) => this._emailTextInputChanged(email)}
         />
         <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+          style={styles.modifButton}
           onPress={() => this._resetPassword(this.email, navigation)}>
           <Text>Reset par email</Text>
         </TouchableOpacity>
@@ -63,20 +62,20 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   textinput: {
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
-    borderRadius: 10,
+    borderRadius: 4,
+    borderWidth: 1,
     paddingLeft: 10,
   },
   modifButton: {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 20,
-    borderWidth: 2,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 4,
     width: '50%',
     padding: 3,
     alignItems: 'center',
