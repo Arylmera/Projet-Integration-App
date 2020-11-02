@@ -42,7 +42,8 @@ Sites Web:
 Github :
 - [Principale](https://github.com/Arylmera/Projet-Integration)
 - [Page Vitrine](https://github.com/Kotth/Projet-Integration-Vitrine)
-- [API]()
+- [API](https://github.com/CrenierAmaury/Projet-Integration-API)
+- [Capteur Python](https://github.com/Cornil-Jean/Menura-Python)
 
 Planning :
 - [Trello](https://trello.com/b/cVyeFlzv/projet-dint%C3%A9gration)
