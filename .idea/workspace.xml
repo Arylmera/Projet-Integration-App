@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MenuraTest/__mocks__/@react-native-community/async-storage/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MenuraTest/jestSetupFile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/__tests__/App-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/__tests__/App-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +49,7 @@
       <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -87,11 +93,14 @@
       <workItem from="1603963331015" duration="256000" />
       <workItem from="1603964021653" duration="34000" />
       <workItem from="1603965154416" duration="3123000" />
+      <workItem from="1604137990194" duration="9000" />
+      <workItem from="1604395608385" duration="696000" />
+      <workItem from="1604398755019" duration="1716000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603900251906">
@@ -107,22 +116,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603964053553" />
-    <state width="1771" height="299" key="GridCell.Tab.0.bottom" timestamp="1602672013568">
+    <state width="1771" height="299" key="GridCell.Tab.0.bottom" timestamp="1603982440776">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013568" />
-    <state width="1771" height="299" key="GridCell.Tab.0.center" timestamp="1602672013567">
+    <state width="1771" height="299" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1603982440776" />
+    <state width="1771" height="299" key="GridCell.Tab.0.center" timestamp="1603982440775">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013567" />
-    <state width="1771" height="299" key="GridCell.Tab.0.left" timestamp="1602672013566">
+    <state width="1771" height="299" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1603982440775" />
+    <state width="1771" height="299" key="GridCell.Tab.0.left" timestamp="1603982440774">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013566" />
-    <state width="1771" height="299" key="GridCell.Tab.0.right" timestamp="1602672013567">
+    <state width="1771" height="299" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1603982440774" />
+    <state width="1771" height="299" key="GridCell.Tab.0.right" timestamp="1603982440776">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013567" />
+    <state width="1771" height="299" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1603982440776" />
     <state x="540" y="263" key="IDE.errors.dialog" timestamp="1603928274850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
