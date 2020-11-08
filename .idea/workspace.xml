@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MenuraTest/api/oiseaux_api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/Store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/Store/configureStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/java/com/menuratest/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/java/com/menuratest/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/api/oiseauxList_api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/api/utilisateur_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/api/utilisateurs_api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/functions/bluetooth.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/functions/bluetooth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +115,7 @@
       <workItem from="1604675100220" duration="15320000" />
       <workItem from="1604706154144" duration="900000" />
       <workItem from="1604753507381" duration="13794000" />
-      <workItem from="1604849646329" duration="6706000" />
+      <workItem from="1604849646329" duration="12721000" />
     </task>
     <servers />
   </component>

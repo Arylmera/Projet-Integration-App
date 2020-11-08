@@ -4,13 +4,29 @@ import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Bluetooth from '../../../functions/bluetooth';
+import firebase from "firebase";
 
 class ParametresView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        id: "",
       currentTheme: 'Theme',
     };
+  }
+
+  componentDidMount() {
+      this._checkIfLoggedIn();
+  }
+
+  _checkIfLoggedIn() {
+      firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+              this.setState({id: user.uid})
+          } else {
+              console.log("no user")
+          }
+      });
   }
 
   /*

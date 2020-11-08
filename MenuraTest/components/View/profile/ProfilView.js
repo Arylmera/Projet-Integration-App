@@ -17,7 +17,7 @@ class ProfilView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 0,
+      id: "",
       prenom: 'User name',
       nom: 'User lastName',
       email: 'email',
@@ -25,6 +25,7 @@ class ProfilView extends React.Component {
       password: '',
       newPassword: '',
       updatePasswordModal: false,
+      deconnexionModal: false,
       deleteAccountModal: false,
     }
   }
@@ -41,9 +42,6 @@ class ProfilView extends React.Component {
         let nom = user.displayName.split(' ')[0];
         let prenom = user.displayName.split(' ')[1];
         this.setState({email: email, nom: nom, prenom: prenom, id: uid});
-        console.log(user)
-        console.log(uid)
-        console.log(user.displayName)
       } else {
         this.props.navigation.navigate('connexion');
       }
@@ -72,6 +70,10 @@ class ProfilView extends React.Component {
 
   _askDeleteAccount() {
     this.setState({deleteAccountModal: true});
+  }
+
+  _askDeconnexion() {
+    this.setState({deconnexionModal: true});
   }
 
   _askUpdatePassword() {
@@ -143,7 +145,7 @@ class ProfilView extends React.Component {
           </View>
         </View>
         <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+          style={[styles.button, {backgroundColor: theme.secondary}]}
           onPress={() => this._askUpdatePassword()}>
           <Text>modifier mot de passe</Text>
         </TouchableOpacity>
@@ -166,23 +168,38 @@ class ProfilView extends React.Component {
             }
           />
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#0084d1'}]}
+            style={[styles.button, {backgroundColor: '#0084d1'}]}
             onPress={() => this._updatePassword()}>
             <Text>modifier mon mot de passe</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#000000'}]}
+            style={[styles.button, {backgroundColor: '#000000'}]}
             onPress={() => this.setState({updatePasswordModal: false})}>
             <Text style={{color: '#ffffff'}}>Annuler</Text>
           </TouchableOpacity>
         </Modal>
         <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-          onPress={() => this._logOut()}>
+          style={[styles.button, {backgroundColor: theme.secondary}]}
+          onPress={() => this._askDeconnexion()}>
           <Text>déconnexion</Text>
         </TouchableOpacity>
+        <Modal visible={this.state.deconnexionModal}>
+          <Text style={[styles.text]}>
+            Voulez vous vraiment vous déconnecter ?
+          </Text>
+          <TouchableOpacity
+              style={[styles.button, {backgroundColor: '#de0404'}]}
+              onPress={() => this._logOut()}>
+            <Text>Se déconnecter</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={[styles.button, {backgroundColor: '#000000'}]}
+              onPress={() => this.setState({deconnexionModal: false})}>
+            <Text style={{color: '#ffffff'}}>Annuler</Text>
+          </TouchableOpacity>
+        </Modal>
         <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
+          style={[styles.button, {backgroundColor: theme.secondary}]}
           onPress={() => this._askDeleteAccount()}>
           <Text>supprimer compte</Text>
         </TouchableOpacity>
@@ -202,12 +219,12 @@ class ProfilView extends React.Component {
             }
           />
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#de0404'}]}
+            style={[styles.button, {backgroundColor: '#de0404'}]}
             onPress={() => this._deleteAccount()}>
             <Text>Supprimer mon compte</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#000000'}]}
+            style={[styles.button, {backgroundColor: '#000000'}]}
             onPress={() => this.setState({deleteAccountModal: false})}>
             <Text style={{color: '#ffffff'}}>Annuler</Text>
           </TouchableOpacity>
@@ -257,7 +274,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
-  modifButton: {
+  button: {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 20,

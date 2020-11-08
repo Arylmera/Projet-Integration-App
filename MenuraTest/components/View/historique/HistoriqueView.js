@@ -2,11 +2,13 @@ import React from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 import DetailItem from '../details/detailItem';
 import {connect} from 'react-redux';
+import firebase from "firebase";
 
 class HistoriqueView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       oiseauxListe: [
         'Mésange',
         'Pic vert',
@@ -18,6 +20,20 @@ class HistoriqueView extends React.Component {
         'Paridae',
       ],
     };
+  }
+
+  componentDidMount() {
+    this._checkIfLoggedIn();
+  }
+
+  _checkIfLoggedIn() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({id: user.uid})
+      } else {
+        console.log("no user")
+      }
+    });
   }
 
   render() {
