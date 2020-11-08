@@ -1,4 +1,4 @@
-const url_getOiseauxList =
+const url_getOiseaux =
   'http://146.59.195.248:3000/v1/api/oiseaux?recherche=';
 
 /**
@@ -6,8 +6,8 @@ const url_getOiseauxList =
  * @param text
  * @returns {Promise<any | void>}
  */
-export function getOiseauxListWithSearchedText(text) {
-  return fetch(url_getOiseauxList + text)
+export function getOiseaux(text) {
+  return fetch(url_getOiseaux + text)
     .then((response) => response.json())
     .catch((error) => console.log(error));
 }

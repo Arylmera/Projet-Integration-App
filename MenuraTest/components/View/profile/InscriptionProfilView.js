@@ -9,7 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-import {createUtilisateur} from '../../../api/utilisateur_api';
+import {createUtilisateur} from '../../../api/utilisateurs_api';
 
 class InscriptionProfilView extends React.Component {
   constructor(props) {
@@ -58,9 +58,9 @@ class InscriptionProfilView extends React.Component {
         .then(() => {
           console.log('User created and signed in!');
           const user = firebase.auth().currentUser;
-          createUtilisateur(nom, prenom, email).then((data) =>
-            console.log(data)
-          );
+          let id = user.uid;
+          user.getIdToken(true).then((idToken) => { createUtilisateur(id ,nom, prenom, email, idToken).then((data) => console.log(data))});
+          user.updateProfile({displayName: nom + ' ' + prenom}).then(() => {console.log('display name added')})
           user.sendEmailVerification()
               .then(() => {
             // Email sent.
