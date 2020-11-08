@@ -58,12 +58,12 @@ class InscriptionProfilView extends React.Component {
         .then(() => {
           console.log('User created and signed in!');
           const user = firebase.auth().currentUser;
-          let id = user.uid;
+          const id = user.uid;
           user.getIdToken(true).then((idToken) => { createUtilisateur(id ,nom, prenom, email, idToken).then((data) => console.log(data))});
           user.updateProfile({displayName: nom + ' ' + prenom}).then(() => {console.log('display name added')})
           user.sendEmailVerification()
               .then(() => {
-            // Email sent.
+            // email sent
               })
               .catch((error) => {
                 console.log(error)
