@@ -6,11 +6,10 @@ import {
   TextInput,
   Button,
   Image,
-  Text,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
-import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api';
+import {getOiseaux} from '../../../api/oiseaux_api';
 import {connect} from 'react-redux';
 
 class SearchView extends React.Component {
@@ -35,7 +34,7 @@ class SearchView extends React.Component {
 
   _loadOiseaux() {
     if (this.searchedText.length > 0) {
-      getOiseauxListWithSearchedText(this.searchedText).then((data) => {
+      getOiseaux(this.searchedText).then((data) => {
         this.setState({oiseauxListe: data.data});
         let oiseauxListNom_loading = [];
         data.data.forEach((oiseau) => oiseauxListNom_loading.push(oiseau.nom));

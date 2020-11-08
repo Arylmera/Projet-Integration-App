@@ -12,12 +12,12 @@ import {
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-import {getUtilisateur} from '../../../api/utilisateur_api';
 
 class ProfilView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
       prenom: 'User name',
       nom: 'User lastName',
       email: 'email',
@@ -26,25 +26,24 @@ class ProfilView extends React.Component {
       newPassword: '',
       updatePasswordModal: false,
       deleteAccountModal: false,
-    };
+    }
   }
 
   componentDidMount() {
     this._checkIfLoggedIn();
   }
 
-  _getUtilisateur(email) {
-    getUtilisateur(email).then((data) =>
-      this.setState({nom: data.data[0].nom, prenom: data.data[0].prenom}),
-    );
-  }
-
   _checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let email = user.email;
-        this._getUtilisateur(email);
-        this.setState({email: email});
+        let uid = user.uid;
+        let nom = user.displayName.split(' ')[0];
+        let prenom = user.displayName.split(' ')[1];
+        this.setState({email: email, nom: nom, prenom: prenom, id: uid});
+        console.log(user)
+        console.log(uid)
+        console.log(user.displayName)
       } else {
         this.props.navigation.navigate('connexion');
       }
@@ -124,7 +123,6 @@ class ProfilView extends React.Component {
   }
 
   render() {
-    const {navigation} = this.props;
     let theme = this.props.currentStyle;
     return (
       <ScrollView
