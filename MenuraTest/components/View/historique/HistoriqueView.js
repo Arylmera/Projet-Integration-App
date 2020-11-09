@@ -1,53 +1,69 @@
 import React from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList, Text} from 'react-native';
 import DetailItem from '../details/detailItem';
 import {connect} from 'react-redux';
-import firebase from "firebase";
+import firebase from 'firebase';
+import {getHistoriqueByID} from '../../../api/oiseaux_api';
 
 class HistoriqueView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      oiseauxListe: [
-        'Mésange',
-        'Pic vert',
-        'Moineau',
-        'Bergeronnette grise',
-        'Buse variable',
-        'Chardonneret élégant',
-        'Bruant Jaune',
-        'Paridae',
-      ],
+      user_id: '',
+      oiseauxListe: [],
     };
   }
 
   componentDidMount() {
     this._checkIfLoggedIn();
+    if (this.state.user_id !== '') {
+    }
   }
 
   _checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({id: user.uid})
+        this.setState({user_id: user.uid});
+        this._load_user_historique();
       } else {
-        console.log("no user")
+        console.log('no user');
       }
     });
+  }
+
+  _load_user_historique() {
+    console.log('loading user historique for user : ' + this.state.user_id);
+    console.log(getHistoriqueByID(this.state.user_id));
+    this.setState({oiseauxListe: ['mésange']});
   }
 
   render() {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <FlatList
-          data={this.state.oiseauxListe}
-          style={styles.FlatlistItem}
-          keyExtractor={(item) => item}
-          renderItem={({item}) => (
-            <DetailItem data={{oiseau_nom: item, root: 'HistoriqueView'}} />
-          )}
-        />
+        {this.state.user_id !== '' ? (
+          <View style={[styles.condition_container]}>
+            <Text
+              style={[
+                styles.list_header,
+                {backgroundColor: theme.secondary, color: theme.highlight},
+              ]}>
+              Liste des oiseaux détecté par votre capteur
+            </Text>
+            <FlatList
+              data={this.state.oiseauxListe}
+              style={styles.FlatlistItem}
+              keyExtractor={(item) => item}
+              renderItem={({item}) => (
+                <DetailItem data={{oiseau_nom: item, root: 'HistoriqueView'}} />
+              )}
+            />
+          </View>
+        ) : (
+          <View style={[styles.condition_container]}>
+            <Text> Please be logged and have at lease one bird </Text>
+          </View>
+        )}
       </View>
     );
   }
@@ -56,8 +72,16 @@ class HistoriqueView extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    paddingTop: 10,
+  },
+  condition_container: {
+    flex: 1,
     flexDirection: 'column',
+  },
+  list_header: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    padding: 20,
   },
   detailButton: {
     borderRadius: 5,
@@ -65,7 +89,6 @@ const styles = StyleSheet.create({
     padding: 3,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(126,211,33,0.5)',
   },
   FlatlistItem: {
     flex: 1,
