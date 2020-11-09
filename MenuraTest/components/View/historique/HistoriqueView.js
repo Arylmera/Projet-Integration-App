@@ -3,7 +3,7 @@ import {StyleSheet, View, FlatList, Text} from 'react-native';
 import DetailItem from '../details/detailItem';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-import {getHistoriqueByID} from '../../../api/oiseaux_api';
+import {getHistoriqueByID} from '../../../api/historique_api';
 
 class HistoriqueView extends React.Component {
   constructor(props) {
@@ -24,16 +24,20 @@ class HistoriqueView extends React.Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({user_id: user.uid});
-        this._load_user_historique();
+        this._load_user_historique(user);
       } else {
         console.log('no user');
       }
     });
   }
 
-  _load_user_historique() {
+  _load_user_historique(user) {
     console.log('loading user historique for user : ' + this.state.user_id);
-    console.log(getHistoriqueByID(this.state.user_id));
+    user.getIdToken(true).then((idToken) => {
+      getHistoriqueByID(this.state.user_id, idToken).then((data) =>
+        console.log(data),
+      );
+    });
     this.setState({oiseauxListe: ['mésange']});
   }
 
