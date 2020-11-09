@@ -1,5 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text, FlatList, TouchableOpacity, PermissionsAndroid} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  PermissionsAndroid,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {BleManager} from 'react-native-ble-plx';
 import BlueTooth_Item from './bluetoothItem';
@@ -56,9 +63,10 @@ class Bluetooth extends React.Component {
     console.log('searching Bluetooth devices');
     const subscription = this.state.bl_manager.onStateChange((state) => {
       if (state === 'PoweredOn') {
-        console.log('poweredOn')
-        this.requestLocationPermission().then(() => this.scan_bluetooth_device())
-        console.log('poweredOn2')
+        console.log('poweredOn');
+        //this.requestLocationPermission().then(() => this.scan_bluetooth_device())
+        this.scan_bluetooth_device();
+        console.log('poweredOn2');
         subscription.remove();
       }
     }, true);
@@ -72,7 +80,7 @@ class Bluetooth extends React.Component {
         console.log(error);
       } else {
         if (device.name != null) {
-          console.log('if device.name')
+          console.log('if device.name');
           let already_found = false;
           this.state.bl_device_list.forEach((e) => {
             if (e.name === device.name) {
@@ -80,7 +88,7 @@ class Bluetooth extends React.Component {
             }
           });
           if (!already_found) {
-            console.log('already_found')
+            console.log('already_found');
             this.setState({
               bl_device_list: this.state.bl_device_list.concat(device),
             });
@@ -103,7 +111,7 @@ class Bluetooth extends React.Component {
             style={[styles.refresh_button, {backgroundColor: theme.accent}]}>
             <View style={[styles.refresh_content_helper]}>
               <Icon
-                name="refresh"
+                name="sync"
                 size={18}
                 color={theme.highlight}
                 style={{
@@ -112,9 +120,7 @@ class Bluetooth extends React.Component {
                 }}
               />
               <Text
-                style={
-                  ([styles.refresh_button_text, {color: theme.highlight}])
-                }>
+                style={[styles.refresh_button_text, {color: theme.highlight}]}>
                 rafraichir
               </Text>
             </View>
@@ -151,6 +157,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
     flex: 1,
+    minHeight: 150,
     flexDirection: 'column',
   },
   container_header: {
@@ -159,7 +166,7 @@ const styles = StyleSheet.create({
   },
   bl_device_list: {
     flex: 3,
-    marginTop: 15,
+    marginTop: 10,
   },
   bl_device_list_unknown: {
     flex: 1,
@@ -180,6 +187,7 @@ const styles = StyleSheet.create({
   refresh_button: {
     padding: 5,
     marginTop: 5,
+    marginBottom: 5,
     borderRadius: 5,
   },
   refresh_button_text: {

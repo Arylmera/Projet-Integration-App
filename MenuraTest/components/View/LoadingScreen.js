@@ -63,14 +63,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
-  return {
-    currentStyle: state.currentStyle,
-  };
-};
-
-export default connect(mapStateToProps)(function (props) {
+export default function (props) {
   const navigation = useNavigation();
 
   return <LoadingScreen {...props} navigation={navigation} />;
-});
+}

@@ -1,32 +1,33 @@
 import React from 'react';
-import {StyleSheet, View, Text, Switch} from 'react-native';
+import {StyleSheet, View, Text, Switch, ScrollView} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Bluetooth from '../../../functions/bluetooth';
-import firebase from "firebase";
+import firebase from 'firebase';
+import Capteur from '../../../functions/capteur';
 
 class ParametresView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        id: "",
+      id: '',
       currentTheme: 'Theme',
     };
   }
 
   componentDidMount() {
-      this._checkIfLoggedIn();
+    this._checkIfLoggedIn();
   }
 
   _checkIfLoggedIn() {
-      firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-              this.setState({id: user.uid})
-          } else {
-              console.log("no user")
-          }
-      });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({id: user.uid});
+      } else {
+        console.log('no user');
+      }
+    });
   }
 
   /*
@@ -100,7 +101,15 @@ class ParametresView extends React.Component {
   render() {
     let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
+      <ScrollView style={[styles.main_container, {backgroundColor: theme.primary}]}>
+        <View
+          style={[
+            styles.capteur_component,
+            styles.lineBox,
+            {backgroundColor: theme.secondary},
+          ]}>
+          <Capteur />
+        </View>
         <View
           style={[
             styles.bluetooth_component,
@@ -168,25 +177,13 @@ class ParametresView extends React.Component {
           </View>
         </View>
         <Icon
-          name="add"
-          size={30}
-          color="#900"
-          style={{marginLeft: 'auto', marginRight: 'auto', marginTop: '5%'}}
-        />
-        <Icon
-          name="sync"
-          size={30}
-          color="#900"
-          style={{marginLeft: 'auto', marginRight: 'auto'}}
-        />
-        <Icon
           name="search"
           size={30}
           color="#900"
           style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
         <Switch style={{marginLeft: 'auto', marginRight: 'auto'}} />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -209,12 +206,13 @@ const styles = StyleSheet.create({
     maxHeight: '10%',
   },
   bluetooth_component: {
-    maxHeight: '50%',
+
   },
   theme_caption: {
     flex: 2,
     fontSize: 16,
     textAlign: 'center',
+    padding: '5%',
   },
   theme_menuBox: {
     flex: 1,

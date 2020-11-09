@@ -41,17 +41,21 @@ class BlueTooth_Item extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.accent}]}>
-        <Text style={[{color: theme.highlight}]}>{this.state.device.name}</Text>
+        <Icon name="bluetooth" size={18} color={theme.highlight} />
+        <Text style={[styles.device_name, {color: theme.highlight}]}>
+          {this.state.device.name}
+        </Text>
+        <View style={styles.flex_item_size_helper} />
         <View style={styles.connect_container}>
           {this.state.connected ? (
             <TouchableOpacity
               style={[styles.connect_button]}
               onPress={this.disconnect_from_device.bind(this)}>
               <View style={styles.connect_button_helper}>
-                <Icon name="bluetooth" size={18} color={theme.highlight} />
                 <Text style={[{color: theme.highlight}]}>
                   {this.state.status_diplay}
                 </Text>
+                <Icon name="done" size={18} color={'#008000'} />
               </View>
             </TouchableOpacity>
           ) : (
@@ -59,10 +63,10 @@ class BlueTooth_Item extends React.Component {
               style={[styles.connect_button]}
               onPress={this.connect_to_device.bind(this)}>
               <View style={styles.connect_button_helper}>
-                <Icon name="bluetooth" size={18} color={theme.highlight} />
                 <Text style={[{color: theme.highlight}]}>
                   {this.state.status_diplay}
                 </Text>
+                <Icon name="clear" size={18} color={'#DC143C'} />
               </View>
             </TouchableOpacity>
           )}
@@ -80,11 +84,17 @@ let styles = StyleSheet.create({
     padding: 5,
     margin: 5,
   },
+  flex_item_size_helper: {
+    flex: 1,
+  },
   Title: {
     flex: 1,
   },
+  device_name: {
+    flex: 2,
+  },
   connect_container: {
-    flex: 1,
+    flex: 2,
   },
   connect_button_helper: {
     flex: 1,
