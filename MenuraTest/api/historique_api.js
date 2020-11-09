@@ -10,7 +10,7 @@ export function getHistoriqueByID(id, idToken) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + idToken,
+      'Authorization': 'Bearer ' + idToken,
     },
   })
     .then((response) => response)
