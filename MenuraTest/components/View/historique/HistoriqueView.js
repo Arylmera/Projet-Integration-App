@@ -9,21 +9,17 @@ class HistoriqueView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: '',
       oiseauxListe: [],
     };
   }
 
   componentDidMount() {
     this._checkIfLoggedIn();
-    if (this.state.user_id !== '') {
-    }
   }
 
   _checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({user_id: user.uid});
         this._load_user_historique(user);
       } else {
         console.log('no user');
@@ -32,9 +28,9 @@ class HistoriqueView extends React.Component {
   }
 
   _load_user_historique(user) {
-    console.log('loading user historique for user : ' + this.state.user_id);
+    console.log('loading user historique for user : ' + user.uid);
     user.getIdToken(true).then((idToken) => {
-      getHistoriqueByID(this.state.user_id, idToken).then((data) =>
+      getHistoriqueByID(user.uid, idToken).then((data) =>
         console.log(data),
       );
     });
