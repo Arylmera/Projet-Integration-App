@@ -30,9 +30,7 @@ class HistoriqueView extends React.Component {
   _load_user_historique(user) {
     console.log('loading user historique for user : ' + user.uid);
     user.getIdToken(true).then((idToken) => {
-      getHistoriqueByID(user.uid, idToken).then((data) =>
-        console.log(data),
-      );
+      getHistoriqueByID(user.uid, idToken).then((data) => console.log(data));
     });
     this.setState({oiseauxListe: ['mésange']});
   }
@@ -41,29 +39,23 @@ class HistoriqueView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        {this.state.user_id !== '' ? (
-          <View style={[styles.condition_container]}>
-            <Text
-              style={[
-                styles.list_header,
-                {backgroundColor: theme.secondary, color: theme.highlight},
-              ]}>
-              Liste des oiseaux détecté par votre capteur
-            </Text>
-            <FlatList
-              data={this.state.oiseauxListe}
-              style={styles.FlatlistItem}
-              keyExtractor={(item) => item}
-              renderItem={({item}) => (
-                <DetailItem data={{oiseau_nom: item, root: 'HistoriqueView'}} />
-              )}
-            />
-          </View>
-        ) : (
-          <View style={[styles.condition_container]}>
-            <Text> Please be logged and have at lease one bird </Text>
-          </View>
-        )}
+        <View style={[styles.condition_container]}>
+          <Text
+            style={[
+              styles.list_header,
+              {backgroundColor: theme.secondary, color: theme.highlight},
+            ]}>
+            Liste des oiseaux détecté par votre capteur
+          </Text>
+          <FlatList
+            data={this.state.oiseauxListe}
+            style={styles.FlatlistItem}
+            keyExtractor={(item) => item}
+            renderItem={({item}) => (
+              <DetailItem data={{oiseau_nom: item, root: 'HistoriqueView'}} />
+            )}
+          />
+        </View>
       </View>
     );
   }
