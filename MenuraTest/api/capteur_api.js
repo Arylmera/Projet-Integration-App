@@ -1,4 +1,4 @@
-const url_capteur_byID = 'http://146.59.195.248:3000/v1/historiques?id=';
+const url_capteur_byID = 'http://146.59.195.248:3000/v1/capteurs?id=';
 
 /**
  *

@@ -1,4 +1,5 @@
-const url_historique_byID = 'http://146.59.195.248:3000/v1/historiques?id=';
+const url_historique_byID =
+  'http://146.59.195.248:3000/v1/historiques?utilisateur=';
 
 /**
  *
@@ -10,7 +11,7 @@ export function getHistoriqueByID(id, idToken) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + idToken,
+      Authorization: 'Bearer ' + idToken,
     },
   })
     .then((response) => response)

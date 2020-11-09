@@ -30,8 +30,14 @@ class HistoriqueView extends React.Component {
   _load_user_historique(user) {
     console.log('loading user historique for user : ' + user.uid);
     user.getIdToken(true).then((idToken) => {
-      getHistoriqueByID(user.uid, idToken).then((data) => console.log(data));
+      getHistoriqueByID(user.uid, idToken).then((data) =>
+        this._handle_data_historique(data),
+      );
     });
+  }
+
+  _handle_data_historique(data) {
+    console.log(data);
     this.setState({oiseauxListe: ['mésange']});
   }
 
