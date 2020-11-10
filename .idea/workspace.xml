@@ -5,23 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MenuraTest/__tests__/LoadingScreen_test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/clover.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/coverage-final.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/LoadingScreen.js.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/block-navigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/prettify.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/prettify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/sort-arrow-sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/sorter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/api/capteur_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/api/capteur_api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/api/historique_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/api/historique_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +113,8 @@
       <workItem from="1604706154144" duration="900000" />
       <workItem from="1604753507381" duration="13794000" />
       <workItem from="1604849646329" duration="19277000" />
-      <workItem from="1604925086349" duration="6695000" />
+      <workItem from="1604925086349" duration="14276000" />
+      <workItem from="1605006776394" duration="1889000" />
     </task>
     <servers />
   </component>
