@@ -1,4 +1,4 @@
-const url_capteur_byID = 'http://146.59.195.248:3000/v1/capteurs?id=';
+const url_capteur_byID = 'http://146.59.195.248:3000/v1/api/capteurs?id=';
 
 /**
  *
@@ -13,6 +13,6 @@ export function getCapteurListById(id, idToken) {
       Authorization: 'Bearer ' + idToken,
     },
   })
-    .then((response) => response)
+    .then((response) => response.json())
     .catch((error) => console.log(error));
 }
