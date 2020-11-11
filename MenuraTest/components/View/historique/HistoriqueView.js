@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, FlatList, Text} from 'react-native';
-import DetailItem from '../details/detailItem';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 import {getHistoriqueByID} from '../../../api/historique_api';
+import HistoriqueItem from './historiqueItem';
 
 class HistoriqueView extends React.Component {
   constructor(props) {
@@ -13,10 +13,17 @@ class HistoriqueView extends React.Component {
     };
   }
 
+  /**
+   * chargement du component
+   */
   componentDidMount() {
     this._checkIfLoggedIn();
   }
 
+  /**
+   * check si l'utilisateur est connécté et récupère ces info
+   * @private
+   */
   _checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -27,6 +34,11 @@ class HistoriqueView extends React.Component {
     });
   }
 
+  /**
+   *
+   * @param user
+   * @private
+   */
   _load_user_historique(user) {
     console.log('loading user historique for user : ' + user.uid);
     user.getIdToken(true).then((idToken) => {
@@ -36,11 +48,20 @@ class HistoriqueView extends React.Component {
     });
   }
 
+  /**
+   * gestion des données recu par la requete get
+   * @param data
+   * @private
+   */
   _handle_data_historique(data) {
-    console.log(data);
-    this.setState({oiseauxListe: ['mésange']});
+    console.log(data.data);
+    this.setState({oiseauxListe: data.data});
   }
 
+  /**
+   * render
+   * @return {JSX.Element}
+   */
   render() {
     let theme = this.props.currentStyle;
     return (
@@ -58,7 +79,7 @@ class HistoriqueView extends React.Component {
             style={styles.FlatlistItem}
             keyExtractor={(item) => item}
             renderItem={({item}) => (
-              <DetailItem data={{oiseau_nom: item, root: 'HistoriqueView'}} />
+              <HistoriqueItem data={{oiseau: item, root: 'HistoriqueView'}} />
             )}
           />
         </View>

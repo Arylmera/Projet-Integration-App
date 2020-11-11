@@ -3,8 +3,9 @@ const url_historique_byID =
 
 /**
  *
- * @param id
  * @return {Promise<Response | void>}
+ * @param utilisateur
+ * @param idToken
  */
 export function getHistoriqueByID(utilisateur, idToken) {
   return fetch(url_historique_byID + utilisateur, {
