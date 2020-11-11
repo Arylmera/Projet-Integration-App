@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MenuraTest/__mocks__/@react-native-community/async-storage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuraTest/jestSetupFile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/__tests__/App-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/__tests__/App-test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +88,11 @@
       <workItem from="1603965154416" duration="3123000" />
       <workItem from="1604137990194" duration="9000" />
       <workItem from="1604395608385" duration="696000" />
-      <workItem from="1604398755019" duration="1716000" />
+      <workItem from="1604398755019" duration="2197000" />
+      <workItem from="1604694007740" duration="939000" />
+      <workItem from="1604753623699" duration="163000" />
+      <workItem from="1604764685294" duration="818000" />
+      <workItem from="1605003616806" duration="57000" />
     </task>
     <servers />
   </component>
