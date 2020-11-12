@@ -127,7 +127,7 @@ class Bluetooth extends React.Component {
             </Text>
             <TouchableOpacity
               onPress={this.scan_device.bind(this)}
-              style={[styles.refresh_button, {backgroundColor: theme.accent}]}>
+              style={[styles.refresh_button, {backgroundColor: theme.primary}]}>
               <View style={[styles.refresh_content_helper]}>
                 <Icon
                   name="sync"
@@ -222,6 +222,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     borderRadius: 5,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
   },
   refresh_button_text: {
     textAlign: 'center',

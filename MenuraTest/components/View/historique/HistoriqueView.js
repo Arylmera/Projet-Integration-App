@@ -70,7 +70,7 @@ class HistoriqueView extends React.Component {
           <Text
             style={[
               styles.list_header,
-              {backgroundColor: theme.secondary, color: theme.highlight},
+              {backgroundColor: theme.primary, color: theme.highlight},
             ]}>
             Liste des oiseaux détecté par votre capteur
           </Text>
@@ -101,6 +101,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     padding: 20,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 3,
   },
   detailButton: {
     borderRadius: 5,
@@ -111,8 +117,9 @@ const styles = StyleSheet.create({
   },
   FlatlistItem: {
     flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 5,
   },
 });
 

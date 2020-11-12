@@ -86,6 +86,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     textAlign: 'center',
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 4,
   },
   context_text: {
     fontSize: 18,

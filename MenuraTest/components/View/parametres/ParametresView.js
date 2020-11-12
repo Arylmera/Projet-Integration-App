@@ -101,7 +101,8 @@ class ParametresView extends React.Component {
   render() {
     let theme = this.props.currentStyle;
     return (
-      <ScrollView style={[styles.main_container, {backgroundColor: theme.primary}]}>
+      <ScrollView
+        style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <View
           style={[
             styles.capteur_component,
@@ -127,7 +128,7 @@ class ParametresView extends React.Component {
           <Text style={[styles.theme_caption, {color: theme.highlight}]}>
             Choix du thème :
           </Text>
-          <View style={[styles.theme_menuBox, {backgroundColor: theme.accent}]}>
+          <View style={[styles.theme_menuBox, {backgroundColor: theme.primary}]}>
             <Menu
               style={styles.theme_menu}
               ref={this.setMenuRef}
@@ -145,7 +146,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemeWinter.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Hiver</Text>
               </MenuItem>
@@ -153,7 +154,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemeAutomne.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Automne</Text>
               </MenuItem>
@@ -161,7 +162,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemePrintemps.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Printemps</Text>
               </MenuItem>
@@ -169,7 +170,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemeEte.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Eté</Text>
               </MenuItem>
@@ -201,13 +202,17 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin: '5%',
     marginBottom: 0,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 3,
   },
   theme_component: {
     maxHeight: '10%',
   },
-  bluetooth_component: {
-
-  },
+  bluetooth_component: {},
   theme_caption: {
     flex: 2,
     fontSize: 16,

@@ -27,9 +27,24 @@ class HistoriqueItem extends React.Component {
           <Text style={[styles.Title, {color: theme.highlight}]}>
             {oiseaux.oiseau}
           </Text>
-          <Text style={[styles.localisation, {color: theme.highlight}]}>
-            Localisation: {oiseaux.localisation}
-          </Text>
+          {oiseaux.date ? (
+            <Text style={[styles.date, {color: theme.highlight}]}>
+              Date: {oiseaux.date}
+            </Text>
+          ) : (
+            <Text style={[styles.date, {color: theme.highlight}]}>
+              Aucune date disponible
+            </Text>
+          )}
+          {oiseaux.localisation ? (
+            <Text style={[styles.localisation, {color: theme.highlight}]}>
+              Localisation: {oiseaux.localisation}
+            </Text>
+          ) : (
+            <Text style={[styles.localisation, {color: theme.highlight}]}>
+              Aucun emplacement disponible
+            </Text>
+          )}
           <Text style={[styles.capteur, {color: theme.highlight}]}>
             Capteur: {oiseaux.capteur}
           </Text>
@@ -55,6 +70,9 @@ let styles = StyleSheet.create({
   Title: {
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  date: {
+    fontSize: 15,
   },
   localisation: {
     fontSize: 15,
