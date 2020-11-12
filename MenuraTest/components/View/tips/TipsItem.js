@@ -15,12 +15,12 @@ class TipsItem extends React.Component {
     const tips = this.props.data.infos_saison.tips;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.secondary}]}>
-        <View style={[styles.saison, {backgroundColor: theme.accent}]}>
+        <View style={[styles.saison, {backgroundColor: theme.secondary}]}>
           <Text style={[styles.saison_text, {color: theme.highlight}]}>
             {saison}
           </Text>
         </View>
-        <Divider />
+        <Divider style={[{backgroundColor: theme.highlight}]} />
         <Text
           style={[
             styles.item,

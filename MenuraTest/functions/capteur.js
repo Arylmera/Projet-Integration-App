@@ -123,11 +123,12 @@ class Capteur extends React.Component {
             <View
               style={[
                 styles.add_capteur_container,
-                {backgroundColor: theme.accent, color: theme.highlight},
+                {backgroundColor: theme.primary, color: theme.highlight},
               ]}>
               <Text style={{color: theme.highlight}}>Adresse MAC :</Text>
               <TextInput
                 placeholder="FF:FF:FF:FF:FF:FF"
+                placeholderTextColor={theme.highlight}
                 autocorrect={false}
                 ref={this.mac_add_input}
                 onChangeText={(mac_adresse) =>
@@ -139,12 +140,12 @@ class Capteur extends React.Component {
                 onPress={this._add_capteur.bind(this)}
                 style={[
                   styles.add_capteur_button,
-                  {backgroundColor: theme.accent},
+                  {backgroundColor: theme.highlight},
                 ]}>
                 <Icon
                   name="add"
                   size={18}
-                  color={theme.highlight}
+                  color={theme.primary}
                   style={{
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -221,6 +222,12 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 0,
     width: '90%',
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
   },
   add_capteur_button: {
     padding: 5,

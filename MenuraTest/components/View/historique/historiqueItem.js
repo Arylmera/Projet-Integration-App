@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class HistoriqueItem extends React.Component {
   constructor(props) {
@@ -27,12 +28,89 @@ class HistoriqueItem extends React.Component {
           <Text style={[styles.Title, {color: theme.highlight}]}>
             {oiseaux.oiseau}
           </Text>
-          <Text style={[styles.localisation, {color: theme.highlight}]}>
-            Localisation: {oiseaux.localisation}
-          </Text>
-          <Text style={[styles.capteur, {color: theme.highlight}]}>
-            Capteur: {oiseaux.capteur}
-          </Text>
+          <View style={[styles.info_bloc, {backgroundColor: theme.accent}]}>
+            {oiseaux.date ? (
+              <View style={styles.info_line}>
+                <Icon
+                  name="query-builder"
+                  size={18}
+                  color={theme.highlight}
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingRight: 10,
+                  }}
+                />
+                <Text style={[styles.date, {color: theme.highlight}]}>
+                  Date: {oiseaux.date}
+                </Text>
+              </View>
+            ) : (
+              <View style={styles.info_line}>
+                <Icon
+                  name="query-builder"
+                  size={18}
+                  color={theme.highlight}
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingRight: 10,
+                  }}
+                />
+                <Text style={[styles.date, {color: theme.highlight}]}>
+                  Aucune date disponible
+                </Text>
+              </View>
+            )}
+            {oiseaux.localisation ? (
+              <View style={styles.info_line}>
+                <Icon
+                  name="home"
+                  size={18}
+                  color={theme.highlight}
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingRight: 10,
+                  }}
+                />
+                <Text style={[styles.localisation, {color: theme.highlight}]}>
+                  Localisation: {oiseaux.localisation}
+                </Text>
+              </View>
+            ) : (
+              <View style={styles.info_line}>
+                <Icon
+                  name="hearing"
+                  size={18}
+                  color={theme.highlight}
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    paddingRight: 10,
+                  }}
+                />
+                <Text style={[styles.localisation, {color: theme.highlight}]}>
+                  Aucun emplacement disponible
+                </Text>
+              </View>
+            )}
+            <View style={styles.info_line}>
+              <Icon
+                name="hearing"
+                size={18}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingRight: 10,
+                }}
+              />
+              <Text style={[styles.capteur, {color: theme.highlight}]}>
+                Capteur: {oiseaux.capteur}
+              </Text>
+            </View>
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -52,9 +130,22 @@ let styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 3,
   },
+  info_bloc: {
+    marginTop: 15,
+    padding: 10,
+    borderRadius: 5,
+    paddingLeft: 35,
+    paddingRight: 35,
+  },
+  info_line: {
+    flexDirection: 'row',
+  },
   Title: {
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  date: {
+    fontSize: 15,
   },
   localisation: {
     fontSize: 15,

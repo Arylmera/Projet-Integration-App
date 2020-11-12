@@ -41,7 +41,7 @@ class Capteur_Item extends React.Component {
   render() {
     let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.accent}]}>
+      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <Text style={[styles.capteur_id, {color: theme.highlight}]}>
           <Text style={styles.capteur_id_text}>
             Capteur :{this.state.capteur.macAddress}
@@ -69,6 +69,12 @@ let styles = StyleSheet.create({
     borderRadius: 5,
     padding: 5,
     margin: 5,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+    elevation: 1,
   },
   capteur_id: {
     flex: 3,

@@ -1,11 +1,10 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {useNavigation, CommonActions} from '@react-navigation/native';
 import ViewNavigator from './ViewNavigator';
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import ProfilNavigator from './ProfilNavigator';
 import {connect} from 'react-redux';
-import LoadingNavigator from "./LoadingNavigator";
+import LoadingNavigator from './LoadingNavigator';
+import HeaderIcon from '../../functions/headerIcon';
 
 const Stack = createStackNavigator();
 
@@ -26,25 +25,19 @@ class HeaderNavigator extends React.Component {
           headerTintColor: theme.highlight,
           headerStyle: {
             backgroundColor: theme.primary,
-            // eslint-disable-next-line no-undef
-            ...Platform.select({
-              ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: {height: 0, width: 0},
-                shadowOpacity: 1,
-                shadowRadius: 5,
-              },
-              android: {
-                elevation: 5,
-              },
-            }),
+            // shadow
+            shadowColor: 'rgba(0,0,0, .7)',
+            shadowOffset: {height: 0, width: 0},
+            shadowOpacity: 0.5,
+            shadowRadius: 4,
+            elevation: 4,
           },
         }}>
         <Stack.Screen
           name="LoadingScreen"
           component={LoadingNavigator}
           options={{
-              headerShown: false,
+            headerShown: false,
           }}
         />
         <Stack.Screen
@@ -52,7 +45,7 @@ class HeaderNavigator extends React.Component {
           component={ViewNavigator}
           options={{
             title: this.state.title,
-            headerRight: () => <HeaderRight />,
+            headerRight: () => <HeaderIcon data={{theme: theme}} />,
             headerLeft: () => {
               return null;
             },
@@ -69,36 +62,6 @@ class HeaderNavigator extends React.Component {
     );
   }
 }
-
-const HeaderRight = () => {
-  const navigation = useNavigation();
-
-  return (
-    <View style={styles.headerIcon}>
-      <TouchableOpacity
-        style={{marginRight: 5}}
-        onPress={() => {
-          navigation.dispatch(CommonActions.navigate('Profil'));
-        }}>
-        <Image
-          source={require('../../assets/images/profileIcon.png')}
-          style={styles.profileIcon}
-        />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-let styles = StyleSheet.create({
-  headerIcon: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  profileIcon: {
-    width: 40,
-    height: 40,
-  },
-});
 
 const mapStateToProps = (state) => {
   return {

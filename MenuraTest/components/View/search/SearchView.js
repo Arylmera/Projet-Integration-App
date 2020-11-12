@@ -53,8 +53,12 @@ class SearchView extends React.Component {
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <View style={[styles.search_container]}>
           <TextInput
-            style={[styles.textinput, {borderColor: theme.highlight, backgroundColor: theme.primary}]}
+            style={[
+              styles.textinput,
+              {backgroundColor: theme.secondary, color: theme.highlight},
+            ]}
             placeholder="Entrez un nom d'oiseau"
+            placeholderTextColor={theme.highlight}
             onChangeText={(text) => this._searchTextInputChanged(text)}
             onSubmitEditing={() => this._loadOiseaux()}
           />
@@ -104,9 +108,14 @@ let styles = StyleSheet.create({
     marginRight: 5,
     marginTop: 5,
     height: 50,
-    borderWidth: 1.5,
     borderRadius: 10,
     paddingLeft: 10,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 4,
   },
   loading_placeholder: {
     flex: 1,
