@@ -1,5 +1,5 @@
 
-# Sprint Review  1
+# Sprint Review  1 (Guillaume)
 
 ## Fonctionnalités terminées
 
