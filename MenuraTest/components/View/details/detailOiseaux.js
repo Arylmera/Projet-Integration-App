@@ -419,7 +419,7 @@ class DetailOiseaux extends React.Component {
               Veuillez nous excuser{' '}
             </Text>
             <Text style={[styles.error_text, {color: theme.highlight}]}>
-              aucune information n'a trouvée pour cette oiseau
+              aucune information n'a été trouvée pour cet oiseau
             </Text>
           </View>
         )}
