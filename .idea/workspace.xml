@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/coverage/clover.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/coverage/clover.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/coverage/coverage-final.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/coverage/coverage-final.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/LoadingScreen.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/LoadingScreen.js.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov-report/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/coverage/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/coverage/lcov.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +91,7 @@
       <workItem from="1603964021653" duration="34000" />
       <workItem from="1605175840187" duration="731000" />
       <workItem from="1605200980463" duration="447000" />
-      <workItem from="1605203715888" duration="999000" />
+      <workItem from="1605203715888" duration="2237000" />
     </task>
     <servers />
   </component>

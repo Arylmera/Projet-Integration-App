@@ -18,7 +18,6 @@ import { SearchBar } from 'react-native-elements';
 class SearchView extends React.Component {
   constructor(props) {
     super(props);
-    this.searchedText = '';
     this.state = {
       oiseauxListe: [],
       oiseauxListeNom: [],
@@ -27,19 +26,15 @@ class SearchView extends React.Component {
     };
   }
 
+  /**
+   *Récupere le text du TextInput et attribue la valeur search à search
+   * @param search
+   * @private
+   */
   updateSearch = (search) => {
     this.setState({ search });
   };
-
-  /**
-   *Récupere le text du TextInput et attribue la valeur text a searchedText
-   * @param text
-   * @private
-   */
-  _searchTextInputChanged(text) {
-    this.searchedText = text;
-  }
-
+  
   _loadOiseaux() {
     if (this.state.search.length > 0) {
       getOiseaux(this.state.search).then((data) => {
@@ -66,6 +61,7 @@ class SearchView extends React.Component {
                 styles.textinput,
                 {backgroundColor: theme.secondary, color: theme.highlight},
               ]}
+              //inputStyle={{backgroundColor: theme.secondary, color: theme.highlight}}
               placeholder="Entrez un nom d'oiseau"
               placeholderTextColor={theme.highlight}
               onChangeText={this.updateSearch}
