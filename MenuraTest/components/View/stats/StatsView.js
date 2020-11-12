@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import firebase from "firebase";
-import {connect} from "react-redux";
+import firebase from 'firebase';
+import {connect} from 'react-redux';
 
 class StatsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      id: '',
     };
   }
 
@@ -18,16 +18,17 @@ class StatsView extends React.Component {
   _checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({id: user.uid})
+        this.setState({id: user.uid});
       } else {
-        console.log("no user")
+        console.log('no user');
       }
     });
   }
 
   render() {
+    let theme = this.props.currentStyle;
     return (
-      <View style={styles.main_container}>
+      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <Text>Stats Works</Text>
       </View>
     );

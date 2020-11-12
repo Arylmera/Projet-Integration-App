@@ -128,7 +128,8 @@ class ParametresView extends React.Component {
           <Text style={[styles.theme_caption, {color: theme.highlight}]}>
             Choix du thème :
           </Text>
-          <View style={[styles.theme_menuBox, {backgroundColor: theme.primary}]}>
+          <View
+            style={[styles.theme_menuBox, {backgroundColor: theme.primary}]}>
             <Menu
               style={styles.theme_menu}
               ref={this.setMenuRef}
@@ -177,17 +178,20 @@ class ParametresView extends React.Component {
             </Menu>
           </View>
         </View>
-        <Icon
+      </ScrollView>
+    );
+  }
+}
+
+/*
+<Icon
           name="search"
           size={30}
           color="#900"
           style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
         <Switch style={{marginLeft: 'auto', marginRight: 'auto'}} />
-      </ScrollView>
-    );
-  }
-}
+ */
 
 const styles = StyleSheet.create({
   main_container: {
@@ -218,6 +222,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     padding: '5%',
+    height: '100%',
   },
   theme_menuBox: {
     flex: 1,

@@ -128,6 +128,7 @@ class Capteur extends React.Component {
               <Text style={{color: theme.highlight}}>Adresse MAC :</Text>
               <TextInput
                 placeholder="FF:FF:FF:FF:FF:FF"
+                placeholderTextColor={theme.highlight}
                 autocorrect={false}
                 ref={this.mac_add_input}
                 onChangeText={(mac_adresse) =>

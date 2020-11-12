@@ -55,7 +55,7 @@ class TipsView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <View style={[styles.context, {backgroundColor: theme.secondary}]}>
+        <View style={[styles.context, {backgroundColor: theme.accent}]}>
           <Text
             style={[styles.context_text, {color: theme.highlight}]}
             testID={'text'}>
@@ -80,9 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   context: {
-    margin: 10,
-    borderRadius: 5,
-    padding: 10,
+    padding: 15,
     textAlign: 'center',
     // shadow
     shadowColor: 'rgba(0,0,0, .7)',
@@ -93,6 +91,7 @@ const styles = StyleSheet.create({
   },
   context_text: {
     fontSize: 18,
+    width: '100%',
   },
   tips_list: {
     marginLeft: 5,

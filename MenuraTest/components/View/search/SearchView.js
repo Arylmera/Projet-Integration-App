@@ -55,9 +55,10 @@ class SearchView extends React.Component {
           <TextInput
             style={[
               styles.textinput,
-              {backgroundColor: theme.primary},
+              {backgroundColor: theme.secondary, color: theme.highlight},
             ]}
             placeholder="Entrez un nom d'oiseau"
+            placeholderTextColor={theme.highlight}
             onChangeText={(text) => this._searchTextInputChanged(text)}
             onSubmitEditing={() => this._loadOiseaux()}
           />

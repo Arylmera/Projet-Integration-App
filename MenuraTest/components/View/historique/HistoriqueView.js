@@ -70,14 +70,14 @@ class HistoriqueView extends React.Component {
           <Text
             style={[
               styles.list_header,
-              {backgroundColor: theme.primary, color: theme.highlight},
+              {backgroundColor: theme.accent, color: theme.highlight},
             ]}>
             Liste des oiseaux détecté par votre capteur
           </Text>
           <FlatList
             data={this.state.oiseauxListe}
             style={styles.FlatlistItem}
-            keyExtractor={(item) => item}
+            keyExtractor={(item) => item.idhistoriques}
             renderItem={({item}) => (
               <HistoriqueItem data={{oiseau: item, root: 'HistoriqueView'}} />
             )}

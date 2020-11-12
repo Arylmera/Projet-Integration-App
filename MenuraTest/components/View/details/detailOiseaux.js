@@ -356,9 +356,9 @@ class DetailOiseaux extends React.Component {
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <TouchableOpacity
-          style={[styles.touchableOpacity, theme.secondary]}
+          style={[styles.touchableOpacity]}
           onPress={() => navigation.navigate(this.props.route.params.root)}>
-          <Icon name="keyboard-arrow-left" size={35} color={theme.accent} />
+          <Icon name="keyboard-arrow-left" size={35} color={theme.highlight} />
         </TouchableOpacity>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
@@ -378,11 +378,11 @@ class DetailOiseaux extends React.Component {
                   source={{uri: this.state.image}}
                 />
               ) : null}
-              <Text style={styles.Title}>
+              <Text style={[styles.Title, {color: theme.highlight}]}>
                 {this.state.wikiInfo.displaytitle}
               </Text>
               {this.state.oiseaux_latin ? (
-                <Text style={styles.Title_latin}>
+                <Text style={[styles.Title_latin, {color: theme.highlight}]}>
                   {this.state.oiseaux_latin}
                 </Text>
               ) : null}

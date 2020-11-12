@@ -27,8 +27,8 @@ class ViewNavigator extends React.Component {
         tabBarOptions={{
           activeTintColor: theme.highlight,
           activeBackgroundColor: theme.primary,
-          inactiveTintColor: theme.primary,
-          inactiveBackgroundColor: theme.highlight,
+          inactiveTintColor: theme.highlight,
+          inactiveBackgroundColor: theme.accent,
           showIcon: true,
           labelStyle: {
             fontSize: 13,
@@ -47,7 +47,7 @@ class ViewNavigator extends React.Component {
           },
         }}>
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="StatsView"
           component={StatsView}
           options={{
@@ -56,7 +56,7 @@ class ViewNavigator extends React.Component {
               <Icon
                 name="view-week"
                 size={35}
-                color={theme.accent}
+                color={theme.highlight}
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -67,7 +67,7 @@ class ViewNavigator extends React.Component {
           }}
         />
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="SearchNavigator"
           component={SearchNavigator}
           options={{
@@ -76,7 +76,7 @@ class ViewNavigator extends React.Component {
               <Icon
                 name="search"
                 size={33}
-                color={theme.accent}
+                color={theme.highlight}
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -87,7 +87,7 @@ class ViewNavigator extends React.Component {
           }}
         />
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="HistoriqueView"
           component={HistoriqueNavigator}
           options={{
@@ -96,7 +96,7 @@ class ViewNavigator extends React.Component {
               <Icon
                 name="list"
                 size={40}
-                color={theme.accent}
+                color={theme.highlight}
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -107,7 +107,7 @@ class ViewNavigator extends React.Component {
           }}
         />
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="TipsView"
           component={TipsView}
           options={{
@@ -116,7 +116,7 @@ class ViewNavigator extends React.Component {
               <Icon
                 name="info"
                 size={28}
-                color={theme.accent}
+                color={theme.highlight}
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
@@ -127,7 +127,7 @@ class ViewNavigator extends React.Component {
           }}
         />
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="ParametresView"
           component={ParametresView}
           options={{
@@ -136,7 +136,7 @@ class ViewNavigator extends React.Component {
               <Icon
                 name="build"
                 size={27}
-                color={theme.accent}
+                color={theme.highlight}
                 style={{
                   justifyContent: 'center',
                   alignItems: 'center',
