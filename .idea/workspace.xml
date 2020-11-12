@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/api/capteur_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/api/capteur_api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/api/historique_api.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/api/historique_api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ResetPasswordProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ResetPasswordProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +117,7 @@
       <workItem from="1604753507381" duration="13794000" />
       <workItem from="1604849646329" duration="19277000" />
       <workItem from="1604925086349" duration="14276000" />
-      <workItem from="1605006776394" duration="1889000" />
+      <workItem from="1605006776394" duration="5395000" />
     </task>
     <servers />
   </component>

@@ -149,11 +149,13 @@ class ProfilView extends React.Component {
           onPress={() => this._askUpdatePassword()}>
           <Text>modifier mot de passe</Text>
         </TouchableOpacity>
+
         <Modal visible={this.state.updatePasswordModal}>
+          <ScrollView>
           <Text style={[styles.text]}>Mot de passe actuel:</Text>
           <TextInput
             style={[styles.textinput, {marginTop: 20}]}
-            placeholder="mot de passe"
+            placeholder="mot de passe actuel"
             secureTextEntry={true}
             onChangeText={(password) =>
               this._passwordTextInputChanged(password)
@@ -162,7 +164,7 @@ class ProfilView extends React.Component {
           <Text style={[styles.text]}>Nouveau mot de passe:</Text>
           <TextInput
             style={[styles.textinput, {marginTop: 20}]}
-            placeholder="mot de passe"
+            placeholder="nouveau mot de passe"
             onChangeText={(newPassword) =>
               this._newPasswordTextInputChanged(newPassword)
             }
@@ -177,6 +179,7 @@ class ProfilView extends React.Component {
             onPress={() => this.setState({updatePasswordModal: false})}>
             <Text style={{color: '#ffffff'}}>Annuler</Text>
           </TouchableOpacity>
+          </ScrollView>
         </Modal>
         <TouchableOpacity
           style={[styles.button, {backgroundColor: theme.secondary}]}
@@ -184,6 +187,7 @@ class ProfilView extends React.Component {
           <Text>déconnexion</Text>
         </TouchableOpacity>
         <Modal visible={this.state.deconnexionModal}>
+          <ScrollView>
           <Text style={[styles.text]}>
             Voulez vous vraiment vous déconnecter ?
           </Text>
@@ -197,6 +201,7 @@ class ProfilView extends React.Component {
               onPress={() => this.setState({deconnexionModal: false})}>
             <Text style={{color: '#ffffff'}}>Annuler</Text>
           </TouchableOpacity>
+          </ScrollView>
         </Modal>
         <TouchableOpacity
           style={[styles.button, {backgroundColor: theme.secondary}]}
@@ -204,6 +209,7 @@ class ProfilView extends React.Component {
           <Text>supprimer compte</Text>
         </TouchableOpacity>
         <Modal visible={this.state.deleteAccountModal}>
+          <ScrollView>
           <Text style={[styles.text]}>
             Attention cette action supprime définitivement votre compte !
           </Text>
@@ -228,6 +234,7 @@ class ProfilView extends React.Component {
             onPress={() => this.setState({deleteAccountModal: false})}>
             <Text style={{color: '#ffffff'}}>Annuler</Text>
           </TouchableOpacity>
+          </ScrollView>
         </Modal>
       </ScrollView>
     );

@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
@@ -15,8 +16,8 @@ class ResetPasswordProfilView extends React.Component {
     super(props);
     this.email = '';
     this.state = {
-      errorMessage: "",
-      borderEmail: "#b8b8b8"
+      errorMessage: '',
+      borderEmail: '#b8b8b8',
     };
   }
 
@@ -34,32 +35,31 @@ class ResetPasswordProfilView extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-        this.setState({errorMessage: error.message, borderEmail: '#c20000'})
+        this.setState({errorMessage: error.message, borderEmail: '#c20000'});
       });
   }
 
   render() {
     const {navigation} = this.props;
     return (
-      <View style={styles.main_container}>
-        <TextInput
-          style={[styles.textInput, {borderColor: this.state.borderEmail}]}
-          placeholder="email"
-          onChangeText={(email) => this._emailTextInputChanged(email)}
-          onFocus={() => this.setState({borderEmail: '#000000'})}
-          onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
-        />
-        <Text
-            style={styles.errorText}
-        >
-          {this.state.errorMessage}
-        </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this._resetPassword(this.email, navigation)}>
-          <Text>Reset par email</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View style={styles.main_container}>
+          <TextInput
+            style={[styles.textInput, {borderColor: this.state.borderEmail}]}
+            placeholder="email"
+            keyboardType="email-address"
+            onChangeText={(email) => this._emailTextInputChanged(email)}
+            onFocus={() => this.setState({borderEmail: '#000000'})}
+            onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
+          />
+          <Text style={styles.errorText}>{this.state.errorMessage}</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this._resetPassword(this.email, navigation)}>
+            <Text>Reset par email</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   errorText: {
     marginLeft: 25,
     marginTop: 10,
-    color: '#c20000'
+    color: '#c20000',
   },
 });
 
