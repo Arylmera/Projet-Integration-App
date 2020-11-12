@@ -1,15 +1,33 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Switch, ScrollView} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Bluetooth from '../../../functions/bluetooth';
+import firebase from 'firebase';
+import Capteur from '../../../functions/capteur';
 
 class ParametresView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       currentTheme: 'Theme',
     };
+  }
+
+  componentDidMount() {
+    this._checkIfLoggedIn();
+  }
+
+  _checkIfLoggedIn() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({id: user.uid});
+      } else {
+        console.log('no user');
+      }
+    });
   }
 
   /*
@@ -83,12 +101,35 @@ class ParametresView extends React.Component {
   render() {
     let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <View style={[styles.lineBox, {backgroundColor: theme.secondary}]}>
+      <ScrollView
+        style={[styles.main_container, {backgroundColor: theme.primary}]}>
+        <View
+          style={[
+            styles.capteur_component,
+            styles.lineBox,
+            {backgroundColor: theme.secondary},
+          ]}>
+          <Capteur />
+        </View>
+        <View
+          style={[
+            styles.bluetooth_component,
+            styles.lineBox,
+            {backgroundColor: theme.secondary},
+          ]}>
+          <Bluetooth />
+        </View>
+        <View
+          style={[
+            styles.lineBox,
+            styles.theme_component,
+            {backgroundColor: theme.secondary},
+          ]}>
           <Text style={[styles.theme_caption, {color: theme.highlight}]}>
             Choix du thème :
           </Text>
-          <View style={[styles.theme_menuBox, {backgroundColor: theme.accent}]}>
+          <View
+            style={[styles.theme_menuBox, {backgroundColor: theme.primary}]}>
             <Menu
               style={styles.theme_menu}
               ref={this.setMenuRef}
@@ -106,7 +147,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemeWinter.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Hiver</Text>
               </MenuItem>
@@ -114,7 +155,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemeAutomne.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Automne</Text>
               </MenuItem>
@@ -122,7 +163,7 @@ class ParametresView extends React.Component {
                 onPress={this._setThemePrintemps.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Printemps</Text>
               </MenuItem>
@@ -130,23 +171,27 @@ class ParametresView extends React.Component {
                 onPress={this._setThemeEte.bind(this)}
                 style={[
                   styles.theme_menu_entry,
-                  {backgroundColor: theme.secondary},
+                  {backgroundColor: theme.primary},
                 ]}>
                 <Text style={{color: theme.highlight}}>Eté</Text>
               </MenuItem>
             </Menu>
           </View>
         </View>
-        <Icon
-          name="add"
+      </ScrollView>
+    );
+  }
+}
+
+/*
+<Icon
+          name="search"
           size={30}
           color="#900"
           style={{marginLeft: 'auto', marginRight: 'auto'}}
         />
-      </View>
-    );
-  }
-}
+        <Switch style={{marginLeft: 'auto', marginRight: 'auto'}} />
+ */
 
 const styles = StyleSheet.create({
   main_container: {
@@ -156,16 +201,28 @@ const styles = StyleSheet.create({
   },
   lineBox: {
     flex: 1,
-    maxHeight: '10%',
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 15,
     margin: '5%',
+    marginBottom: 0,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 3,
   },
+  theme_component: {
+    maxHeight: '10%',
+  },
+  bluetooth_component: {},
   theme_caption: {
     flex: 2,
     fontSize: 16,
     textAlign: 'center',
+    padding: '5%',
+    height: '100%',
   },
   theme_menuBox: {
     flex: 1,

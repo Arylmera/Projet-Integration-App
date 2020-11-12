@@ -6,6 +6,42 @@
   <component name="ChangeListManager">
     <list default="true" id="eea32181-9068-4d77-8b42-95368cc975eb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/Store/Reducers/StyleSheetReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/Store/Reducers/StyleSheetReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/Store/configureStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/Store/configureStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/java/com/menuratest/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/java/com/menuratest/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/api/oiseauxList_api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/api/utilisateur_api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/HeaderNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/HeaderNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/ViewNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/ViewNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/LoadingScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/LoadingScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/details/detailOiseaux.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/details/detailOiseaux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/parametres/ParametresView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ResetPasswordProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ResetPasswordProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/connexionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/Images.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/Images.xcassets/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/Images.xcassets/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/MenuraTest/LaunchScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SprintsReview/SprintReview-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/SprintsReview/SprintReview-1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SprintsReview/SprintReview-2.md" beforeDir="false" afterPath="$PROJECT_DIR$/SprintsReview/SprintReview-2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +69,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Site-perso/MenuraTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -42,7 +78,7 @@
       <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -85,11 +121,13 @@
       <workItem from="1603963188303" duration="110000" />
       <workItem from="1603963331015" duration="256000" />
       <workItem from="1603964021653" duration="34000" />
+      <workItem from="1605175840187" duration="731000" />
+      <workItem from="1605200980463" duration="305000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603900251906">

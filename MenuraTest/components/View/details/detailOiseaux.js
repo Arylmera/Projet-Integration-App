@@ -11,9 +11,7 @@ import {
 import {getWikiInfo, getWTFWikipedia} from '../../../api/wikiapi';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
-
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faAngleLeft, faFileAlt} from '@fortawesome/free-solid-svg-icons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class DetailOiseaux extends React.Component {
   /**
@@ -205,11 +203,16 @@ class DetailOiseaux extends React.Component {
               {backgroundColor: theme.secondary},
             ]}>
             <Text style={[styles.infoBox_Title, {color: theme.highlight}]}>
-              <FontAwesomeIcon
-                icon={faFileAlt}
+              <Icon
+                name="insert-drive-file"
                 size={15}
-                style={{color: theme.highlight}}
-              />{' '}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 5,
+                }}
+              />
               Classification
             </Text>
             <View style={styles.infoBox_class}>
@@ -271,11 +274,16 @@ class DetailOiseaux extends React.Component {
               {backgroundColor: theme.secondary},
             ]}>
             <Text style={[styles.infoBox_Title, {color: theme.highlight}]}>
-              <FontAwesomeIcon
-                icon={faFileAlt}
+              <Icon
+                name="insert-drive-file"
                 size={15}
-                style={{color: theme.highlight}}
-              />{' '}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 5,
+                }}
+              />
               Classification
             </Text>
             <View style={[styles.infoBox_class]}>
@@ -348,13 +356,13 @@ class DetailOiseaux extends React.Component {
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <TouchableOpacity
-          style={[styles.touchableOpacity, theme.secondary]}
+          style={[styles.touchableOpacity]}
           onPress={() => navigation.navigate(this.props.route.params.root)}>
-          <FontAwesomeIcon icon={faAngleLeft} size={25} />
+          <Icon name="keyboard-arrow-left" size={35} color={theme.highlight} />
         </TouchableOpacity>
         {this.state.isLoading ? (
           <View style={styles.loading_container}>
-            <ActivityIndicator size="large" />
+            <ActivityIndicator size="large" color="#000000" />
           </View>
         ) : this.state.dataFound ? (
           <ScrollView
@@ -370,11 +378,11 @@ class DetailOiseaux extends React.Component {
                   source={{uri: this.state.image}}
                 />
               ) : null}
-              <Text style={styles.Title}>
+              <Text style={[styles.Title, {color: theme.highlight}]}>
                 {this.state.wikiInfo.displaytitle}
               </Text>
               {this.state.oiseaux_latin ? (
-                <Text style={styles.Title_latin}>
+                <Text style={[styles.Title_latin, {color: theme.highlight}]}>
                   {this.state.oiseaux_latin}
                 </Text>
               ) : null}
@@ -411,7 +419,7 @@ class DetailOiseaux extends React.Component {
               Veuillez nous excuser{' '}
             </Text>
             <Text style={[styles.error_text, {color: theme.highlight}]}>
-              aucune information n'a trouvée pour cette oiseau
+              aucune information n'a été trouvée pour cet oiseau
             </Text>
           </View>
         )}

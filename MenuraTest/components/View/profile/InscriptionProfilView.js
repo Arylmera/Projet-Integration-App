@@ -5,12 +5,12 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Alert,
+  ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-import {createUtilisateur} from '../../../api/utilisateur_api';
+import {createUtilisateur} from '../../../api/utilisateurs_api';
 
 class InscriptionProfilView extends React.Component {
   constructor(props) {
@@ -20,7 +20,15 @@ class InscriptionProfilView extends React.Component {
     this.email = '';
     this.password = '';
     this.password2 = '';
-    this.state = {};
+    this.state = {
+      helperText: '',
+      errorMessage: '',
+      borderNom: '#b8b8b8',
+      borderPrenom: '#b8b8b8',
+      borderEmail: '#b8b8b8',
+      borderPassword1: '#b8b8b8',
+      borderPassword2: '#b8b8b8',
+    };
   }
 
   _nomTextInputChanged(nom) {
@@ -50,69 +58,129 @@ class InscriptionProfilView extends React.Component {
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
           console.log('User created and signed in!');
-          createUtilisateur(nom, prenom, email).then((data) =>
-            console.log(data),
-          );
-          navigation.navigate('modificationProfil');
+          const user = firebase.auth().currentUser;
+          const id = user.uid;
+          user.getIdToken(true).then((idToken) => {
+            createUtilisateur(id, nom, prenom, email, idToken).then((data) =>
+              console.log(data),
+            );
+          });
+          user.updateProfile({displayName: nom + ' ' + prenom}).then(() => {
+            console.log('display name added');
+          });
+          user
+            .sendEmailVerification()
+            .then(() => {
+              // email sent
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          navigation.navigate('Views');
         })
         .catch((error) => {
           console.error(error);
-          Alert.alert(error.toString());
+          this.setState({
+            errorMessage: error.message,
+            borderEmail: '#c20000',
+            borderPassword1: '#c20000',
+            borderPassword2: '#c20000',
+          });
         });
     } else {
-      Alert.alert('le mot de passe doit être identique');
+      this.setState({
+        errorMessage: 'les mots de passe ne sont pas identiques',
+        borderPassword1: '#c20000',
+        borderPassword2: '#c20000',
+      });
     }
   }
 
   render() {
     const {navigation} = this.props;
-    let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <TextInput
-          style={[styles.textinput]}
-          placeholder="nom"
-          onChangeText={(nom) => this._nomTextInputChanged(nom)}
-        />
-        <TextInput
-          style={[styles.textinput]}
-          placeholder="prénom"
-          onChangeText={(prenom) => this._prenomTextInputChanged(prenom)}
-        />
-        <TextInput
-          style={[styles.textinput]}
-          placeholder="email"
-          onChangeText={(email) => this._emailTextInputChanged(email)}
-        />
-        <TextInput
-          style={[styles.textinput]}
-          placeholder="mot de passe"
-          secureTextEntry={true}
-          onChangeText={(password) => this._passwordTextInputChanged(password)}
-        />
-        <TextInput
-          style={[styles.textinput]}
-          placeholder="mot de passe"
-          secureTextEntry={true}
-          onChangeText={(password2) =>
-            this._password2TextInputChanged(password2)
-          }
-        />
-        <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-          onPress={() =>
-            this._register(
-              this.nom,
-              this.prenom,
-              this.email,
-              this.password,
-              this.password2,
-              navigation,
-            )
-          }>
-          <Text>inscription</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View style={styles.main_container}>
+          <TextInput
+            style={[styles.textInput, {borderColor: this.state.borderNom}]}
+            placeholder="nom"
+            onChangeText={(nom) => this._nomTextInputChanged(nom)}
+            onFocus={() => this.setState({borderNom: '#000000'})}
+            onBlur={() => this.setState({borderNom: '#b8b8b8'})}
+          />
+          <TextInput
+            style={[styles.textInput, {borderColor: this.state.borderPrenom}]}
+            placeholder="prénom"
+            onChangeText={(prenom) => this._prenomTextInputChanged(prenom)}
+            onFocus={() => this.setState({borderPrenom: '#000000'})}
+            onBlur={() => this.setState({borderPrenom: '#b8b8b8'})}
+          />
+          <TextInput
+            style={[styles.textInput, {borderColor: this.state.borderEmail}]}
+            placeholder="email"
+            keyboardType="email-address"
+            onChangeText={(email) => this._emailTextInputChanged(email)}
+            onFocus={() => this.setState({borderEmail: '#000000'})}
+            onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
+          />
+          <TextInput
+            style={[
+              styles.textInput,
+              {borderColor: this.state.borderPassword1},
+            ]}
+            placeholder="mot de passe"
+            secureTextEntry={true}
+            onChangeText={(password) =>
+              this._passwordTextInputChanged(password)
+            }
+            onFocus={() =>
+              this.setState({
+                borderPassword1: '#000000',
+                helperText: 'minimum 6 caractères',
+              })
+            }
+            onBlur={() =>
+              this.setState({borderPassword1: '#b8b8b8', helperText: ''})
+            }
+          />
+          <TextInput
+            style={[
+              styles.textInput,
+              {borderColor: this.state.borderPassword2},
+            ]}
+            placeholder="mot de passe"
+            secureTextEntry={true}
+            onChangeText={(password2) =>
+              this._password2TextInputChanged(password2)
+            }
+            onFocus={() =>
+              this.setState({
+                borderPassword2: '#000000',
+                helperText: 'Veuillez confirmer le mot de passe',
+              })
+            }
+            onBlur={() =>
+              this.setState({borderPassword2: '#b8b8b8', helperText: ''})
+            }
+          />
+          <Text style={styles.helperText}>{this.state.helperText}</Text>
+          <Text style={styles.errorText}>{this.state.errorMessage}</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() =>
+              this._register(
+                this.nom,
+                this.prenom,
+                this.email,
+                this.password,
+                this.password2,
+                navigation,
+              )
+            }>
+            <Text>inscription</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -121,26 +189,34 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
     paddingTop: 5,
-    flexDirection: 'column',
   },
-  textinput: {
-    marginLeft: 5,
-    marginRight: 5,
+  textInput: {
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
-    borderRadius: 10,
+    borderRadius: 4,
+    borderWidth: 1,
     paddingLeft: 10,
   },
-  modifButton: {
+  button: {
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 20,
-    borderWidth: 2,
-    borderRadius: 5,
+    borderWidth: 1,
+    borderRadius: 4,
     width: '50%',
     padding: 3,
     alignItems: 'center',
+  },
+  helperText: {
+    marginLeft: 25,
+    marginTop: 10,
+  },
+  errorText: {
+    marginLeft: 25,
+    marginTop: 10,
+    color: '#c20000',
   },
 });
 

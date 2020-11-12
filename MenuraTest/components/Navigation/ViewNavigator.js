@@ -6,15 +6,10 @@ import StatsView from '../View/stats/StatsView';
 import TipsView from '../View/tips/TipsView';
 import ParametresView from '../View/parametres/ParametresView';
 
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faList} from '@fortawesome/free-solid-svg-icons';
-import {faInfoCircle} from '@fortawesome/free-solid-svg-icons';
-import {faCog} from '@fortawesome/free-solid-svg-icons';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {faChartBar} from '@fortawesome/free-solid-svg-icons';
 import SearchNavigator from './SearchNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
 import {connect} from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,90 +27,122 @@ class ViewNavigator extends React.Component {
         tabBarOptions={{
           activeTintColor: theme.highlight,
           activeBackgroundColor: theme.primary,
-          inactiveTintColor: theme.primary,
-          inactiveBackgroundColor: theme.highlight,
+          inactiveTintColor: theme.highlight,
+          inactiveBackgroundColor: theme.accent,
           showIcon: true,
           labelStyle: {
             fontSize: 13,
             padding: 1,
           },
           style: {
+            borderTopWidth: 0,
             borderRadius: 0,
             backgroundColor: theme.primary,
-            // eslint-disable-next-line no-undef
-            ...Platform.select({
-              ios: {
-                shadowColor: 'rgba(0,0,0, .7)',
-                shadowOffset: {height: 0, width: 0},
-                shadowOpacity: 1,
-                shadowRadius: 5,
-              },
-              android: {
-                elevation: 5,
-              },
-            }),
+            // shadow
+            shadowColor: 'rgba(0,0,0, .7)',
+            shadowOffset: {height: 0, width: 0},
+            shadowOpacity: 0.5,
+            shadowRadius: 2,
+            elevation: 3,
           },
         }}>
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="StatsView"
           component={StatsView}
           options={{
             tabBarLabel: 'Statistiques',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon
-                icon={faChartBar}
-                size={27}
-                color={theme.accent}
+              <Icon
+                name="view-week"
+                size={35}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 0,
+                }}
               />
             ),
           }}
         />
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="SearchNavigator"
           component={SearchNavigator}
           options={{
             tabBarLabel: 'Recherche',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon icon={faSearch} size={23} color={theme.accent} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
-          name="HistoriqueView"
-          component={HistoriqueNavigator}
-          options={{
-            tabBarLabel: 'Historique',
-            tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon icon={faList} size={23} color={theme.accent} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
-          name="TipsView"
-          component={TipsView}
-          options={{
-            tabBarLabel: 'Tips',
-            tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon
-                icon={faInfoCircle}
-                size={23}
-                color={theme.accent}
+              <Icon
+                name="search"
+                size={33}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 0,
+                }}
               />
             ),
           }}
         />
         <Tab.Screen
-          style={[styles.screen, {backgroundColor: theme.primary}]}
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
+          name="HistoriqueView"
+          component={HistoriqueNavigator}
+          options={{
+            tabBarLabel: 'Historique',
+            tabBarIcon: (tabInfo) => (
+              <Icon
+                name="list"
+                size={40}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: -3,
+                }}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
+          name="TipsView"
+          component={TipsView}
+          options={{
+            tabBarLabel: 'Tips',
+            tabBarIcon: (tabInfo) => (
+              <Icon
+                name="info"
+                size={28}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 3,
+                }}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          style={[styles.screen, {backgroundColor: theme.highlight}]}
           name="ParametresView"
           component={ParametresView}
           options={{
             tabBarLabel: 'Paramètres',
             tabBarIcon: (tabInfo) => (
-              <FontAwesomeIcon icon={faCog} size={23} color={theme.accent} />
+              <Icon
+                name="build"
+                size={27}
+                color={theme.highlight}
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: 3,
+                }}
+              />
             ),
           }}
         />

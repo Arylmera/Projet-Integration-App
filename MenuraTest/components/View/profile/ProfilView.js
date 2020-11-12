@@ -12,19 +12,20 @@ import {
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
-import {getUtilisateur} from '../../../api/utilisateur_api';
 
 class ProfilView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: '',
       prenom: 'User name',
       nom: 'User lastName',
       email: 'email',
-      profileIcon: '../../assets/images/profileIcon.png',
+      profileIcon: require('../../../assets/images/profileIcon.png'),
       password: '',
       newPassword: '',
       updatePasswordModal: false,
+      deconnexionModal: false,
       deleteAccountModal: false,
     };
   }
@@ -33,20 +34,16 @@ class ProfilView extends React.Component {
     this._checkIfLoggedIn();
   }
 
-  _getUtilisateur(email) {
-    getUtilisateur(email).then((data) =>
-      this.setState({nom: data.data[0].nom, prenom: data.data[0].prenom}),
-    );
-  }
-
   _checkIfLoggedIn() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let email = user.email;
-        this._getUtilisateur(email);
-        this.setState({email: email});
+        let uid = user.uid;
+        let nom = user.displayName.split(' ')[0];
+        let prenom = user.displayName.split(' ')[1];
+        this.setState({email: email, nom: nom, prenom: prenom, id: uid});
       } else {
-        this.props.navigation.navigate('ConnexionProfil');
+        this.props.navigation.navigate('connexion');
       }
     });
   }
@@ -75,6 +72,10 @@ class ProfilView extends React.Component {
     this.setState({deleteAccountModal: true});
   }
 
+  _askDeconnexion() {
+    this.setState({deconnexionModal: true});
+  }
+
   _askUpdatePassword() {
     this.setState({updatePasswordModal: true});
   }
@@ -94,7 +95,7 @@ class ProfilView extends React.Component {
       .then(() => {
         console.log('compte supprimé');
         this.setState({deleteAccountModal: false});
-        this.props.navigation.navigate('ConnexionProfil');
+        this.props.navigation.navigate('connexion');
       })
       .catch((error) => {
         console.log(error);
@@ -124,96 +125,179 @@ class ProfilView extends React.Component {
   }
 
   render() {
-    const {navigation} = this.props;
     let theme = this.props.currentStyle;
     return (
       <ScrollView
         style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <View style={styles.container_row}>
           <View style={styles.headerProfile}>
-            <Text style={styles.nameStyle}> {this.state.prenom} </Text>
-            <Text style={styles.lastNameStyle}> {this.state.nom} </Text>
+            <Text style={[styles.nameStyle, {color: theme.highlight}]}>
+              {' '}
+              {this.state.prenom}{' '}
+            </Text>
+            <Text style={[styles.lastNameStyle, {color: theme.highlight}]}>
+              {' '}
+              {this.state.nom}{' '}
+            </Text>
           </View>
           <Image
-            source={{uri: this.state.profileIcon}}
+            source={this.state.profileIcon}
             style={[styles.profileIcon, {backgroundColor: theme.highlight}]}
           />
         </View>
         <View style={styles.container_row}>
-          <View style={styles.body_container}>
-            <Text>{this.state.email}</Text>
+          <View style={[styles.body_container]}>
+            <Text style={[styles.email, {color: theme.highlight}]}>
+              {this.state.email}
+            </Text>
           </View>
         </View>
-        <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-          onPress={() => this._askUpdatePassword()}>
-          <Text>modifier mot de passe</Text>
-        </TouchableOpacity>
-        <Modal visible={this.state.updatePasswordModal}>
-          <Text style={[styles.text]}>Mot de passe actuel:</Text>
-          <TextInput
-            style={[styles.textinput, {marginTop: 20}]}
-            placeholder="mot de passe"
-            secureTextEntry={true}
-            onChangeText={(password) =>
-              this._passwordTextInputChanged(password)
-            }
-          />
-          <Text style={[styles.text]}>Nouveau mot de passe:</Text>
-          <TextInput
-            style={[styles.textinput, {marginTop: 20}]}
-            placeholder="mot de passe"
-            onChangeText={(newPassword) =>
-              this._newPasswordTextInputChanged(newPassword)
-            }
-          />
+        <View style={[styles.container_row, styles.button_container]}>
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#0084d1'}]}
-            onPress={() => this._updatePassword()}>
-            <Text>modifier mon mot de passe</Text>
+            style={[styles.button, {backgroundColor: theme.secondary}]}
+            onPress={() => this._askUpdatePassword()}>
+            <Text style={{color: theme.highlight}}>modifier mot de passe</Text>
           </TouchableOpacity>
+          <Modal visible={this.state.updatePasswordModal}>
+            <ScrollView
+              style={[
+                styles.update_password_view,
+                {backgroundColor: theme.primary},
+              ]}>
+              <Text
+                style={[styles.text, {color: theme.highlight, fontSize: 18}]}>
+                Mot de passe actuel:
+              </Text>
+              <TextInput
+                style={[styles.textinput, {marginTop: 20}]}
+                placeholder="mot de passe actuel"
+                placeholderTextColor={theme.highlight}
+                secureTextEntry={true}
+                onChangeText={(password) =>
+                  this._passwordTextInputChanged(password)
+                }
+              />
+              <Text
+                style={[styles.text, {color: theme.highlight, fontSize: 18}]}>
+                Nouveau mot de passe:
+              </Text>
+              <TextInput
+                style={[styles.textinput, {marginTop: 20}]}
+                placeholder="nouveau mot de passe"
+                placeholderTextColor={theme.highlight}
+                onChangeText={(newPassword) =>
+                  this._newPasswordTextInputChanged(newPassword)
+                }
+              />
+              <View styles={styles.modif_password_button_bloc}>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    styles.modif_button,
+                    {backgroundColor: '#0084d1'},
+                  ]}
+                  onPress={() => this._updatePassword()}>
+                  <Text>modifier mon mot de passe</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    styles.modif_button,
+                    {backgroundColor: '#000000'},
+                  ]}
+                  onPress={() => this.setState({updatePasswordModal: false})}>
+                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </Modal>
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#000000'}]}
-            onPress={() => this.setState({updatePasswordModal: false})}>
-            <Text style={{color: '#ffffff'}}>Annuler</Text>
+            style={[styles.button, {backgroundColor: theme.secondary}]}
+            onPress={() => this._askDeconnexion()}>
+            <Text style={{color: theme.highlight}}>déconnexion</Text>
           </TouchableOpacity>
-        </Modal>
-        <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-          onPress={() => this._logOut()}>
-          <Text>déconnexion</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.modifButton, {backgroundColor: theme.secondary}]}
-          onPress={() => this._askDeleteAccount()}>
-          <Text>supprimer compte</Text>
-        </TouchableOpacity>
-        <Modal visible={this.state.deleteAccountModal}>
-          <Text style={[styles.text]}>
-            Attention cette action supprime définitivement votre compte !
-          </Text>
-          <Text style={[styles.text]}>
-            Pour continuer, entrez votre mot de passe :
-          </Text>
-          <TextInput
-            style={[styles.textinput, {marginTop: 20}]}
-            placeholder="mot de passe"
-            secureTextEntry={true}
-            onChangeText={(password) =>
-              this._passwordTextInputChanged(password)
-            }
-          />
+          <Modal visible={this.state.deconnexionModal}>
+            <ScrollView
+              style={[
+                styles.deconnection_view,
+                {backgroundColor: theme.primary},
+              ]}>
+              <Text
+                style={[
+                  styles.text,
+                  {
+                    color: theme.highlight,
+                    fontSize: 18,
+                    justifyContent: 'center',
+                  },
+                ]}>
+                Voulez vous vraiment vous déconnecter ?
+              </Text>
+              <View style={[styles.deconnection_button_bloc]}>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    styles.deconnection_button,
+                    {backgroundColor: '#de0404'},
+                  ]}
+                  onPress={() => this._logOut()}>
+                  <Text>Se déconnecter</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    styles.deconnection_button,
+                    {backgroundColor: '#000000'},
+                  ]}
+                  onPress={() => this.setState({deconnexionModal: false})}>
+                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </Modal>
           <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#de0404'}]}
-            onPress={() => this._deleteAccount()}>
-            <Text>Supprimer mon compte</Text>
+            style={[styles.button, {backgroundColor: theme.secondary}]}
+            onPress={() => this._askDeleteAccount()}>
+            <Text style={{color: theme.highlight}}>supprimer compte</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.modifButton, {backgroundColor: '#000000'}]}
-            onPress={() => this.setState({deleteAccountModal: false})}>
-            <Text style={{color: '#ffffff'}}>Annuler</Text>
-          </TouchableOpacity>
-        </Modal>
+          <Modal visible={this.state.deleteAccountModal}>
+            <ScrollView
+              style={[
+                styles.delete_acount_view,
+                {backgroundColor: theme.primary},
+              ]}>
+              <Text
+                style={[styles.text, {color: theme.highlight, fontSize: 22}]}>
+                Attention cette action supprime définitivement votre compte !
+              </Text>
+              <Text
+                style={[styles.text, {color: theme.highlight, fontSize: 18}]}>
+                Pour continuer, entrez votre mot de passe :
+              </Text>
+              <TextInput
+                style={[styles.textinput, {marginTop: 20}]}
+                placeholder="mot de passe"
+                placeholderTextColor={theme.highlight}
+                secureTextEntry={true}
+                onChangeText={(password) =>
+                  this._passwordTextInputChanged(password)
+                }
+              />
+              <View style={[styles.delete_acount_button_bloc]}>
+                <TouchableOpacity
+                  style={[styles.button, {backgroundColor: '#de0404'}]}
+                  onPress={() => this._deleteAccount()}>
+                  <Text>Supprimer mon compte</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.button, {backgroundColor: '#000000'}]}
+                  onPress={() => this.setState({deleteAccountModal: false})}>
+                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+          </Modal>
+        </View>
       </ScrollView>
     );
   }
@@ -225,6 +309,7 @@ const styles = StyleSheet.create({
   },
   container_row: {
     margin: 10,
+    padding: 5,
     flexDirection: 'row',
     alignContent: 'space-between',
   },
@@ -248,39 +333,84 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   lastNameStyle: {
-    marginTop: 20,
+    marginTop: 5,
     marginRight: 'auto',
     fontSize: 20,
   },
   profileIcon: {
     flex: 1,
-    marginTop: 10,
-    borderRadius: 100,
+    marginTop: 20,
+    borderRadius: 10,
     width: 150,
     height: 150,
   },
-  modifButton: {
+  button_container: {
+    flex: 1,
+    flexDirection: 'column',
+    marginRight: 5,
+  },
+  button: {
+    flex: 1,
+    padding: 5,
+    margin: 5,
     marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 10,
-    borderRadius: 5,
+    borderRadius: 4,
     width: '50%',
-    padding: 3,
     alignItems: 'center',
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 2,
   },
   textinput: {
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
-    borderRadius: 10,
+    borderRadius: 4,
+    borderWidth: 1,
     paddingLeft: 10,
   },
   text: {
     marginLeft: 5,
     marginRight: 5,
     marginTop: 40,
+  },
+  email: {},
+  update_password_view: {
+    padding: 20,
+    paddingTop: 30,
+  },
+  modif_password_button_bloc: {
+    width: '100%',
+    flexDirection: 'column',
+    marginTop: 50,
+  },
+  modif_button: {
+    flex: 1,
+  },
+  deconnection_view: {
+    padding: 20,
+    paddingTop: 30,
+  },
+  deconnection_button_bloc: {
+    width: '100%',
+    flexDirection: 'column',
+    marginTop: 50,
+  },
+  deconnection_button: {
+    flex: 1,
+  },
+  delete_acount_view: {
+    padding: 20,
+    paddingTop: 30,
+  },
+  delete_acount_button_bloc: {
+    width: '100%',
+    flexDirection: 'column',
+    marginTop: 50,
   },
 });
 

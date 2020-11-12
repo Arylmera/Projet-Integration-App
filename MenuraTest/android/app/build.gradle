@@ -16,7 +16,7 @@ import com.android.build.OutputFile
  *   bundleAssetName: "index.android.bundle",
  *
  *   // the entry file for bundle generation. If none specified and
- *   // "index.android.js" exists, it will be used. Otherwise "index.js" is
+ *   // "index.android.js" exists, it will be used. Otherwise "rootReducer.js" is
  *   // default. Can be overridden with ENTRY_FILE environment variable.
  *   entryFile: "index.android.js",
  *
@@ -217,3 +217,9 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Name of the font files you want to copy
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

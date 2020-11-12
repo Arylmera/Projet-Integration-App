@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
-import {getOiseauxListWithSearchedText} from '../../../api/oiseauxList_api';
+import {getOiseaux} from '../../../api/oiseaux_api';
 import {connect} from 'react-redux';
 
 class SearchView extends React.Component {
@@ -34,7 +34,7 @@ class SearchView extends React.Component {
 
   _loadOiseaux() {
     if (this.searchedText.length > 0) {
-      getOiseauxListWithSearchedText(this.searchedText).then((data) => {
+      getOiseaux(this.searchedText).then((data) => {
         this.setState({oiseauxListe: data.data});
         let oiseauxListNom_loading = [];
         data.data.forEach((oiseau) => oiseauxListNom_loading.push(oiseau.nom));
@@ -51,22 +51,30 @@ class SearchView extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <TextInput
-          style={[styles.textinput, {borderColor: theme.accent}]}
-          placeholder="Nom de l'oiseau"
-          onChangeText={(text) => this._searchTextInputChanged(text)}
-          onSubmitEditing={() => this._loadOiseaux()}
-        />
-        <Button
-          color={theme.accent}
-          title="Rechercher"
-          onPress={() => this._loadOiseaux()}
-        />
-        {this.state.isLoading ? (
-          <Image
-            style={styles.image}
-            source={require('../../../assets/images/ShearchOiseau.png')}
+        <View style={[styles.search_container]}>
+          <TextInput
+            style={[
+              styles.textinput,
+              {backgroundColor: theme.secondary, color: theme.highlight},
+            ]}
+            placeholder="Entrez un nom d'oiseau"
+            placeholderTextColor={theme.highlight}
+            onChangeText={(text) => this._searchTextInputChanged(text)}
+            onSubmitEditing={() => this._loadOiseaux()}
           />
+          <Button
+            color={theme.highlight}
+            title="Rechercher"
+            onPress={() => this._loadOiseaux()}
+          />
+        </View>
+        {this.state.isLoading ? (
+          <View style={styles.loading_placeholder}>
+            <Image
+              style={[styles.image_placeholder, {tintColor: theme.highlight}]}
+              source={require('../../../assets/images/searchImage.png')}
+            />
+          </View>
         ) : (
           <FlatList
             data={this.state.oiseauxListeNom}
@@ -85,8 +93,10 @@ class SearchView extends React.Component {
 let styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    paddingTop: 5,
     flexDirection: 'column',
+  },
+  search_container: {
+    paddingTop: 5,
   },
   FlatlistItem: {
     flex: 1,
@@ -98,16 +108,25 @@ let styles = StyleSheet.create({
     marginRight: 5,
     marginTop: 5,
     height: 50,
-    borderWidth: 5,
     borderRadius: 10,
     paddingLeft: 10,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 4,
   },
-  image: {
+  loading_placeholder: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  image_placeholder: {
     flex: 1,
     resizeMode: 'contain',
-    height: '90%',
-    width: '90%',
-    marginLeft: '5%',
+    height: '100%',
+    width: '100%',
+    opacity: 0.4,
   },
 });
 
