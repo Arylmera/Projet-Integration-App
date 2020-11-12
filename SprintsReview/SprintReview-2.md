@@ -1,4 +1,4 @@
-# Sprint Review  2
+# Sprint Review  2 (Florent)
 
 ## Fonctionnalités terminées
 - Partie recherche et détail des différents oiseaux
