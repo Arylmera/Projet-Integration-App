@@ -59,9 +59,7 @@ class TipsView extends React.Component {
           <Text
             style={[styles.context_text, {color: theme.highlight}]}
             testID={'text'}>
-            Vous pouvez aider les oiseaux de la nature et favoriser leur survie
-            en les aidant à trouver facilement une alimentation adaptée et à
-            garder un habitat approprié.
+            Quelques conseils utiles en fonction des saisons :
           </Text>
         </View>
         <FlatList
