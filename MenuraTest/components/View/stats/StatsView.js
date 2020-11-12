@@ -3,6 +3,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import firebase from 'firebase';
 import {connect} from 'react-redux';
 
+
 class StatsView extends React.Component {
   constructor(props) {
     super(props);

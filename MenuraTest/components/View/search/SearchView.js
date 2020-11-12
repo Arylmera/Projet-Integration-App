@@ -11,6 +11,9 @@ import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
 import {getOiseaux} from '../../../api/oiseaux_api';
 import {connect} from 'react-redux';
+import { SearchBar } from 'react-native-elements';
+
+
 
 class SearchView extends React.Component {
   constructor(props) {
@@ -20,8 +23,13 @@ class SearchView extends React.Component {
       oiseauxListe: [],
       oiseauxListeNom: [],
       isLoading: true,
+      search: '',
     };
   }
+
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
 
   /**
    *Récupere le text du TextInput et attribue la valeur text a searchedText
@@ -33,8 +41,8 @@ class SearchView extends React.Component {
   }
 
   _loadOiseaux() {
-    if (this.searchedText.length > 0) {
-      getOiseaux(this.searchedText).then((data) => {
+    if (this.state.search.length > 0) {
+      getOiseaux(this.state.search).then((data) => {
         this.setState({oiseauxListe: data.data});
         let oiseauxListNom_loading = [];
         data.data.forEach((oiseau) => oiseauxListNom_loading.push(oiseau.nom));
@@ -47,20 +55,22 @@ class SearchView extends React.Component {
   }
 
   render() {
+    const { search } = this.state;
     const {navigation} = this.props;
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <View style={[styles.search_container]}>
-          <TextInput
-            style={[
-              styles.textinput,
-              {backgroundColor: theme.secondary, color: theme.highlight},
-            ]}
-            placeholder="Entrez un nom d'oiseau"
-            placeholderTextColor={theme.highlight}
-            onChangeText={(text) => this._searchTextInputChanged(text)}
-            onSubmitEditing={() => this._loadOiseaux()}
+          <SearchBar
+              style={[
+                styles.textinput,
+                {backgroundColor: theme.secondary, color: theme.highlight},
+              ]}
+              placeholder="Entrez un nom d'oiseau"
+              placeholderTextColor={theme.highlight}
+              onChangeText={this.updateSearch}
+              value={search}
+              onSubmitEditing={() => this._loadOiseaux()}
           />
           <Button
             color={theme.highlight}
