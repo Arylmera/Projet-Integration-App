@@ -196,7 +196,7 @@ class ParametresView extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 5,
     flexDirection: 'column',
   },
   lineBox: {
@@ -221,8 +221,9 @@ const styles = StyleSheet.create({
     flex: 2,
     fontSize: 16,
     textAlign: 'center',
-    padding: '5%',
-    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
   },
   theme_menuBox: {
     flex: 1,

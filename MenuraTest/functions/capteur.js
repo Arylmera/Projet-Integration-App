@@ -115,7 +115,7 @@ class Capteur extends React.Component {
     console.log(this.state.capteur_list);
     return (
       <SafeAreaView style={{flex: 1}}>
-        <View style={[styles.container]}>
+        <View style={[styles.main_container]}>
           <View style={[styles.container_header]}>
             <Text style={[styles.title, {color: theme.highlight}]}>
               Liste de mes Capteurs
@@ -128,8 +128,9 @@ class Capteur extends React.Component {
               <Text style={{color: theme.highlight}}>Adresse MAC :</Text>
               <TextInput
                 placeholder="FF:FF:FF:FF:FF:FF"
-                placeholderTextColor={theme.highlight}
+                placeholderTextColor={'grey'}
                 autocorrect={false}
+                autoCapitalize={'characters'}
                 ref={this.mac_add_input}
                 onChangeText={(mac_adresse) =>
                   this._mac_adresse_change(mac_adresse)
@@ -192,7 +193,7 @@ class Capteur extends React.Component {
   }
 }
 const styles = StyleSheet.create({
-  container: {
+  main_container: {
     paddingTop: 10,
     flex: 1,
     minHeight: 200,
@@ -206,10 +207,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 0,
+    padding: 0,
   },
   title: {
     textAlign: 'center',
     fontSize: 20,
+    marginBottom: 5,
   },
   mac_address_message: {
     margin: 3,
@@ -230,13 +234,11 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   add_capteur_button: {
-    padding: 5,
-    marginTop: 5,
-    marginBottom: 5,
+    padding: 2,
     borderRadius: 5,
   },
   add_capteur_input: {
-    width: 150,
+    width: 170,
     marginLeft: 5,
     marginRight: 5,
     padding: 10,

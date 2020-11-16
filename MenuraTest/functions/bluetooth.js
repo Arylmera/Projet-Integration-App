@@ -213,6 +213,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontSize: 20,
+    marginBottom: 5,
   },
   refresh_content_helper: {
     flexDirection: 'row',
@@ -231,6 +232,7 @@ const styles = StyleSheet.create({
   },
   refresh_button_text: {
     textAlign: 'center',
+    marginLeft: 10,
   },
 });
 

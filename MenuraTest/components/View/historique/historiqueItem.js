@@ -28,7 +28,7 @@ class HistoriqueItem extends React.Component {
           <Text style={[styles.Title, {color: theme.highlight}]}>
             {oiseaux.oiseau}
           </Text>
-          <View style={[styles.info_bloc, {backgroundColor: theme.accent}]}>
+          <View style={[styles.info_bloc, {backgroundColor: theme.primary}]}>
             {oiseaux.date ? (
               <View style={styles.info_line}>
                 <Icon
