@@ -156,7 +156,9 @@ class ProfilView extends React.Component {
           <TouchableOpacity
             style={[styles.button, {backgroundColor: theme.secondary}]}
             onPress={() => this._askUpdatePassword()}>
-            <Text style={{color: theme.highlight}}>modifier mot de passe</Text>
+            <Text style={{color: theme.highlight}}>
+              modifier le mot de passe
+            </Text>
           </TouchableOpacity>
           <Modal visible={this.state.updatePasswordModal}>
             <ScrollView
@@ -194,19 +196,21 @@ class ProfilView extends React.Component {
                   style={[
                     styles.button,
                     styles.modif_button,
-                    {backgroundColor: '#0084d1'},
+                    {backgroundColor: theme.accent, marginTop: 50},
                   ]}
                   onPress={() => this._updatePassword()}>
-                  <Text>modifier mon mot de passe</Text>
+                  <Text style={{color: theme.highlight}}>
+                    modifier mon mot de passe
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[
                     styles.button,
                     styles.modif_button,
-                    {backgroundColor: '#000000'},
+                    {backgroundColor: theme.secondary},
                   ]}
                   onPress={() => this.setState({updatePasswordModal: false})}>
-                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                  <Text style={{color: theme.highlight}}>Annuler</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -241,16 +245,16 @@ class ProfilView extends React.Component {
                     {backgroundColor: '#de0404'},
                   ]}
                   onPress={() => this._logOut()}>
-                  <Text>Se déconnecter</Text>
+                  <Text style={{color: 'white'}}>Se déconnecter</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[
                     styles.button,
                     styles.deconnection_button,
-                    {backgroundColor: '#000000'},
+                    {backgroundColor: theme.secondary},
                   ]}
                   onPress={() => this.setState({deconnexionModal: false})}>
-                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                  <Text style={{color: theme.highlight}}>Annuler</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -287,12 +291,12 @@ class ProfilView extends React.Component {
                 <TouchableOpacity
                   style={[styles.button, {backgroundColor: '#de0404'}]}
                   onPress={() => this._deleteAccount()}>
-                  <Text>Supprimer mon compte</Text>
+                  <Text style={{color: 'white'}}>Supprimer mon compte</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={[styles.button, {backgroundColor: '#000000'}]}
+                  style={[styles.button, {backgroundColor: theme.secondary}]}
                   onPress={() => this.setState({deleteAccountModal: false})}>
-                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                  <Text style={{color: theme.highlight}}>Annuler</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -386,7 +390,6 @@ const styles = StyleSheet.create({
   modif_password_button_bloc: {
     width: '100%',
     flexDirection: 'column',
-    marginTop: 50,
   },
   modif_button: {
     flex: 1,
