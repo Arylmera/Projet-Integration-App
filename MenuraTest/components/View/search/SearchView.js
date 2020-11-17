@@ -57,10 +57,10 @@ class SearchView extends React.Component {
         <View style={[styles.search_container]}>
           <SearchBar
               containerStyle={[
-                {backgroundColor: theme.secondary, color: theme.highlight},
+                {backgroundColor: theme.accent, color: theme.highlight},
               ]}
               inputContainerStyle={[
-                {backgroundColor: theme.secondary, color: theme.highlight},
+                {backgroundColor: theme.accent, color: theme.highlight},
               ]}
               inputStyle={{color: theme.highlight}}
               placeholder="Entrez un nom d'oiseau"

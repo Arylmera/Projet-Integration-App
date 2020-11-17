@@ -8,7 +8,7 @@ class TipsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIndex: 2
+      selectedIndex: 1
     };
     this.updateIndex = this.updateIndex.bind(this);
     this.Saisons = [
@@ -108,21 +108,6 @@ class TipsView extends React.Component {
   }
 }
 
-
-
-/*
-
-    <TipsItem
-            data={{infos_saison: this.Saisons[1]}} />
-
-
-            <FlatList
-            style={[styles.tips_list]}
-            data={this.Saisons}
-            keyExtractor={(item) => item.id}
-            renderItem={({item}) => <TipsItem data={{infos_saison: item}} />}
-        />
- */
 
 
 const styles = StyleSheet.create({
