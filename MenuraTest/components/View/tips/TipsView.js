@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Text} from 'react-native';
+import {View, FlatList, StyleSheet, Text, ScrollView} from 'react-native';
 import TipsItem from './TipsItem';
 import {connect} from 'react-redux';
 import {ButtonGroup} from "react-native-elements";
@@ -72,7 +72,9 @@ class TipsView extends React.Component {
     const { selectedIndex } = this.state;
     let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
+        <ScrollView
+            style={[styles.main_container, {backgroundColor: theme.primary}]}>
+      <View>
         <View style={[styles.context, {backgroundColor: theme.accent}]}>
           <ButtonGroup
               onPress={this.updateIndex}
@@ -84,23 +86,24 @@ class TipsView extends React.Component {
               //selectedTextStyle={{color: theme.highlight}}
               textStyle={{color: theme.highlight}}
               innerBorderStyle={{width: 0, color: 'white'}}
-              
-
-
 
           />
           <Text
-            style={[styles.context_text, {color: theme.highlight}]}
-            testID={'text'}>
+              style={[
+                styles.list_header,
+                {backgroundColor: theme.accent, color: theme.highlight},
+              ]}>
             Quelques conseils utiles en fonction des saisons :
           </Text>
         </View>
+
         <TipsItem
             data={{infos_saison: this.Saisons[this.state.selectedIndex]}} />
 
 
 
       </View>
+          </ScrollView>
     );
   }
 }
@@ -125,8 +128,6 @@ class TipsView extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   context: {
     padding: 15,
@@ -146,6 +147,18 @@ const styles = StyleSheet.create({
   tips_list: {
     marginLeft: 5,
     marginRight: 5,
+  },
+  list_header: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    padding: 20,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 3,
   },
 });
 
