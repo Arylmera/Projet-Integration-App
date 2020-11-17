@@ -2,13 +2,18 @@ import React from 'react';
 import {View, FlatList, StyleSheet, Text} from 'react-native';
 import TipsItem from './TipsItem';
 import {connect} from 'react-redux';
+import {ButtonGroup} from "react-native-elements";
 
 class TipsView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedIndex: 2
+    };
+    this.updateIndex = this.updateIndex.bind(this);
     this.Saisons = [
       {
-        id: '01',
+        id: '1',
         saison: 'Automne',
         tips:
           'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
@@ -16,7 +21,7 @@ class TipsView extends React.Component {
           'Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.',
       },
       {
-        id: '02',
+        id: '2',
         saison: 'Hiver',
         tips:
           'Le gel et la neige limitent l’accès des oiseaux à l’eau et à la nourriture.\n' +
@@ -26,7 +31,7 @@ class TipsView extends React.Component {
           'Installez une baignoire à oiseaux et veillez à ce que l’eau ne soit pas gelée et toujours propre, changez l’eau régulièrement.',
       },
       {
-        id: '03',
+        id: '3',
         saison: 'Printemps',
         tips:
           'Il y a 4 fois plus d’oiseaux qu’en hiver, donc les besoins en alimentation augmentent. C’est aussi le début de la période de nidification.\n' +
@@ -36,7 +41,7 @@ class TipsView extends React.Component {
           'Préparez des nichoirs pour offrir aux oiseaux un lieu adapté pour couver et élever leurs petits.',
       },
       {
-        id: '04',
+        id: '4',
         saison: 'Été',
         tips:
           'La période de nidification se poursuit pour aboutir à la naissance des petits, qui vont avoir besoin d’une alimentation spécifique pour leur croissance.\n' +
@@ -51,27 +56,71 @@ class TipsView extends React.Component {
     ];
   }
 
+  updateIndex (selectedIndex) {
+    this.setState({selectedIndex})
+  }
+
+
+
   render() {
+
+    const component1 = () => <Text>Automne</Text>;
+    const component2 = () => <Text>Hiver</Text>;
+    const component3 = () => <Text>Printemps</Text>;
+    const component4 = () => <Text>Été</Text>;
+    const buttons = [{ element: component1 }, { element: component2 }, { element: component3 }, { element: component4 }]
+    const { selectedIndex } = this.state;
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <View style={[styles.context, {backgroundColor: theme.accent}]}>
+          <ButtonGroup
+              onPress={this.updateIndex}
+              selectedIndex={selectedIndex}
+              buttons={buttons}
+              containerStyle={[{height: 40},{borderRadius: 5}, {backgroundColor: theme.primary}]}
+              //buttonStyle={{backgroundColor: theme.primary}}
+              selectedButtonStyle={{backgroundColor: theme.accent}}
+              //selectedTextStyle={{color: theme.highlight}}
+              textStyle={{color: theme.highlight}}
+              innerBorderStyle={{width: 0, color: 'white'}}
+              
+
+
+
+          />
           <Text
             style={[styles.context_text, {color: theme.highlight}]}
             testID={'text'}>
             Quelques conseils utiles en fonction des saisons :
           </Text>
         </View>
-        <FlatList
-          style={[styles.tips_list]}
-          data={this.Saisons}
-          keyExtractor={(item) => item.id}
-          renderItem={({item}) => <TipsItem data={{infos_saison: item}} />}
-        />
+        <TipsItem
+            data={{infos_saison: this.Saisons[this.state.selectedIndex]}} />
+
+
+
       </View>
     );
   }
 }
+
+
+
+/*
+
+    <TipsItem
+            data={{infos_saison: this.Saisons[1]}} />
+
+
+            <FlatList
+            style={[styles.tips_list]}
+            data={this.Saisons}
+            keyExtractor={(item) => item.id}
+            renderItem={({item}) => <TipsItem data={{infos_saison: item}} />}
+        />
+ */
+
 
 const styles = StyleSheet.create({
   main_container: {
@@ -92,6 +141,7 @@ const styles = StyleSheet.create({
   context_text: {
     fontSize: 18,
     width: '100%',
+
   },
   tips_list: {
     marginLeft: 5,

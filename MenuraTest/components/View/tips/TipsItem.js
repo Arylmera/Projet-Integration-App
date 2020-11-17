@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   saison: {
-    flex: 1,
+
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
   },
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   item: {
-    flex: 3,
+
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,

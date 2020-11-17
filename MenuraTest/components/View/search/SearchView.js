@@ -14,7 +14,6 @@ import {connect} from 'react-redux';
 import { SearchBar } from 'react-native-elements';
 
 
-
 class SearchView extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +33,7 @@ class SearchView extends React.Component {
   updateSearch = (search) => {
     this.setState({ search });
   };
-  
+
   _loadOiseaux() {
     if (this.state.search.length > 0) {
       getOiseaux(this.state.search).then((data) => {
@@ -57,11 +56,13 @@ class SearchView extends React.Component {
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <View style={[styles.search_container]}>
           <SearchBar
-              style={[
-                styles.textinput,
+              containerStyle={[
                 {backgroundColor: theme.secondary, color: theme.highlight},
               ]}
-              //inputStyle={{backgroundColor: theme.secondary, color: theme.highlight}}
+              inputContainerStyle={[
+                {backgroundColor: theme.secondary, color: theme.highlight},
+              ]}
+              inputStyle={{color: theme.highlight}}
               placeholder="Entrez un nom d'oiseau"
               placeholderTextColor={theme.highlight}
               onChangeText={this.updateSearch}
