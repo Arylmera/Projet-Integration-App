@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, Text, Switch, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Bluetooth from '../../../functions/bluetooth';
 import firebase from 'firebase';
 import Capteur from '../../../functions/capteur';
+import {LogBox} from 'react-native';
 
 class ParametresView extends React.Component {
   constructor(props) {
+    LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
     super(props);
     this.state = {
       id: '',
@@ -196,7 +197,7 @@ class ParametresView extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 5,
     flexDirection: 'column',
   },
   lineBox: {
@@ -221,8 +222,9 @@ const styles = StyleSheet.create({
     flex: 2,
     fontSize: 16,
     textAlign: 'center',
-    padding: '5%',
-    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
   },
   theme_menuBox: {
     flex: 1,

@@ -447,6 +447,7 @@ const styles = StyleSheet.create({
   Title: {
     fontSize: 30,
     fontWeight: 'bold',
+    marginTop: 10,
   },
   Title_latin: {
     fontSize: 25,

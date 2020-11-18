@@ -42,16 +42,19 @@ class Capteur_Item extends React.Component {
     let theme = this.props.currentStyle;
     return (
       <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <Text style={[styles.capteur_id, {color: theme.highlight}]}>
-          <Text style={styles.capteur_id_text}>
-            Capteur :{this.state.capteur.macAddress}
+        <View style={[styles.capteur_id]}>
+          <Text style={[styles.capteur_id_text, {color: theme.highlight}]}>
+            Capteur
           </Text>
-        </Text>
+          <Text style={[styles.capteur_id_adresse, {color: theme.highlight}]}>
+            {this.state.capteur.macAddress}
+          </Text>
+        </View>
         <TouchableOpacity
           onPress={this._delete_capteur.bind(this)}
-          style={[styles.deleteButton]}>
+          style={[styles.deleteButton, {backgroundColor: theme.accent}]}>
           <View style={styles.delete}>
-            <Text style={[styles.capteur_delete, {color: theme.highlight}]}>
+            <Text style={[styles.capteur_delete_text, {color: theme.highlight}]}>
               Supprimer
             </Text>
             <Icon name="delete-forever" size={18} color={theme.highlight} />
@@ -67,7 +70,7 @@ let styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     borderRadius: 5,
-    padding: 5,
+    padding: 7,
     margin: 5,
     // shadow
     shadowColor: 'rgba(0,0,0, .7)',
@@ -78,21 +81,36 @@ let styles = StyleSheet.create({
   },
   capteur_id: {
     flex: 3,
+    flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   capteur_id_text: {
     flex: 1,
-    fontSize: 12,
+    fontSize: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  capteur_id_adresse: {
+    flex: 2,
+    fontSize: 14,
   },
   delete: {
     flex: 1,
     flexDirection: 'row',
   },
-  capteur_delete: {},
   capteur_changeAddress: {
     flex: 1,
   },
-  deleteButton: {},
+  deleteButton: {
+    padding: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  capteur_delete_text: {
+    marginLeft: 3,
+  },
 });
 
 const mapStateToProps = (state) => {

@@ -3,9 +3,11 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {LogBox} from 'react-native';
 
 class HistoriqueItem extends React.Component {
   constructor(props) {
+    LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
     super(props);
     this.state = {};
   }
@@ -28,7 +30,7 @@ class HistoriqueItem extends React.Component {
           <Text style={[styles.Title, {color: theme.highlight}]}>
             {oiseaux.oiseau}
           </Text>
-          <View style={[styles.info_bloc, {backgroundColor: theme.accent}]}>
+          <View style={[styles.info_bloc, {backgroundColor: theme.primary}]}>
             {oiseaux.date ? (
               <View style={styles.info_line}>
                 <Icon
@@ -97,7 +99,7 @@ class HistoriqueItem extends React.Component {
             )}
             <View style={styles.info_line}>
               <Icon
-                name="hearing"
+                name="audiotrack"
                 size={18}
                 color={theme.highlight}
                 style={{

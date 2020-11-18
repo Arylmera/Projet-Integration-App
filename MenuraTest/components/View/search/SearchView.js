@@ -4,14 +4,13 @@ import {
   View,
   FlatList,
   TextInput,
-  Button,
   Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
 import {getOiseaux} from '../../../api/oiseaux_api';
 import {connect} from 'react-redux';
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Button } from 'react-native-elements';
 
 
 class SearchView extends React.Component {
@@ -53,46 +52,47 @@ class SearchView extends React.Component {
     const {navigation} = this.props;
     let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        <View style={[styles.search_container]}>
-          <SearchBar
-              containerStyle={[
-                {backgroundColor: theme.accent, color: theme.highlight},
-              ]}
-              inputContainerStyle={[
-                {backgroundColor: theme.accent, color: theme.highlight},
-              ]}
-              inputStyle={{color: theme.highlight}}
-              placeholder="Entrez un nom d'oiseau"
-              placeholderTextColor={theme.highlight}
-              onChangeText={this.updateSearch}
-              value={search}
-              onSubmitEditing={() => this._loadOiseaux()}
-          />
-          <Button
-            color={theme.highlight}
-            title="Rechercher"
-            onPress={() => this._loadOiseaux()}
-          />
-        </View>
-        {this.state.isLoading ? (
-          <View style={styles.loading_placeholder}>
-            <Image
-              style={[styles.image_placeholder, {tintColor: theme.highlight}]}
-              source={require('../../../assets/images/searchImage.png')}
+        <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
+          <View style={[styles.search_container]}>
+            <SearchBar
+                containerStyle={[
+                  {backgroundColor: theme.accent, color: theme.highlight},
+                ]}
+                inputContainerStyle={[
+                  {backgroundColor: theme.accent, color: theme.highlight},
+                ]}
+                inputStyle={{color: theme.highlight}}
+                placeholder="Entrez un nom d'oiseau"
+                placeholderTextColor={theme.highlight}
+                onChangeText={this.updateSearch}
+                value={search}
+                onSubmitEditing={() => this._loadOiseaux()}
+            />
+            <Button
+                titleStyle={{color: theme.highlight}}
+                buttonStyle={{borderRadius: 5, marginLeft: 0, marginRight: 0, marginBottom: 0,backgroundColor: theme.accent}}
+                title="Rechercher"
+                onPress={() => this._loadOiseaux()}
             />
           </View>
-        ) : (
-          <FlatList
-            data={this.state.oiseauxListeNom}
-            style={styles.FlatlistItem}
-            keyExtractor={(item) => item}
-            renderItem={({item}) => (
-              <DetailItem data={{oiseau_nom: item, root: 'SearchView'}} />
-            )}
-          />
-        )}
-      </View>
+          {this.state.isLoading ? (
+              <View style={styles.loading_placeholder}>
+                <Image
+                    style={[styles.image_placeholder, {tintColor: theme.highlight}]}
+                    source={require('../../../assets/images/searchImage.png')}
+                />
+              </View>
+          ) : (
+              <FlatList
+                  data={this.state.oiseauxListeNom}
+                  style={styles.FlatlistItem}
+                  keyExtractor={(item) => item}
+                  renderItem={({item}) => (
+                      <DetailItem data={{oiseau_nom: item, root: 'SearchView'}} />
+                  )}
+              />
+          )}
+        </View>
     );
   }
 }

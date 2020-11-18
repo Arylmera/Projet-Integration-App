@@ -1,5 +1,4 @@
 import React from 'react';
-import {YellowBox} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import HeaderNavigator from './components/Navigation/HeaderNavigator';
@@ -9,12 +8,13 @@ import Store from './Store/configureStore';
 import firebase from 'firebase';
 import {firebaseConfig} from './config';
 
+console.disableYellowBox = true;
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 class App extends React.Component {
   constructor(props) {
-    //YellowBox.ignoreWarnings([""]);
+    console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
     super(props);
     this.state = {
       seasonStyle: getStyleSheet(),

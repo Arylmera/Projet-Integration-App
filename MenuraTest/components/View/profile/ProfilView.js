@@ -142,7 +142,7 @@ class ProfilView extends React.Component {
           </View>
           <Image
             source={this.state.profileIcon}
-            style={[styles.profileIcon, {backgroundColor: theme.highlight}]}
+            style={[styles.profileIcon, {backgroundColor: theme.secondary}]}
           />
         </View>
         <View style={styles.container_row}>
@@ -156,7 +156,9 @@ class ProfilView extends React.Component {
           <TouchableOpacity
             style={[styles.button, {backgroundColor: theme.secondary}]}
             onPress={() => this._askUpdatePassword()}>
-            <Text style={{color: theme.highlight}}>modifier mot de passe</Text>
+            <Text style={{color: theme.highlight}}>
+              modifier le mot de passe
+            </Text>
           </TouchableOpacity>
           <Modal visible={this.state.updatePasswordModal}>
             <ScrollView
@@ -194,19 +196,21 @@ class ProfilView extends React.Component {
                   style={[
                     styles.button,
                     styles.modif_button,
-                    {backgroundColor: '#0084d1'},
+                    {backgroundColor: theme.accent, marginTop: 50},
                   ]}
                   onPress={() => this._updatePassword()}>
-                  <Text>modifier mon mot de passe</Text>
+                  <Text style={{color: theme.highlight}}>
+                    modifier mon mot de passe
+                  </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[
                     styles.button,
                     styles.modif_button,
-                    {backgroundColor: '#000000'},
+                    {backgroundColor: theme.secondary},
                   ]}
                   onPress={() => this.setState({updatePasswordModal: false})}>
-                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                  <Text style={{color: theme.highlight}}>Annuler</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -241,16 +245,16 @@ class ProfilView extends React.Component {
                     {backgroundColor: '#de0404'},
                   ]}
                   onPress={() => this._logOut()}>
-                  <Text>Se déconnecter</Text>
+                  <Text style={{color: 'white'}}>Se déconnecter</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[
                     styles.button,
                     styles.deconnection_button,
-                    {backgroundColor: '#000000'},
+                    {backgroundColor: theme.secondary},
                   ]}
                   onPress={() => this.setState({deconnexionModal: false})}>
-                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                  <Text style={{color: theme.highlight}}>Annuler</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -287,12 +291,12 @@ class ProfilView extends React.Component {
                 <TouchableOpacity
                   style={[styles.button, {backgroundColor: '#de0404'}]}
                   onPress={() => this._deleteAccount()}>
-                  <Text>Supprimer mon compte</Text>
+                  <Text style={{color: 'white'}}>Supprimer mon compte</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={[styles.button, {backgroundColor: '#000000'}]}
+                  style={[styles.button, {backgroundColor: theme.secondary}]}
                   onPress={() => this.setState({deleteAccountModal: false})}>
-                  <Text style={{color: '#ffffff'}}>Annuler</Text>
+                  <Text style={{color: theme.highlight}}>Annuler</Text>
                 </TouchableOpacity>
               </View>
             </ScrollView>
@@ -343,6 +347,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 150,
     height: 150,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+    elevation: 1,
   },
   button_container: {
     flex: 1,
@@ -361,8 +371,8 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0,0,0, .7)',
     shadowOffset: {height: 0, width: 0},
     shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowRadius: 1,
+    elevation: 1,
   },
   textinput: {
     marginLeft: 10,
@@ -386,7 +396,6 @@ const styles = StyleSheet.create({
   modif_password_button_bloc: {
     width: '100%',
     flexDirection: 'column',
-    marginTop: 50,
   },
   modif_button: {
     flex: 1,

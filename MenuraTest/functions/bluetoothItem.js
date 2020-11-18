@@ -40,22 +40,23 @@ class BlueTooth_Item extends React.Component {
   render() {
     let theme = this.props.currentStyle;
     return (
-      <View style={[styles.main_container, {backgroundColor: theme.accent}]}>
+      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
         <Icon name="bluetooth" size={18} color={theme.highlight} />
         <Text style={[styles.device_name, {color: theme.highlight}]}>
           {this.state.device.name}
         </Text>
         <View style={styles.flex_item_size_helper} />
-        <View style={styles.connect_container}>
+        <View
+          style={[styles.connect_container, {backgroundColor: theme.accent}]}>
           {this.state.connected ? (
             <TouchableOpacity
               style={[styles.connect_button]}
               onPress={this.disconnect_from_device.bind(this)}>
               <View style={styles.connect_button_helper}>
-                <Text style={[{color: theme.highlight}]}>
+                <Text style={[styles.connect_status_text,{color: theme.highlight}]}>
                   {this.state.status_diplay}
                 </Text>
-                <Icon name="done" size={18} color={'#008000'} />
+                <Icon name="done" size={18} color={theme.highlight} />
               </View>
             </TouchableOpacity>
           ) : (
@@ -63,10 +64,10 @@ class BlueTooth_Item extends React.Component {
               style={[styles.connect_button]}
               onPress={this.connect_to_device.bind(this)}>
               <View style={styles.connect_button_helper}>
-                <Text style={[{color: theme.highlight}]}>
+                <Text style={[styles.connect_status_text,{color: theme.highlight}]}>
                   {this.state.status_diplay}
                 </Text>
-                <Icon name="clear" size={18} color={'#DC143C'} />
+                <Icon name="clear" size={18} color={theme.primary} />
               </View>
             </TouchableOpacity>
           )}
@@ -81,8 +82,14 @@ let styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     borderRadius: 5,
-    padding: 5,
+    padding: 7,
     margin: 5,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+    elevation: 1,
   },
   flex_item_size_helper: {
     flex: 1,
@@ -92,13 +99,21 @@ let styles = StyleSheet.create({
   },
   device_name: {
     flex: 2,
+    marginLeft: 15,
   },
   connect_container: {
     flex: 2,
+    alignItems: 'center',
+    borderRadius: 5,
+    padding: 1,
   },
   connect_button_helper: {
     flex: 1,
     flexDirection: 'row',
+  },
+  connect_status_text: {
+    marginRight: 5,
+    marginLeft: 5,
   },
   connect_button: {
     flex: 1,
