@@ -4,6 +4,7 @@ import TipsItem from './TipsItem';
 import {connect} from 'react-redux';
 import {ButtonGroup, Button, Icon, Card} from "react-native-elements";
 import {useNavigation} from "@react-navigation/core";
+import ActivityIndicator from "react-native-paper/src/components/ActivityIndicator";
 
 
 
@@ -108,7 +109,9 @@ class TipsView extends React.Component {
           >
             <Card.Title style={{color: theme.highlight}}>Construction nichoirs</Card.Title>
             <Card.Divider/>
-            <Card.Image  source={{ uri: 'https://nichoirs.net/photos/3bal.jpg' }} />
+            <Card.Image
+                PlaceholderContent={<ActivityIndicator />}
+                source={{ uri: 'https://nichoirs.net/photos/3bal.jpg' }} />
             <Text style={{marginBottom: 10, color: theme.highlight}}>
               Des bonnes idées de constructions avec modèles détaillés
             </Text>
