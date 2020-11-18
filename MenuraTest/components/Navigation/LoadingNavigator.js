@@ -7,11 +7,12 @@ import InscriptionProfilView from "../View/profile/InscriptionProfilView";
 
 const Stack = createStackNavigator();
 
-function LoadingNavigator({navigation}) {
+function LoadingNavigator() {
     return (
         <Stack.Navigator
             initialRouteName="LoadingScreen"
             screenOptions={{
+                headerTitleAlign: 'center',
                 headerStyle: {
                     backgroundColor: '#FFFFFF',
                 },
@@ -27,7 +28,7 @@ function LoadingNavigator({navigation}) {
                 name="connexion"
                 component={connexionProfilView}
                 options={{
-                    headerShown: false,
+                    headerLeft: () => {},
                 }}
             />
             <Stack.Screen

@@ -20,14 +20,17 @@ class InscriptionProfilView extends React.Component {
     this.email = '';
     this.password = '';
     this.password2 = '';
+    this.errorBorderColor = '#c20000';
+    this.normalBorderColor = '#b8b8b8';
+    this.focusBorderColor = '#000000';
     this.state = {
       helperText: '',
       errorMessage: '',
-      borderNom: '#b8b8b8',
-      borderPrenom: '#b8b8b8',
-      borderEmail: '#b8b8b8',
-      borderPassword1: '#b8b8b8',
-      borderPassword2: '#b8b8b8',
+      borderNom: this.normalBorderColor,
+      borderPrenom: this.normalBorderColor,
+      borderEmail: this.normalBorderColor,
+      borderPassword1: this.normalBorderColor,
+      borderPassword2: this.normalBorderColor,
     };
   }
 
@@ -82,16 +85,16 @@ class InscriptionProfilView extends React.Component {
           console.error(error);
           this.setState({
             errorMessage: error.message,
-            borderEmail: '#c20000',
-            borderPassword1: '#c20000',
-            borderPassword2: '#c20000',
+            borderEmail: this.errorBorderColor,
+            borderPassword1: this.errorBorderColor,
+            borderPassword2: this.errorBorderColor,
           });
         });
     } else {
       this.setState({
         errorMessage: 'les mots de passe ne sont pas identiques',
-        borderPassword1: '#c20000',
-        borderPassword2: '#c20000',
+        borderPassword1: this.errorBorderColor,
+        borderPassword2: this.errorBorderColor,
       });
     }
   }
@@ -105,23 +108,23 @@ class InscriptionProfilView extends React.Component {
             style={[styles.textInput, {borderColor: this.state.borderNom}]}
             placeholder="nom"
             onChangeText={(nom) => this._nomTextInputChanged(nom)}
-            onFocus={() => this.setState({borderNom: '#000000'})}
-            onBlur={() => this.setState({borderNom: '#b8b8b8'})}
+            onFocus={() => this.setState({borderNom: this.focusBorderColor})}
+            onBlur={() => this.setState({borderNom: this.normalBorderColor})}
           />
           <TextInput
             style={[styles.textInput, {borderColor: this.state.borderPrenom}]}
             placeholder="prénom"
             onChangeText={(prenom) => this._prenomTextInputChanged(prenom)}
-            onFocus={() => this.setState({borderPrenom: '#000000'})}
-            onBlur={() => this.setState({borderPrenom: '#b8b8b8'})}
+            onFocus={() => this.setState({borderPrenom: this.focusBorderColor})}
+            onBlur={() => this.setState({borderPrenom: this.normalBorderColor})}
           />
           <TextInput
             style={[styles.textInput, {borderColor: this.state.borderEmail}]}
             placeholder="email"
             keyboardType="email-address"
             onChangeText={(email) => this._emailTextInputChanged(email)}
-            onFocus={() => this.setState({borderEmail: '#000000'})}
-            onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
+            onFocus={() => this.setState({borderEmail: this.focusBorderColor})}
+            onBlur={() => this.setState({borderEmail: this.normalBorderColor})}
           />
           <TextInput
             style={[
@@ -135,12 +138,15 @@ class InscriptionProfilView extends React.Component {
             }
             onFocus={() =>
               this.setState({
-                borderPassword1: '#000000',
+                borderPassword1: this.focusBorderColor,
                 helperText: 'minimum 6 caractères',
               })
             }
             onBlur={() =>
-              this.setState({borderPassword1: '#b8b8b8', helperText: ''})
+              this.setState({
+                borderPassword1: this.normalBorderColor,
+                helperText: '',
+              })
             }
           />
           <TextInput
@@ -155,12 +161,15 @@ class InscriptionProfilView extends React.Component {
             }
             onFocus={() =>
               this.setState({
-                borderPassword2: '#000000',
+                borderPassword2: this.focusBorderColor,
                 helperText: 'Veuillez confirmer le mot de passe',
               })
             }
             onBlur={() =>
-              this.setState({borderPassword2: '#b8b8b8', helperText: ''})
+              this.setState({
+                borderPassword2: this.normalBorderColor,
+                helperText: '',
+              })
             }
           />
           <Text style={styles.helperText}>{this.state.helperText}</Text>

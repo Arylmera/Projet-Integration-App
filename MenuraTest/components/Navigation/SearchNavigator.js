@@ -10,6 +10,7 @@ function SearchNavigator({navigation}) {
     <Stack.Navigator
       initialRouteName="SearchView"
       screenOptions={{
+          headerShown: false,
         headerStyle: {},
       }}>
       <Stack.Screen

@@ -15,9 +15,12 @@ class ResetPasswordProfilView extends React.Component {
   constructor(props) {
     super(props);
     this.email = '';
+    this.errorBorderColor = '#c20000';
+    this.normalBorderColor = '#b8b8b8';
+    this.focusBorderColor = '#000000';
     this.state = {
       errorMessage: '',
-      borderEmail: '#b8b8b8',
+      borderEmail: this.normalBorderColor,
     };
   }
 
@@ -35,7 +38,10 @@ class ResetPasswordProfilView extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-        this.setState({errorMessage: error.message, borderEmail: '#c20000'});
+        this.setState({
+          errorMessage: error.message,
+          borderEmail: this.errorBorderColor,
+        });
       });
   }
 
@@ -49,8 +55,8 @@ class ResetPasswordProfilView extends React.Component {
             placeholder="email"
             keyboardType="email-address"
             onChangeText={(email) => this._emailTextInputChanged(email)}
-            onFocus={() => this.setState({borderEmail: '#000000'})}
-            onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
+            onFocus={() => this.setState({borderEmail: this.focusBorderColor})}
+            onBlur={() => this.setState({borderEmail: this.normalBorderColor})}
           />
           <Text style={styles.errorText}>{this.state.errorMessage}</Text>
           <TouchableOpacity

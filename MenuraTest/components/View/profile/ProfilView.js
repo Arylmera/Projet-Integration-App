@@ -272,7 +272,7 @@ class ProfilView extends React.Component {
               ]}>
               <Text
                 style={[styles.text, {color: theme.highlight, fontSize: 22}]}>
-                Attention cette action supprime définitivement votre compte !
+                Attention cette action supprime définitivement votre compte et vous ne pourrez plus récupérer vos données !
               </Text>
               <Text
                 style={[styles.text, {color: theme.highlight, fontSize: 18}]}>

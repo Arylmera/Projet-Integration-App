@@ -16,10 +16,13 @@ class ConnexionProfilView extends React.Component {
     super(props);
     this.email = '';
     this.password = '';
+    this.errorBorderColor = '#c20000';
+    this.normalBorderColor = '#b8b8b8';
+    this.focusBorderColor = '#000000';
     this.state = {
       errorMessage: '',
-      borderEmail: '#b8b8b8',
-      borderPassword: '#b8b8b8',
+      borderEmail: this.normalBorderColor,
+      borderPassword: this.normalBorderColor,
     };
   }
 
@@ -39,8 +42,8 @@ class ConnexionProfilView extends React.Component {
         console.log('User signed in!');
         this.setState({
           errorMessage: '',
-          borderEmail: '#b8b8b8',
-          borderPassword: '#b8b8b8',
+          borderEmail: this.normalBorderColor,
+          borderPassword: this.normalBorderColor,
         });
         navigation.navigate('Views', {params: {}});
       })
@@ -48,8 +51,8 @@ class ConnexionProfilView extends React.Component {
         console.error(error);
         this.setState({
           errorMessage: error.message,
-          borderEmail: '#c20000',
-          borderPassword: '#c20000',
+          borderEmail: this.errorBorderColor,
+          borderPassword: this.errorBorderColor,
         });
       });
   }
@@ -64,8 +67,8 @@ class ConnexionProfilView extends React.Component {
             placeholder="email"
             keyboardType="email-address"
             onChangeText={(email) => this._emailTextInputChanged(email)}
-            onFocus={() => this.setState({borderEmail: '#000000'})}
-            onBlur={() => this.setState({borderEmail: '#b8b8b8'})}
+            onFocus={() => this.setState({borderEmail: this.focusBorderColor})}
+            onBlur={() => this.setState({borderEmail: this.normalBorderColor})}
           />
           <TextInput
             style={[styles.textInput, {borderColor: this.state.borderPassword}]}
@@ -74,8 +77,8 @@ class ConnexionProfilView extends React.Component {
             onChangeText={(password) =>
               this._passwordTextInputChanged(password)
             }
-            onFocus={() => this.setState({borderPassword: '#000000'})}
-            onBlur={() => this.setState({borderPassword: '#b8b8b8'})}
+            onFocus={() => this.setState({borderPassword: this.focusBorderColor})}
+            onBlur={() => this.setState({borderPassword: this.normalBorderColor})}
           />
           <Text style={styles.errorText}>{this.state.errorMessage}</Text>
           <TouchableOpacity
