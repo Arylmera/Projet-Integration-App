@@ -10,12 +10,10 @@ target 'MenuraTest' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'react-native-ble-plx', :path => '../node_modules/react-native-ble-plx'
-
   target 'MenuraTestTests' do
     inherit! :complete
     # Pods for testing
   end
-
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
