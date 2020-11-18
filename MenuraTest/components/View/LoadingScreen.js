@@ -6,7 +6,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import firebase from 'firebase';
-import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 
 class LoadingScreen extends React.Component {
@@ -31,7 +30,7 @@ class LoadingScreen extends React.Component {
 
   render() {
     return (
-      <View style={[styles.main_container, {backgroundColor: '#FFFFFF'}]}>
+      <View style={styles.main_container}>
         <ImageBackground
           style={styles.image}
           resizeMode="center"
@@ -51,6 +50,7 @@ const styles = StyleSheet.create({
   main_container: {
     flex: 1,
     padding: 0,
+    backgroundColor: '#FFFFFF',
   },
   loading: {
     marginTop: 150,

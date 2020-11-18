@@ -10,6 +10,7 @@ function HistoriqueNavigator({navigation}) {
     <Stack.Navigator
       initialRouteName="HistoriqueView"
       screenOptions={{
+          headerShown: false,
         headerStyle: {},
       }}>
       <Stack.Screen

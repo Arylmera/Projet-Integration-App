@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
+import {View, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity, Image, ActivityIndicator} from 'react-native';
 import TipsItem from './TipsItem';
 import {connect} from 'react-redux';
 import {ButtonGroup, Icon, Card, Button} from "react-native-elements";
 import {useNavigation} from "@react-navigation/core";
-import ActivityIndicator from "react-native-paper/src/components/ActivityIndicator";
+//import ActivityIndicator from "react-native-paper/src/components/ActivityIndicator";
 import {Divider} from "react-native-paper";
 
 
