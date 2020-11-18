@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  StyleSheet,
-  View,
-  Text,
-  FlatList,
-  ScrollView,
-  Image,
+    StyleSheet,
+    View,
+    Text,
+    FlatList,
+    ScrollView,
+    Image,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
@@ -46,21 +46,21 @@ class TipsNiche extends React.Component {
                         </Text>
                     </View>
                     <View style={[styles.main_container, {backgroundColor: theme.secondary}]}>
-                    <Image
-                        style={styles.image}
-                        source={require('../../../assets/images/Niches/Niche1_1.png')}
-                    />
-                    <View style={styles.content_container}>
-                        <View style={styles.header_container}>
-                            <Text style={[styles.title_text, {color: theme.highlight}]}>Le nichoir Boîte à lettres</Text>
+                        <Image
+                            style={styles.image}
+                            source={require('../../../assets/images/Niches/Niche1_1.png')}
+                        />
+                        <View style={styles.content_container}>
+                            <View style={styles.header_container}>
+                                <Text style={[styles.title_text, {color: theme.highlight}]}>Le nichoir Boîte à lettres</Text>
+                            </View>
+                            <View style={styles.description_container}>
+                                <Text style={[styles.description_text,{color: theme.highlight}]} numberOfLines={6}>C'est le nichoir le plus commun. Le plus facile à construire aussi.
+                                    Il convient à un grand nombre d'espèces, en particulier aux mésanges, sittelles, etc...</Text>
+                            </View>
                         </View>
-                        <View style={styles.description_container}>
-                            <Text style={[styles.description_text,{color: theme.highlight}]} numberOfLines={6}>C'est le nichoir le plus commun. Le plus facile à construire aussi.
-                                Il convient à un grand nombre d'espèces, en particulier aux mésanges, sittelles, etc...</Text>
-                        </View>
                     </View>
-                    </View>
-                    </View>
+                </View>
             </ScrollView>
         );
     }

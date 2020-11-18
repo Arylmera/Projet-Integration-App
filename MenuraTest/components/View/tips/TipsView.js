@@ -106,30 +106,30 @@ class TipsView extends React.Component {
                 data={{infos_saison: this.Saisons[this.state.selectedIndex]}} />
           </View>
           <View style={[styles.niche_container, {backgroundColor: theme.secondary}]}>
-          <View style={[styles.niche, {backgroundColor: theme.secondary}]}>
-            <Text style={[styles.niche_text, {color: theme.highlight}]}>
-              Construction nichoirs
-            </Text>
-          </View>
-          <Divider style={[{backgroundColor: theme.highlight}]} />
-          <View
-              style={[
-                styles.item,
-                {backgroundColor: theme.secondary, color: theme.highlight},
-              ]}>
-            <Image
-                style={styles.image}
-                PlaceholderContent={<ActivityIndicator />}
-                source={{ uri: 'https://nichoirs.net/photos/3bal.jpg' }} />
-            <Text style={{marginBottom: 10, color: theme.highlight}}>
-              Des bonnes idées de constructions avec modèles détaillés
-            </Text>
-            <Button
-                titleStyle={{color: theme.highlight}}
-                buttonStyle={{borderRadius: 5, marginLeft: 0, marginRight: 0, marginBottom: 0,backgroundColor: theme.accent}}
-                onPress={() => navigation.navigate('TipsNiche')}
-                title='A vos marteaux !' />
-          </View>
+            <View style={[styles.niche, {backgroundColor: theme.secondary}]}>
+              <Text style={[styles.niche_text, {color: theme.highlight}]}>
+                Construction nichoirs
+              </Text>
+            </View>
+            <Divider style={[{backgroundColor: theme.highlight}]} />
+            <View
+                style={[
+                  styles.item,
+                  {backgroundColor: theme.secondary, color: theme.highlight},
+                ]}>
+              <Image
+                  style={styles.image}
+                  PlaceholderContent={<ActivityIndicator />}
+                  source={{ uri: 'https://nichoirs.net/photos/3bal.jpg' }} />
+              <Text style={{marginBottom: 10, color: theme.highlight}}>
+                Des bonnes idées de constructions avec modèles détaillés
+              </Text>
+              <Button
+                  titleStyle={{color: theme.highlight}}
+                  buttonStyle={{borderRadius: 5, marginLeft: 0, marginRight: 0, marginBottom: 0,backgroundColor: theme.accent}}
+                  onPress={() => navigation.navigate('TipsNiche')}
+                  title='A vos marteaux !' />
+            </View>
           </View>
         </ScrollView>
     );
