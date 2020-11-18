@@ -8,6 +8,7 @@ import Store from './Store/configureStore';
 import firebase from 'firebase';
 import {firebaseConfig} from './config';
 
+console.disableYellowBox = true;
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

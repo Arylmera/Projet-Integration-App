@@ -142,7 +142,7 @@ class ProfilView extends React.Component {
           </View>
           <Image
             source={this.state.profileIcon}
-            style={[styles.profileIcon, {backgroundColor: theme.highlight}]}
+            style={[styles.profileIcon, {backgroundColor: theme.secondary}]}
           />
         </View>
         <View style={styles.container_row}>
@@ -347,6 +347,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 150,
     height: 150,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+    elevation: 1,
   },
   button_container: {
     flex: 1,
@@ -365,8 +371,8 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0,0,0, .7)',
     shadowOffset: {height: 0, width: 0},
     shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 2,
+    shadowRadius: 1,
+    elevation: 1,
   },
   textinput: {
     marginLeft: 10,

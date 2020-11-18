@@ -128,14 +128,17 @@ class Capteur extends React.Component {
               <Text style={{color: theme.highlight}}>Adresse MAC :</Text>
               <TextInput
                 placeholder="FF:FF:FF:FF:FF:FF"
-                placeholderTextColor={'grey'}
+                placeholderTextColor={theme.primary}
                 autocorrect={false}
                 autoCapitalize={'characters'}
                 ref={this.mac_add_input}
                 onChangeText={(mac_adresse) =>
                   this._mac_adresse_change(mac_adresse)
                 }
-                style={[styles.add_capteur_input, {color: theme.highlight}]}
+                style={[
+                  styles.add_capteur_input,
+                  {color: theme.highlight, backgroundColor: theme.secondary},
+                ]}
               />
               <TouchableOpacity
                 onPress={this._add_capteur.bind(this)}
@@ -239,9 +242,11 @@ const styles = StyleSheet.create({
   },
   add_capteur_input: {
     width: 170,
-    marginLeft: 5,
-    marginRight: 5,
-    padding: 10,
+    margin: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 5,
+    borderRadius: 5,
     textAlign: 'center',
   },
   add_capteur_button_text: {

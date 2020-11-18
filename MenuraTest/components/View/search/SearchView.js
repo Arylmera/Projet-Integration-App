@@ -11,9 +11,11 @@ import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
 import {getOiseaux} from '../../../api/oiseaux_api';
 import {connect} from 'react-redux';
+import {LogBox} from 'react-native';
 
 class SearchView extends React.Component {
   constructor(props) {
+    LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
     super(props);
     this.searchedText = '';
     this.state = {
@@ -104,8 +106,8 @@ let styles = StyleSheet.create({
     marginRight: 10,
   },
   textinput: {
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 5,
     height: 50,
     borderRadius: 10,
@@ -114,8 +116,8 @@ let styles = StyleSheet.create({
     shadowColor: 'rgba(0,0,0, .7)',
     shadowOffset: {height: 0, width: 0},
     shadowOpacity: 0.5,
-    shadowRadius: 4,
-    elevation: 4,
+    shadowRadius: 2,
+    elevation: 2,
   },
   loading_placeholder: {
     flex: 1,

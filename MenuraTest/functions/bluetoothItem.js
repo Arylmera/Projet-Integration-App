@@ -112,7 +112,8 @@ let styles = StyleSheet.create({
     flexDirection: 'row',
   },
   connect_status_text: {
-    marginRight: 10,
+    marginRight: 5,
+    marginLeft: 5,
   },
   connect_button: {
     flex: 1,
