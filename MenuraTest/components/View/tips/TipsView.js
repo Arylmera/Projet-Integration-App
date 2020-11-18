@@ -1,8 +1,11 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Text, ScrollView} from 'react-native';
+import {View, FlatList, StyleSheet, Text, ScrollView, TouchableOpacity} from 'react-native';
 import TipsItem from './TipsItem';
 import {connect} from 'react-redux';
-import {ButtonGroup} from "react-native-elements";
+import {ButtonGroup, Button, Icon, Card} from "react-native-elements";
+import {useNavigation} from "@react-navigation/core";
+
+
 
 class TipsView extends React.Component {
   constructor(props) {
@@ -63,7 +66,7 @@ class TipsView extends React.Component {
 
 
   render() {
-
+    const {navigation} = this.props;
     const component1 = () => <Text>Automne</Text>;
     const component2 = () => <Text>Hiver</Text>;
     const component3 = () => <Text>Printemps</Text>;
@@ -99,10 +102,21 @@ class TipsView extends React.Component {
 
         <TipsItem
             data={{infos_saison: this.Saisons[this.state.selectedIndex]}} />
-
-
-
       </View>
+          <Card containerStyle={{backgroundColor: theme.secondary}}
+                wrapperStyle={{backgroundColor: theme.secondary}}
+          >
+            <Card.Title style={{color: theme.highlight}}>Construction nichoirs</Card.Title>
+            <Card.Divider/>
+            <Card.Image  source={{ uri: 'https://nichoirs.net/photos/3bal.jpg' }} />
+            <Text style={{marginBottom: 10, color: theme.highlight}}>
+              Des bonnes idées de constructions avec modèles détaillés
+            </Text>
+            <Button
+                onPress={() => navigation.navigate('TipsNiche')}
+                buttonStyle={{borderRadius: 5, marginLeft: 0, marginRight: 0, marginBottom: 0,backgroundColor: theme.accent, color: theme.highlight}}
+                title='A vos marteaux !' />
+          </Card>
           </ScrollView>
     );
   }
@@ -145,6 +159,25 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 3,
   },
+  button: {
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 20,
+    borderWidth: 1,
+    borderRadius: 4,
+    width: '50%',
+    padding: 3,
+    alignItems: 'center',
+  },
+  nichoire: {
+    borderRadius: 5,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .7)',
+    shadowOffset: {height: 0, width: 0},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 3,
+  }
 });
 
 const mapStateToProps = (state) => {
@@ -153,4 +186,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(TipsView);
+
+export default connect(mapStateToProps)(function (props) {
+  const navigation = useNavigation();
+  return <TipsView {...props} navigation={navigation} />;
+});

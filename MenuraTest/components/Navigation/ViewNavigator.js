@@ -7,6 +7,7 @@ import TipsView from '../View/tips/TipsView';
 import ParametresView from '../View/parametres/ParametresView';
 
 import SearchNavigator from './SearchNavigator';
+import TipsNavigator from './TipsNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -108,8 +109,8 @@ class ViewNavigator extends React.Component {
         />
         <Tab.Screen
           style={[styles.screen, {backgroundColor: theme.highlight}]}
-          name="TipsView"
-          component={TipsView}
+          name="TipsNavigator"
+          component={TipsNavigator}
           options={{
             tabBarLabel: 'Tips',
             tabBarIcon: (tabInfo) => (
