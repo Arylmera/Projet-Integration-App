@@ -4,28 +4,28 @@ Définition des themes
 import {getDataStorage, storeDataStorage} from '../../functions/storageHelper';
 
 const winterStyle = {
-  primary: '#272343',
-  secondary: '#383656',
-  accent: '#474177',
+  primary: '#004c8c',
+  secondary: '#0277bd',
+  accent: '#58a5f0',
   highlight: '#FFFFFF',
 };
 const autumnStyle = {
-  primary: '#622B35',
-  secondary: '#5d3039',
-  accent: '#9f4757',
-  highlight: '#FAE1AC',
+  primary: '#bb4d00',
+  secondary: '#f57c00',
+  accent: '#ffad42',
+  highlight: '#000000',
 };
 const springStyle = {
-  primary: '#c6746b',
-  secondary: '#d48f89',
-  accent: '#F3AEA8',
-  highlight: '#B5E4D0',
+  primary: '#bf5f82',
+  secondary: '#f48fb1',
+  accent: '#ffc1e3',
+  highlight: '#000000',
 };
 const summerStyle = {
-  primary: '#086972',
-  secondary: '#0e646d',
-  accent: '#0e919d',
-  highlight: '#e1e382',
+  primary: '#6b9b37',
+  secondary: '#9ccc65',
+  accent: '#cfff95',
+  highlight: '#000000',
 };
 
 /*

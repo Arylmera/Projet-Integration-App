@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, Text, Switch, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import Bluetooth from '../../../functions/bluetooth';
 import firebase from 'firebase';
 import Capteur from '../../../functions/capteur';
+import {LogBox} from 'react-native';
 
 class ParametresView extends React.Component {
   constructor(props) {
+    LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
     super(props);
     this.state = {
       id: '',
