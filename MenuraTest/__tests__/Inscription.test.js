@@ -23,3 +23,10 @@ it('nom bon', () => {
     expect(tree).toEqual('Gregoire@gmail')
     
   });
+
+it('emaiPassword bon', () => {
+    let component = renderer.create(<Inscription/>).getInstance();
+    let tree = component._passwordTextInputChanged('mdp');
+    expect(tree).toEqual('mdp')
+    
+  });
