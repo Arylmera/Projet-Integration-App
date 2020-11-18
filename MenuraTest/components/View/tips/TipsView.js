@@ -13,7 +13,7 @@ class TipsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIndex: 1
+      selectedIndex: 0
     };
     this.updateIndex = this.updateIndex.bind(this);
     this.Saisons = [
@@ -106,8 +106,8 @@ class TipsView extends React.Component {
                 data={{infos_saison: this.Saisons[this.state.selectedIndex]}} />
           </View>
           <View style={[styles.niche_container, {backgroundColor: theme.secondary}]}>
-          <View style={[styles.saison, {backgroundColor: theme.secondary}]}>
-            <Text style={[styles.saison_text, {color: theme.highlight}]}>
+          <View style={[styles.niche, {backgroundColor: theme.secondary}]}>
+            <Text style={[styles.niche_text, {color: theme.highlight}]}>
               Construction nichoirs
             </Text>
           </View>
@@ -203,12 +203,12 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 3,
   },
-  saison: {
+  niche: {
     flex: 1,
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
   },
-  saison_text: {
+  niche_text: {
     fontSize: 28,
     textAlign: 'center',
     padding: 5,

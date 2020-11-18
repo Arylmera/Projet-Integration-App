@@ -1,5 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text, FlatList, ScrollView, Image} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  ScrollView,
+  Image,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {Divider} from "react-native-paper";
@@ -116,11 +123,6 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         paddingRight: 5
     },
-    vote_text: {
-        fontWeight: 'bold',
-        fontSize: 26,
-        color: '#666666'
-    },
     description_container: {
         flex: 7
     },
@@ -128,13 +130,7 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         color: '#666666'
     },
-    date_container: {
-        flex: 1
-    },
-    date_text: {
-        textAlign: 'right',
-        fontSize: 14
-    }
+
 });
 
 const mapStateToProps = (state) => {
