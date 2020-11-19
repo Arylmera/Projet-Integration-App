@@ -110,7 +110,7 @@ class TipsView extends React.Component {
                         styles.list_header,
                         {backgroundColor: theme.accent, color: theme.highlight},
                      ]}>
-                     Quelques conseils utiles en fonction des saisons :
+                     Aider les oiseaux des jardins au fil des saisons :
                   </Text>
                </View>
 
@@ -137,22 +137,52 @@ class TipsView extends React.Component {
                   <Image
                      style={styles.image}
                      PlaceholderContent={<ActivityIndicator />}
-                     source={{uri: 'https://nichoirs.net/photos/3bal.jpg'}}
+                     source={require('../../../assets/images/Niches/Niche4_1.png')}
                   />
                   <Text style={{marginBottom: 10, color: theme.highlight}}>
                      Des bonnes idées de constructions avec modèles détaillés
                   </Text>
                   <Button
-                     titleStyle={{color: theme.highlight}}
-                     buttonStyle={{
-                        borderRadius: 5,
-                        marginLeft: 0,
-                        marginRight: 0,
-                        marginBottom: 0,
-                        backgroundColor: theme.accent,
-                     }}
+                      titleStyle={{color: theme.highlight}}
+                      buttonStyle={[ styles.button,{
+                         backgroundColor: theme.accent
+                      }]}
                      onPress={() => navigation.navigate('TipsNiche')}
                      title="A vos marteaux !"
+                  />
+               </View>
+            </View>
+            <View
+                style={[
+                   styles.niche_container,
+                   {backgroundColor: theme.secondary},
+                ]}>
+               <View style={[styles.niche, {backgroundColor: theme.secondary}]}>
+                  <Text style={[styles.niche_text, {color: theme.highlight}]}>
+                     Idées de mangeoires
+                  </Text>
+               </View>
+               <Divider style={[{backgroundColor: theme.highlight}]} />
+               <View
+                   style={[
+                      styles.item,
+                      {backgroundColor: theme.secondary, color: theme.highlight},
+                   ]}>
+                  <Image
+                      style={styles.image}
+                      PlaceholderContent={<ActivityIndicator />}
+                      source={require('../../../assets/images/Mangeoires/Mangeoire1_1.png')}
+                  />
+                  <Text style={{marginBottom: 10, color: theme.highlight}}>
+                  Des bonnes idées de de mangeoires
+               </Text>
+                  <Button
+                      titleStyle={{color: theme.highlight}}
+                      buttonStyle={[ styles.button,{
+                         backgroundColor: theme.accent
+                      }]}
+                      //onPress={() => navigation.navigate('TipsNiche')}
+                      title="A Table !"
                   />
                </View>
             </View>
@@ -208,14 +238,10 @@ const styles = StyleSheet.create({
       elevation: 3,
    },
    button: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      marginTop: 20,
-      borderWidth: 1,
-      borderRadius: 4,
-      width: '50%',
-      padding: 3,
-      alignItems: 'center',
+      borderRadius: 5,
+      marginLeft: 0,
+      marginRight: 0,
+      marginBottom: 0,
    },
    nichoire: {
       borderRadius: 5,
@@ -247,6 +273,8 @@ const styles = StyleSheet.create({
       width: null,
       height: 150,
       borderRadius: 4,
+      flex: 1,
+      resizeMode: 'contain',
    },
    button_groupe_saison: {
       borderRadius: 5,

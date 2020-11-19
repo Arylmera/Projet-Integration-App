@@ -52,7 +52,13 @@ class StatsView extends React.Component {
       return (
          <View
             style={[styles.main_container, {backgroundColor: theme.primary}]}>
-            <Text>Stats Works</Text>
+            <Text
+                style={[
+                   styles.list_header,
+                   {backgroundColor: theme.accent, color: theme.highlight},
+                ]}>
+               Statistiques des oiseaux de votre capteur
+            </Text>
          </View>
       );
    }
@@ -61,8 +67,18 @@ class StatsView extends React.Component {
 const styles = StyleSheet.create({
    main_container: {
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+   },
+   list_header: {
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: 'bold',
+      padding: 20,
+      // shadow
+      shadowColor: 'rgba(0,0,0, .7)',
+      shadowOffset: {height: 0, width: 0},
+      shadowOpacity: 0.5,
+      shadowRadius: 2,
+      elevation: 3,
    },
 });
 

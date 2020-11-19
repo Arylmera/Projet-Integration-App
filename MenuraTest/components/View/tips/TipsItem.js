@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {Divider} from 'react-native-paper';
+import {Button} from "react-native-elements";
 
 class TipsItem extends React.Component {
    constructor(props) {
@@ -22,13 +23,28 @@ class TipsItem extends React.Component {
                </Text>
             </View>
             <Divider style={[{backgroundColor: theme.highlight}]} />
+            <View
+                style={[
+                   styles.item,
+                   {backgroundColor: theme.secondary, color: theme.highlight},
+                ]}>
             <Text
-               style={[
-                  styles.item,
-                  {backgroundColor: theme.secondary, color: theme.highlight},
-               ]}>
+                style={{marginBottom: 10, color: theme.highlight}}>
                {tips}
             </Text>
+            <Button
+                titleStyle={{color: theme.highlight}}
+                buttonStyle={{
+                   borderRadius: 5,
+                   marginLeft: 0,
+                   marginRight: 0,
+                   marginBottom: 0,
+                   backgroundColor: theme.accent,
+                }}
+                //onPress={() => navigation.navigate('')}
+                title="En savoir plus ..."
+            />
+            </View>
          </View>
       );
    }
