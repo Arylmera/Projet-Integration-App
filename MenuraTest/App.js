@@ -7,13 +7,13 @@ import Store from './Store/configureStore';
 import firebase from 'firebase';
 import {firebaseConfig} from './config';
 
-console.disableYellowBox = true;
+import {LogBox} from 'react-native';
+LogBox.ignoreAllLogs(true);
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 class App extends React.Component {
    constructor(props) {
-      console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
       super(props);
       this.state = {};
    }

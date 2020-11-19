@@ -44,7 +44,6 @@ class DetailOiseaux extends React.Component {
    _loadinfo() {
       getWikiInfo(this.state.oiseaux_nom).then((data) => {
          if (data) {
-            //console.log(data)
             if (data.title !== 'Not found.') {
                this.setState({
                   dataFound: true,
