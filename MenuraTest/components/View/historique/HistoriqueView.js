@@ -1,110 +1,135 @@
 import React from 'react';
 import {StyleSheet, View, FlatList, Text} from 'react-native';
-import DetailItem from '../details/detailItem';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 import {getHistoriqueByID} from '../../../api/historique_api';
+import HistoriqueItem from './historiqueItem';
 
 class HistoriqueView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user_id: '',
-      oiseauxListe: [],
-    };
-  }
+   constructor(props) {
+      super(props);
+      this.state = {
+         oiseauxListe: [],
+      };
+   }
 
-  componentDidMount() {
-    this._checkIfLoggedIn();
-    if (this.state.user_id !== '') {
-    }
-  }
+   /**
+    * chargement du component
+    */
+   componentDidMount() {
+      this._checkIfLoggedIn();
+   }
 
-  _checkIfLoggedIn() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({user_id: user.uid});
-        this._load_user_historique(user);
-      } else {
-        console.log('no user');
-      }
-    });
-  }
+   /**
+    * check si l'utilisateur est connécté et récupère ces info
+    * @private
+    */
+   _checkIfLoggedIn() {
+      firebase.auth().onAuthStateChanged((user) => {
+         if (user) {
+            this._load_user_historique(user);
+         } else {
+            console.log('no user');
+         }
+      });
+   }
 
-  _load_user_historique(user) {
-    console.log('loading user historique for user : ' + this.state.user_id);
-    user.getIdToken(true).then((idToken) => {
-      getHistoriqueByID(this.state.user_id, idToken).then((data) =>
-        console.log(data),
+   /**
+    *
+    * @param user
+    * @private
+    */
+   _load_user_historique(user) {
+      console.log('loading user historique for user : ' + user.uid);
+      user.getIdToken(true).then((idToken) => {
+         getHistoriqueByID(user.uid, idToken).then((data) =>
+            this._handle_data_historique(data),
+         );
+      });
+   }
+
+   /**
+    * gestion des données recu par la requete get
+    * @param data
+    * @private
+    */
+   _handle_data_historique(data) {
+      console.log(data.data);
+      this.setState({oiseauxListe: data.data});
+   }
+
+   /**
+    * render
+    * @return {JSX.Element}
+    */
+   render() {
+      let theme = this.props.currentStyle;
+      return (
+         <View
+            style={[styles.main_container, {backgroundColor: theme.primary}]}>
+            <View style={[styles.condition_container]}>
+               <Text
+                  style={[
+                     styles.list_header,
+                     {backgroundColor: theme.accent, color: theme.highlight},
+                  ]}>
+                  Liste des oiseaux détecté par votre capteur
+               </Text>
+               <FlatList
+                  data={this.state.oiseauxListe}
+                  style={styles.FlatlistItem}
+                  keyExtractor={(item) => item.idhistoriques}
+                  renderItem={({item}) => (
+                     <HistoriqueItem
+                        data={{oiseau: item, root: 'HistoriqueView'}}
+                     />
+                  )}
+               />
+            </View>
+         </View>
       );
-    });
-    this.setState({oiseauxListe: ['mésange']});
-  }
-
-  render() {
-    let theme = this.props.currentStyle;
-    return (
-      <View style={[styles.main_container, {backgroundColor: theme.primary}]}>
-        {this.state.user_id !== '' ? (
-          <View style={[styles.condition_container]}>
-            <Text
-              style={[
-                styles.list_header,
-                {backgroundColor: theme.secondary, color: theme.highlight},
-              ]}>
-              Liste des oiseaux détecté par votre capteur
-            </Text>
-            <FlatList
-              data={this.state.oiseauxListe}
-              style={styles.FlatlistItem}
-              keyExtractor={(item) => item}
-              renderItem={({item}) => (
-                <DetailItem data={{oiseau_nom: item, root: 'HistoriqueView'}} />
-              )}
-            />
-          </View>
-        ) : (
-          <View style={[styles.condition_container]}>
-            <Text> Please be logged and have at lease one bird </Text>
-          </View>
-        )}
-      </View>
-    );
-  }
+   }
 }
 
 const styles = StyleSheet.create({
-  main_container: {
-    flex: 1,
-  },
-  condition_container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  list_header: {
-    textAlign: 'center',
-    fontSize: 18,
-    fontWeight: 'bold',
-    padding: 20,
-  },
-  detailButton: {
-    borderRadius: 5,
-    width: '25%',
-    padding: 3,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  FlatlistItem: {
-    flex: 1,
-    marginLeft: 10,
-    marginRight: 10,
-  },
+   main_container: {
+      flex: 1,
+   },
+   condition_container: {
+      flex: 1,
+      flexDirection: 'column',
+   },
+   list_header: {
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: 'bold',
+      padding: 20,
+      // shadow
+      shadowColor: 'rgba(0,0,0, .7)',
+      shadowOffset: {height: 0, width: 0},
+      shadowOpacity: 0.5,
+      shadowRadius: 2,
+      elevation: 3,
+   },
+   detailButton: {
+      borderRadius: 5,
+      width: '25%',
+      padding: 3,
+      alignItems: 'center',
+      justifyContent: 'center',
+   },
+   FlatlistItem: {
+      flex: 1,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingTop: 5,
+   },
 });
 
 const mapStateToProps = (state) => {
-  return {
-    currentStyle: state.currentStyle,
-  };
+   return {
+      currentStyle: state.currentStyle,
+   };
 };
 
 export default connect(mapStateToProps)(HistoriqueView);
