@@ -5,7 +5,7 @@ export async function getDataStorage(key) {
       const value = await AsyncStorage.getItem(key);
       if (value !== null) {
          let output = JSON.parse(value);
-         console.log('data got from key :' + key + ' = ' + output);
+         //console.log('data got from key :' + key + ' = ' + output);
          return output;
       }
       return null;
@@ -17,7 +17,7 @@ export async function getDataStorage(key) {
 export async function storeDataStorage(key, value) {
    try {
       await AsyncStorage.setItem(key, JSON.stringify(value)).then((r) => {
-         console.log('data stored : ' + value + ' at key : ' + key);
+         //console.log('data stored : ' + value + ' at key : ' + key);
       });
    } catch (e) {
       console.log('Error storing data');

@@ -9,14 +9,23 @@ class HistoriqueItem extends React.Component {
    constructor(props) {
       LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
       super(props);
-      this.state = {};
+      this.state = {
+         oiseau: this.props.data.oiseau,
+         nom: this.props.data.oiseau.oiseau.normalize('NFC'),
+         date: this.props.data.oiseau.date,
+      };
+   }
+
+   _parseDate(date) {
+      let day = date.substring(8, 10);
+      let month = date.substring(5, 7);
+      let year = date.substring(0, 4);
+      return day + '/' + month + '/' + year;
    }
 
    render() {
-      const oiseaux = this.props.data.oiseau;
       const {navigation} = this.props;
       let theme = this.props.currentStyle;
-      console.log(oiseaux);
       return (
          <View
             style={[styles.main_container, {backgroundColor: theme.secondary}]}>
@@ -24,16 +33,16 @@ class HistoriqueItem extends React.Component {
                style={styles.touchableOpacity}
                onPress={() =>
                   navigation.navigate('DetailOiseaux', {
-                     oiseaux_nom: oiseaux.oiseau,
+                     oiseaux_nom: this.state.nom,
                      root: this.props.data.root,
                   })
                }>
                <Text style={[styles.Title, {color: theme.highlight}]}>
-                  {oiseaux.oiseau}
+                  {this.state.oiseau.oiseau}
                </Text>
                <View
                   style={[styles.info_bloc, {backgroundColor: theme.primary}]}>
-                  {oiseaux.date ? (
+                  {this.state.oiseau.date ? (
                      <View style={styles.info_line}>
                         <Icon
                            name="query-builder"
@@ -46,7 +55,7 @@ class HistoriqueItem extends React.Component {
                            }}
                         />
                         <Text style={[styles.date, {color: theme.highlight}]}>
-                           Date: {oiseaux.date}
+                           Date: {this._parseDate(this.state.date)}
                         </Text>
                      </View>
                   ) : (
@@ -66,7 +75,7 @@ class HistoriqueItem extends React.Component {
                         </Text>
                      </View>
                   )}
-                  {oiseaux.localisation ? (
+                  {this.state.oiseau.localisation ? (
                      <View style={styles.info_line}>
                         <Icon
                            name="home"
@@ -83,7 +92,7 @@ class HistoriqueItem extends React.Component {
                               styles.localisation,
                               {color: theme.highlight},
                            ]}>
-                           Localisation: {oiseaux.localisation}
+                           Localisation: {this.state.oiseau.localisation}
                         </Text>
                      </View>
                   ) : (
@@ -119,7 +128,7 @@ class HistoriqueItem extends React.Component {
                         }}
                      />
                      <Text style={[styles.capteur, {color: theme.highlight}]}>
-                        Capteur: {oiseaux.capteur}
+                        Capteur: {this.state.oiseau.capteur}
                      </Text>
                   </View>
                </View>
