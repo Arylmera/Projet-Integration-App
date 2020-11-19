@@ -10,7 +10,6 @@ function ProfilNavigator() {
       initialRouteName="modificationProfil"
       screenOptions={{
           headerShown: false,
-        headerTitleAlign: 'center',
       }}>
       <Stack.Screen
         name="modificationProfil"

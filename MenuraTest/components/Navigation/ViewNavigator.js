@@ -3,7 +3,6 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet} from 'react-native';
 import StatsView from '../View/stats/StatsView';
-import TipsView from '../View/tips/TipsView';
 import ParametresView from '../View/parametres/ParametresView';
 
 import SearchNavigator from './SearchNavigator';

@@ -5,7 +5,7 @@ import DetailOiseaux from '../View/details/detailOiseaux';
 
 const Stack = createStackNavigator();
 
-function HistoriqueNavigator({navigation}) {
+function HistoriqueNavigator() {
   return (
     <Stack.Navigator
       initialRouteName="HistoriqueView"

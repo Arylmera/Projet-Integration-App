@@ -5,7 +5,7 @@ import DetailOiseaux from '../View/details/detailOiseaux';
 
 const Stack = createStackNavigator();
 
-function SearchNavigator({navigation}) {
+function SearchNavigator() {
   return (
     <Stack.Navigator
       initialRouteName="SearchView"

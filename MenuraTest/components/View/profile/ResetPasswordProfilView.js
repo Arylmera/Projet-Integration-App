@@ -34,7 +34,7 @@ class ResetPasswordProfilView extends React.Component {
       .sendPasswordResetEmail(email)
       .then(() => {
         console.log('email sent');
-        navigation.navigate('modificationProfil');
+        navigation.navigate('connexion');
       })
       .catch((error) => {
         console.error(error);

@@ -22,6 +22,7 @@ class HeaderNavigator extends React.Component {
       <Stack.Navigator
         initialRouteName="LoadingScreen"
         screenOptions={{
+            headerTitleAlign: 'center',
           headerTintColor: theme.highlight,
           headerStyle: {
             backgroundColor: theme.primary,

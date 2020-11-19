@@ -12,6 +12,7 @@ import {
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
+import {deleteUtilisateur} from '../../../api/utilisateurs_api';
 
 class ProfilView extends React.Component {
   constructor(props) {
@@ -82,24 +83,33 @@ class ProfilView extends React.Component {
 
   _deleteAccount() {
     const user = firebase.auth().currentUser;
+    const id = user.uid;
     const credential = firebase.auth.EmailAuthProvider.credential(
       user.email,
       this.state.password,
     );
+    user.getIdToken(true).then((idToken) => {
+      deleteUtilisateur(id, idToken).then((data) =>
+          console.log(data),
+      );
+    });
     user
       .reauthenticateWithCredential(credential)
-      .then(() => console.log('authentifié !'))
+      .then((user) => {
+        console.log('use authentifié à nouveau !!')
+          }
+      )
       .catch((error) => console.log(error));
     user
-      .delete()
-      .then(() => {
-        console.log('compte supprimé');
-        this.setState({deleteAccountModal: false});
-        this.props.navigation.navigate('connexion');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .delete()
+        .then(() => {
+          console.log('compte supprimé');
+          this.setState({deleteAccountModal: false});
+          this.props.navigation.navigate('connexion');
+        })
+        .catch((error) => {
+          console.log(error);
+        })
   }
 
   _updatePassword() {

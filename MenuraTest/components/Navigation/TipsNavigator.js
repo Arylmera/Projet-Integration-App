@@ -7,7 +7,7 @@ import TipsNiche from '../View/tips/TipsNiche';
 
 const Stack = createStackNavigator();
 
-function TipsNavigator({navigation}) {
+function TipsNavigator() {
     return (
         <Stack.Navigator
             initialRouteName="TipsView"

@@ -34,7 +34,7 @@ class ConnexionProfilView extends React.Component {
     this.password = password;
   }
 
-  _signIn(email, password, navigation) {
+  _signIn(email, password) {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -45,7 +45,7 @@ class ConnexionProfilView extends React.Component {
           borderEmail: this.normalBorderColor,
           borderPassword: this.normalBorderColor,
         });
-        navigation.navigate('Views', {params: {}});
+        this._verifierEmailConfirme();
       })
       .catch((error) => {
         console.error(error);
@@ -55,6 +55,17 @@ class ConnexionProfilView extends React.Component {
           borderPassword: this.errorBorderColor,
         });
       });
+  }
+
+  _verifierEmailConfirme(){
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user && user.emailVerified) {
+        this.props.navigation.navigate('views');
+      }
+      else {
+        this.props.navigation.navigate('verificationEmail');
+      }
+    });
   }
 
   render() {
@@ -83,7 +94,7 @@ class ConnexionProfilView extends React.Component {
           <Text style={styles.errorText}>{this.state.errorMessage}</Text>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => this._signIn(this.email, this.password, navigation)}>
+            onPress={() => this._signIn(this.email, this.password)}>
             <Text>Connexion</Text>
           </TouchableOpacity>
           <TouchableOpacity

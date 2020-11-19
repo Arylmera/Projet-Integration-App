@@ -70,6 +70,7 @@ class InscriptionProfilView extends React.Component {
           });
           user.updateProfile({displayName: nom + ' ' + prenom}).then(() => {
             console.log('display name added');
+            navigation.navigate('verificationEmail');
           });
           user
             .sendEmailVerification()
@@ -79,7 +80,6 @@ class InscriptionProfilView extends React.Component {
             .catch((error) => {
               console.log(error);
             });
-          navigation.navigate('Views');
         })
         .catch((error) => {
           console.error(error);

@@ -1,6 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoadingScreen from "../View/LoadingScreen";
+import verificationEmailView from '../View/profile/verificationEmailView';
 import connexionProfilView from "../View/profile/connexionProfilView";
 import ResetPasswordProfilView from "../View/profile/ResetPasswordProfilView";
 import InscriptionProfilView from "../View/profile/InscriptionProfilView";
@@ -22,6 +23,14 @@ function LoadingNavigator() {
                 component={LoadingScreen}
                 options={{
                     headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="verificationEmail"
+                component={verificationEmailView}
+                options={{
+                    title: 'Vérification Email',
+                    headerLeft: () => {},
                 }}
             />
             <Stack.Screen
