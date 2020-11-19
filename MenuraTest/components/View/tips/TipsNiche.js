@@ -73,14 +73,16 @@ class TipsNiche extends React.Component {
 
 const styles = StyleSheet.create({
    context: {
-      padding: 15,
       textAlign: 'center',
+      fontSize: 18,
+      fontWeight: 'bold',
+      padding: 10,
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
       shadowOpacity: 0.5,
-      shadowRadius: 4,
-      elevation: 4,
+      shadowRadius: 2,
+      elevation: 3,
    },
    list_header: {
       textAlign: 'center',
