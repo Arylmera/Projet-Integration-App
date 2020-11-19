@@ -92,17 +92,15 @@ class TipsView extends React.Component {
                      onPress={this.updateIndex}
                      selectedIndex={selectedIndex}
                      buttons={buttons}
-                     containerStyle={{
-                        borderRadius: 5,
-                        marginLeft: 0,
-                        marginRight: 0,
-                        marginBottom: 0,
-                        height: 40,
-                        borderColor: theme.accent,
-                        backgroundColor: theme.primary,
-                     }}
+                     containerStyle={[
+                        styles.button_groupe_saison,
+                        {
+                           borderColor: theme.accent,
+                           backgroundColor: theme.primary,
+                        },
+                     ]}
                      //buttonStyle={{backgroundColor: theme.primary}}
-                     selectedButtonStyle={{backgroundColor: theme.accent}}
+                     selectedButtonStyle={{backgroundColor: theme.secondary}}
                      //selectedTextStyle={{color: theme.highlight}}
                      textStyle={{color: theme.highlight}}
                      innerBorderStyle={{width: 0.2, color: 'black'}}
@@ -201,6 +199,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       padding: 20,
+      margin: 3,
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
@@ -248,6 +247,13 @@ const styles = StyleSheet.create({
       width: null,
       height: 150,
       borderRadius: 4,
+   },
+   button_groupe_saison: {
+      borderRadius: 5,
+      marginLeft: 0,
+      marginRight: 0,
+      marginBottom: 10,
+      height: 40,
    },
 });
 

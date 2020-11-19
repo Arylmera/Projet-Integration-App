@@ -53,12 +53,16 @@ class SearchView extends React.Component {
             <View style={[styles.search_container]}>
                <SearchBar
                   containerStyle={[
+                     styles.search_bar,
                      {backgroundColor: theme.accent, color: theme.highlight},
                   ]}
                   inputContainerStyle={[
                      {backgroundColor: theme.accent, color: theme.highlight},
                   ]}
-                  inputStyle={{color: theme.highlight}}
+                  inputStyle={[
+                     styles.search_bar_input,
+                     {color: theme.highlight},
+                  ]}
                   placeholder="Entrez un nom d'oiseau"
                   placeholderTextColor={theme.highlight}
                   onChangeText={this.updateSearch}
@@ -67,13 +71,10 @@ class SearchView extends React.Component {
                />
                <Button
                   titleStyle={{color: theme.highlight}}
-                  buttonStyle={{
-                     borderRadius: 5,
-                     marginLeft: 0,
-                     marginRight: 0,
-                     marginBottom: 0,
-                     backgroundColor: theme.accent,
-                  }}
+                  buttonStyle={[
+                     styles.button_search,
+                     {backgroundColor: theme.accent},
+                  ]}
                   title="Rechercher"
                   onPress={() => this._loadOiseaux()}
                />
@@ -118,19 +119,21 @@ let styles = StyleSheet.create({
       marginLeft: 10,
       marginRight: 10,
    },
-   textinput: {
-      marginLeft: 10,
-      marginRight: 10,
-      marginTop: 5,
-      height: 50,
-      borderRadius: 10,
-      paddingLeft: 10,
+   search_bar: {
+      margin: 10,
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
       shadowOpacity: 0.5,
       shadowRadius: 2,
       elevation: 2,
+   },
+   search_bar_input: {},
+   button_search: {
+      borderRadius: 5,
+      marginLeft: 100,
+      marginRight: 100,
+      marginBottom: 10,
    },
    loading_placeholder: {
       flex: 1,
