@@ -54,8 +54,10 @@ class HistoriqueView extends React.Component {
     * @private
     */
    _handle_data_historique(data) {
-      console.log(data.data);
       this.setState({oiseauxListe: data.data});
+      for (let item of this.state.oiseauxListe) {
+         console.log(item);
+      }
    }
 
    /**
