@@ -5,22 +5,21 @@ import ProfilView from '../View/profile/ProfilView';
 const Stack = createStackNavigator();
 
 function ProfilNavigator() {
-  return (
-    <Stack.Navigator
-      initialRouteName="modificationProfil"
-      screenOptions={{
-          headerShown: false,
-        headerTitleAlign: 'center',
-      }}>
-      <Stack.Screen
-        name="modificationProfil"
-        component={ProfilView}
-        options={{
-          title: 'Profil',
-        }}
-      />
-    </Stack.Navigator>
-  );
+   return (
+      <Stack.Navigator
+         initialRouteName="modificationProfil"
+         screenOptions={{
+            headerShown: false,
+         }}>
+         <Stack.Screen
+            name="modificationProfil"
+            component={ProfilView}
+            options={{
+               title: 'Profil',
+            }}
+         />
+      </Stack.Navigator>
+   );
 }
 
 export default ProfilNavigator;
