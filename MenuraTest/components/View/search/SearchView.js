@@ -66,6 +66,8 @@ class SearchView extends React.Component {
                   placeholder="Entrez un nom d'oiseau"
                   placeholderTextColor={theme.highlight}
                   onChangeText={this.updateSearch}
+                  searchIcon={{color: theme.highlight}}
+                  clearInput={{color: theme.highlight}}
                   value={search}
                   onSubmitEditing={() => this._loadOiseaux()}
                />
@@ -121,6 +123,9 @@ let styles = StyleSheet.create({
    },
    search_bar: {
       margin: 10,
+      borderBottomColor: 'transparent',
+      borderTopColor: 'transparent',
+      borderRadius: 10,
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},

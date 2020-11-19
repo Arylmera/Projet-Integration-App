@@ -87,12 +87,6 @@ const styles = StyleSheet.create({
       fontSize: 18,
       padding: 10,
       fontWeight: 'bold',
-      // shadow
-      shadowColor: 'rgba(0,0,0, .7)',
-      shadowOffset: {height: 0, width: 0},
-      shadowOpacity: 0.5,
-      shadowRadius: 2,
-      elevation: 3,
    },
    main_container: {
       height: 190,
