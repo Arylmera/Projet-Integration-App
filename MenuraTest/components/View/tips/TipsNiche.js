@@ -2,19 +2,13 @@ import React from 'react';
 import {StyleSheet, View, Text, ScrollView, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
+import niche from './TipsDataNiche';
+import {Button} from "react-native-elements";
 
 class TipsNiche extends React.Component {
    constructor(props) {
       super(props);
       this.state = {};
-      this.nichoire = [
-         {
-            id: '1',
-            title: '',
-            description: '',
-            image: '',
-         },
-      ];
    }
 
    render() {
@@ -62,6 +56,16 @@ class TipsNiche extends React.Component {
                            d'espèces, en particulier aux mésanges, sittelles,
                            etc...
                         </Text>
+                     </View>
+                     <View>
+                        <Button
+                            titleStyle={{color: theme.highlight}}
+                            buttonStyle={[ styles.button,{
+                               backgroundColor: theme.accent
+                            }]}
+                            //onPress={() => navigation.navigate('TipsNiche')}
+                            title="Plan détaillé"
+                        />
                      </View>
                   </View>
                </View>
@@ -128,6 +132,14 @@ const styles = StyleSheet.create({
    description_text: {
       fontStyle: 'italic',
       color: '#666666',
+   },
+   button: {
+      borderRadius: 5,
+      marginLeft: 40,
+      marginRight: 60,
+      marginBottom: 8,
+      marginTop: 5,
+      padding: 3,
    },
 });
 

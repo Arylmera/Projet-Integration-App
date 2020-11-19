@@ -1,21 +1,39 @@
 import React from 'react';
-import {StyleSheet, View, Text, Dimensions} from 'react-native';
+import {StyleSheet, View, Text, Dimensions, ScrollView} from 'react-native';
 import firebase from 'firebase';
 import {connect} from 'react-redux';
 import {getDataStorage} from '../../../functions/storageHelper';
 import LineChart from "react-native-chart-kit/dist/line-chart";
+import {getHistoriqueAll} from '../../../api/historique_api'
+import {getOiseaux} from "../../../api/oiseaux_api";
 
 class StatsView extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
          id: '',
+         historiqueListe: [],
+         historiqueListeNom: [],
       };
+   }
+
+   _showHistorique(){
+      getHistoriqueAll().then((data) => {
+         this.setState({historiqueListe: data.data});
+         let historiqueNom_loading = [];
+         data.data.forEach((oiseau) =>
+             historiqueNom_loading.push(oiseau.oiseau),
+         );
+         this.setState({
+            historiqueListeNom: historiqueNom_loading,
+         });
+      })
    }
 
    componentDidMount() {
       this._checkIfLoggedIn();
       this._reloadTheme();
+      this._showHistorique();
    }
 
    _checkIfLoggedIn() {
@@ -27,6 +45,8 @@ class StatsView extends React.Component {
          }
       });
    }
+
+
 
    _reloadTheme() {
       getDataStorage('theme_key').then((r) => {
@@ -49,10 +69,13 @@ class StatsView extends React.Component {
    }
 
    render() {
+      //console.log(this.state.historiqueListeNom);
       let theme = this.props.currentStyle;
+      const oiseauNom = this.state.historiqueListeNom;
       return (
-         <View
-            style={[styles.main_container, {backgroundColor: theme.primary}]}>
+          <ScrollView
+              style={[styles.main_container, {backgroundColor: theme.primary}]}>
+         <View>
             <Text
                 style={[
                    styles.list_header,
@@ -66,12 +89,12 @@ class StatsView extends React.Component {
                    datasets: [
                       {
                          data: [
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
-                            Math.random() * 100,
+                            3,
+                            6,
+                            9,
+                            77,
+                            66,
+                            7,
                          ],
                       },
                    ],
@@ -80,11 +103,11 @@ class StatsView extends React.Component {
                 height={220}
                 yAxisLabel={'Rs'}
                 chartConfig={{
-                   backgroundColor: '#1cc910',
-                   backgroundGradientFrom: '#eff3ff',
-                   backgroundGradientTo: '#efefef',
+                   backgroundColor: theme.primary,
+                   backgroundGradientFrom: theme.primary,
+                   backgroundGradientTo: theme.primary,
                    decimalPlaces: 2, // optional, defaults to 2dp
-                   color: (opacity = 255) => `rgba(0, 0, 0, ${opacity})`,
+                   color: (opacity = 255) => theme.accent,
                    style: {
                       borderRadius: 16,
                    },
@@ -97,6 +120,7 @@ class StatsView extends React.Component {
                 }}
             />
          </View>
+          </ScrollView>
       );
    }
 }
