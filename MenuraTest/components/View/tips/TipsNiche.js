@@ -1,12 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, Image, FlatList} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, Image, FlatList, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {Button} from "react-native-elements";
 import niche from './TipsDataNiche';
-import _ from 'lodash';
-import {ListItem } from "react-native-elements";
 import TipsNicheItem from "./TipsNicheItem";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 class TipsNiche extends React.Component {
    constructor(props) {
@@ -17,6 +16,7 @@ class TipsNiche extends React.Component {
 
 
    render() {
+      const {navigation} = this.props;
       let theme = this.props.currentStyle;
       return (
             <View style={{backgroundColor: theme.primary, flex: 1}}>

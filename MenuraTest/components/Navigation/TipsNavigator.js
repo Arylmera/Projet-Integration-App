@@ -2,7 +2,8 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import TipsView from '../View/tips/TipsView';
 import TipsNiche from '../View/tips/TipsNiche';
-import TipsNicheItem from '../View/tips/TipsItem';
+import TipsNichePlan from '../View/tips/TipsNichePlan';
+import TipsMangeoire from "../View/tips/TipsMangeoire";
 
 const Stack = createStackNavigator();
 
@@ -29,10 +30,17 @@ function TipsNavigator() {
             }}
          />
           <Stack.Screen
-              name="TipsNicheItem"
-              component={TipsNicheItem}
+              name="TipsNichePlan"
+              component={TipsNichePlan}
               options={{
-                  title: 'Niche',
+                  title: 'Plan',
+              }}
+          />
+          <Stack.Screen
+              name="TipsMangeoire"
+              component={TipsMangeoire}
+              options={{
+                  title: 'Mangeoire',
               }}
           />
       </Stack.Navigator>
