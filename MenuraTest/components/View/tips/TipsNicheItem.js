@@ -5,20 +5,23 @@ import {useNavigation} from '@react-navigation/core';
 import {Button} from "react-native-elements";
 import _ from 'lodash';
 import {ListItem } from "react-native-elements";
+import TipsNichePlan from "./TipsNichePlan";
 
 
 class TipsNicheItem extends React.Component {
     constructor(props) {
         super(props);
        this.state = {
-            titre: this.props.data.niche.title,
-            description: this.props.data.niche.description,
-            image: this.props.data.niche.image,
+           id : this.props.data.niche.id,
+           titre: this.props.data.niche.title,
+           description: this.props.data.niche.description,
+           image: this.props.data.niche.image,
 
        };
     }
 
     render() {
+        const {navigation} = this.props;
         let theme = this.props.currentStyle;
         return (
                     <View
@@ -57,8 +60,12 @@ class TipsNicheItem extends React.Component {
                                     buttonStyle={[ styles.button,{
                                         backgroundColor: theme.accent
                                     }]}
-                                    //onPress={() => navigation.navigate('TipsNiche')}
                                     title="Plan détaillé"
+                                    onPress={() =>
+                                        navigation.navigate('TipsNichePlan', {
+                                            id: this.state.id,
+                                            root: this.props.data.root,
+                                        })}
                                 />
                             </View>
                         </View>
@@ -84,6 +91,7 @@ const styles = StyleSheet.create({
         width: 120,
         height: 180,
         margin: 5,
+        resizeMode: 'contain',
     },
     content_container: {
         flex: 1,
