@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import TipsView from '../View/tips/TipsView';
 import TipsNiche from '../View/tips/TipsNiche';
+import TipsNicheItem from '../View/tips/TipsItem';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,13 @@ function TipsNavigator() {
                title: 'Niche',
             }}
          />
+          <Stack.Screen
+              name="TipsNicheItem"
+              component={TipsNicheItem}
+              options={{
+                  title: 'Niche',
+              }}
+          />
       </Stack.Navigator>
    );
 }
