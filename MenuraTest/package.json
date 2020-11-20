@@ -21,6 +21,7 @@
     "@react-navigation/native": "^5.8.9",
     "@react-navigation/stack": "^5.12.6",
     "firebase": "^8.0.2",
+    "lodash": "^4.17.20",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-ble-plx": "^2.0.1",

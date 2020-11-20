@@ -1,9 +1,12 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, Image} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, Image, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
-import niche from './TipsDataNiche';
 import {Button} from "react-native-elements";
+import niche from './TipsDataNiche';
+import _ from 'lodash';
+import {ListItem } from "react-native-elements";
+import TipsNicheItem from "./TipsNicheItem";
 
 class TipsNiche extends React.Component {
    constructor(props) {
@@ -11,11 +14,12 @@ class TipsNiche extends React.Component {
       this.state = {};
    }
 
+
+
    render() {
       let theme = this.props.currentStyle;
       return (
-         <ScrollView style={{backgroundColor: theme.primary, flex: 1}}>
-            <View>
+            <View style={{backgroundColor: theme.primary, flex: 1}}>
                <View style={[styles.context, {backgroundColor: theme.accent}]}>
                   <Text
                      style={[
@@ -25,52 +29,16 @@ class TipsNiche extends React.Component {
                      Quelques idées de constructions de niches :
                   </Text>
                </View>
-               <View
-                  style={[
-                     styles.main_container,
-                     {backgroundColor: theme.secondary},
-                  ]}>
-                  <Image
-                     style={styles.image}
-                     source={require('../../../assets/images/Niches/Niche1_1.png')}
-                  />
-                  <View style={styles.content_container}>
-                     <View style={styles.header_container}>
-                        <Text
-                           style={[
-                              styles.title_text,
-                              {color: theme.highlight},
-                           ]}>
-                           Le nichoir Boîte à lettres
-                        </Text>
-                     </View>
-                     <View style={styles.description_container}>
-                        <Text
-                           style={[
-                              styles.description_text,
-                              {color: theme.highlight},
-                           ]}
-                           numberOfLines={6}>
-                           C'est le nichoir le plus commun. Le plus facile à
-                           construire aussi. Il convient à un grand nombre
-                           d'espèces, en particulier aux mésanges, sittelles,
-                           etc...
-                        </Text>
-                     </View>
-                     <View>
-                        <Button
-                            titleStyle={{color: theme.highlight}}
-                            buttonStyle={[ styles.button,{
-                               backgroundColor: theme.accent
-                            }]}
-                            //onPress={() => navigation.navigate('TipsNiche')}
-                            title="Plan détaillé"
-                        />
-                     </View>
-                  </View>
-               </View>
+               <FlatList
+                   data={niche}
+                   keyExtractor={(item) => item.id}
+                   renderItem={({item}) => (
+                       <TipsNicheItem
+                           data={{niche: item, root: 'TipsNiche'}}
+                       />
+                   )}
+               />
             </View>
-         </ScrollView>
       );
    }
 }
