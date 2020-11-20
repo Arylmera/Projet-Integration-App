@@ -140,7 +140,7 @@ class TipsView extends React.Component {
                       buttonStyle={[ styles.button,{
                          backgroundColor: theme.accent
                       }]}
-                      //onPress={() => navigation.navigate('TipsNiche')}
+                      onPress={() => navigation.navigate('TipsMangeoire')}
                       title="A Table !"
                   />
                </View>

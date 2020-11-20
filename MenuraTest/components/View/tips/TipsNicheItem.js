@@ -3,8 +3,6 @@ import {StyleSheet, View, Text, ScrollView, FlatList, Image} from 'react-native'
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {Button} from "react-native-elements";
-import _ from 'lodash';
-import {ListItem } from "react-native-elements";
 import TipsNichePlan from "./TipsNichePlan";
 
 
