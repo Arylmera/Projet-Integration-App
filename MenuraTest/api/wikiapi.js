@@ -8,9 +8,9 @@ const url = 'https://fr.wikipedia.org/api/rest_v1/page/summary/';
  * @return {Promise<any | void>}
  */
 export function getWikiInfo(name) {
-  return fetch(url + name)
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
+   return fetch(url + name)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 }
 
 /**
@@ -19,8 +19,8 @@ export function getWikiInfo(name) {
  * @return {Promise<T | void>}
  */
 export function getWTFWikipedia(name) {
-  return wtf
-    .fetch(name, 'fr')
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
+   return wtf
+      .fetch(name, 'fr')
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 }
