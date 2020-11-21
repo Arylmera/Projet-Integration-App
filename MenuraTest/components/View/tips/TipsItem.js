@@ -3,6 +3,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {Divider} from 'react-native-paper';
 import {Button} from "react-native-elements";
+import {useNavigation} from "@react-navigation/core";
 
 class TipsItem extends React.Component {
    constructor(props) {
@@ -14,6 +15,7 @@ class TipsItem extends React.Component {
       let theme = this.props.currentStyle;
       const saison = this.props.data.infos_saison.saison;
       const tips = this.props.data.infos_saison.tips;
+       const {navigation} = this.props;
       return (
          <View
             style={[styles.main_container, {backgroundColor: theme.secondary}]}>
@@ -34,14 +36,10 @@ class TipsItem extends React.Component {
             </Text>
             <Button
                 titleStyle={{color: theme.highlight}}
-                buttonStyle={{
-                   borderRadius: 5,
-                   marginLeft: 0,
-                   marginRight: 0,
-                   marginBottom: 0,
-                   backgroundColor: theme.accent,
-                }}
-                //onPress={() => navigation.navigate('')}
+                buttonStyle={[
+                    styles.button,
+                    {backgroundColor: theme.accent}]}
+                onPress={() => navigation.navigate('TipsSaison')}
                 title="En savoir plus ..."
             />
             </View>
@@ -79,6 +77,12 @@ const styles = StyleSheet.create({
       marginHorizontal: 16,
       fontSize: 14,
    },
+    button: {
+        borderRadius: 5,
+        marginLeft: 0,
+        marginRight: 0,
+        marginBottom: 0,
+    },
 });
 
 const mapStateToProps = (state) => {
@@ -87,4 +91,7 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(TipsItem);
+export default connect(mapStateToProps)(function (props) {
+    const navigation = useNavigation();
+    return <TipsItem {...props} navigation={navigation} />;
+});
