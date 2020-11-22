@@ -24,6 +24,35 @@ class TipsView extends React.Component {
 
    }
 
+   /**
+    * chargement du component
+    */
+   componentDidMount() {
+  this._saisonDate();
+   }
+
+   _saisonDate() {
+      let today = new Date();
+      let spring = new Date(today.getFullYear(), 2, 21);
+      let summer = new Date(today.getFullYear(), 5, 21);
+      let autumn = new Date(today.getFullYear(), 8, 21);
+      let winter = new Date(today.getFullYear(), 11, 21);
+
+
+      if (today < winter && today >= autumn) {
+         this.setState({selectedIndex: 0});
+      }
+      else if (today < spring && today >= winter) {
+         this.setState({selectedIndex: 1});
+      }
+      else if (today < summer && today >= spring) {
+         this.setState({selectedIndex: 2});
+      }
+      else if (today < autumn && today >= summer) {
+         this.setState({selectedIndex: 3});
+      }
+   }
+
    updateIndex(selectedIndex) {
       this.setState({selectedIndex});
    }
