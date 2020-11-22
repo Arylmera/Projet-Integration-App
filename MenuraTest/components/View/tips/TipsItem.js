@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ActivityIndicator, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {Divider} from 'react-native-paper';
 import {Button} from "react-native-elements";
@@ -13,15 +13,17 @@ class TipsItem extends React.Component {
 
    render() {
       let theme = this.props.currentStyle;
+      const id = this.props.data.infos_saison.id;
       const saison = this.props.data.infos_saison.saison;
       const tips = this.props.data.infos_saison.tips;
-       const {navigation} = this.props;
+      const image = this.props.data.infos_saison.image;
+      const {navigation} = this.props;
       return (
          <View
             style={[styles.main_container, {backgroundColor: theme.secondary}]}>
             <View style={[styles.saison, {backgroundColor: theme.secondary}]}>
-               <Text style={[styles.saison_text, {color: theme.highlight}]}>
-                  {saison}
+               <Text style={[styles.saison_title, {color: theme.highlight}]}>
+                   {saison}
                </Text>
             </View>
             <Divider style={[{backgroundColor: theme.highlight}]} />
@@ -30,8 +32,13 @@ class TipsItem extends React.Component {
                    styles.item,
                    {backgroundColor: theme.secondary, color: theme.highlight},
                 ]}>
+                <Image
+                    style={styles.image}
+                    PlaceholderContent={<ActivityIndicator />}
+                    source={image}
+                />
             <Text
-                style={{marginBottom: 10, color: theme.highlight}}>
+                style={[styles.item_text,{color: theme.highlight}]}>
                {tips}
             </Text>
             <Button
@@ -39,7 +46,11 @@ class TipsItem extends React.Component {
                 buttonStyle={[
                     styles.button,
                     {backgroundColor: theme.accent}]}
-                onPress={() => navigation.navigate('TipsSaison')}
+                onPress={() =>
+                    navigation.navigate('TipsSaison', {
+                        id: id,
+                        root: this.props.data.root,
+                    })}
                 title="En savoir plus ..."
             />
             </View>
@@ -65,7 +76,7 @@ const styles = StyleSheet.create({
       borderTopLeftRadius: 5,
       borderTopRightRadius: 5,
    },
-   saison_text: {
+    saison_title: {
       fontSize: 28,
       textAlign: 'center',
       padding: 5,
@@ -77,6 +88,19 @@ const styles = StyleSheet.create({
       marginHorizontal: 16,
       fontSize: 14,
    },
+    image: {
+        width: null,
+        height: 150,
+        borderRadius: 4,
+        flex: 1,
+        resizeMode: 'contain',
+    },
+    item_text: {
+        margin: 15,
+        textAlign: 'center',
+        fontStyle: 'italic',
+
+    },
     button: {
         borderRadius: 5,
         marginLeft: 0,

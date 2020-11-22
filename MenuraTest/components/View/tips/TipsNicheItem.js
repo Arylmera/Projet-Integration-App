@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
     },
     description_text: {
         fontStyle: 'italic',
-        color: '#666666',
     },
     button: {
         borderRadius: 5,

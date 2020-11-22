@@ -7,9 +7,10 @@ import {useNavigation} from '@react-navigation/core';
 class TipsSaison extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            id: this.props.route.params.id,
+        };
     }
-
 
 
     render() {
@@ -24,7 +25,7 @@ class TipsSaison extends React.Component {
                             styles.list_header,
                             {backgroundColor: theme.accent, color: theme.highlight},
                         ]}>
-                        Quelques infos utiles :
+                        Quelques infos utiles : {this.state.id}
                     </Text>
                 </View>
             </View>

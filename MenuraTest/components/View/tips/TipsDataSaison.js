@@ -6,6 +6,7 @@ export default data = [
             'Dès l’arrivée des premiers froids, la nourriture commence à se raréfier pour les oiseaux.\n' +
             '\n' +
             'Apportez de la nourriture régulièrement pour compenser la raréfaction des ressources alimentaires.',
+        image: require('../../../assets/images/Saisons/Automne.png'),
     },
     {
         id: '2',
@@ -16,6 +17,7 @@ export default data = [
             'Proposez de la nourriture telle que les graines ou/et des boules de graisse pour aider les oiseaux à résister à la période hivernale.\n' +
             '\n' +
             'Installez une baignoire à oiseaux et veillez à ce que l’eau ne soit pas gelée et toujours propre, changez l’eau régulièrement.',
+        image: require('../../../assets/images/Saisons/Hiver.png'),
     },
     {
         id: '3',
@@ -26,6 +28,7 @@ export default data = [
             'Remplissez régulièrement les mangeoires de nourriture.\n' +
             '\n' +
             'Préparez des nichoirs pour offrir aux oiseaux un lieu adapté pour couver et élever leurs petits.',
+        image: require('../../../assets/images/Saisons/Printemps.png'),
     },
     {
         id: '4',
@@ -39,5 +42,6 @@ export default data = [
             '\n' +
             'Installez une baignoire pour permettre aux oiseaux de se désaltérer et de se rafraîchir. Vous pouvez également mettre de l’eau dans une brique ou dans des couvercles de confitures…\n' +
             '\n',
+        image: require('../../../assets/images/Saisons/ETE.png'),
     }
 ]

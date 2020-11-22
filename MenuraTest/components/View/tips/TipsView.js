@@ -79,11 +79,11 @@ class TipsView extends React.Component {
             </View>
             <View
                style={[
-                  styles.niche_container,
+                  styles.item_container,
                   {backgroundColor: theme.secondary},
                ]}>
-               <View style={[styles.niche, {backgroundColor: theme.secondary}]}>
-                  <Text style={[styles.niche_text, {color: theme.highlight}]}>
+               <View style={[styles.container_item, {backgroundColor: theme.secondary}]}>
+                  <Text style={[styles.title_text, {color: theme.highlight}]}>
                      Construction nichoirs
                   </Text>
                </View>
@@ -98,8 +98,8 @@ class TipsView extends React.Component {
                      PlaceholderContent={<ActivityIndicator />}
                      source={require('../../../assets/images/Niches/Niche4_1.png')}
                   />
-                  <Text style={{marginBottom: 10, color: theme.highlight}}>
-                     Des bonnes idées de constructions avec modèles détaillés
+                  <Text style={[styles.item_text,{color: theme.highlight}]}>
+                     Idées de constructions avec modèles détaillés
                   </Text>
                   <Button
                       titleStyle={{color: theme.highlight}}
@@ -113,12 +113,12 @@ class TipsView extends React.Component {
             </View>
             <View
                 style={[
-                   styles.niche_container,
+                   styles.item_container,
                    {backgroundColor: theme.secondary},
                 ]}>
-               <View style={[styles.niche, {backgroundColor: theme.secondary}]}>
-                  <Text style={[styles.niche_text, {color: theme.highlight}]}>
-                     Idées de mangeoires
+               <View style={[styles.container_item, {backgroundColor: theme.secondary}]}>
+                  <Text style={[styles.title_text, {color: theme.highlight}]}>
+                     Construction mangeoires
                   </Text>
                </View>
                <Divider style={[{backgroundColor: theme.highlight}]} />
@@ -132,7 +132,7 @@ class TipsView extends React.Component {
                       PlaceholderContent={<ActivityIndicator />}
                       source={require('../../../assets/images/Mangeoires/Mangeoire1_1.png')}
                   />
-                  <Text style={{marginBottom: 10, color: theme.highlight}}>
+                  <Text style={[ styles.item_text,{color: theme.highlight}]}>
                   Des bonnes idées de de mangeoires
                </Text>
                   <Button
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
    main_container: {
       flex: 1,
    },
-   niche_container: {
+   item_container: {
       flexDirection: 'column',
       margin: 10,
       borderRadius: 5,
@@ -211,12 +211,12 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
-   niche: {
+   container_item: {
       flex: 1,
       borderTopLeftRadius: 5,
       borderTopRightRadius: 5,
    },
-   niche_text: {
+   title_text: {
       fontSize: 28,
       textAlign: 'center',
       padding: 5,
@@ -227,6 +227,12 @@ const styles = StyleSheet.create({
       marginVertical: 8,
       marginHorizontal: 16,
       fontSize: 14,
+   },
+   item_text: {
+      margin: 15,
+      textAlign: 'center',
+      fontStyle: 'italic',
+
    },
    image: {
       width: null,
