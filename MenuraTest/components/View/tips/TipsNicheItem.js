@@ -13,7 +13,9 @@ class TipsNicheItem extends React.Component {
            id : this.props.data.niche.id,
            titre: this.props.data.niche.title,
            description: this.props.data.niche.description,
+           description_plan: this.props.data.niche.description_Plan,
            image: this.props.data.niche.image,
+           image_plan: this.props.data.niche.image_Plan
 
        };
     }
@@ -62,6 +64,10 @@ class TipsNicheItem extends React.Component {
                                     onPress={() =>
                                         navigation.navigate('TipsNichePlan', {
                                             id: this.state.id,
+                                            titreItem: this.state.titre,
+                                            description_plan: this.state.description_plan,
+                                            image: this.state.image,
+                                            image_plan: this.state.image_plan,
                                             root: this.props.data.root,
                                         })}
                                 />

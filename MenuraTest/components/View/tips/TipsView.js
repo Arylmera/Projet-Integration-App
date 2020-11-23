@@ -31,13 +31,15 @@ class TipsView extends React.Component {
   this._saisonDate();
    }
 
+   /**
+    * chargement de la bonne saison
+    */
    _saisonDate() {
       let today = new Date();
       let spring = new Date(today.getFullYear(), 2, 21);
       let summer = new Date(today.getFullYear(), 5, 21);
       let autumn = new Date(today.getFullYear(), 8, 21);
       let winter = new Date(today.getFullYear(), 11, 21);
-
 
       if (today < winter && today >= autumn) {
          this.setState({selectedIndex: 0});
@@ -87,9 +89,7 @@ class TipsView extends React.Component {
                            backgroundColor: theme.primary,
                         },
                      ]}
-                     //buttonStyle={{backgroundColor: theme.primary}}
                      selectedButtonStyle={{backgroundColor: theme.secondary}}
-                     //selectedTextStyle={{color: theme.highlight}}
                      textStyle={{color: theme.highlight}}
                      innerBorderStyle={{width: 0.2, color: 'black'}}
                   />
