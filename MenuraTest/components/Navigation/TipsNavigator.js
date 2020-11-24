@@ -5,6 +5,7 @@ import TipsNiche from '../View/tips/TipsNiche';
 import TipsNichePlan from '../View/tips/TipsNichePlan';
 import TipsMangeoire from "../View/tips/TipsMangeoire";
 import TipsSaison from "../View/tips/TipsSaison";
+import TipsMangeoirePlan from "../View/tips/TipsMangeoirePlan";
 
 const Stack = createStackNavigator();
 
@@ -49,6 +50,13 @@ function TipsNavigator() {
               component={TipsMangeoire}
               options={{
                   title: 'Mangeoire',
+              }}
+          />
+          <Stack.Screen
+              name="TipsMangeoirePlan"
+              component={TipsMangeoirePlan}
+              options={{
+                  title: 'Plan',
               }}
           />
       </Stack.Navigator>

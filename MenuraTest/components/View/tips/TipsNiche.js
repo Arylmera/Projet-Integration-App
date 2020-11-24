@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
+
    list_header: {
       textAlign: 'center',
       fontSize: 18,

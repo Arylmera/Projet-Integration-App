@@ -125,7 +125,7 @@ class TipsView extends React.Component {
                   <Image
                      style={styles.image}
                      PlaceholderContent={<ActivityIndicator />}
-                     source={require('../../../assets/images/Niches/Niche4_1.png')}
+                     source={require('../../../assets/images/Niches/Niche1_3.png')}
                   />
                   <Text style={[styles.item_text,{color: theme.highlight}]}>
                      Idées de constructions avec modèles détaillés

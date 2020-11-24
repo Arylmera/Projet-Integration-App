@@ -56,7 +56,7 @@ class TipsNichePlanMateriels extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
-        height: 100,
+        height: 140,
         flexDirection: 'row',
         margin: 10,
         borderRadius: 5,
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     image: {
-        width: 50,
-        height: 110,
+        width: 60,
+        height: 120,
         margin: 5,
         resizeMode: 'contain',
     },
@@ -83,16 +83,17 @@ const styles = StyleSheet.create({
     },
     title_text: {
         fontWeight: 'bold',
-        fontSize: 14,
+        //fontSize: 12,
         flex: 1,
         flexWrap: 'wrap',
         paddingRight: 5,
     },
     description_container: {
-        flex: 7,
+        flex: 5,
     },
     description_text: {
         fontStyle: 'italic',
+        flex: 1,
     },
 });
 

@@ -14,6 +14,8 @@ class TipsMangeoireItem extends React.Component {
             titre: this.props.data.mangeoire.title,
             description: this.props.data.mangeoire.description,
             image: this.props.data.mangeoire.image,
+            image_plan: this.props.data.mangeoire.image_Plan,
+
 
         };
     }
@@ -60,8 +62,10 @@ class TipsMangeoireItem extends React.Component {
                             }]}
                             title="Plan détaillé"
                             onPress={() =>
-                                navigation.navigate('TipsNichePlan', {
+                                navigation.navigate('TipsMangeoirePlan', {
                                     id: this.state.id,
+                                    titreItem: this.state.titre,
+                                    image_plan: this.state.image_plan,
                                     root: this.props.data.root,
                                 })}
                         />
