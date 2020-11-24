@@ -1,27 +1,21 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView, FlatList, Image} from 'react-native';
 import {connect} from 'react-redux';
-import {useNavigation} from '@react-navigation/core';
-import {Button} from "react-native-elements";
 
 
 
-class TipsMangeoireItem extends React.Component {
+
+class TipsNichePlanMateriels extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id : this.props.data.mangeoire.id,
-            titre: this.props.data.mangeoire.title,
-            description: this.props.data.mangeoire.description,
-            image: this.props.data.mangeoire.image,
-            image_plan: this.props.data.mangeoire.image_Plan,
-
-
+            titre: this.props.data.materiel.titre,
+            description: this.props.data.materiel.description,
+            image: this.props.data.materiel.image,
         };
     }
 
     render() {
-        const {navigation} = this.props;
         let theme = this.props.currentStyle;
         return (
             <View
@@ -50,25 +44,9 @@ class TipsMangeoireItem extends React.Component {
                                 styles.description_text,
                                 {color: theme.highlight},
                             ]}
-                            numberOfLines={6}>
+                            numberOfLines={5}>
                             {this.state.description}
                         </Text>
-                    </View>
-                    <View>
-                        <Button
-                            titleStyle={{color: theme.highlight}}
-                            buttonStyle={[ styles.button,{
-                                backgroundColor: theme.accent
-                            }]}
-                            title="Plan détaillé"
-                            onPress={() =>
-                                navigation.navigate('TipsMangeoirePlan', {
-                                    id: this.state.id,
-                                    titreItem: this.state.titre,
-                                    image_plan: this.state.image_plan,
-                                    root: this.props.data.root,
-                                })}
-                        />
                     </View>
                 </View>
             </View>
@@ -78,7 +56,7 @@ class TipsMangeoireItem extends React.Component {
 
 const styles = StyleSheet.create({
     main_container: {
-        height: 190,
+        height: 140,
         flexDirection: 'row',
         margin: 10,
         borderRadius: 5,
@@ -90,14 +68,14 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     image: {
-        width: 120,
-        height: 180,
+        width: 60,
+        height: 120,
         margin: 5,
         resizeMode: 'contain',
     },
     content_container: {
         flex: 1,
-        margin: 5,
+        margin: 15,
     },
     header_container: {
         flex: 3,
@@ -105,25 +83,17 @@ const styles = StyleSheet.create({
     },
     title_text: {
         fontWeight: 'bold',
-        fontSize: 18,
+        //fontSize: 12,
         flex: 1,
         flexWrap: 'wrap',
         paddingRight: 5,
     },
     description_container: {
-        flex: 7,
+        flex: 5,
     },
     description_text: {
         fontStyle: 'italic',
-        color: '#666666',
-    },
-    button: {
-        borderRadius: 5,
-        marginLeft: 40,
-        marginRight: 60,
-        marginBottom: 8,
-        marginTop: 5,
-        padding: 3,
+        flex: 1,
     },
 });
 
@@ -133,7 +103,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(function (props) {
-    const navigation = useNavigation();
-    return <TipsMangeoireItem {...props} navigation={navigation} />;
-});
+export default connect(mapStateToProps)(TipsNichePlanMateriels);

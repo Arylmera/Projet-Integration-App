@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
+
    list_header: {
       textAlign: 'center',
       fontSize: 18,
@@ -100,14 +101,6 @@ const styles = StyleSheet.create({
    description_text: {
       fontStyle: 'italic',
       color: '#666666',
-   },
-   button: {
-      borderRadius: 5,
-      marginLeft: 40,
-      marginRight: 60,
-      marginBottom: 8,
-      marginTop: 5,
-      padding: 3,
    },
 });
 

@@ -3,46 +3,20 @@ import {StyleSheet, View, ScrollView, Image, FlatList} from 'react-native';
 import {Text} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import {Divider} from "react-native-paper";
-import astuce from './TipsDataNichePlanAstuces';
-import materiel from './TipsDataNichePlanMateriels';
-import TipsNichePlanAstuces from "./TipsNichePlanAstuces";
+import materiel from "./TipsDataNichePlanMateriels";
 import TipsNichePlanMateriels from "./TipsNichePlanMateriels";
 
 
-class TipsNichePlan extends React.Component {
+
+class TipsMangeoirePlan extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             id: this.props.route.params.id,
             titre: this.props.route.params.titreItem,
-            description: this.props.route.params.description_plan,
             image: this.props.route.params.image_plan,
 
-            tableHead: ['Hôte', 'Largeur intérieur', 'Hauteur intérieur', 'Profondeur intéreur', 'Trou diamètre ou l x h'],
-            tableData1: [
-                ['Pigeon colombin', '380', '350', '200','85'],
-                ['Chouette chevêche', '200', '350', '200', '70'],
-                ['Chouette hulotte', '250', '600', '250', '120'],
-                ['Torcol fourmilier', '130', '250', '130', '32 - 35'],
-                ['Huppe fasciée', '150', '280', '150', '67 - 70'],
-                ['Pic épeiche', '150', '260', '150', '45 - 50'],
-                ['Rougequeue à front blanc', '130', '250', '130', '32 - 46'],
-                ['Mésanges huppée, noire, nonnette', '100', '200', '100', '25 - 27'],
-                ['Mésange bleue', '130', '200', '130', '27 - 28'],
-                ['Mésange charbonnière', '140', '250', '140', '30 - 32'],
-                ['Sittelle torchepot', '140', '250', '140', '40 - 45'],
-                ['Grimpereau', '100', '180', '100', '24 - 60'],
-                ['Choucas des tours', '180', '400', '180', '70 - 80'],
-                ['Moineau friquet', '130', '220', '130', '30 - 32'],
-                ['Moineau domestique', '140', '220', '140', '30 - 35'],
-            ],
-            tableData2: [
-                ['Faucon crécerelle', '380', '350', '200','85'],
-                ['Bergeronnette grise, Rougegorge Gobemouche gris, Rougequeue noir', '120', '200', '150', '150 - 70'],
-                ['Choucas des tours', '400', '350', '400', '400 - 130'],
-            ],
         };
     }
 
@@ -63,41 +37,7 @@ class TipsNichePlan extends React.Component {
                     </Text>
                 </View>
                 <View>
-                    <Text
-                        h4
-                        style={[{color: theme.highlight},styles.title]}>
-                        Dimensions Optimales :
-                    </Text>
                     <View style={[{backgroundColor: theme.secondary},styles.container]}>
-                        <Text
-                            style={[{color: theme.highlight},styles.title_item]}>
-                            Toutes les dimensions ci-dessous, ainsi que celles des plans sont en mm
-                        </Text>
-                        <Table borderStyle={{borderWidth: 2, borderColor: theme.accent}}>
-                            <Row data={this.state.tableHead} style={[styles.head,{backgroundColor: theme.primary}]} textStyle={[{color: theme.highlight},styles.text]}/>
-                            <Rows data={this.state.tableData1} textStyle={[{color: theme.highlight},styles.text]}/>
-                        </Table>
-                        <Text
-                            style={[{color: theme.highlight},styles.title_item]}>
-                            Nichoirs semi-ouverts
-                        </Text>
-                        <Table borderStyle={{borderWidth: 2, borderColor: theme.accent}}>
-                            <Row data={this.state.tableHead} style={[styles.head,{backgroundColor: theme.primary}]} textStyle={[{color: theme.highlight},styles.text]}/>
-                            <Rows data={this.state.tableData2} textStyle={[{color: theme.highlight},styles.text]}/>
-                        </Table>
-                        <Text
-                            style={[{color: theme.highlight},styles.title_item]}>
-                            Astuces :
-                        </Text>
-                        <FlatList
-                            data={astuce}
-                            keyExtractor={(item) => item.id}
-                            renderItem={({item}) => (
-                                <TipsNichePlanAstuces
-                                    data={{astuce: item, root: 'TipsNichePlan'}}
-                                />
-                            )}
-                        />
                         <Text
                             style={[{color: theme.highlight},styles.title_item]}>
                             Matériels :
@@ -107,7 +47,7 @@ class TipsNichePlan extends React.Component {
                             keyExtractor={(item) => item.id}
                             renderItem={({item}) => (
                                 <TipsNichePlanMateriels
-                                    data={{materiel: item, root: 'TipsNichePlan'}}
+                                    data={{materiel: item, root: 'TipsMangeoirePlan'}}
                                 />
                             )}
                         />
@@ -125,10 +65,6 @@ class TipsNichePlan extends React.Component {
                     <Divider style={[{backgroundColor: theme.highlight}]} />
                     <View
                         style={styles.main_container}>
-                        <Text
-                            style={[{color: theme.highlight},styles.title_item]}>
-                            {this.state.description}
-                        </Text>
                         <Image
                             style={styles.image}
                             source={this.state.image}>
@@ -223,5 +159,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps)(function (props) {
     const navigation = useNavigation();
-    return <TipsNichePlan {...props} navigation={navigation} />;
+    return <TipsMangeoirePlan {...props} navigation={navigation} />;
 });
