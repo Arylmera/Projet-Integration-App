@@ -1,10 +1,14 @@
 import React from 'react';
-import {StyleSheet, View, ScrollView, Image} from 'react-native';
+import {StyleSheet, View, ScrollView, Image, FlatList} from 'react-native';
 import {Text} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import {Divider} from "react-native-paper";
+import astuce from './TipsDataNichePlanAstuces';
+import materiel from './TipsDataNichePlanMateriels';
+import TipsNichePlanAstuces from "./TipsNichePlanAstuces";
+import TipsNichePlanMateriels from "./TipsNichePlanMateriels";
 
 
 class TipsNichePlan extends React.Component {
@@ -81,6 +85,32 @@ class TipsNichePlan extends React.Component {
                             <Row data={this.state.tableHead} style={[styles.head,{backgroundColor: theme.primary}]} textStyle={[{color: theme.highlight},styles.text]}/>
                             <Rows data={this.state.tableData2} textStyle={[{color: theme.highlight},styles.text]}/>
                         </Table>
+                        <Text
+                            style={[{color: theme.highlight},styles.title_item]}>
+                            Astuces :
+                        </Text>
+                        <FlatList
+                            data={astuce}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({item}) => (
+                                <TipsNichePlanAstuces
+                                    data={{astuce: item, root: 'TipsNichePlan'}}
+                                />
+                            )}
+                        />
+                        <Text
+                            style={[{color: theme.highlight},styles.title_item]}>
+                            Matériels :
+                        </Text>
+                        <FlatList
+                            data={materiel}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({item}) => (
+                                <TipsNichePlanMateriels
+                                    data={{materiel: item, root: 'TipsNichePlan'}}
+                                />
+                            )}
+                        />
                     </View>
                 </View>
                 <View style={[
@@ -146,10 +176,6 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 3,
     },
-    head: {
-
-
-    },
     text: {
         margin: 6,
         fontSize: 8
@@ -185,6 +211,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 3,
     },
+
 
 });
 

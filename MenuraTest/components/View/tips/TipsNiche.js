@@ -101,14 +101,6 @@ const styles = StyleSheet.create({
       fontStyle: 'italic',
       color: '#666666',
    },
-   button: {
-      borderRadius: 5,
-      marginLeft: 40,
-      marginRight: 60,
-      marginBottom: 8,
-      marginTop: 5,
-      padding: 3,
-   },
 });
 
 const mapStateToProps = (state) => {
