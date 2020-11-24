@@ -1,9 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, FlatList, Text} from 'react-native';
+import {StyleSheet, View, FlatList, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 import {getHistoriqueByID} from '../../../api/historique_api';
 import HistoriqueItem from './historiqueItem';
+import {useNavigation} from '@react-navigation/core';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class HistoriqueView extends React.Component {
    constructor(props) {
@@ -66,6 +68,7 @@ class HistoriqueView extends React.Component {
     */
    render() {
       let theme = this.props.currentStyle;
+      const {navigation} = this.props;
       return (
          <View
             style={[styles.main_container, {backgroundColor: theme.primary}]}>
@@ -87,6 +90,15 @@ class HistoriqueView extends React.Component {
                      />
                   )}
                />
+               <TouchableOpacity
+                  style={[styles.addButton, {backgroundColor: theme.secondary}]}
+                  onPress={() =>
+                     navigation.navigate('HistoriqueAdd', {
+                        root: 'HistoriqueView',
+                     })
+                  }>
+                  <Icon name="add" size={55} color={theme.highlight} />
+               </TouchableOpacity>
             </View>
          </View>
       );
@@ -126,6 +138,14 @@ const styles = StyleSheet.create({
       paddingRight: 10,
       paddingTop: 5,
    },
+   addButton: {
+      borderRadius: 100,
+      alignItems: 'center',
+      position: 'absolute',
+      bottom: 20,
+      right: 20,
+      zIndex: 100,
+   },
 });
 
 const mapStateToProps = (state) => {
@@ -134,4 +154,7 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(HistoriqueView);
+export default connect(mapStateToProps)(function (props) {
+   const navigation = useNavigation();
+   return <HistoriqueView {...props} navigation={navigation} />;
+});
