@@ -70,8 +70,12 @@ class TipsNichePlan extends React.Component {
                     </Text>
                     <View style={[{backgroundColor: theme.secondary},styles.container]}>
                         <Text
-                            style={[{color: theme.highlight},styles.title_item]}>
+                            style={[{color: theme.highlight},styles.text_item]}>
                             Toutes les dimensions ci-dessous, ainsi que celles des plans sont en mm
+                        </Text>
+                        <Text
+                            style={[{color: theme.highlight},styles.title_item]}>
+                            Nichoirs fermé :
                         </Text>
                         <Table borderStyle={{borderWidth: 2, borderColor: theme.accent}}>
                             <Row data={this.state.tableHead} style={[styles.head,{backgroundColor: theme.primary}]} textStyle={[{color: theme.highlight},styles.text]}/>
@@ -79,7 +83,7 @@ class TipsNichePlan extends React.Component {
                         </Table>
                         <Text
                             style={[{color: theme.highlight},styles.title_item]}>
-                            Nichoirs semi-ouverts
+                            Nichoirs semi-ouverts :
                         </Text>
                         <Table borderStyle={{borderWidth: 2, borderColor: theme.accent}}>
                             <Row data={this.state.tableHead} style={[styles.head,{backgroundColor: theme.primary}]} textStyle={[{color: theme.highlight},styles.text]}/>
@@ -126,7 +130,7 @@ class TipsNichePlan extends React.Component {
                     <View
                         style={styles.main_container}>
                         <Text
-                            style={[{color: theme.highlight},styles.title_item]}>
+                            style={[{color: theme.highlight},styles.text_item]}>
                             {this.state.description}
                         </Text>
                         <Image
@@ -178,13 +182,19 @@ const styles = StyleSheet.create({
     },
     text: {
         margin: 6,
-        fontSize: 8
+        fontSize: 8,
     },
     title: {
         margin: 6,
         textAlign: 'center',
     },
     title_item: {
+        margin: 15,
+        textAlign: 'center',
+        fontStyle: 'italic',
+        fontWeight: 'bold'
+    },
+    text_item: {
         margin: 15,
         textAlign: 'center',
         fontStyle: 'italic',
