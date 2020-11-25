@@ -97,7 +97,7 @@ class HistoriqueView extends React.Component {
                         root: 'HistoriqueView',
                      })
                   }>
-                  <Icon name="add" size={55} color={theme.highlight} />
+                  <Icon name="add" size={50} color={theme.highlight} />
                </TouchableOpacity>
             </View>
          </View>
@@ -142,9 +142,15 @@ const styles = StyleSheet.create({
       borderRadius: 100,
       alignItems: 'center',
       position: 'absolute',
-      bottom: 20,
-      right: 20,
+      bottom: 15,
+      right: 15,
       zIndex: 100,
+      // shadow
+      shadowColor: 'rgba(0,0,0, .7)',
+      shadowOffset: {height: 0, width: 0},
+      shadowOpacity: 0.5,
+      shadowRadius: 1,
+      elevation: 2,
    },
 });
 
