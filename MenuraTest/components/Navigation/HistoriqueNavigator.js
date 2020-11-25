@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HistoriqueView from '../View/historique/HistoriqueView';
 import DetailOiseaux from '../View/details/detailOiseaux';
+import HistoriqueAdd from '../View/historique/historiqueAdd';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,13 @@ function HistoriqueNavigator() {
             component={DetailOiseaux}
             options={{
                title: 'Detail',
+            }}
+         />
+         <Stack.Screen
+            name="HistoriqueAdd"
+            component={HistoriqueAdd}
+            options={{
+               title: 'Add',
             }}
          />
       </Stack.Navigator>
