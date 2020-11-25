@@ -17,6 +17,9 @@ class TipsItem extends React.Component {
       const saison = this.props.data.infos_saison.saison;
       const tips = this.props.data.infos_saison.tips;
       const image = this.props.data.infos_saison.image;
+      const descriptionNourriture = this.props.data.infos_saison.description_nourriture;
+      const descriptionAbris = this.props.data.infos_saison.description_abris;
+
       const {navigation} = this.props;
       return (
          <View
@@ -49,6 +52,9 @@ class TipsItem extends React.Component {
                 onPress={() =>
                     navigation.navigate('TipsSaison', {
                         id: id,
+                        saison: saison,
+                        descriptionNourriture: descriptionNourriture,
+                        descriptionAbris: descriptionAbris,
                         root: this.props.data.root,
                     })}
                 title="En savoir plus ..."

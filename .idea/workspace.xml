@@ -6,22 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire1_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire1_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire2_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire3_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire3_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire4_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire4_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Mangeoires/Mangeoire4_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/assets/images/Niches/Niche1-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/TipsNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/TipsNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataMangeoire.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataMangeoire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNichePlanMateriels.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNichePlanMateriels.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoireItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoireItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataSaison.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataSaison.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlanMateriels.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlanMateriels.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaison.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaison.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +100,8 @@
       <workItem from="1605626460661" duration="20972000" />
       <workItem from="1605694281282" duration="4917000" />
       <workItem from="1605713386802" duration="498000" />
-      <workItem from="1606243804672" duration="2628000" />
+      <workItem from="1606243804672" duration="2910000" />
+      <workItem from="1606300134882" duration="8533000" />
     </task>
     <servers />
   </component>
