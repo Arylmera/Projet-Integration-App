@@ -215,42 +215,38 @@ class HistoriqueAdd extends React.Component {
                Ajouter un oiseau manuellement
             </Text>
             <View style={[styles.text_input_container]}>
-               <View style={[styles.text_input]}>
-                  <TextInput
-                     style={[
-                        styles.text_input_elem,
-                        styles.bird_name,
-                        {
-                           backgroundColor: theme.secondary,
-                           color: theme.highlight,
-                        },
-                     ]}
-                     placeholder="Nom de l'oiseau"
-                     placeholderTextColor={theme.highlight}
-                     secureTextEntry={false}
-                     autoCorrect={false}
-                     onChangeText={(name) => this._nameTextInputChanged(name)}
-                  />
-               </View>
-               <View style={[styles.text_input]}>
-                  <TextInput
-                     style={[
-                        styles.text_input_elem,
-                        styles.bird_localisation,
-                        {
-                           backgroundColor: theme.secondary,
-                           color: theme.highlight,
-                        },
-                     ]}
-                     placeholder="Localisation"
-                     placeholderTextColor={theme.highlight}
-                     secureTextEntry={false}
-                     autoCorrect={false}
-                     onChangeText={(localisation) =>
-                        this._locTextInputChanged(localisation)
-                     }
-                  />
-               </View>
+               <TextInput
+                  style={[
+                     styles.text_input_elem,
+                     styles.bird_name,
+                     {
+                        backgroundColor: theme.secondary,
+                        color: theme.highlight,
+                     },
+                  ]}
+                  placeholder="Nom de l'oiseau"
+                  placeholderTextColor={theme.highlight}
+                  secureTextEntry={false}
+                  autoCorrect={false}
+                  onChangeText={(name) => this._nameTextInputChanged(name)}
+               />
+               <TextInput
+                  style={[
+                     styles.text_input_elem,
+                     styles.bird_localisation,
+                     {
+                        backgroundColor: theme.secondary,
+                        color: theme.highlight,
+                     },
+                  ]}
+                  placeholder="Localisation"
+                  placeholderTextColor={theme.highlight}
+                  secureTextEntry={false}
+                  autoCorrect={false}
+                  onChangeText={(localisation) =>
+                     this._locTextInputChanged(localisation)
+                  }
+               />
                <View
                   style={[
                      styles.submit_button,
@@ -336,16 +332,13 @@ let styles = StyleSheet.create({
       alignItems: 'center',
       flexDirection: 'column',
    },
-   text_input: {
-      flex: 1,
-      margin: 5,
-      width: '100%',
-      alignItems: 'center',
-   },
    text_input_elem: {
-      padding: 10,
-      borderRadius: 5,
+      flex: 1,
       width: '50%',
+      margin: 5,
+      paddingLeft: 10,
+      alignItems: 'center',
+      borderRadius: 5,
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
