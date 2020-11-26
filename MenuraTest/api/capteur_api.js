@@ -1,8 +1,8 @@
 const url_capteur_byID =
-   'http://146.59.195.248:3000/v1/api/capteurs?utilisateur=';
-const url_capteur_add = 'http://146.59.195.248:3000/v1/api/capteurs';
+   'https://146.59.195.248:3000/v1/api/capteurs?utilisateur=';
+const url_capteur_add = 'https://146.59.195.248:3000/v1/api/capteurs';
 const url_capteur_delete_byID =
-   'http://146.59.195.248:3000/v1/api/capteurs?macAddress=';
+   'https://146.59.195.248:3000/v1/api/capteurs?macAddress=';
 
 /**
  *

@@ -128,7 +128,7 @@ class Bluetooth extends React.Component {
                      onPress={this.scan_device.bind(this)}
                      style={[
                         styles.refresh_button,
-                        {backgroundColor: theme.primary},
+                        {backgroundColor: theme.accent},
                      ]}>
                      <View style={[styles.refresh_content_helper]}>
                         <Icon
