@@ -1,5 +1,5 @@
-const url_getOiseaux = 'https://146.59.195.248:3000/v1/api/oiseaux?recherche=';
-const url_addOiseaux = 'https://146.59.195.248:3000/v1/api/historiques';
+const url_getOiseaux = 'http://146.59.195.248:3000/v1/api/oiseaux?recherche=';
+const url_addOiseaux = 'http://146.59.195.248:3000/v1/api/historiques';
 
 /**
  *
