@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
       borderRadius: 5,
    },
    add_capteur_input: {
-      width: 170,
+      width: '50%',
       margin: 5,
       marginLeft: 10,
       marginRight: 10,
