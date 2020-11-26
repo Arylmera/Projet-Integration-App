@@ -133,9 +133,7 @@ let styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 2,
    },
-   search_bar_input: {
-
-   },
+   search_bar_input: {},
    button_search: {
       borderRadius: 5,
       marginLeft: 100,

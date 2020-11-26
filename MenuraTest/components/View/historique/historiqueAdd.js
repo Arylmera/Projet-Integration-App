@@ -272,7 +272,7 @@ class HistoriqueAdd extends React.Component {
                            {color: theme.highlight},
                         ]}>
                         {' '}
-                        Cette oiseau est t-il le bon ?{' '}
+                        Cet oiseau est t-il le bon ?{' '}
                      </Text>
                      <View
                         style={[
