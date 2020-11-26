@@ -1,4 +1,4 @@
-const url = 'http://146.59.195.248:3000/v1/api/utilisateurs';
+const url = 'https://146.59.195.248:3000/v1/api/utilisateurs';
 
 export function getUtilisateur(id, idToken) {
    return fetch(url + '?id=' + id, {

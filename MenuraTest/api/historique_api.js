@@ -1,8 +1,7 @@
 const url_historique_byID =
-   'http://146.59.195.248:3000/v1/api/historiques?utilisateur=';
+   'https://146.59.195.248:3000/v1/api/historiques?utilisateur=';
 
-const url_historique_all =
-    'http://146.59.195.248:3000/v1/api/historiques/all'
+const url_historique_all = 'https://146.59.195.248:3000/v1/api/historiques/all';
 
 /**
  *
@@ -22,14 +21,13 @@ export function getHistoriqueByID(utilisateur, idToken) {
       .catch((error) => console.log(error));
 }
 
-
 export function getHistoriqueAll() {
-   return fetch(url_historique_all , {
+   return fetch(url_historique_all, {
       headers: {
          Accept: 'application/json',
-         'Content-Type': 'application/json'
+         'Content-Type': 'application/json',
       },
    })
-       .then((response) => response.json())
-       .catch((error) => console.log(error));
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 }

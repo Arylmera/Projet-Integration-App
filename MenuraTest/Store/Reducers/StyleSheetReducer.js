@@ -3,6 +3,7 @@ Définition des themes
  */
 import {getDataStorage, storeDataStorage} from '../../functions/storageHelper';
 
+/* color backup
 const winterStyle = {
    primary: '#004c8c',
    secondary: '#0277bd',
@@ -25,6 +26,32 @@ const summerStyle = {
    primary: '#6b9b37',
    secondary: '#9ccc65',
    accent: '#cfff95',
+   highlight: '#000000',
+};
+*/
+
+const winterStyle = {
+   primary: '#274c77',
+   secondary: '#619fc8',
+   accent: '#9ceaef',
+   highlight: '#000000',
+};
+const autumnStyle = {
+   primary: '#5e3023',
+   secondary: '#895737',
+   accent: '#c08552',
+   highlight: '#f3e9dc',
+};
+const springStyle = {
+   primary: '#B4FFB6',
+   secondary: '#CFFFD0',
+   accent: '#FFB5D6',
+   highlight: '#000000',
+};
+const summerStyle = {
+   primary: '#C0EBFC',
+   secondary: '#DBF5FF',
+   accent: '#FCE0C0',
    highlight: '#000000',
 };
 

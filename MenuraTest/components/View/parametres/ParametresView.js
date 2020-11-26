@@ -132,7 +132,7 @@ class ParametresView extends React.Component {
                <View
                   style={[
                      styles.theme_menuBox,
-                     {backgroundColor: theme.primary},
+                     {backgroundColor: theme.accent},
                   ]}>
                   <Menu
                      style={styles.theme_menu}
@@ -151,7 +151,7 @@ class ParametresView extends React.Component {
                         onPress={this._setThemeWinter.bind(this)}
                         style={[
                            styles.theme_menu_entry,
-                           {backgroundColor: theme.primary},
+                           {backgroundColor: theme.accent},
                         ]}>
                         <Text style={{color: theme.highlight}}>Hiver</Text>
                      </MenuItem>
@@ -159,7 +159,7 @@ class ParametresView extends React.Component {
                         onPress={this._setThemeAutomne.bind(this)}
                         style={[
                            styles.theme_menu_entry,
-                           {backgroundColor: theme.primary},
+                           {backgroundColor: theme.accent},
                         ]}>
                         <Text style={{color: theme.highlight}}>Automne</Text>
                      </MenuItem>
@@ -167,7 +167,7 @@ class ParametresView extends React.Component {
                         onPress={this._setThemePrintemps.bind(this)}
                         style={[
                            styles.theme_menu_entry,
-                           {backgroundColor: theme.primary},
+                           {backgroundColor: theme.accent},
                         ]}>
                         <Text style={{color: theme.highlight}}>Printemps</Text>
                      </MenuItem>
@@ -175,7 +175,7 @@ class ParametresView extends React.Component {
                         onPress={this._setThemeEte.bind(this)}
                         style={[
                            styles.theme_menu_entry,
-                           {backgroundColor: theme.primary},
+                           {backgroundColor: theme.accent},
                         ]}>
                         <Text style={{color: theme.highlight}}>Eté</Text>
                      </MenuItem>
