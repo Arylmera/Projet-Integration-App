@@ -204,7 +204,7 @@ class TipsView extends React.Component {
                      {backgroundColor: theme.secondary},
                   ]}>
                   <Text style={[styles.title_text, {color: theme.highlight}]}>
-                     Construction mangeoires
+                     Quizz
                   </Text>
                </View>
                <Divider style={[{backgroundColor: theme.highlight}]} />
