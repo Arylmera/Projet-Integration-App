@@ -1,5 +1,3 @@
-// Components/Search.js
-
 import React from 'react';
 import {View, TouchableOpacity, Text, Image, ScrollView} from 'react-native';
 import {connect} from 'react-redux';

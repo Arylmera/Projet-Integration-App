@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataSaison.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataSaison.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaison.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaison.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/TipsNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/TipsNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/quiz.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +51,7 @@
       <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -102,11 +102,12 @@
       <workItem from="1605713386802" duration="498000" />
       <workItem from="1606243804672" duration="2910000" />
       <workItem from="1606300134882" duration="8533000" />
+      <workItem from="1606403442693" duration="16778000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605815967207">
@@ -146,6 +147,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="267" y="169" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603928245209" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1606409316319">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606409316319" />
     <state x="554" y="179" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605962261134">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
