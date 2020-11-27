@@ -143,6 +143,8 @@ const styles = StyleSheet.create({
       margin: 15,
       textAlign: 'center',
       fontStyle: 'italic',
+      fontWeight: 'bold',
+      fontSize: 18,
    },
    image: {
       flex: 1,
