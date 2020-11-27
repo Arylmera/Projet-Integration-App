@@ -1,5 +1,5 @@
 INSERT INTO oiseaux (nom, espece, details)
-	VALUES (
+	VALUES
 		("Bergeronnette grise","Motacilla alba","plus d'information"),
 		("Bruant Jaune","Emberiza citrinella","plus d'information"),
 		("Mésange bleue","Cyanistes caeruleus","plus d'information"),
@@ -68,5 +68,4 @@ INSERT INTO oiseaux (nom, espece, details)
 		("Serin cini","Serinus serinus","plus d'information"),
 		("Pigeon colombin","Columba oenas","plus d'information"),
 		("Hibou moyen-duc","Asio otus","plus d'information"),
-		("Sizerin cabaret","Acanthis cabaret","plus d'information"),
-	)
+		("Sizerin cabaret","Acanthis cabaret","plus d'information");
