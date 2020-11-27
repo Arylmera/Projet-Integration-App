@@ -16,6 +16,7 @@ class StatsView extends React.Component {
          id: '',
          historiqueListe: [],
          historiqueListeNom: [],
+         historiqueCount: [{"name": "Mésange bleue", "value": 1}, {"name": "Chardonneret élégant", "value": 1}, {"name": "Mésange bleue", "value": 2}, {"name": "Bruant Jaune", "value": 5}],
       };
    }
 
@@ -29,6 +30,7 @@ class StatsView extends React.Component {
          this.setState({
             historiqueListeNom: historiqueNom_loading,
          });
+         this._countItem(this.state.historiqueListeNom);
       })
    }
 
@@ -68,6 +70,30 @@ class StatsView extends React.Component {
             }
          }
       });
+   }
+
+   _countItem(tab) {
+      const count = {};
+      const result = [];
+
+      tab.forEach(item => {
+         if (count[item]) {
+            count[item] +=1;
+            return
+         }
+         count[item] = 1
+      });
+      for(let i in count) {
+         let obj = {};
+         obj.name = i;
+         obj.value = count[i];
+         result.push(obj);
+      }
+      result.sort(function (a, b) {
+         return a.value - b.value;
+      });
+      result.reverse();
+      this.setState({historiqueCount: result});
    }
 
    render() {
@@ -144,37 +170,30 @@ class StatsView extends React.Component {
                <PieChart
                    data={[
                       {
-                         name: 'Moineau',
-                         population: 65,
+                         name: this.state.historiqueCount[0].name,
+                         population: this.state.historiqueCount[0].value,
                          color: 'rgba(131, 167, 234, 1)',
                          legendFontColor: '#7F7F7F',
                          legendFontSize: 11,
                       },
                       {
-                         name: 'Mésange',
-                         population: 32,
+                         name: this.state.historiqueCount[1].name,
+                         population: this.state.historiqueCount[1].value,
                          color: '#F00',
                          legendFontColor: '#7F7F7F',
                          legendFontSize: 11,
                       },
                       {
-                         name: 'Bruant Jaune',
-                         population: 24,
+                         name: this.state.historiqueCount[2].name,
+                         population: this.state.historiqueCount[2].value,
                          color: '#ffffff',
                          legendFontColor: '#7F7F7F',
                          legendFontSize: 11,
                       },
                       {
-                         name: 'Chardonneret élégant',
-                         population: 54,
+                         name: this.state.historiqueCount[3].name,
+                         population: this.state.historiqueCount[3].value,
                          color: 'rgb(0, 0, 255)',
-                         legendFontColor: '#7F7F7F',
-                         legendFontSize: 11,
-                      },
-                      {
-                         name: 'Pivert',
-                         population: 12,
-                         color: 'rgb(0, 245, 232)',
                          legendFontColor: '#7F7F7F',
                          legendFontSize: 11,
                       },
