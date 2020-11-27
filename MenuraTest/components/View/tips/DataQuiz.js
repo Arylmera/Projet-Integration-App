@@ -67,11 +67,29 @@ export default data = [
     {
         id: '8',
         reponse1: 'mésange',
-        reponse2: 'hibou',
+        reponse2: 'bruant jaune',
         reponse3: 'pic vert',
         reponse4: 'macreuse',
         reponseCorrecte: 'macreuse',
         image: require('../../../assets/quizz/MACREUSE.jpg'),
+    },
+    {
+        id: '9',
+        reponse1: 'mouette',
+        reponse2: 'hibou',
+        reponse3: 'verdier',
+        reponse4: 'macreuse',
+        reponseCorrecte: 'verdier',
+        image: require('../../../assets/quizz/VERDIER.jpg'),
+    },
+    {
+        id: '10',
+        reponse1: 'pie bavarde',
+        reponse2: 'verdier',
+        reponse3: 'macreuse',
+        reponse4: 'hibou',
+        reponseCorrecte: 'pie bavarde',
+        image: require('../../../assets/quizz/PIEBAVARDE.jpg'),
     },
 
 ]

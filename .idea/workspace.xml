@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/TipsNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/TipsNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/historique/HistoriqueView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/quiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/DataQuiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/DataQuiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/QuizItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/QuizItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +37,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DBE.Init.BalloonShown" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -51,7 +50,7 @@
       <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

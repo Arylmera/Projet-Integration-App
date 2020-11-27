@@ -14,10 +14,10 @@ class QuizItem extends React.Component {
             reponseCorrecte: this.props.data.question.reponseCorrecte,
             image: this.props.data.question.image,
             helperText: '',
-            helperTextColor: '',
+            helperTextColor: 'red',
+            backColor: this.props.currentStyle.secondary,
             disable: false,
             opacity: 1,
-            score: 0,
         };
     }
 
@@ -27,6 +27,7 @@ class QuizItem extends React.Component {
             this.setState({
                 helperText: 'Bien joué !',
                 helperTextColor: 'green',
+                backColor: '#bce0b4',
                 disable: true,
                 opacity: 0.4,
             });
@@ -34,8 +35,9 @@ class QuizItem extends React.Component {
         else {
             console.log('faux !');
             this.setState({
-                helperText: 'Essaie encore !',
+                helperText: 'mauvaise réponse !',
                 helperTextColor: 'red',
+                backColor: '#e09f99',
                 disable: true,
                 opacity: 0.4,
             });
@@ -45,9 +47,9 @@ class QuizItem extends React.Component {
     render() {
         let theme = this.props.currentStyle;
         return (
-            <View style={[styles.main_container, {backgroundColor: theme.secondary}]}>
+            <View style={[styles.main_container, {backgroundColor: this.state.backColor}]}>
                 <Image
-                    style={styles.image}
+                    style={[styles.image, {opacity: this.state.opacity}]}
                     source={this.state.image}
                 />
                 <TouchableOpacity
@@ -132,6 +134,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     helper: {
+        fontSize: 16,
+        fontWeight: 'bold',
     }
 })
 
