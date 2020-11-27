@@ -6,6 +6,8 @@ import {getDataStorage} from '../../../functions/storageHelper';
 import LineChart from "react-native-chart-kit/dist/line-chart";
 import {getHistoriqueAll} from '../../../api/historique_api'
 import {getOiseaux} from "../../../api/oiseaux_api";
+import PieChart from "react-native-chart-kit/dist/PieChart";
+import {Divider} from "react-native-paper";
 
 class StatsView extends React.Component {
    constructor(props) {
@@ -70,6 +72,7 @@ class StatsView extends React.Component {
 
    render() {
       //console.log(this.state.historiqueListeNom);
+      //console.log(this.state.historiqueListe);
       let theme = this.props.currentStyle;
       const oiseauNom = this.state.historiqueListeNom;
       return (
@@ -83,42 +86,123 @@ class StatsView extends React.Component {
                 ]}>
                Statistiques des oiseaux de votre capteur
             </Text>
-            <LineChart
-                data={{
-                   labels: ['Mésange', 'Moineau', 'Pigeon', 'Amaury'],
-                   datasets: [
-                      {
-                         data: [
-                            3,
-                            6,
-                            9,
-                            77,
-                            66,
-                            7,
+            <View
+                style={[
+                   styles.item_container,
+                   {backgroundColor: theme.secondary},
+                ]}>
+               <View
+                   style={[
+                      styles.container_item,
+                      {backgroundColor: theme.secondary},
+                   ]}>
+                  <Text style={[styles.title_text, {color: theme.highlight}]}>
+                     Statistiques générales :
+                  </Text>
+               </View>
+               <Divider style={[{backgroundColor: theme.highlight}]} />
+               <View>
+                  <LineChart
+                      data={{
+                         labels: ['Mésange', 'Moineau', 'Pigeon', 'Amaury'],
+                         datasets: [
+                            {
+                               data: [
+                                  3,
+                                  6,
+                                  9,
+                                  77,
+                                  66,
+                                  7,
+                               ],
+                            },
                          ],
-                      },
-                   ],
-                }}
-                width={Dimensions.get('window').width - 16} // from react-native
-                height={220}
-                yAxisLabel={'Rs'}
-                chartConfig={{
-                   backgroundColor: theme.primary,
-                   backgroundGradientFrom: theme.primary,
-                   backgroundGradientTo: theme.primary,
-                   decimalPlaces: 2, // optional, defaults to 2dp
-                   color: (opacity = 255) => theme.accent,
-                   style: {
-                      borderRadius: 16,
-                   },
-                }}
-                bezier
-                style={{
-                   marginVertical: 8,
-                   borderRadius: 16,
+                      }}
+                      width={Dimensions.get('window').width - 16} // from react-native
+                      height={220}
+                      yAxisLabel={'Rs'}
+                      chartConfig={{
+                         backgroundColor: theme.primary,
+                         backgroundGradientFrom: theme.primary,
+                         backgroundGradientTo: theme.primary,
+                         decimalPlaces: 2, // optional, defaults to 2dp
+                         color: (opacity = 255) => theme.accent,
+                         style: {
+                            borderRadius: 16,
+                         },
+                      }}
+                      bezier
+                      style={{
+                         marginVertical: 8,
+                         borderRadius: 16,
 
-                }}
-            />
+                      }}
+                  />
+               </View>
+
+            <View>
+               <PieChart
+                   data={[
+                      {
+                         name: 'Moineau',
+                         population: 65,
+                         color: 'rgba(131, 167, 234, 1)',
+                         legendFontColor: '#7F7F7F',
+                         legendFontSize: 11,
+                      },
+                      {
+                         name: 'Mésange',
+                         population: 32,
+                         color: '#F00',
+                         legendFontColor: '#7F7F7F',
+                         legendFontSize: 11,
+                      },
+                      {
+                         name: 'Bruant Jaune',
+                         population: 24,
+                         color: '#ffffff',
+                         legendFontColor: '#7F7F7F',
+                         legendFontSize: 11,
+                      },
+                      {
+                         name: 'Chardonneret élégant',
+                         population: 54,
+                         color: 'rgb(0, 0, 255)',
+                         legendFontColor: '#7F7F7F',
+                         legendFontSize: 11,
+                      },
+                      {
+                         name: 'Pivert',
+                         population: 12,
+                         color: 'rgb(0, 245, 232)',
+                         legendFontColor: '#7F7F7F',
+                         legendFontSize: 11,
+                      },
+                   ]}
+                   width={Dimensions.get('window').width - 16}
+                   height={220}
+                   chartConfig={{
+                      backgroundColor: '#1cc910',
+                      backgroundGradientFrom: '#eff3ff',
+                      backgroundGradientTo: '#efefef',
+                      decimalPlaces: 2,
+                      color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                      style: {
+                         borderRadius: 16,
+                      },
+                   }}
+                   style={{
+                      marginVertical: 8,
+                      borderRadius: 16,
+                   }}
+                   accessor="population"
+                   backgroundColor="transparent"
+                   paddingLeft="15"
+                   absolute //for the absolute number remove if you want percentage
+               />
+            </View>
+
+            </View>
          </View>
           </ScrollView>
       );
@@ -140,6 +224,27 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.5,
       shadowRadius: 2,
       elevation: 3,
+   },
+   item_container: {
+      flexDirection: 'column',
+      margin: 10,
+      borderRadius: 5,
+      // shadow
+      shadowColor: 'rgba(0,0,0, .7)',
+      shadowOffset: {height: 0, width: 0},
+      shadowOpacity: 0.5,
+      shadowRadius: 2,
+      elevation: 3,
+   },
+   container_item: {
+      flex: 1,
+      borderTopLeftRadius: 5,
+      borderTopRightRadius: 5,
+   },
+   title_text: {
+      fontSize: 28,
+      textAlign: 'center',
+      padding: 5,
    },
 });
 
