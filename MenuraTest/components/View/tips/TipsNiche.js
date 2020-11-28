@@ -1,11 +1,16 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, Image, FlatList, TouchableOpacity} from 'react-native';
+import {
+   StyleSheet,
+   View,
+   Text,
+   FlatList,
+   TouchableOpacity,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
-import {Button} from "react-native-elements";
-import niche from './TipsDataNiche';
-import TipsNicheItem from "./TipsNicheItem";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import niche from './data/TipsDataNiche';
+import TipsNicheItem from './TipsNicheItem';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class TipsNiche extends React.Component {
    constructor(props) {
@@ -13,32 +18,41 @@ class TipsNiche extends React.Component {
       this.state = {};
    }
 
-
-
    render() {
       const {navigation} = this.props;
       let theme = this.props.currentStyle;
       return (
-            <View style={{backgroundColor: theme.primary, flex: 1}}>
-               <View style={[styles.context, {backgroundColor: theme.accent}]}>
-                  <Text
-                     style={[
-                        styles.list_header,
-                        {backgroundColor: theme.accent, color: theme.highlight},
-                     ]}>
-                     Quelques idées de constructions de niches :
-                  </Text>
-               </View>
-               <FlatList
-                   data={niche}
-                   keyExtractor={(item) => item.id}
-                   renderItem={({item}) => (
-                       <TipsNicheItem
-                           data={{niche: item, root: 'TipsNiche'}}
-                       />
-                   )}
-               />
+         <View style={{backgroundColor: theme.primary, flex: 1}}>
+            <View style={[styles.context, {backgroundColor: theme.accent}]}>
+               <TouchableOpacity
+                  style={styles.back_button}
+                  onPress={() =>
+                     navigation.navigate('TipsView', {
+                        oiseaux_nom: this.state.nom,
+                     })
+                  }>
+                  <Icon
+                     name="keyboard-arrow-left"
+                     size={35}
+                     color={theme.highlight}
+                  />
+               </TouchableOpacity>
+               <Text
+                  style={[
+                     styles.list_header,
+                     {backgroundColor: theme.accent, color: theme.highlight},
+                  ]}>
+                  Idées de constructions de niches :
+               </Text>
             </View>
+            <FlatList
+               data={niche}
+               keyExtractor={(item) => item.id}
+               renderItem={({item}) => (
+                  <TipsNicheItem data={{niche: item, root: 'TipsNiche'}} />
+               )}
+            />
+         </View>
       );
    }
 }
@@ -49,6 +63,8 @@ const styles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
       padding: 10,
+      flexDirection: 'row',
+      alignItems: 'center',
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
@@ -56,6 +72,7 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
+
    list_header: {
       textAlign: 'center',
       fontSize: 18,
@@ -100,14 +117,6 @@ const styles = StyleSheet.create({
    description_text: {
       fontStyle: 'italic',
       color: '#666666',
-   },
-   button: {
-      borderRadius: 5,
-      marginLeft: 40,
-      marginRight: 60,
-      marginBottom: 8,
-      marginTop: 5,
-      padding: 3,
    },
 });
 

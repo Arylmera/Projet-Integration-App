@@ -10,7 +10,8 @@ class DetailItem extends React.Component {
    }
 
    render() {
-      const oiseaux_nom = this.props.data.oiseau_nom;
+      const nom = this.props.data.oiseau.nom;
+      const espece = this.props.data.oiseau.espece;
       const {navigation} = this.props;
       let theme = this.props.currentStyle;
       return (
@@ -20,13 +21,19 @@ class DetailItem extends React.Component {
                style={styles.touchableOpacity}
                onPress={() =>
                   navigation.navigate('DetailOiseaux', {
-                     oiseaux_nom: oiseaux_nom,
+                     oiseaux_nom: nom,
                      root: this.props.data.root,
                   })
                }>
-               <Text style={[styles.Title, {color: theme.highlight}]}>
-                  {' '}
-                  {oiseaux_nom}{' '}
+               <Text
+                   style={[styles.nom, {color: theme.highlight}]}
+               >
+                  {nom}
+               </Text>
+               <Text
+                   style={[styles.espece, {color: theme.accent}]}
+               >
+                  {espece}
                </Text>
             </TouchableOpacity>
          </View>
@@ -47,8 +54,12 @@ let styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
-   Title: {
+   nom: {
       fontSize: 30,
+      fontWeight: 'bold',
+   },
+   espece: {
+      fontSize: 18,
       fontWeight: 'bold',
    },
    touchableOpacity: {

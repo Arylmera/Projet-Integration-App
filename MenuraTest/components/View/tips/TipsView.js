@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 import {ButtonGroup, Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
 import {Divider} from 'react-native-paper';
-import saisons from './TipsDataSaison';
+import saisons from './data/TipsDataSaison';
 
 class TipsView extends React.Component {
    constructor(props) {
@@ -21,14 +21,13 @@ class TipsView extends React.Component {
          selectedIndex: 0,
       };
       this.updateIndex = this.updateIndex.bind(this);
-
    }
 
    /**
     * chargement du component
     */
    componentDidMount() {
-  this._saisonDate();
+      this._saisonDate();
    }
 
    /**
@@ -43,14 +42,11 @@ class TipsView extends React.Component {
 
       if (today < winter && today >= autumn) {
          this.setState({selectedIndex: 0});
-      }
-      else if (today < spring && today >= winter) {
+      } else if (today < spring && today >= winter) {
          this.setState({selectedIndex: 1});
-      }
-      else if (today < summer && today >= spring) {
+      } else if (today < summer && today >= spring) {
          this.setState({selectedIndex: 2});
-      }
-      else if (today < autumn && today >= summer) {
+      } else if (today < autumn && today >= summer) {
          this.setState({selectedIndex: 3});
       }
    }
@@ -77,7 +73,8 @@ class TipsView extends React.Component {
          <ScrollView
             style={[styles.main_container, {backgroundColor: theme.primary}]}>
             <View>
-               <View style={[styles.context, {backgroundColor: theme.accent}]}>
+               <View
+                  style={[styles.context, {backgroundColor: theme.secondary}]}>
                   <ButtonGroup
                      onPress={this.updateIndex}
                      selectedIndex={selectedIndex}
@@ -85,21 +82,29 @@ class TipsView extends React.Component {
                      containerStyle={[
                         styles.button_groupe_saison,
                         {
-                           borderColor: theme.accent,
+                           borderColor: theme.secondary,
                            backgroundColor: theme.primary,
                         },
                      ]}
-                     selectedButtonStyle={{backgroundColor: theme.secondary}}
+                     selectedButtonStyle={{backgroundColor: theme.accent}}
                      textStyle={{color: theme.highlight}}
                      innerBorderStyle={{width: 0.2, color: 'black'}}
                   />
-                  <Text
+                  <View
                      style={[
                         styles.list_header,
-                        {backgroundColor: theme.accent, color: theme.highlight},
+                        {backgroundColor: theme.accent},
                      ]}>
-                     Aider les oiseaux des jardins au fil des saisons :
-                  </Text>
+                     <Text
+                        style={[
+                           styles.list_header_caption,
+                           {
+                              color: theme.highlight,
+                           },
+                        ]}>
+                        Aider les oiseaux des jardins au fil des saisons :
+                     </Text>
+                  </View>
                </View>
 
                <TipsItem
@@ -111,7 +116,11 @@ class TipsView extends React.Component {
                   styles.item_container,
                   {backgroundColor: theme.secondary},
                ]}>
-               <View style={[styles.container_item, {backgroundColor: theme.secondary}]}>
+               <View
+                  style={[
+                     styles.container_item,
+                     {backgroundColor: theme.secondary},
+                  ]}>
                   <Text style={[styles.title_text, {color: theme.highlight}]}>
                      Construction nichoirs
                   </Text>
@@ -125,52 +134,103 @@ class TipsView extends React.Component {
                   <Image
                      style={styles.image}
                      PlaceholderContent={<ActivityIndicator />}
-                     source={require('../../../assets/images/Niches/Niche4_1.png')}
+                     source={require('../../../assets/images/Niches/Niche1_3.png')}
                   />
-                  <Text style={[styles.item_text,{color: theme.highlight}]}>
+                  <Text style={[styles.item_text, {color: theme.highlight}]}>
                      Idées de constructions avec modèles détaillés
                   </Text>
                   <Button
-                      titleStyle={{color: theme.highlight}}
-                      buttonStyle={[ styles.button,{
-                         backgroundColor: theme.accent
-                      }]}
+                     titleStyle={{color: theme.highlight}}
+                     buttonStyle={[
+                        styles.button,
+                        {
+                           backgroundColor: theme.accent,
+                        },
+                     ]}
                      onPress={() => navigation.navigate('TipsNiche')}
                      title="A vos marteaux !"
                   />
                </View>
             </View>
             <View
-                style={[
-                   styles.item_container,
-                   {backgroundColor: theme.secondary},
-                ]}>
-               <View style={[styles.container_item, {backgroundColor: theme.secondary}]}>
+               style={[
+                  styles.item_container,
+                  {backgroundColor: theme.secondary},
+               ]}>
+               <View
+                  style={[
+                     styles.container_item,
+                     {backgroundColor: theme.secondary},
+                  ]}>
                   <Text style={[styles.title_text, {color: theme.highlight}]}>
                      Construction mangeoires
                   </Text>
                </View>
                <Divider style={[{backgroundColor: theme.highlight}]} />
                <View
-                   style={[
-                      styles.item,
-                      {backgroundColor: theme.secondary, color: theme.highlight},
-                   ]}>
+                  style={[
+                     styles.item,
+                     {backgroundColor: theme.secondary, color: theme.highlight},
+                  ]}>
                   <Image
-                      style={styles.image}
-                      PlaceholderContent={<ActivityIndicator />}
-                      source={require('../../../assets/images/Mangeoires/Mangeoire1_1.png')}
+                     style={styles.image}
+                     PlaceholderContent={<ActivityIndicator />}
+                     source={require('../../../assets/images/Mangeoires/Mangeoire1_1.png')}
                   />
-                  <Text style={[ styles.item_text,{color: theme.highlight}]}>
-                  Des bonnes idées de de mangeoires
-               </Text>
+                  <Text style={[styles.item_text, {color: theme.highlight}]}>
+                     Des bonnes idées de de mangeoires
+                  </Text>
                   <Button
-                      titleStyle={{color: theme.highlight}}
-                      buttonStyle={[ styles.button,{
-                         backgroundColor: theme.accent
-                      }]}
-                      onPress={() => navigation.navigate('TipsMangeoire')}
-                      title="A Table !"
+                     titleStyle={{color: theme.highlight}}
+                     buttonStyle={[
+                        styles.button,
+                        {
+                           backgroundColor: theme.accent,
+                        },
+                     ]}
+                     onPress={() => navigation.navigate('TipsMangeoire')}
+                     title="A Table !"
+                  />
+               </View>
+            </View>
+            <View
+               style={[
+                  styles.item_container,
+                  {backgroundColor: theme.secondary},
+               ]}>
+               <View
+                  style={[
+                     styles.container_item,
+                     {backgroundColor: theme.secondary},
+                  ]}>
+                  <Text style={[styles.title_text, {color: theme.highlight}]}>
+                     Quiz
+                  </Text>
+               </View>
+               <Divider style={[{backgroundColor: theme.highlight}]} />
+               <View
+                  style={[
+                     styles.item,
+                     {backgroundColor: theme.secondary, color: theme.highlight},
+                  ]}>
+                  <Image
+                     style={styles.image}
+                     PlaceholderContent={<ActivityIndicator />}
+                     source={require('../../../assets/images/Accueil.png')}
+                  />
+                  <Text style={[styles.item_text, {color: theme.highlight}]}>
+                     Pourrez vous reconnaitre ces oiseaux ?
+                  </Text>
+                  <Button
+                     titleStyle={{color: theme.highlight}}
+                     buttonStyle={[
+                        styles.button,
+                        {
+                           backgroundColor: theme.accent,
+                        },
+                     ]}
+                     onPress={() => navigation.navigate('TipsQuiz')}
+                     title="Let's play"
                   />
                </View>
             </View>
@@ -213,17 +273,20 @@ const styles = StyleSheet.create({
       marginRight: 5,
    },
    list_header: {
-      textAlign: 'center',
-      fontSize: 18,
-      fontWeight: 'bold',
-      padding: 20,
-      margin: 3,
+      borderRadius: 5,
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
       shadowOpacity: 0.5,
       shadowRadius: 2,
-      elevation: 3,
+      elevation: 2,
+   },
+   list_header_caption: {
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: 'bold',
+      padding: 20,
+      margin: 3,
    },
    button: {
       borderRadius: 5,
@@ -261,7 +324,6 @@ const styles = StyleSheet.create({
       margin: 15,
       textAlign: 'center',
       fontStyle: 'italic',
-
    },
    image: {
       width: null,

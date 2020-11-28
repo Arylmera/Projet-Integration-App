@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/details/detailItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/details/detailItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,26 +28,35 @@
     <setting file="file://$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1iGccPH2spY2N2yd2UjqF9KdS9d" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DBE.Init.BalloonShown" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MenuraTest/assets/avatars" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\MenuraTest\components\View\tips\data" />
+      <recent name="C:\Site-perso\MenuraTest\components\View\profile\data" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\MenuraTest\assets\avatars" />
+      <recent name="C:\Site-perso\MenuraTest\assets\images" />
       <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -94,18 +105,23 @@
       <workItem from="1605626460661" duration="20972000" />
       <workItem from="1605694281282" duration="4917000" />
       <workItem from="1605713386802" duration="498000" />
+      <workItem from="1606243804672" duration="2910000" />
+      <workItem from="1606300134882" duration="8533000" />
+      <workItem from="1606403442693" duration="16778000" />
+      <workItem from="1606500103456" duration="834000" />
+      <workItem from="1606552421817" duration="21068000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603900251906">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605815967207">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="638" y="334" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603900251906" />
-    <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1601558718420" />
+    <state x="595" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1605815967207" />
     <state x="166" y="124" width="1200" height="800" key="AVDManager" timestamp="1603928290216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -114,22 +130,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603964053553" />
-    <state width="1771" height="299" key="GridCell.Tab.0.bottom" timestamp="1602672013568">
+    <state width="1771" height="299" key="GridCell.Tab.0.bottom" timestamp="1605804002325">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013568" />
-    <state width="1771" height="299" key="GridCell.Tab.0.center" timestamp="1602672013567">
+    <state width="1771" height="299" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1605804002325" />
+    <state width="1771" height="299" key="GridCell.Tab.0.center" timestamp="1605804002324">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013567" />
-    <state width="1771" height="299" key="GridCell.Tab.0.left" timestamp="1602672013566">
+    <state width="1771" height="299" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1605804002324" />
+    <state width="1771" height="299" key="GridCell.Tab.0.left" timestamp="1605804002323">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013566" />
-    <state width="1771" height="299" key="GridCell.Tab.0.right" timestamp="1602672013567">
+    <state width="1771" height="299" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1605804002323" />
+    <state width="1771" height="299" key="GridCell.Tab.0.right" timestamp="1605804002325">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1771" height="299" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1602672013567" />
+    <state width="1771" height="299" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1605804002325" />
     <state x="540" y="263" key="IDE.errors.dialog" timestamp="1603928274850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -138,9 +154,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="267" y="169" key="SettingsEditor/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603928245209" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1606409316319">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606409316319" />
+    <state x="554" y="179" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605962261134">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="554" y="179" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1605962261134" />
     <state x="-1920" y="0" width="1550" height="676" maximized="true" key="dock-window-1" timestamp="1603619930114">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
     <state x="-1920" y="0" width="1550" height="676" maximized="true" key="dock-window-1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1603619930114" />
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup" timestamp="1606238764202">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1606238764202" />
   </component>
 </project>
