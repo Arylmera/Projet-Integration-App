@@ -11,7 +11,7 @@ import {Text} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {Divider} from 'react-native-paper';
-import materiel from './TipsDataNichePlanMateriels';
+import materiel from './data/TipsDataNichePlanMateriels';
 import TipsNichePlanMateriels from './TipsNichePlanMateriels';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

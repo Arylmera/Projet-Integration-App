@@ -22,7 +22,7 @@ class ProfilView extends React.Component {
          prenom: 'User name',
          nom: 'User lastName',
          email: 'email',
-         profileIcon: require('../../../assets/images/profileIcon.png'),
+         profileIcon: '',
          password: '',
          newPassword: '',
          updatePasswordModal: false,
@@ -42,7 +42,8 @@ class ProfilView extends React.Component {
             let uid = user.uid;
             let nom = user.displayName.split(' ')[0];
             let prenom = user.displayName.split(' ')[1];
-            this.setState({email: email, nom: nom, prenom: prenom, id: uid});
+            let avatar = user.photoURL;
+            this.setState({email: email, nom: nom, prenom: prenom, id: uid, profileIcon: avatar});
          } else {
             this.props.navigation.navigate('connexion');
          }
@@ -147,6 +148,9 @@ class ProfilView extends React.Component {
                      {this.state.nom}{' '}
                   </Text>
                </View>
+               <TouchableOpacity
+                   onPress={() => this.props.navigation.navigate('avatar')}
+               >
                <Image
                   source={this.state.profileIcon}
                   style={[
@@ -154,6 +158,7 @@ class ProfilView extends React.Component {
                      {backgroundColor: theme.secondary},
                   ]}
                />
+               </TouchableOpacity>
             </View>
             <View style={styles.container_row}>
                <View style={[styles.body_container]}>
@@ -378,7 +383,7 @@ const styles = StyleSheet.create({
    profileIcon: {
       flex: 1,
       marginTop: 20,
-      borderRadius: 10,
+      borderRadius: 100,
       width: 150,
       height: 150,
       // shadow

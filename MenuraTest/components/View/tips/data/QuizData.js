@@ -8,7 +8,7 @@ export default data = [
         reponse3: 'pic vert',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'mésange',
-        image: require('../../../assets/quizz/mesange.jpg'),
+        image: require('../../../../assets/quizz/mesange.jpg'),
     },
     {
         id: '2',
@@ -17,7 +17,7 @@ export default data = [
         reponse3: 'moineau',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'moineau',
-        image: require('../../../assets/quizz/moineau.jpg'),
+        image: require('../../../../assets/quizz/moineau.jpg'),
     },
     {
         id: '3',
@@ -26,7 +26,7 @@ export default data = [
         reponse3: 'pic vert',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'mouette',
-        image: require('../../../assets/quizz/mouette.jpg'),
+        image: require('../../../../assets/quizz/mouette.jpg'),
     },
     {
         id: '4',
@@ -35,7 +35,7 @@ export default data = [
         reponse3: 'pic vert',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'pic vert',
-        image: require('../../../assets/quizz/picvert.jpg'),
+        image: require('../../../../assets/quizz/picvert.jpg'),
     },
     {
         id: '5',
@@ -44,7 +44,7 @@ export default data = [
         reponse3: 'bargerousse',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'bargerousse',
-        image: require('../../../assets/quizz/bargerousse.jpg'),
+        image: require('../../../../assets/quizz/bargerousse.jpg'),
     },
     {
         id: '6',
@@ -53,7 +53,7 @@ export default data = [
         reponse3: 'pic vert',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'tarier',
-        image: require('../../../assets/quizz/tarier.jpg'),
+        image: require('../../../../assets/quizz/tarier.jpg'),
     },
     {
         id: '7',
@@ -62,7 +62,7 @@ export default data = [
         reponse3: 'pic vert',
         reponse4: 'bruant jaune',
         reponseCorrecte: 'grand duc',
-        image: require('../../../assets/quizz/grandduc.jpg'),
+        image: require('../../../../assets/quizz/grandduc.jpg'),
     },
     {
         id: '8',
@@ -71,7 +71,7 @@ export default data = [
         reponse3: 'pic vert',
         reponse4: 'macreuse',
         reponseCorrecte: 'macreuse',
-        image: require('../../../assets/quizz/MACREUSE.jpg'),
+        image: require('../../../../assets/quizz/MACREUSE.jpg'),
     },
     {
         id: '9',
@@ -80,7 +80,7 @@ export default data = [
         reponse3: 'verdier',
         reponse4: 'macreuse',
         reponseCorrecte: 'verdier',
-        image: require('../../../assets/quizz/VERDIER.jpg'),
+        image: require('../../../../assets/quizz/VERDIER.jpg'),
     },
     {
         id: '10',
@@ -89,7 +89,7 @@ export default data = [
         reponse3: 'macreuse',
         reponse4: 'hibou',
         reponseCorrecte: 'pie bavarde',
-        image: require('../../../assets/quizz/PIEBAVARDE.jpg'),
+        image: require('../../../../assets/quizz/PIEBAVARDE.jpg'),
     },
 
 ]

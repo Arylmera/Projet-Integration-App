@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import {getDataStorage} from '../../../functions/storageHelper';
 import LineChart from "react-native-chart-kit/dist/line-chart";
 import {getHistoriqueAll} from '../../../api/historique_api'
-import {getOiseaux} from "../../../api/oiseaux_api";
 
 class StatsView extends React.Component {
    constructor(props) {

@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 import {ButtonGroup, Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
 import {Divider} from 'react-native-paper';
-import saisons from './TipsDataSaison';
+import saisons from './data/TipsDataSaison';
 
 class TipsView extends React.Component {
    constructor(props) {
