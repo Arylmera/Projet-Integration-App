@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import QuizItem from './QuizItem';
-import question from './DataQuiz';
+import question from './data/QuizData';
 
 class QuizView extends React.Component {
     constructor(props) {

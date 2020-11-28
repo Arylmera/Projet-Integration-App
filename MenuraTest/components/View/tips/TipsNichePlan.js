@@ -12,16 +12,12 @@ import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {
    Table,
-   TableWrapper,
    Row,
    Rows,
-   Col,
-   Cols,
-   Cell,
 } from 'react-native-table-component';
 import {Divider} from 'react-native-paper';
-import astuce from './TipsDataNichePlanAstuces';
-import materiel from './TipsDataNichePlanMateriels';
+import astuce from './data/TipsDataNichePlanAstuces';
+import materiel from './data/TipsDataNichePlanMateriels';
 import TipsNichePlanAstuces from './TipsNichePlanAstuces';
 import TipsNichePlanMateriels from './TipsNichePlanMateriels';
 import Icon from 'react-native-vector-icons/MaterialIcons';

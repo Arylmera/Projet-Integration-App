@@ -6,8 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/DataQuiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/DataQuiz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/QuizItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/QuizItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/Navigation/ProfilNavigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/InscriptionProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/profile/ProfilView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/DataQuiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/QuizData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/QuizView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/QuizView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataMangeoire.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/TipsDataMangeoire.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/TipsDataNiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNichePlanAstuces.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/TipsDataNichePlanAstuces.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNichePlanMateriels.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/TipsDataNichePlanMateriels.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataNourriture.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/TipsDataNourriture.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsDataSaison.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/data/TipsDataSaison.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoire.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoire.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoireItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoireItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoirePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsMangeoirePlan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNiche.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNicheItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNicheItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlanAstuces.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlanAstuces.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlanMateriels.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsNichePlanMateriels.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaison.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaison.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaisonNourritureItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsSaisonNourritureItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/tips/TipsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,16 +62,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MenuraTest/assets/avatars" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\MenuraTest\components\View\tips\data" />
+      <recent name="C:\Site-perso\MenuraTest\components\View\profile\data" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Site-perso\MenuraTest\assets\avatars" />
+      <recent name="C:\Site-perso\MenuraTest\assets\images" />
       <recent name="C:\Projet d'intégration\Projet-Integration\Menura\assets\images\icons" />
     </key>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -102,6 +129,8 @@
       <workItem from="1606243804672" duration="2910000" />
       <workItem from="1606300134882" duration="8533000" />
       <workItem from="1606403442693" duration="16778000" />
+      <workItem from="1606500103456" duration="834000" />
+      <workItem from="1606552421817" duration="15036000" />
     </task>
     <servers />
   </component>
