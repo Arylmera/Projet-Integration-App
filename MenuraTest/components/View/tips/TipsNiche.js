@@ -3,15 +3,12 @@ import {
    StyleSheet,
    View,
    Text,
-   ScrollView,
-   Image,
    FlatList,
    TouchableOpacity,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
-import {Button} from 'react-native-elements';
-import niche from './TipsDataNiche';
+import niche from './data/TipsDataNiche';
 import TipsNicheItem from './TipsNicheItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

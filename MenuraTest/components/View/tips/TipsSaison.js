@@ -9,7 +9,7 @@ import {
 import {Text} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {Row, Rows, Table} from 'react-native-table-component';
-import nourriture from './TipsDataNourriture';
+import nourriture from './data/TipsDataNourriture';
 import TipsSaisonNourritureItem from './TipsSaisonNourritureItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

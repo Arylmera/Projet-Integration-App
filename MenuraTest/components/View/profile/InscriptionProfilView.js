@@ -73,7 +73,7 @@ class InscriptionProfilView extends React.Component {
                   ).then((data) => console.log(data));
                });
                user
-                  .updateProfile({displayName: nom + ' ' + prenom})
+                  .updateProfile({displayName: nom + ' ' + prenom, photoURL: require('../../../assets/images/profileIcon.png')})
                   .then(() => {
                      console.log('display name added');
                      navigation.navigate('verificationEmail');

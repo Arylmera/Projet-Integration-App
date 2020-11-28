@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 import {ButtonGroup, Button} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/core';
 import {Divider} from 'react-native-paper';
-import saisons from './TipsDataSaison';
+import saisons from './data/TipsDataSaison';
 
 class TipsView extends React.Component {
    constructor(props) {
@@ -204,7 +204,7 @@ class TipsView extends React.Component {
                      {backgroundColor: theme.secondary},
                   ]}>
                   <Text style={[styles.title_text, {color: theme.highlight}]}>
-                     Quizz
+                     Quiz
                   </Text>
                </View>
                <Divider style={[{backgroundColor: theme.highlight}]} />
@@ -219,7 +219,7 @@ class TipsView extends React.Component {
                      source={require('../../../assets/images/Accueil.png')}
                   />
                   <Text style={[styles.item_text, {color: theme.highlight}]}>
-                     Un petit Quizz
+                     Pourrez vous reconnaitre ces oiseaux ?
                   </Text>
                   <Button
                      titleStyle={{color: theme.highlight}}
@@ -229,8 +229,8 @@ class TipsView extends React.Component {
                            backgroundColor: theme.accent,
                         },
                      ]}
-                     onPress={() => navigation.navigate('TipsQuizz')}
-                     title="Let's buzz"
+                     onPress={() => navigation.navigate('TipsQuiz')}
+                     title="Let's play"
                   />
                </View>
             </View>

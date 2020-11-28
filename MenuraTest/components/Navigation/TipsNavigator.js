@@ -6,7 +6,7 @@ import TipsNichePlan from '../View/tips/TipsNichePlan';
 import TipsMangeoire from '../View/tips/TipsMangeoire';
 import TipsSaison from '../View/tips/TipsSaison';
 import TipsMangeoirePlan from '../View/tips/TipsMangeoirePlan';
-import Quizz from '../View/tips/quiz';
+import QuizView from "../View/tips/QuizView";
 
 const Stack = createStackNavigator();
 
@@ -61,10 +61,10 @@ function TipsNavigator() {
             }}
          />
          <Stack.Screen
-            name="TipsQuizz"
-            component={Quizz}
+            name="TipsQuiz"
+            component={QuizView}
             options={{
-               title: 'Quizz',
+               title: 'Quiz',
             }}
          />
       </Stack.Navigator>

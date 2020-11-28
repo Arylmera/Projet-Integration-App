@@ -125,13 +125,6 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
-   detailButton: {
-      borderRadius: 5,
-      width: '25%',
-      padding: 3,
-      alignItems: 'center',
-      justifyContent: 'center',
-   },
    FlatlistItem: {
       flex: 1,
       paddingLeft: 10,

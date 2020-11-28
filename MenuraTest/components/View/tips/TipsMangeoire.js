@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
-import mangeoire from './TipsDataMangeoire';
+import mangeoire from './data/TipsDataMangeoire';
 import TipsMangeoireItem from './TipsMangeoireItem';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

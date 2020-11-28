@@ -9,6 +9,7 @@ import {getOiseaux} from "../../../api/oiseaux_api";
 import PieChart from "react-native-chart-kit/dist/PieChart";
 import {Divider} from "react-native-paper";
 
+
 class StatsView extends React.Component {
    constructor(props) {
       super(props);

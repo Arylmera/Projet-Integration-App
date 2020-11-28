@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, FlatList, Image} from 'react-native';
+import {StyleSheet, View, Text, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import {Button} from "react-native-elements";
