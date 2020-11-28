@@ -128,97 +128,109 @@ class StatsView extends React.Component {
                   </Text>
                </View>
                <Divider style={[{backgroundColor: theme.highlight}]} />
-               <View>
-                  <LineChart
-                      data={{
-                         labels: ['Mésange', 'Moineau', 'Pigeon', 'Amaury'],
-                         datasets: [
-                            {
-                               data: [
-                                  3,
-                                  6,
-                                  9,
-                                  77,
-                                  66,
-                                  7,
-                               ],
-                            },
-                         ],
-                      }}
-                      width={Dimensions.get('window').width - 16} // from react-native
+               <View style={styles.pieChart}>
+                  <Text style={[{color: theme.highlight}, styles.title_item]}>
+                     Oiseaux les plus capturés :
+                  </Text>
+                  <PieChart
+                      data={[
+                         {
+                            name: this.state.historiqueCount[0].name,
+                            population: this.state.historiqueCount[0].value,
+                            color: 'rgba(131, 167, 234, 1)',
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                         {
+                            name: this.state.historiqueCount[1].name,
+                            population: this.state.historiqueCount[1].value,
+                            color: '#F00',
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                         {
+                            name: this.state.historiqueCount[2].name,
+                            population: this.state.historiqueCount[2].value,
+                            color: '#ffffff',
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                         {
+                            name: this.state.historiqueCount[3].name,
+                            population: this.state.historiqueCount[3].value,
+                            color: 'rgb(0, 0, 255)',
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                      ]}
+                      width={Dimensions.get('window').width -16 }
                       height={220}
-                      yAxisLabel={'Rs'}
                       chartConfig={{
-                         backgroundColor: theme.primary,
-                         backgroundGradientFrom: theme.primary,
-                         backgroundGradientTo: theme.primary,
-                         decimalPlaces: 2, // optional, defaults to 2dp
-                         color: (opacity = 255) => theme.accent,
+                         backgroundColor: '#1cc910',
+                         backgroundGradientFrom: '#eff3ff',
+                         backgroundGradientTo: '#efefef',
+                         decimalPlaces: 2,
+                         color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                          style: {
                             borderRadius: 16,
                          },
                       }}
-                      bezier
                       style={{
                          marginVertical: 8,
                          borderRadius: 16,
-
                       }}
+                      accessor="population"
+                      backgroundColor="transparent"
+                      paddingLeft="15"
+                      absolute //for the absolute number remove if you want percentage
                   />
                </View>
 
             <View>
-               <PieChart
-                   data={[
-                      {
-                         name: this.state.historiqueCount[0].name,
-                         population: this.state.historiqueCount[0].value,
-                         color: 'rgba(131, 167, 234, 1)',
-                         legendFontColor: '#7F7F7F',
-                         legendFontSize: 11,
-                      },
-                      {
-                         name: this.state.historiqueCount[1].name,
-                         population: this.state.historiqueCount[1].value,
-                         color: '#F00',
-                         legendFontColor: '#7F7F7F',
-                         legendFontSize: 11,
-                      },
-                      {
-                         name: this.state.historiqueCount[2].name,
-                         population: this.state.historiqueCount[2].value,
-                         color: '#ffffff',
-                         legendFontColor: '#7F7F7F',
-                         legendFontSize: 11,
-                      },
-                      {
-                         name: this.state.historiqueCount[3].name,
-                         population: this.state.historiqueCount[3].value,
-                         color: 'rgb(0, 0, 255)',
-                         legendFontColor: '#7F7F7F',
-                         legendFontSize: 11,
-                      },
-                   ]}
-                   width={Dimensions.get('window').width - 16}
+               <Text style={[{color: theme.highlight}, styles.title_item]}>
+                  Captures totales par mois :
+               </Text>
+               <LineChart
+                   data={{
+                      labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
+                      datasets: [
+                         {
+                            data: [
+                               3,
+                               6,
+                               9,
+                               77,
+                               66,
+                               7,
+                                7,
+                                8,
+                                9,
+                                7,
+                                9,
+                                4,
+                            ],
+                         },
+                      ],
+                   }}
+                   width={Dimensions.get('window').width - 16} // from react-native
                    height={220}
+                   //yAxisLabel={'RS'}
                    chartConfig={{
-                      backgroundColor: '#1cc910',
-                      backgroundGradientFrom: '#eff3ff',
-                      backgroundGradientTo: '#efefef',
-                      decimalPlaces: 2,
-                      color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                      backgroundColor: theme.primary,
+                      backgroundGradientFrom: theme.primary,
+                      backgroundGradientTo: theme.primary,
+                      decimalPlaces: 2, // optional, defaults to 2dp
+                      color: (opacity = 255) => theme.accent,
                       style: {
                          borderRadius: 16,
                       },
                    }}
+                   bezier
                    style={{
                       marginVertical: 8,
                       borderRadius: 16,
+
                    }}
-                   accessor="population"
-                   backgroundColor="transparent"
-                   paddingLeft="15"
-                   absolute //for the absolute number remove if you want percentage
                />
             </View>
 
@@ -265,6 +277,16 @@ const styles = StyleSheet.create({
       fontSize: 28,
       textAlign: 'center',
       padding: 5,
+   },
+   pieChart:{
+
+   },
+   title_item: {
+      margin: 15,
+      textAlign: 'center',
+      fontStyle: 'italic',
+      fontWeight: 'bold',
+      fontSize: 18,
    },
 });
 
