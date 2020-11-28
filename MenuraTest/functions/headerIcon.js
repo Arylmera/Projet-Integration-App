@@ -2,16 +2,33 @@ import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation, CommonActions} from '@react-navigation/native';
+import firebase from "firebase";
 
 class HeaderIcon extends React.Component {
    constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+         headerIcon: require('../assets/images/profileIcon.png'),
+      };
+   }
+
+   componentDidMount() {
+      this._checkIfLoggedIn();
+   }
+
+   _checkIfLoggedIn() {
+      firebase.auth().onAuthStateChanged((user) => {
+         if (user) {
+            let avatar = user.photoURL;
+            this.setState({headerIcon: avatar});
+         } else {
+            this.props.navigation.navigate('connexion');
+         }
+      });
    }
 
    render() {
       const {navigation} = this.props;
-      let theme = this.props.data.theme;
       return (
          <View style={styles.headerIcon}>
             <TouchableOpacity
@@ -20,8 +37,8 @@ class HeaderIcon extends React.Component {
                   navigation.dispatch(CommonActions.navigate('Profil'));
                }}>
                <Image
-                  source={require('../assets/images/profileIcon.png')}
-                  style={[styles.profileIcon, {tintColor: theme.highlight}]}
+                  source={this.state.headerIcon}
+                  style={styles.profileIcon}
                />
             </TouchableOpacity>
          </View>
@@ -35,6 +52,7 @@ let styles = StyleSheet.create({
       alignItems: 'center',
    },
    profileIcon: {
+      borderRadius: 100,
       width: 40,
       height: 40,
    },

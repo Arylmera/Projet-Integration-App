@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, FlatList, Image} from 'react-native';
+import {StyleSheet, View, FlatList, Image, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import DetailItem from '../details/detailItem';
 import {getOiseaux} from '../../../api/oiseaux_api';
@@ -13,9 +13,9 @@ class SearchView extends React.Component {
       super(props);
       this.state = {
          oiseauxListe: [],
-         oiseauxListeNom: [],
-         isLoading: true,
+         emptySearch: true,
          search: '',
+         helperText: '',
       };
    }
 
@@ -30,17 +30,30 @@ class SearchView extends React.Component {
 
    _loadOiseaux() {
       if (this.state.search.length > 0) {
-         getOiseaux(this.state.search).then((data) => {
-            this.setState({oiseauxListe: data.data});
-            let oiseauxListNom_loading = [];
-            data.data.forEach((oiseau) =>
-               oiseauxListNom_loading.push(oiseau.nom),
-            );
-            this.setState({
-               oiseauxListeNom: oiseauxListNom_loading,
-               isLoading: false,
-            });
-         });
+         getOiseaux(this.state.search)
+             .then((data) => {
+                if (data.data.length === 0) {
+                   this.setState({
+                      helperText: 'Oups pas de résultat pour votre recherche',
+                      emptySearch: true
+                   })
+                }
+                else {
+                   this.setState({
+                      oiseauxListe: data.data,
+                      emptySearch: false,
+                   });
+                }
+            })
+         .catch((error) => {
+            console.log(error)
+         })
+      }
+      else {
+         this.setState({
+            helperText: 'oups aucune carractère n\'est indiqué',
+            emptySearch: true
+         })
       }
    }
 
@@ -81,8 +94,13 @@ class SearchView extends React.Component {
                   onPress={() => this._loadOiseaux()}
                />
             </View>
-            {this.state.isLoading ? (
+            {this.state.emptySearch ? (
                <View style={styles.loading_placeholder}>
+                  <Text
+                      style={[styles.helperText, {color: theme.accent}]}
+                  >
+                     {this.state.helperText}
+                  </Text>
                   <Image
                      style={[
                         styles.image_placeholder,
@@ -93,12 +111,12 @@ class SearchView extends React.Component {
                </View>
             ) : (
                <FlatList
-                  data={this.state.oiseauxListeNom}
+                  data={this.state.oiseauxListe}
                   style={styles.FlatlistItem}
-                  keyExtractor={(item) => item}
+                  keyExtractor={(item) => item.nom}
                   renderItem={({item}) => (
                      <DetailItem
-                        data={{oiseau_nom: item, root: 'SearchView'}}
+                        data={{oiseau: item, root: 'SearchView'}}
                      />
                   )}
                />
@@ -133,7 +151,9 @@ let styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 2,
    },
-   search_bar_input: {},
+   search_bar_input: {
+
+   },
    button_search: {
       borderRadius: 5,
       marginLeft: 100,
@@ -143,6 +163,7 @@ let styles = StyleSheet.create({
    loading_placeholder: {
       flex: 1,
       flexDirection: 'column',
+      alignItems: 'center',
    },
    image_placeholder: {
       flex: 1,
@@ -150,6 +171,11 @@ let styles = StyleSheet.create({
       height: '100%',
       width: '100%',
       opacity: 0.4,
+   },
+   helperText: {
+      marginTop: 10,
+      fontSize: 18,
+      opacity: 0.6,
    },
 });
 
