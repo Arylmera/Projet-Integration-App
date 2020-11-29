@@ -57,6 +57,7 @@ class ResetPasswordProfilView extends React.Component {
                   ]}
                   placeholder="email"
                   keyboardType="email-address"
+                  autoCapitalize={'none'}
                   onChangeText={(email) => this._emailTextInputChanged(email)}
                   onFocus={() =>
                      this.setState({borderEmail: this.focusBorderColor})

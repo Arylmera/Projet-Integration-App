@@ -147,6 +147,7 @@ class InscriptionProfilView extends React.Component {
                   ]}
                   placeholder="email"
                   keyboardType="email-address"
+                  autoCapitalize={'none'}
                   onChangeText={(email) => this._emailTextInputChanged(email)}
                   onFocus={() =>
                      this.setState({borderEmail: this.focusBorderColor})
@@ -162,6 +163,7 @@ class InscriptionProfilView extends React.Component {
                   ]}
                   placeholder="mot de passe"
                   secureTextEntry={true}
+                  autoCapitalize={'none'}
                   onChangeText={(password) =>
                      this._passwordTextInputChanged(password)
                   }
@@ -185,6 +187,7 @@ class InscriptionProfilView extends React.Component {
                   ]}
                   placeholder="mot de passe"
                   secureTextEntry={true}
+                  autoCapitalize={'none'}
                   onChangeText={(password2) =>
                      this._password2TextInputChanged(password2)
                   }

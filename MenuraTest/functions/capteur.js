@@ -11,23 +11,21 @@ import {
 import {connect} from 'react-redux';
 import {Divider} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Capteur_Item from './capteurItem';
+import CapteurItem from './capteurItem';
 import firebase from 'firebase';
 import {addCapteur, getCapteurListById} from '../api/capteur_api';
+import {useNavigation} from "@react-navigation/core";
 
 class Capteur extends React.Component {
    constructor(props) {
       super(props);
+      this.mac_add_input = React.createRef();
       this.state = {
-         updater: false,
-         user: {},
          capteur_list: '',
-         user_id: '',
          mac_add_capteur: '',
          mac_address_message: '',
          status_text: 'Aucun capteur lié',
       };
-      this.mac_add_input = React.createRef();
    }
 
    /**
@@ -35,8 +33,6 @@ class Capteur extends React.Component {
     */
    componentDidMount() {
       this._checkIfLoggedIn();
-      if (this.state.user_id !== '') {
-      }
    }
 
    /**
@@ -46,10 +42,9 @@ class Capteur extends React.Component {
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
-            this.setState({user_id: user.uid, user: user});
             this.load_capteur_list(user);
          } else {
-            console.log('no user');
+            this.props.navigation.navigate('connexion');
          }
       });
    }
@@ -61,16 +56,10 @@ class Capteur extends React.Component {
    load_capteur_list(user) {
       this.setState({list_caption: 'Chargement de vos capteurs'});
       user.getIdToken(true).then((idToken) => {
-         getCapteurListById(this.state.user_id, idToken).then((data) =>
+         getCapteurListById(user.uid, idToken).then((data) =>
             this.setState({capteur_list: data.data}),
          );
       });
-   }
-
-   reload_list() {
-      console.log('reload');
-      this.setState({updater: !this.state.updater});
-      this.load_capteur_list(this.state.user);
    }
 
    /**
@@ -90,16 +79,16 @@ class Capteur extends React.Component {
     */
    _add_capteur() {
       let Mac_Regex = /^(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+$/i;
+      const user = firebase.auth().currentUser;
       if (Mac_Regex.test(this.state.mac_add_capteur)) {
-         this.state.user.getIdToken(true).then((idToken) => {
-            addCapteur(this.state.user_id, idToken, this.state.mac_add_capteur)
+         user.getIdToken(true).then((idToken) => {
+            addCapteur(user.uid, idToken, this.state.mac_add_capteur)
                .then(this.mac_add_input.current.clear())
-               .then(this.load_capteur_list(this.state.user))
-               .then(this.reload_list)
-               .catch((e) => console.log(e));
+               .catch((error) => {
+                  console.log(error)
+               });
          });
       } else {
-         console.log('error on mac addresse');
          this.setState({
             mac_address_message: 'veuillez enter une mac adresse valide',
          });
@@ -112,7 +101,6 @@ class Capteur extends React.Component {
     */
    render() {
       let theme = this.props.currentStyle;
-      console.log(this.state.capteur_list);
       return (
          <SafeAreaView style={{flex: 1}}>
             <View style={[styles.main_container]}>
@@ -131,7 +119,6 @@ class Capteur extends React.Component {
                      <Text style={{color: theme.highlight}}>Adresse MAC :</Text>
                      <TextInput
                         placeholder="FF:FF:FF:FF:FF:FF"
-                        placeholderTextColor={theme.highlight}
                         autocorrect={false}
                         autoCapitalize={'characters'}
                         ref={this.mac_add_input}
@@ -147,7 +134,7 @@ class Capteur extends React.Component {
                         ]}
                      />
                      <TouchableOpacity
-                        onPress={this._add_capteur.bind(this)}
+                        onPress={() => {this._add_capteur()}}
                         style={[
                            styles.add_capteur_button,
                            {backgroundColor: theme.primary},
@@ -183,11 +170,9 @@ class Capteur extends React.Component {
                            extraData={this.state.reload}
                            keyExtractor={(item) => item.id}
                            renderItem={({item}) => (
-                              <Capteur_Item
-                                 reload_list={this.reload_list.bind(this)}
+                              <CapteurItem
                                  data={{
                                     capteur: item,
-                                    user: this.state.user,
                                  }}
                               />
                            )}
@@ -287,4 +272,8 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(Capteur);
+export default connect(mapStateToProps)(function (props) {
+   const navigation = useNavigation();
+
+   return <Capteur {...props} navigation={navigation} />;
+});

@@ -6,6 +6,7 @@ import Bluetooth from '../../../functions/bluetooth';
 import firebase from 'firebase';
 import Capteur from '../../../functions/capteur';
 import {LogBox} from 'react-native';
+import {useNavigation} from "@react-navigation/core";
 
 class ParametresView extends React.Component {
    constructor(props) {
@@ -26,7 +27,7 @@ class ParametresView extends React.Component {
          if (user) {
             this.setState({id: user.uid});
          } else {
-            console.log('no user');
+            this.props.navigation.navigate('connexion');
          }
       });
    }
@@ -248,4 +249,8 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(ParametresView);
+export default connect(mapStateToProps)(function (props) {
+   const navigation = useNavigation();
+
+   return <ParametresView {...props} navigation={navigation} />;
+});

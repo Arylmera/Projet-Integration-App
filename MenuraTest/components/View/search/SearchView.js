@@ -51,7 +51,7 @@ class SearchView extends React.Component {
       }
       else {
          this.setState({
-            helperText: 'oups aucune carractère n\'est indiqué',
+            helperText: 'oups aucun carractère n\'est indiqué',
             emptySearch: true
          })
       }
@@ -78,6 +78,7 @@ class SearchView extends React.Component {
                   ]}
                   placeholder="Entrez un nom d'oiseau"
                   placeholderTextColor={theme.highlight}
+                  autoCapitalize={'none'}
                   onChangeText={this.updateSearch}
                   searchIcon={{color: theme.highlight}}
                   clearInput={{color: theme.highlight}}
