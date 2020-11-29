@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/stats/StatsView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

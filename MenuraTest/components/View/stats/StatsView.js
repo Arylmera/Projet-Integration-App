@@ -4,7 +4,7 @@ import firebase from 'firebase';
 import {connect} from 'react-redux';
 import {getDataStorage} from '../../../functions/storageHelper';
 import LineChart from "react-native-chart-kit/dist/line-chart";
-import {getHistoriqueAll} from '../../../api/historique_api'
+import {getHistoriqueAll, getHistoriqueByID} from '../../../api/historique_api'
 import {getOiseaux} from "../../../api/oiseaux_api";
 import PieChart from "react-native-chart-kit/dist/PieChart";
 import {Divider} from "react-native-paper";
@@ -15,36 +15,66 @@ class StatsView extends React.Component {
       super(props);
       this.state = {
          id: '',
-         historiqueListe: [],
-         historiqueListeNom: [],
-         historiqueCount: [{"name": "Mésange bleue", "value": 1}, {"name": "Chardonneret élégant", "value": 1}, {"name": "Mésange bleue", "value": 2}, {"name": "Bruant Jaune", "value": 5}],
+         historiqueListeGeneral: [],
+         historiqueListeCapteur: [],
+         historiqueListeNomGeneral: [],
+         historiqueListeNomCapteur: [],
+         historiqueCountGeneral: [{"name": "Mésange bleue", "value": 1}, {"name": "Chardonneret élégant", "value": 1}, {"name": "Mésange bleue", "value": 2}, {"name": "Bruant Jaune", "value": 5}],
+         historiqueCountCapteur: [{"name": "Mésange bleue", "value": 1}, {"name": "Chardonneret élégant", "value": 1}, {"name": "Mésange bleue", "value": 2}, {"name": "Bruant Jaune", "value": 5}],
       };
    }
 
-   _showHistorique(){
+   _showHistoriqueAll(){
       getHistoriqueAll().then((data) => {
-         this.setState({historiqueListe: data.data});
+         this.setState({historiqueListeGeneral: data.data});
          let historiqueNom_loading = [];
          data.data.forEach((oiseau) =>
              historiqueNom_loading.push(oiseau.oiseau),
          );
          this.setState({
-            historiqueListeNom: historiqueNom_loading,
+            historiqueListeNomGeneral: historiqueNom_loading,
          });
-         this._countItem(this.state.historiqueListeNom);
+         this.setState({historiqueCountGeneral: this._countItem(this.state.historiqueListeNomGeneral)});
+
       })
+   }
+
+   _showHistoriqueCapteur(user){
+      console.log('loading user historique for user : ' + user.uid);
+      user.getIdToken(true).then((idToken) => {
+         getHistoriqueByID(user.uid, idToken).then((data) =>
+         {
+            this.setState({historiqueListeCapteur: data.data});
+            let historiqueNom_loading = [];
+            data.data.forEach((oiseau) =>
+                historiqueNom_loading.push(oiseau.oiseau),
+            );
+            this.setState({
+               historiqueListeNomCapteur: historiqueNom_loading,
+            });
+            this.setState({historiqueCountCapteur: this._countItem(this.state.historiqueListeNomCapteur)});
+
+         })
+      });
+
    }
 
    componentDidMount() {
       this._checkIfLoggedIn();
       this._reloadTheme();
-      this._showHistorique();
+      this._showHistoriqueAll();
+
    }
 
+   /**
+    * check si l'utilisateur est connécté et récupère ces info
+    * @private
+    */
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
             this.setState({id: user.uid});
+            this._showHistoriqueCapteur(user);
          } else {
             console.log('no user');
          }
@@ -74,8 +104,8 @@ class StatsView extends React.Component {
    }
 
    _countItem(tab) {
-      const count = {};
-      const result = [];
+      let count = {};
+      let result = [];
 
       tab.forEach(item => {
          if (count[item]) {
@@ -93,11 +123,11 @@ class StatsView extends React.Component {
       result.sort(function (a, b) {
          return a.value - b.value;
       });
-      result.reverse();
-      this.setState({historiqueCount: result});
+      return result.reverse();
    }
 
    render() {
+      //console.log(this.state.historiqueCountCapteur);
       //console.log(this.state.historiqueListeNom);
       //console.log(this.state.historiqueListe);
       let theme = this.props.currentStyle;
@@ -111,7 +141,7 @@ class StatsView extends React.Component {
                    styles.list_header,
                    {backgroundColor: theme.accent, color: theme.highlight},
                 ]}>
-               Statistiques des oiseaux de votre capteur
+               Statistiques des oiseaux
             </Text>
             <View
                 style={[
@@ -135,30 +165,30 @@ class StatsView extends React.Component {
                   <PieChart
                       data={[
                          {
-                            name: this.state.historiqueCount[0].name,
-                            population: this.state.historiqueCount[0].value,
-                            color: 'rgba(131, 167, 234, 1)',
+                            name: this.state.historiqueCountGeneral[0].name,
+                            population: this.state.historiqueCountGeneral[0].value,
+                            color: theme.primary,
                             legendFontColor: theme.highlight,
                             legendFontSize: 11,
                          },
                          {
-                            name: this.state.historiqueCount[1].name,
-                            population: this.state.historiqueCount[1].value,
-                            color: '#F00',
+                            name: this.state.historiqueCountGeneral[1].name,
+                            population: this.state.historiqueCountGeneral[1].value,
+                            color: '#FFFACD',
                             legendFontColor: theme.highlight,
                             legendFontSize: 11,
                          },
                          {
-                            name: this.state.historiqueCount[2].name,
-                            population: this.state.historiqueCount[2].value,
-                            color: '#ffffff',
+                            name: this.state.historiqueCountGeneral[2].name,
+                            population: this.state.historiqueCountGeneral[2].value,
+                            color: theme.accent,
                             legendFontColor: theme.highlight,
                             legendFontSize: 11,
                          },
                          {
-                            name: this.state.historiqueCount[3].name,
-                            population: this.state.historiqueCount[3].value,
-                            color: 'rgb(0, 0, 255)',
+                            name: this.state.historiqueCountGeneral[3].name,
+                            population: this.state.historiqueCountGeneral[3].value,
+                            color: theme.highlight,
                             legendFontColor: theme.highlight,
                             legendFontSize: 11,
                          },
@@ -233,6 +263,128 @@ class StatsView extends React.Component {
                    }}
                />
             </View>
+
+            </View>
+            <View
+                style={[
+                   styles.item_container,
+                   {backgroundColor: theme.secondary},
+                ]}>
+               <View
+                   style={[
+                      styles.container_item,
+                      {backgroundColor: theme.secondary},
+                   ]}>
+                  <Text style={[styles.title_text, {color: theme.highlight}]}>
+                     Statistiques Capteur :
+                  </Text>
+               </View>
+               <Divider style={[{backgroundColor: theme.highlight}]} />
+               <View style={styles.pieChart}>
+                  <Text style={[{color: theme.highlight}, styles.title_item]}>
+                     Oiseaux les plus capturés :
+                  </Text>
+                  <PieChart
+                      data={[
+                         {
+                            name: this.state.historiqueCountCapteur[0].name,
+                            population: this.state.historiqueCountCapteur[0].value,
+                            color: theme.primary,
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                         {
+                            name: this.state.historiqueCountCapteur[1].name,
+                            population: this.state.historiqueCountCapteur[1].value,
+                            color: '#FFFACD',
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                         {
+                            name: this.state.historiqueCountCapteur[2].name,
+                            population: this.state.historiqueCountCapteur[2].value,
+                            color: theme.accent,
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                         {
+                            name: this.state.historiqueCountCapteur[3].name,
+                            population: this.state.historiqueCountCapteur[3].value,
+                            color: theme.highlight,
+                            legendFontColor: theme.highlight,
+                            legendFontSize: 11,
+                         },
+                      ]}
+                      width={Dimensions.get('window').width -16 }
+                      height={220}
+                      chartConfig={{
+                         backgroundColor: '#1cc910',
+                         backgroundGradientFrom: '#eff3ff',
+                         backgroundGradientTo: '#efefef',
+                         decimalPlaces: 2,
+                         color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                         style: {
+                            borderRadius: 16,
+                         },
+                      }}
+                      style={{
+                         marginVertical: 8,
+                         borderRadius: 16,
+                      }}
+                      accessor="population"
+                      backgroundColor="transparent"
+                      paddingLeft="15"
+                      absolute //for the absolute number remove if you want percentage
+                  />
+               </View>
+
+               <View>
+                  <Text style={[{color: theme.highlight}, styles.title_item]}>
+                     Captures totales par mois :
+                  </Text>
+                  <LineChart
+                      data={{
+                         labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
+                         datasets: [
+                            {
+                               data: [
+                                  3,
+                                  6,
+                                  9,
+                                  77,
+                                  66,
+                                  7,
+                                  7,
+                                  8,
+                                  9,
+                                  7,
+                                  9,
+                                  4,
+                               ],
+                            },
+                         ],
+                      }}
+                      width={Dimensions.get('window').width - 16} // from react-native
+                      height={220}
+                      //yAxisLabel={'RS'}
+                      chartConfig={{
+                         backgroundColor: theme.primary,
+                         backgroundGradientFrom: theme.primary,
+                         backgroundGradientTo: theme.primary,
+                         decimalPlaces: 2, // optional, defaults to 2dp
+                         color: (opacity = 255) => theme.accent,
+                         style: {
+                            borderRadius: 16,
+                         },
+                      }}
+                      bezier
+                      style={{
+                         marginVertical: 8,
+                         borderRadius: 16,
+
+                      }}
+                  />
+               </View>
 
             </View>
          </View>
