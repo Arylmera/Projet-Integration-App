@@ -29,6 +29,7 @@ class HeaderIcon extends React.Component {
 
    render() {
       const {navigation} = this.props;
+      let theme = this.props.currentStyle;
       return (
          <View style={styles.headerIcon}>
             <TouchableOpacity
@@ -38,7 +39,7 @@ class HeaderIcon extends React.Component {
                }}>
                <Image
                   source={this.state.headerIcon}
-                  style={styles.profileIcon}
+                  style={[styles.profileIcon, {backgroundColor: theme.secondary}]}
                />
             </TouchableOpacity>
          </View>
