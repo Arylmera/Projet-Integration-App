@@ -79,6 +79,7 @@ class ConnexionProfilView extends React.Component {
                   ]}
                   placeholder="email"
                   keyboardType="email-address"
+                  autoCapitalize={'none'}
                   onChangeText={(email) => this._emailTextInputChanged(email)}
                   onFocus={() =>
                      this.setState({borderEmail: this.focusBorderColor})
@@ -94,6 +95,7 @@ class ConnexionProfilView extends React.Component {
                   ]}
                   placeholder="mot de passe"
                   secureTextEntry={true}
+                  autoCapitalize={'none'}
                   onChangeText={(password) =>
                      this._passwordTextInputChanged(password)
                   }

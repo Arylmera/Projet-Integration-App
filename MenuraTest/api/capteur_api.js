@@ -62,3 +62,26 @@ export async function deleteCapteur(idToken, capteur_adresse) {
       .then((response) => console.log(response.json()))
       .catch((error) => console.log(error));
 }
+
+/**
+ *
+ * @param idToken
+ * @param capteur_adresse
+ * @return {Promise<void>}
+ */
+export async function updateCapteur(idToken, capteur_adresse) {
+   return fetch(url_capteur_add, {
+      method: 'PUT',
+      headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json',
+         Authorization: 'Bearer ' + idToken,
+      },
+      body: JSON.stringify({
+         macAddress: capteur_adresse,
+      }),
+   })
+       .then((response) => console.log(response.json()))
+       .catch((error) => console.log(error));
+}
+

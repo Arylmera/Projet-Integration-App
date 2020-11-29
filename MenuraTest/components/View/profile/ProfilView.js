@@ -193,6 +193,7 @@ class ProfilView extends React.Component {
                         placeholder="mot de passe actuel"
                         placeholderTextColor={theme.highlight}
                         secureTextEntry={true}
+                        autoCapitalize={'none'}
                         onChangeText={(password) =>
                            this._passwordTextInputChanged(password)
                         }
@@ -208,6 +209,7 @@ class ProfilView extends React.Component {
                         style={[styles.textinput, {marginTop: 20}]}
                         placeholder="nouveau mot de passe"
                         placeholderTextColor={theme.highlight}
+                        autoCapitalize={'none'}
                         onChangeText={(newPassword) =>
                            this._newPasswordTextInputChanged(newPassword)
                         }
@@ -315,6 +317,7 @@ class ProfilView extends React.Component {
                         placeholder="mot de passe"
                         placeholderTextColor={theme.highlight}
                         secureTextEntry={true}
+                        autoCapitalize={'none'}
                         onChangeText={(password) =>
                            this._passwordTextInputChanged(password)
                         }

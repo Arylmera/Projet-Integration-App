@@ -1,37 +1,52 @@
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {deleteCapteur} from '../api/capteur_api';
+import {deleteCapteur, updateCapteur} from '../api/capteur_api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import firebase from "firebase";
+import {useNavigation} from "@react-navigation/core";
 
-class Capteur_Item extends React.Component {
+class CapteurItem extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         updater: false,
-         user: this.props.data.user,
-         capteur: this.props.data.capteur,
+         etat: 'actif',
       };
    }
 
    componentDidMount() {
-      this.reload_item();
+      this._checkEtat();
    }
 
-   reload_item() {
-      this.setState({updater: !this.state.updater});
+   _checkEtat() {
+      if (this.props.data.capteur.actif === 1) {
+         this.setState({etat: 'actif'});
+      }
+      else {
+         this.setState({etat: 'inactif'});
+      }
    }
 
    /**
     * suppression du capteur dans la db par requete POST
     * @private
     */
-   _delete_capteur() {
-      this.state.user.getIdToken(true).then((idToken) => {
-         deleteCapteur(idToken, this.state.capteur.macAddress).then(() => {
-            this.props.reload_list();
+   _modif_capteur() {
+      const user = firebase.auth().currentUser;
+      if (this.state.etat === 'actif') {
+         user.getIdToken(true).then((idToken) => {
+            deleteCapteur(idToken, this.props.data.capteur.macAddress).then(() => {
+               this.setState({etat: 'inactif'});
+            });
          });
-      });
+      }
+      else {
+         user.getIdToken(true).then((idToken) => {
+            updateCapteur(idToken, this.props.data.capteur.macAddress).then(() => {
+               this.setState({etat: 'actif'});
+            });
+         });
+      }
    }
 
    /**
@@ -49,11 +64,11 @@ class Capteur_Item extends React.Component {
                </Text>
                <Text
                   style={[styles.capteur_id_adresse, {color: theme.highlight}]}>
-                  {this.state.capteur.macAddress}
+                  {this.props.data.capteur.macAddress}
                </Text>
             </View>
             <TouchableOpacity
-               onPress={this._delete_capteur.bind(this)}
+               onPress={() => {this._modif_capteur()}}
                style={[styles.deleteButton, {backgroundColor: theme.accent}]}>
                <View style={styles.delete}>
                   <Text
@@ -61,7 +76,7 @@ class Capteur_Item extends React.Component {
                         styles.capteur_delete_text,
                         {color: theme.highlight},
                      ]}>
-                     Supprimer
+                     {this.state.etat}
                   </Text>
                   <Icon
                      name="delete-forever"
@@ -129,4 +144,8 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(Capteur_Item);
+export default connect(mapStateToProps)(function (props) {
+   const navigation = useNavigation();
+
+   return <CapteurItem {...props} navigation={navigation} />;
+});
