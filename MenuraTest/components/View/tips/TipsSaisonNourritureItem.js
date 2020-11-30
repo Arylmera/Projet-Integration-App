@@ -68,8 +68,9 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     image: {
-        width: 120,
+        width: "35%",
         height: 180,
+        alignSelf: 'center',
         margin: 5,
         borderRadius: 5,
     },

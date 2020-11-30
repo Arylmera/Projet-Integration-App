@@ -68,7 +68,6 @@ class StatsView extends React.Component {
       this._checkIfLoggedIn();
       this._reloadTheme();
       this._showHistoriqueAll();
-
    }
 
 
@@ -140,6 +139,33 @@ class StatsView extends React.Component {
    }
 
 
+   /**
+    * La fonction prend un string et créer un objet a partir de ce sring et retourne le mois
+    * @param datestring
+    * @returns {number}
+    * @private
+    */
+   _findMonth(datestring) {
+      let date = new Date(datestring);
+      return date.getMonth();
+   };
+
+   /**
+    *
+    * @param orders
+    * @returns {number[]}
+    * @private
+    */
+   _makeDateArray(orders) {
+      let monthFreq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      for (const order of orders) {
+         const month = parseInt(this._findMonth(order.date));
+         monthFreq[month] = monthFreq[month] + 1;
+      }
+      return monthFreq;
+   };
+
+
    _displayCount(tab) {
       let theme = this.props.currentStyle;
       let data = [];
@@ -179,7 +205,6 @@ class StatsView extends React.Component {
                },
             ];
             break;
-
          case (count.length === 3):
             this.state.isLoading = false;
             data = [
@@ -206,7 +231,6 @@ class StatsView extends React.Component {
                },
             ];
             break;
-
          case (count.length === 2):
             this.state.isLoading = false;
             data = [
@@ -226,7 +250,6 @@ class StatsView extends React.Component {
                },
             ];
             break;
-
          case (count.length === 1):
             this.state.isLoading = false;
             data = [
@@ -239,7 +262,6 @@ class StatsView extends React.Component {
                },
             ];
             break;
-
          case (count.length === 0):
             this.state.isLoading = false;
             data = [
@@ -252,12 +274,7 @@ class StatsView extends React.Component {
                },
             ];
             break;
-
-        // default: return <ActivityIndicator size="large" color="#000000" />
-
-
       }
-
          return (
              <PieChart
                  data={data}
@@ -286,7 +303,7 @@ class StatsView extends React.Component {
    }
 
 
-   _displayDate(){
+   _displayDate(tab){
       let theme = this.props.currentStyle;
       return (
           <LineChart
@@ -294,24 +311,12 @@ class StatsView extends React.Component {
                  labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
                  datasets: [
                     {
-                       data: [
-                          3,
-                          6,
-                          9,
-                          77,
-                          66,
-                          7,
-                          7,
-                          8,
-                          9,
-                          7,
-                          9,
-                          4,
-                       ],
+                       data: this._makeDateArray(tab)
                     },
                  ],
               }}
-              width={Dimensions.get('window').width - 16} // from react-native
+              width={Dimensions.get('window').width - 16}
+              // from react-native
               height={220}
               //yAxisLabel={'RS'}
               chartConfig={{
@@ -322,6 +327,7 @@ class StatsView extends React.Component {
                  color: (opacity = 255) => theme.accent,
                  style: {
                     borderRadius: 16,
+                    alignSelf: "center"
                  },
               }}
               bezier
@@ -387,7 +393,7 @@ class StatsView extends React.Component {
                   Captures totales par mois :
                </Text>
                <View>
-                  {this._displayDate()}
+                  {this._displayDate(this.state.historiqueListeGeneral)}
                </View>
             </View>
 
@@ -412,7 +418,6 @@ class StatsView extends React.Component {
                      Oiseaux les plus capturés :
                   </Text>
                   <View>
-                     <ActivityIndicator size="large" color="#000000" />
                      {this._displayCount(this.state.historiqueCountCapteur)}
                   </View>
                </View>
@@ -422,7 +427,7 @@ class StatsView extends React.Component {
                      Captures totales par mois :
                   </Text>
                   <View>
-                     {this._displayDate()}
+                     {this._displayDate(this.state.historiqueListeCapteur)}
                   </View>
                </View>
 
