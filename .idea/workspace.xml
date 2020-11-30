@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="df3c8b0d-ad6b-4d20-ba34-13763350a66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/details/detailItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/details/detailItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/components/View/search/SearchView.js" afterDir="false" />
+<<<<<<< Updated upstream
+=======
+      <change beforePath="$PROJECT_DIR$/MenuraTest/functions/capteur.js" beforeDir="false" afterPath="$PROJECT_DIR$/MenuraTest/functions/capteur.js" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MenuraTest/assets/avatars" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -109,7 +111,14 @@
       <workItem from="1606300134882" duration="8533000" />
       <workItem from="1606403442693" duration="16778000" />
       <workItem from="1606500103456" duration="834000" />
+<<<<<<< Updated upstream
       <workItem from="1606552421817" duration="21068000" />
+      <workItem from="1606658360127" duration="26000" />
+      <workItem from="1606658387767" duration="12000" />
+=======
+      <workItem from="1606552421817" duration="24038000" />
+      <workItem from="1606644771766" duration="6131000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

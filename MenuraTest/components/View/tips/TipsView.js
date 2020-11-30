@@ -112,43 +112,43 @@ class TipsView extends React.Component {
                />
             </View>
             <View
-               style={[
-                  styles.item_container,
-                  {backgroundColor: theme.secondary},
-               ]}>
+                style={[
+                   styles.item_container,
+                   {backgroundColor: theme.secondary},
+                ]}>
                <View
-                  style={[
-                     styles.container_item,
-                     {backgroundColor: theme.secondary},
-                  ]}>
+                   style={[
+                      styles.container_item,
+                      {backgroundColor: theme.secondary},
+                   ]}>
                   <Text style={[styles.title_text, {color: theme.highlight}]}>
                      Construction nichoirs
                   </Text>
                </View>
                <Divider style={[{backgroundColor: theme.highlight}]} />
                <View
-                  style={[
-                     styles.item,
-                     {backgroundColor: theme.secondary, color: theme.highlight},
-                  ]}>
+                   style={[
+                      styles.item,
+                      {backgroundColor: theme.secondary, color: theme.highlight},
+                   ]}>
                   <Image
-                     style={styles.image}
-                     PlaceholderContent={<ActivityIndicator />}
-                     source={require('../../../assets/images/Niches/Niche1_3.png')}
+                      style={styles.image}
+                      PlaceholderContent={<ActivityIndicator />}
+                      source={require('../../../assets/images/Niches/Niche1_3.png')}
                   />
                   <Text style={[styles.item_text, {color: theme.highlight}]}>
                      Idées de constructions avec modèles détaillés
                   </Text>
                   <Button
-                     titleStyle={{color: theme.highlight}}
-                     buttonStyle={[
-                        styles.button,
-                        {
-                           backgroundColor: theme.accent,
-                        },
-                     ]}
-                     onPress={() => navigation.navigate('TipsNiche')}
-                     title="A vos marteaux !"
+                      titleStyle={{color: theme.highlight}}
+                      buttonStyle={[
+                         styles.button,
+                         {
+                            backgroundColor: theme.accent,
+                         },
+                      ]}
+                      onPress={() => navigation.navigate('TipsNiche')}
+                      title="A vos marteaux !"
                   />
                </View>
             </View>
@@ -216,7 +216,7 @@ class TipsView extends React.Component {
                   <Image
                      style={styles.image}
                      PlaceholderContent={<ActivityIndicator />}
-                     source={require('../../../assets/images/Accueil.png')}
+                     source={require('../../../assets/images/quiz.png')}
                   />
                   <Text style={[styles.item_text, {color: theme.highlight}]}>
                      Pourrez vous reconnaitre ces oiseaux ?
