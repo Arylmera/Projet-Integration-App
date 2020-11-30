@@ -22,6 +22,7 @@ class StatsView extends React.Component {
          historiqueListeNomCapteur: [],
          historiqueCountGeneral: [],
          historiqueCountCapteur: [],
+         isLoading: true,
       };
    }
 
@@ -41,7 +42,7 @@ class StatsView extends React.Component {
       })
    }
 
-   
+
    _showHistoriqueCapteur(user){
       console.log('loading user historique for user : ' + user.uid);
       user.getIdToken(true).then((idToken) => {
@@ -57,8 +58,6 @@ class StatsView extends React.Component {
             });
             this.setState({historiqueCountCapteur: this._countItem(this.state.historiqueListeNomCapteur)
             });
-
-
          })
       });
 
@@ -143,40 +142,125 @@ class StatsView extends React.Component {
 
    _displayCount(tab) {
       let theme = this.props.currentStyle;
+      let data = [];
       const count = tab;
-      if (count.length >= 4){
+
+      switch (true) {
+         case (count.length >= 4):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[1].name,
+                  population: count[1].value,
+                  color: '#FFFACD',
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[2].name,
+                  population: count[2].value,
+                  color: theme.accent,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[3].name,
+                  population: count[3].value,
+                  color: theme.highlight,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+
+         case (count.length === 3):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[1].name,
+                  population: count[1].value,
+                  color: '#FFFACD',
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[2].name,
+                  population: count[2].value,
+                  color: theme.accent,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+
+         case (count.length === 2):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[1].name,
+                  population: count[1].value,
+                  color: '#FFFACD',
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+
+         case (count.length === 1):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+
+         case (count.length === 0):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: "innexistant",
+                  population: 1,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+
+        // default: return <ActivityIndicator size="large" color="#000000" />
+
+
+      }
+
          return (
              <PieChart
-                 data={[
-                    {
-                       name: count[0].name,
-                       population: count[0].value,
-                       color: theme.primary,
-                       legendFontColor: theme.highlight,
-                       legendFontSize: 11,
-                    },
-                    {
-                       name: count[1].name,
-                       population: count[1].value,
-                       color: '#FFFACD',
-                       legendFontColor: theme.highlight,
-                       legendFontSize: 11,
-                    },
-                    {
-                       name: count[2].name,
-                       population: count[2].value,
-                       color: theme.accent,
-                       legendFontColor: theme.highlight,
-                       legendFontSize: 11,
-                    },
-                    {
-                       name: count[3].name,
-                       population: count[3].value,
-                       color: theme.highlight,
-                       legendFontColor: theme.highlight,
-                       legendFontSize: 11,
-                    },
-                 ]}
+                 data={data}
                  width={Dimensions.get('window').width -16 }
                  height={220}
                  chartConfig={{
@@ -199,8 +283,6 @@ class StatsView extends React.Component {
                  absolute //for the absolute number remove if you want percentage
              />
          );
-      }
-      return <ActivityIndicator size="large" color="#000000" />
    }
 
 
@@ -290,7 +372,13 @@ class StatsView extends React.Component {
                      Oiseaux les plus capturés :
                   </Text>
                   <View>
-                     {this._displayCount(this.state.historiqueCountGeneral)}
+                     {this.state.isLoading ? (
+                             <View style={styles.loading_container}>
+                                <ActivityIndicator size="large" color="#000000" />
+                             </View>
+                         ) : (
+                     this._displayCount(this.state.historiqueCountGeneral)
+                        )}
                   </View>
                </View>
 
@@ -324,6 +412,7 @@ class StatsView extends React.Component {
                      Oiseaux les plus capturés :
                   </Text>
                   <View>
+                     <ActivityIndicator size="large" color="#000000" />
                      {this._displayCount(this.state.historiqueCountCapteur)}
                   </View>
                </View>
