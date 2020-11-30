@@ -216,7 +216,7 @@ class TipsView extends React.Component {
                   <Image
                      style={styles.image}
                      PlaceholderContent={<ActivityIndicator />}
-                     source={require('../../../assets/images/Accueil.png')}
+                     source={require('../../../assets/images/quiz.png')}
                   />
                   <Text style={[styles.item_text, {color: theme.highlight}]}>
                      Pourrez vous reconnaitre ces oiseaux ?

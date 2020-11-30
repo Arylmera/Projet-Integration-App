@@ -98,7 +98,7 @@ class HistoriqueItem extends React.Component {
                   ) : (
                      <View style={styles.info_line}>
                         <Icon
-                           name="hearing"
+                           name="home"
                            size={18}
                            color={theme.highlight}
                            style={{
@@ -118,7 +118,7 @@ class HistoriqueItem extends React.Component {
                   )}
                   <View style={styles.info_line}>
                      <Icon
-                        name="audiotrack"
+                        name="mic"
                         size={18}
                         color={theme.highlight}
                         style={{

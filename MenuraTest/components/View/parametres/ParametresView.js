@@ -220,6 +220,7 @@ const styles = StyleSheet.create({
    },
    theme_component: {
       maxHeight: '10%',
+      marginBottom: 30,
    },
    bluetooth_component: {},
    theme_caption: {

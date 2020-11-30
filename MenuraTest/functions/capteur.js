@@ -19,7 +19,6 @@ import {useNavigation} from "@react-navigation/core";
 class Capteur extends React.Component {
    constructor(props) {
       super(props);
-      this.mac_add_input = React.createRef();
       this.state = {
          capteur_list: '',
          mac_add_capteur: '',
@@ -54,7 +53,6 @@ class Capteur extends React.Component {
     * @param user
     */
    load_capteur_list(user) {
-      this.setState({list_caption: 'Chargement de vos capteurs'});
       user.getIdToken(true).then((idToken) => {
          getCapteurListById(user.uid, idToken).then((data) =>
             this.setState({capteur_list: data.data}),
@@ -68,7 +66,15 @@ class Capteur extends React.Component {
     * @private
     */
    _mac_adresse_change(mac_adresse) {
-      this.setState({mac_add_capteur: mac_adresse});
+      let newAddress = '';
+      let len = mac_adresse.length;
+      if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14) {
+         newAddress = mac_adresse + ':'
+         this.setState({mac_add_capteur: newAddress});
+      }
+      else {
+         this.setState({mac_add_capteur: mac_adresse});
+      }
    }
 
    /**
@@ -83,7 +89,8 @@ class Capteur extends React.Component {
       if (Mac_Regex.test(this.state.mac_add_capteur)) {
          user.getIdToken(true).then((idToken) => {
             addCapteur(user.uid, idToken, this.state.mac_add_capteur)
-               .then(this.mac_add_input.current.clear())
+                .then(() => {this.state.capteur_list.push({macAddress: this.state.mac_add_capteur, actif: 1})})
+                .then(() => {this.setState({mac_add_capteur: ''})})
                .catch((error) => {
                   console.log(error)
                });
@@ -91,6 +98,7 @@ class Capteur extends React.Component {
       } else {
          this.setState({
             mac_address_message: 'veuillez enter une mac adresse valide',
+            mac_add_capteur: '',
          });
       }
    }
@@ -121,7 +129,7 @@ class Capteur extends React.Component {
                         placeholder="FF:FF:FF:FF:FF:FF"
                         autocorrect={false}
                         autoCapitalize={'characters'}
-                        ref={this.mac_add_input}
+                        value={this.state.mac_add_capteur}
                         onChangeText={(mac_adresse) =>
                            this._mac_adresse_change(mac_adresse)
                         }
@@ -167,7 +175,6 @@ class Capteur extends React.Component {
                         <FlatList
                            data={this.state.capteur_list}
                            style={styles.FlatlistItem}
-                           extraData={this.state.reload}
                            keyExtractor={(item) => item.id}
                            renderItem={({item}) => (
                               <CapteurItem
