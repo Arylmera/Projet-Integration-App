@@ -246,6 +246,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       fontStyle: 'italic',
       fontWeight: 'bold',
+      fontSize: 18,
    },
    text_item: {
       margin: 15,
