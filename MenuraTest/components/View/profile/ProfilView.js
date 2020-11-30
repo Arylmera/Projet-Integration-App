@@ -223,7 +223,7 @@ class ProfilView extends React.Component {
                            ]}
                            onPress={() => this._updatePassword()}>
                            <Text style={{color: theme.highlight}}>
-                              modifier mon mot de passe
+                              Confirmer
                            </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
