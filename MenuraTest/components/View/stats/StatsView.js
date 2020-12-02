@@ -5,10 +5,9 @@ import {connect} from 'react-redux';
 import {getDataStorage} from '../../../functions/storageHelper';
 import LineChart from "react-native-chart-kit/dist/line-chart";
 import {getHistoriqueAll, getHistoriqueByID} from '../../../api/historique_api'
-import {getOiseaux} from "../../../api/oiseaux_api";
 import PieChart from "react-native-chart-kit/dist/PieChart";
 import {Divider} from "react-native-paper";
-import ContributionGraph from "react-native-chart-kit/dist/contribution-graph";
+
 
 
 class StatsView extends React.Component {
@@ -278,7 +277,7 @@ class StatsView extends React.Component {
          return (
              <PieChart
                  data={data}
-                 width={Dimensions.get('window').width -16 }
+                 width={Dimensions.get('window').width -20 }
                  height={220}
                  chartConfig={{
                     backgroundColor: '#1cc910',
@@ -315,26 +314,24 @@ class StatsView extends React.Component {
                     },
                  ],
               }}
-              width={Dimensions.get('window').width - 16}
+              width={Dimensions.get('window').width - 45}
               // from react-native
               height={220}
               //yAxisLabel={'RS'}
               chartConfig={{
-                 backgroundColor: theme.primary,
-                 backgroundGradientFrom: theme.primary,
-                 backgroundGradientTo: theme.primary,
+                 backgroundColor: theme.secondary,
+                 backgroundGradientFrom: theme.secondary,
+                 backgroundGradientTo: theme.secondary,
                  decimalPlaces: 2, // optional, defaults to 2dp
-                 color: (opacity = 255) => theme.accent,
+                 color: (opacity = 255) => theme.highlight,
                  style: {
                     borderRadius: 16,
-                    alignSelf: "center"
                  },
               }}
               bezier
               style={{
                  marginVertical: 8,
                  borderRadius: 16,
-
               }}
           />
       )
@@ -343,7 +340,7 @@ class StatsView extends React.Component {
 
 
    render() {
-      //console.log(this.state.historiqueCountCapteur);
+      //console.log(this.state.historiqueCountGeneral);
       //console.log(this.state.historiqueListeNom);
       //console.log(this.state.historiqueListe);
       let theme = this.props.currentStyle;
@@ -377,7 +374,7 @@ class StatsView extends React.Component {
                   <Text style={[{color: theme.highlight}, styles.title_item]}>
                      Oiseaux les plus capturés :
                   </Text>
-                  <View>
+                  <View style={styles.pieChart}>
                      {this.state.isLoading ? (
                              <View style={styles.loading_container}>
                                 <ActivityIndicator size="large" color="#000000" />
@@ -476,7 +473,6 @@ const styles = StyleSheet.create({
       padding: 5,
    },
    pieChart:{
-
    },
    title_item: {
       margin: 15,
