@@ -28,32 +28,196 @@ class SearchView extends React.Component {
       this.setState({search});
    };
 
+   _easter_egg() {
+      let test_text = this.state.search.toLowerCase();
+      switch (test_text) {
+         case '404':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: '404',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'tetris':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Tetris',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'oiseau':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'oiseau',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'john cena':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'John Cena',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'konami':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Konami',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'google':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Google',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'spacex':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'SpaceX',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'daffy duck':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Daffy_Duck',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'bugs bunny':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Bugs_Bunny',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'lola bunny':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Lola_Bunny',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'titi':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Titi_(personnage)',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         case 'bip bip':
+            this.setState({
+               oiseauxListe: [
+                  {
+                     details: 'Easter Egg',
+                     espece: 'Easter Egg',
+                     idoiseaux: '0',
+                     nom: 'Bip_Bip',
+                  },
+               ],
+               emptySearch: false,
+            });
+            return false;
+         default:
+            return true;
+      }
+   }
+
    _loadOiseaux() {
       if (this.state.search.length > 0) {
-         getOiseaux(this.state.search)
-             .then((data) => {
-                if (data.data.length === 0) {
-                   this.setState({
-                      helperText: 'Oups pas de résultat pour votre recherche',
-                      emptySearch: true
-                   })
-                }
-                else {
-                   this.setState({
-                      oiseauxListe: data.data,
-                      emptySearch: false,
-                   });
-                }
-            })
-         .catch((error) => {
-            console.log(error)
-         })
-      }
-      else {
+         if (this._easter_egg()) {
+            getOiseaux(this.state.search)
+               .then((data) => {
+                  if (data.data.length === 0) {
+                     this.setState({
+                        helperText: 'Oups pas de résultat pour votre recherche',
+                        emptySearch: true,
+                     });
+                  } else {
+                     this.setState({
+                        oiseauxListe: data.data,
+                        emptySearch: false,
+                     });
+                  }
+               })
+               .catch((error) => {
+                  console.log(error);
+               });
+         }
+      } else {
          this.setState({
-            helperText: 'oups aucun carractère n\'est indiqué',
-            emptySearch: true
-         })
+            helperText: "oups aucun carractère n'est indiqué",
+            emptySearch: true,
+         });
       }
    }
 
@@ -81,8 +245,9 @@ class SearchView extends React.Component {
                   autoCapitalize={'none'}
                   onChangeText={this.updateSearch}
                   searchIcon={{color: theme.highlight}}
-                  clearInput={{color: theme.highlight}}
+                  clearIcon={{color: theme.highlight}}
                   value={search}
+                  autocorrect={false}
                   onSubmitEditing={() => this._loadOiseaux()}
                />
                <Button
@@ -97,9 +262,7 @@ class SearchView extends React.Component {
             </View>
             {this.state.emptySearch ? (
                <View style={styles.loading_placeholder}>
-                  <Text
-                      style={[styles.helperText, {color: theme.accent}]}
-                  >
+                  <Text style={[styles.helperText, {color: theme.accent}]}>
                      {this.state.helperText}
                   </Text>
                   <Image
@@ -116,9 +279,7 @@ class SearchView extends React.Component {
                   style={styles.FlatlistItem}
                   keyExtractor={(item) => item.nom}
                   renderItem={({item}) => (
-                     <DetailItem
-                        data={{oiseau: item, root: 'SearchView'}}
-                     />
+                     <DetailItem data={{oiseau: item, root: 'SearchView'}} />
                   )}
                />
             )}
@@ -152,9 +313,7 @@ let styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 2,
    },
-   search_bar_input: {
-
-   },
+   search_bar_input: {},
    button_search: {
       borderRadius: 5,
       marginLeft: 100,

@@ -10,7 +10,7 @@ class DetailItem extends React.Component {
    }
 
    render() {
-      const nom = this.props.data.oiseau.nom;
+      const nom = this.props.data.oiseau.nom.replace('_', ' ');
       const espece = this.props.data.oiseau.espece;
       const {navigation} = this.props;
       let theme = this.props.currentStyle;
@@ -25,14 +25,8 @@ class DetailItem extends React.Component {
                      root: this.props.data.root,
                   })
                }>
-               <Text
-                   style={[styles.nom, {color: theme.highlight}]}
-               >
-                  {nom}
-               </Text>
-               <Text
-                   style={[styles.espece, {color: theme.accent}]}
-               >
+               <Text style={[styles.nom, {color: theme.highlight}]}>{nom}</Text>
+               <Text style={[styles.espece, {color: theme.accent}]}>
                   {espece}
                </Text>
             </TouchableOpacity>

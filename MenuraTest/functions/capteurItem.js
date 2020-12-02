@@ -11,6 +11,8 @@ class CapteurItem extends React.Component {
       super(props);
       this.state = {
          etat: 'actif',
+         etatIcon: 'check',
+         etatColor: 'green',
       };
    }
 
@@ -20,10 +22,10 @@ class CapteurItem extends React.Component {
 
    _checkEtat() {
       if (this.props.data.capteur.actif === 1) {
-         this.setState({etat: 'actif'});
+         this.setState({etat: 'actif', etatIcon: 'check', etatColor: 'green'});
       }
       else {
-         this.setState({etat: 'inactif'});
+         this.setState({etat: 'inactif', etatIcon: 'close', etatColor: 'red'});
       }
    }
 
@@ -36,14 +38,14 @@ class CapteurItem extends React.Component {
       if (this.state.etat === 'actif') {
          user.getIdToken(true).then((idToken) => {
             deleteCapteur(idToken, this.props.data.capteur.macAddress).then(() => {
-               this.setState({etat: 'inactif'});
+               this.setState({etat: 'inactif', etatIcon: 'close', etatColor: 'red'});
             });
          });
       }
       else {
          user.getIdToken(true).then((idToken) => {
             updateCapteur(idToken, this.props.data.capteur.macAddress).then(() => {
-               this.setState({etat: 'actif'});
+               this.setState({etat: 'actif', etatIcon: 'check', etatColor: 'green'});
             });
          });
       }
@@ -79,9 +81,9 @@ class CapteurItem extends React.Component {
                      {this.state.etat}
                   </Text>
                   <Icon
-                     name="delete-forever"
+                     name={this.state.etatIcon}
                      size={18}
-                     color={theme.highlight}
+                     color={this.state.etatColor}
                   />
                </View>
             </TouchableOpacity>
