@@ -50,7 +50,7 @@ class ViewNavigator extends React.Component {
             <Tab.Screen
                style={[styles.screen, {backgroundColor: theme.highlight}]}
                name="StatsView"
-               component={StatsView}
+               component={StatsTest2View}
                options={{
                   tabBarLabel: 'Statistiques',
                   tabBarIcon: (tabInfo) => (
