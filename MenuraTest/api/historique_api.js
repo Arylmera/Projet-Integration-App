@@ -1,7 +1,7 @@
 const url_historique_byID =
-   'http://146.59.195.248:3000/v1/api/historiques?utilisateur=';
+   'https://menura.be:3000/v1/api/historiques?utilisateur=';
 
-const url_historique_all = 'http://146.59.195.248:3000/v1/api/historiques/all';
+const url_historique_all = 'https://menura.be:3000/v1/api/historiques/all';
 
 /**
  *
