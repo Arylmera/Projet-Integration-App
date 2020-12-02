@@ -90,7 +90,14 @@ class HistoriqueView extends React.Component {
                      />
                   )}
                />
-               <TouchableOpacity
+            </View>
+         </View>
+      );
+   }
+}
+
+/*
+<TouchableOpacity
                   style={[styles.addButton, {backgroundColor: theme.secondary}]}
                   onPress={() =>
                      navigation.navigate('HistoriqueAdd', {
@@ -99,11 +106,7 @@ class HistoriqueView extends React.Component {
                   }>
                   <Icon name="add" size={50} color={theme.highlight} />
                </TouchableOpacity>
-            </View>
-         </View>
-      );
-   }
-}
+ */
 
 const styles = StyleSheet.create({
    main_container: {

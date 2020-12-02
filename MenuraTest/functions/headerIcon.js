@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation, CommonActions} from '@react-navigation/native';
-import firebase from "firebase";
+import firebase from 'firebase';
 
 class HeaderIcon extends React.Component {
    constructor(props) {
@@ -39,7 +39,10 @@ class HeaderIcon extends React.Component {
                }}>
                <Image
                   source={this.state.headerIcon}
-                  style={[styles.profileIcon, {backgroundColor: theme.secondary}]}
+                  style={[
+                     styles.profileIcon,
+                     {backgroundColor: theme.secondary},
+                  ]}
                />
             </TouchableOpacity>
          </View>

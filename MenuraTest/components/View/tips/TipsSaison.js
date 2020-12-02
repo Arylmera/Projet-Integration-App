@@ -62,11 +62,7 @@ class TipsSaison extends React.Component {
             <View style={[styles.context, {backgroundColor: theme.accent}]}>
                <TouchableOpacity
                   style={styles.touchableOpacity}
-                  onPress={() =>
-                     navigation.navigate('TipsView', {
-                        oiseaux_nom: this.state.nom,
-                     })
-                  }>
+                  onPress={() => navigation.navigate('TipsView', {})}>
                   <Icon
                      name="keyboard-arrow-left"
                      size={35}

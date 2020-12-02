@@ -152,6 +152,7 @@ let styles = StyleSheet.create({
       elevation: 3,
    },
    info_bloc: {
+      width: '100%',
       marginTop: 15,
       padding: 10,
       borderRadius: 5,
