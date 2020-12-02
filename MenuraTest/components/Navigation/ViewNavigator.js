@@ -10,6 +10,7 @@ import TipsNavigator from './TipsNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import StatsTest2View from "../View/stats/StatsTest2View";
 
 const Tab = createBottomTabNavigator();
 
