@@ -188,16 +188,6 @@ class ParametresView extends React.Component {
    }
 }
 
-/*
-<Icon
-          name="search"
-          size={30}
-          color="#900"
-          style={{marginLeft: 'auto', marginRight: 'auto'}}
-        />
-        <Switch style={{marginLeft: 'auto', marginRight: 'auto'}} />
- */
-
 const styles = StyleSheet.create({
    main_container: {
       flex: 1,
@@ -219,8 +209,7 @@ const styles = StyleSheet.create({
       elevation: 3,
    },
    theme_component: {
-      maxHeight: '10%',
-      marginBottom: 30,
+      padding: 5,
    },
    bluetooth_component: {},
    theme_caption: {
@@ -229,12 +218,12 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: 15,
    },
    theme_menuBox: {
       flex: 1,
       borderRadius: 10,
       alignItems: 'center',
+      justifyContent: 'center',
       marginRight: '5%',
    },
    theme_caption_text: {
