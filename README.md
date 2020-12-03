@@ -37,7 +37,7 @@ Electronique (boitier avec microphone et microcontrôleur, Traitement des signau
 ### Liens du projet
 
 Sites Web:
-- [Vitrine](https://projet-int-ca671.web.app/?fbclid=IwAR2fdmAEpw2jBQPjuVarJerwso5EAaFqOpNoFY0TeENws6agTLsJy9yKnMI)
+- [Vitrine](https://menura.be:3000)
 - [Doc API](https://documenter.getpostman.com/view/10767769/TVem9oWB)
 
 Github :
