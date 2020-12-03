@@ -41,7 +41,7 @@ class SearchView extends React.Component {
                      nom: '404',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'tetris':
@@ -54,7 +54,7 @@ class SearchView extends React.Component {
                      nom: 'Tetris',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'oiseau':
@@ -67,7 +67,7 @@ class SearchView extends React.Component {
                      nom: 'oiseau',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'john cena':
@@ -80,7 +80,7 @@ class SearchView extends React.Component {
                      nom: 'John Cena',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'konami':
@@ -93,7 +93,7 @@ class SearchView extends React.Component {
                      nom: 'Konami',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'google':
@@ -106,7 +106,7 @@ class SearchView extends React.Component {
                      nom: 'Google',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'spacex':
@@ -119,7 +119,7 @@ class SearchView extends React.Component {
                      nom: 'SpaceX',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'daffy duck':
@@ -132,7 +132,7 @@ class SearchView extends React.Component {
                      nom: 'Daffy_Duck',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'bugs bunny':
@@ -145,7 +145,7 @@ class SearchView extends React.Component {
                      nom: 'Bugs_Bunny',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'lola bunny':
@@ -158,7 +158,7 @@ class SearchView extends React.Component {
                      nom: 'Lola_Bunny',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'titi':
@@ -171,7 +171,7 @@ class SearchView extends React.Component {
                      nom: 'Titi_(personnage)',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          case 'bip bip':
@@ -184,7 +184,7 @@ class SearchView extends React.Component {
                      nom: 'Bip_Bip',
                   },
                ],
-               emtySearch: false,
+               emptySearch: false,
             });
             return false;
          default:
@@ -212,8 +212,6 @@ class SearchView extends React.Component {
                .catch((error) => {
                   console.log(error);
                });
-         } else {
-            this.setState({emptySearch: false});
          }
       } else {
          this.setState({

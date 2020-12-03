@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import CapteurItem from './capteurItem';
 import firebase from 'firebase';
 import {addCapteur, getCapteurListById} from '../api/capteur_api';
-import {useNavigation} from "@react-navigation/core";
+import {useNavigation} from '@react-navigation/core';
 
 class Capteur extends React.Component {
    constructor(props) {
@@ -69,10 +69,9 @@ class Capteur extends React.Component {
       let newAddress = '';
       let len = mac_adresse.length;
       if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14) {
-         newAddress = mac_adresse + ':'
+         newAddress = mac_adresse + ':';
          this.setState({mac_add_capteur: newAddress});
-      }
-      else {
+      } else {
          this.setState({mac_add_capteur: mac_adresse});
       }
    }
@@ -89,10 +88,17 @@ class Capteur extends React.Component {
       if (Mac_Regex.test(this.state.mac_add_capteur)) {
          user.getIdToken(true).then((idToken) => {
             addCapteur(user.uid, idToken, this.state.mac_add_capteur)
-                .then(() => {this.state.capteur_list.push({macAddress: this.state.mac_add_capteur, actif: 1})})
-                .then(() => {this.setState({mac_add_capteur: ''})})
+               .then(() => {
+                  this.state.capteur_list.push({
+                     macAddress: this.state.mac_add_capteur,
+                     actif: 1,
+                  });
+               })
+               .then(() => {
+                  this.setState({mac_add_capteur: ''});
+               })
                .catch((error) => {
-                  console.log(error)
+                  console.log(error);
                });
          });
       } else {
@@ -142,7 +148,9 @@ class Capteur extends React.Component {
                         ]}
                      />
                      <TouchableOpacity
-                        onPress={() => {this._add_capteur()}}
+                        onPress={() => {
+                           this._add_capteur();
+                        }}
                         style={[
                            styles.add_capteur_button,
                            {backgroundColor: theme.primary},

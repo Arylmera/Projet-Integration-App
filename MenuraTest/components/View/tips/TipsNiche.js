@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-   StyleSheet,
-   View,
-   Text,
-   FlatList,
-   TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 import niche from './data/TipsDataNiche';
@@ -26,11 +20,7 @@ class TipsNiche extends React.Component {
             <View style={[styles.context, {backgroundColor: theme.accent}]}>
                <TouchableOpacity
                   style={styles.back_button}
-                  onPress={() =>
-                     navigation.navigate('TipsView', {
-                        oiseaux_nom: this.state.nom,
-                     })
-                  }>
+                  onPress={() => navigation.navigate('TipsView', {})}>
                   <Icon
                      name="keyboard-arrow-left"
                      size={35}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Dimensions, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, Dimensions, ScrollView, ActivityIndicator} from 'react-native';
 import firebase from 'firebase';
 import {connect} from 'react-redux';
 import {getDataStorage} from '../../../functions/storageHelper';
@@ -8,6 +8,7 @@ import {getHistoriqueAll, getHistoriqueByID} from '../../../api/historique_api'
 import {getOiseaux} from "../../../api/oiseaux_api";
 import PieChart from "react-native-chart-kit/dist/PieChart";
 import {Divider} from "react-native-paper";
+import ContributionGraph from "react-native-chart-kit/dist/contribution-graph";
 
 
 class StatsView extends React.Component {
@@ -19,10 +20,12 @@ class StatsView extends React.Component {
          historiqueListeCapteur: [],
          historiqueListeNomGeneral: [],
          historiqueListeNomCapteur: [],
-         historiqueCountGeneral: [{"name": "Mésange bleue", "value": 1}, {"name": "Chardonneret élégant", "value": 1}, {"name": "Mésange bleue", "value": 2}, {"name": "Bruant Jaune", "value": 5}],
-         historiqueCountCapteur: [{"name": "Mésange bleue", "value": 1}, {"name": "Chardonneret élégant", "value": 1}, {"name": "Mésange bleue", "value": 2}, {"name": "Bruant Jaune", "value": 5}],
+         historiqueCountGeneral: [],
+         historiqueCountCapteur: [],
+         isLoading: true,
       };
    }
+
 
    _showHistoriqueAll(){
       getHistoriqueAll().then((data) => {
@@ -34,10 +37,11 @@ class StatsView extends React.Component {
          this.setState({
             historiqueListeNomGeneral: historiqueNom_loading,
          });
-         this.setState({historiqueCountGeneral: this._countItem(this.state.historiqueListeNomGeneral)});
-
+         this.setState({historiqueCountGeneral: this._countItem(this.state.historiqueListeNomGeneral)
+         });
       })
    }
+
 
    _showHistoriqueCapteur(user){
       console.log('loading user historique for user : ' + user.uid);
@@ -52,19 +56,20 @@ class StatsView extends React.Component {
             this.setState({
                historiqueListeNomCapteur: historiqueNom_loading,
             });
-            this.setState({historiqueCountCapteur: this._countItem(this.state.historiqueListeNomCapteur)});
-
+            this.setState({historiqueCountCapteur: this._countItem(this.state.historiqueListeNomCapteur)
+            });
          })
       });
 
    }
 
+
    componentDidMount() {
       this._checkIfLoggedIn();
       this._reloadTheme();
       this._showHistoriqueAll();
-
    }
+
 
    /**
     * check si l'utilisateur est connécté et récupère ces info
@@ -103,6 +108,13 @@ class StatsView extends React.Component {
       });
    }
 
+
+   /**
+    * compte le nombres d'oiseaux identique et tri par ordre décroissant
+    * @param tab
+    * @returns {*[]}
+    * @private
+    */
    _countItem(tab) {
       let count = {};
       let result = [];
@@ -126,12 +138,215 @@ class StatsView extends React.Component {
       return result.reverse();
    }
 
+
+   /**
+    * La fonction prend un string et créer un objet a partir de ce sring et retourne le mois
+    * @param datestring
+    * @returns {number}
+    * @private
+    */
+   _findMonth(datestring) {
+      let date = new Date(datestring);
+      return date.getMonth();
+   };
+
+   /**
+    *
+    * @param orders
+    * @returns {number[]}
+    * @private
+    */
+   _makeDateArray(orders) {
+      let monthFreq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      for (const order of orders) {
+         const month = parseInt(this._findMonth(order.date));
+         monthFreq[month] = monthFreq[month] + 1;
+      }
+      return monthFreq;
+   };
+
+
+   _displayCount(tab) {
+      let theme = this.props.currentStyle;
+      let data = [];
+      const count = tab;
+
+      switch (true) {
+         case (count.length >= 4):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[1].name,
+                  population: count[1].value,
+                  color: '#FFFACD',
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[2].name,
+                  population: count[2].value,
+                  color: theme.accent,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[3].name,
+                  population: count[3].value,
+                  color: theme.highlight,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+         case (count.length === 3):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[1].name,
+                  population: count[1].value,
+                  color: '#FFFACD',
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[2].name,
+                  population: count[2].value,
+                  color: theme.accent,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+         case (count.length === 2):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+               {
+                  name: count[1].name,
+                  population: count[1].value,
+                  color: '#FFFACD',
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+         case (count.length === 1):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: count[0].name,
+                  population: count[0].value,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+         case (count.length === 0):
+            this.state.isLoading = false;
+            data = [
+               {
+                  name: "innexistant",
+                  population: 1,
+                  color: theme.primary,
+                  legendFontColor: theme.highlight,
+                  legendFontSize: 11,
+               },
+            ];
+            break;
+      }
+         return (
+             <PieChart
+                 data={data}
+                 width={Dimensions.get('window').width -16 }
+                 height={220}
+                 chartConfig={{
+                    backgroundColor: '#1cc910',
+                    backgroundGradientFrom: '#eff3ff',
+                    backgroundGradientTo: '#efefef',
+                    decimalPlaces: 2,
+                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                    style: {
+                       borderRadius: 16,
+                    },
+                 }}
+                 style={{
+                    marginVertical: 8,
+                    borderRadius: 16,
+                 }}
+                 accessor="population"
+                 backgroundColor="transparent"
+                 paddingLeft="15"
+                 absolute //for the absolute number remove if you want percentage
+             />
+         );
+   }
+
+
+   _displayDate(tab){
+      let theme = this.props.currentStyle;
+      return (
+          <LineChart
+              data={{
+                 labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
+                 datasets: [
+                    {
+                       data: this._makeDateArray(tab)
+                    },
+                 ],
+              }}
+              width={Dimensions.get('window').width - 16}
+              // from react-native
+              height={220}
+              //yAxisLabel={'RS'}
+              chartConfig={{
+                 backgroundColor: theme.primary,
+                 backgroundGradientFrom: theme.primary,
+                 backgroundGradientTo: theme.primary,
+                 decimalPlaces: 2, // optional, defaults to 2dp
+                 color: (opacity = 255) => theme.accent,
+                 style: {
+                    borderRadius: 16,
+                    alignSelf: "center"
+                 },
+              }}
+              bezier
+              style={{
+                 marginVertical: 8,
+                 borderRadius: 16,
+
+              }}
+          />
+      )
+   }
+
+
+
    render() {
       //console.log(this.state.historiqueCountCapteur);
       //console.log(this.state.historiqueListeNom);
       //console.log(this.state.historiqueListe);
       let theme = this.props.currentStyle;
-      const oiseauNom = this.state.historiqueListeNom;
       return (
           <ScrollView
               style={[styles.main_container, {backgroundColor: theme.primary}]}>
@@ -162,106 +377,24 @@ class StatsView extends React.Component {
                   <Text style={[{color: theme.highlight}, styles.title_item]}>
                      Oiseaux les plus capturés :
                   </Text>
-                  <PieChart
-                      data={[
-                         {
-                            name: this.state.historiqueCountGeneral[0].name,
-                            population: this.state.historiqueCountGeneral[0].value,
-                            color: theme.primary,
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                         {
-                            name: this.state.historiqueCountGeneral[1].name,
-                            population: this.state.historiqueCountGeneral[1].value,
-                            color: '#FFFACD',
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                         {
-                            name: this.state.historiqueCountGeneral[2].name,
-                            population: this.state.historiqueCountGeneral[2].value,
-                            color: theme.accent,
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                         {
-                            name: this.state.historiqueCountGeneral[3].name,
-                            population: this.state.historiqueCountGeneral[3].value,
-                            color: theme.highlight,
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                      ]}
-                      width={Dimensions.get('window').width -16 }
-                      height={220}
-                      chartConfig={{
-                         backgroundColor: '#1cc910',
-                         backgroundGradientFrom: '#eff3ff',
-                         backgroundGradientTo: '#efefef',
-                         decimalPlaces: 2,
-                         color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                         style: {
-                            borderRadius: 16,
-                         },
-                      }}
-                      style={{
-                         marginVertical: 8,
-                         borderRadius: 16,
-                      }}
-                      accessor="population"
-                      backgroundColor="transparent"
-                      paddingLeft="15"
-                      absolute //for the absolute number remove if you want percentage
-                  />
+                  <View>
+                     {this.state.isLoading ? (
+                             <View style={styles.loading_container}>
+                                <ActivityIndicator size="large" color="#000000" />
+                             </View>
+                         ) : (
+                     this._displayCount(this.state.historiqueCountGeneral)
+                        )}
+                  </View>
                </View>
 
             <View>
                <Text style={[{color: theme.highlight}, styles.title_item]}>
                   Captures totales par mois :
                </Text>
-               <LineChart
-                   data={{
-                      labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
-                      datasets: [
-                         {
-                            data: [
-                               3,
-                               6,
-                               9,
-                               77,
-                               66,
-                               7,
-                                7,
-                                8,
-                                9,
-                                7,
-                                9,
-                                4,
-                            ],
-                         },
-                      ],
-                   }}
-                   width={Dimensions.get('window').width - 16} // from react-native
-                   height={220}
-                   //yAxisLabel={'RS'}
-                   chartConfig={{
-                      backgroundColor: theme.primary,
-                      backgroundGradientFrom: theme.primary,
-                      backgroundGradientTo: theme.primary,
-                      decimalPlaces: 2, // optional, defaults to 2dp
-                      color: (opacity = 255) => theme.accent,
-                      style: {
-                         borderRadius: 16,
-                      },
-                   }}
-                   bezier
-                   style={{
-                      marginVertical: 8,
-                      borderRadius: 16,
-
-                   }}
-               />
+               <View>
+                  {this._displayDate(this.state.historiqueListeGeneral)}
+               </View>
             </View>
 
             </View>
@@ -284,106 +417,18 @@ class StatsView extends React.Component {
                   <Text style={[{color: theme.highlight}, styles.title_item]}>
                      Oiseaux les plus capturés :
                   </Text>
-                  <PieChart
-                      data={[
-                         {
-                            name: this.state.historiqueCountCapteur[0].name,
-                            population: this.state.historiqueCountCapteur[0].value,
-                            color: theme.primary,
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                         {
-                            name: this.state.historiqueCountCapteur[1].name,
-                            population: this.state.historiqueCountCapteur[1].value,
-                            color: '#FFFACD',
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                         {
-                            name: this.state.historiqueCountCapteur[2].name,
-                            population: this.state.historiqueCountCapteur[2].value,
-                            color: theme.accent,
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                         {
-                            name: this.state.historiqueCountCapteur[3].name,
-                            population: this.state.historiqueCountCapteur[3].value,
-                            color: theme.highlight,
-                            legendFontColor: theme.highlight,
-                            legendFontSize: 11,
-                         },
-                      ]}
-                      width={Dimensions.get('window').width -16 }
-                      height={220}
-                      chartConfig={{
-                         backgroundColor: '#1cc910',
-                         backgroundGradientFrom: '#eff3ff',
-                         backgroundGradientTo: '#efefef',
-                         decimalPlaces: 2,
-                         color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                         style: {
-                            borderRadius: 16,
-                         },
-                      }}
-                      style={{
-                         marginVertical: 8,
-                         borderRadius: 16,
-                      }}
-                      accessor="population"
-                      backgroundColor="transparent"
-                      paddingLeft="15"
-                      absolute //for the absolute number remove if you want percentage
-                  />
+                  <View>
+                     {this._displayCount(this.state.historiqueCountCapteur)}
+                  </View>
                </View>
 
                <View>
                   <Text style={[{color: theme.highlight}, styles.title_item]}>
                      Captures totales par mois :
                   </Text>
-                  <LineChart
-                      data={{
-                         labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
-                         datasets: [
-                            {
-                               data: [
-                                  3,
-                                  6,
-                                  9,
-                                  77,
-                                  66,
-                                  7,
-                                  7,
-                                  8,
-                                  9,
-                                  7,
-                                  9,
-                                  4,
-                               ],
-                            },
-                         ],
-                      }}
-                      width={Dimensions.get('window').width - 16} // from react-native
-                      height={220}
-                      //yAxisLabel={'RS'}
-                      chartConfig={{
-                         backgroundColor: theme.primary,
-                         backgroundGradientFrom: theme.primary,
-                         backgroundGradientTo: theme.primary,
-                         decimalPlaces: 2, // optional, defaults to 2dp
-                         color: (opacity = 255) => theme.accent,
-                         style: {
-                            borderRadius: 16,
-                         },
-                      }}
-                      bezier
-                      style={{
-                         marginVertical: 8,
-                         borderRadius: 16,
-
-                      }}
-                  />
+                  <View>
+                     {this._displayDate(this.state.historiqueListeCapteur)}
+                  </View>
                </View>
 
             </View>

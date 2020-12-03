@@ -3,8 +3,8 @@ import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {deleteCapteur, updateCapteur} from '../api/capteur_api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import firebase from "firebase";
-import {useNavigation} from "@react-navigation/core";
+import firebase from 'firebase';
+import {useNavigation} from '@react-navigation/core';
 
 class CapteurItem extends React.Component {
    constructor(props) {
@@ -23,8 +23,7 @@ class CapteurItem extends React.Component {
    _checkEtat() {
       if (this.props.data.capteur.actif === 1) {
          this.setState({etat: 'actif', etatIcon: 'check', etatColor: 'green'});
-      }
-      else {
+      } else {
          this.setState({etat: 'inactif', etatIcon: 'close', etatColor: 'red'});
       }
    }
@@ -37,16 +36,27 @@ class CapteurItem extends React.Component {
       const user = firebase.auth().currentUser;
       if (this.state.etat === 'actif') {
          user.getIdToken(true).then((idToken) => {
-            deleteCapteur(idToken, this.props.data.capteur.macAddress).then(() => {
-               this.setState({etat: 'inactif', etatIcon: 'close', etatColor: 'red'});
-            });
+            deleteCapteur(idToken, this.props.data.capteur.macAddress).then(
+               () => {
+                  this.setState({
+                     etat: 'inactif',
+                     etatIcon: 'close',
+                     etatColor: 'red',
+                  });
+               },
+            );
          });
-      }
-      else {
+      } else {
          user.getIdToken(true).then((idToken) => {
-            updateCapteur(idToken, this.props.data.capteur.macAddress).then(() => {
-               this.setState({etat: 'actif', etatIcon: 'check', etatColor: 'green'});
-            });
+            updateCapteur(idToken, this.props.data.capteur.macAddress).then(
+               () => {
+                  this.setState({
+                     etat: 'actif',
+                     etatIcon: 'check',
+                     etatColor: 'green',
+                  });
+               },
+            );
          });
       }
    }
@@ -70,7 +80,9 @@ class CapteurItem extends React.Component {
                </Text>
             </View>
             <TouchableOpacity
-               onPress={() => {this._modif_capteur()}}
+               onPress={() => {
+                  this._modif_capteur();
+               }}
                style={[styles.deleteButton, {backgroundColor: theme.accent}]}>
                <View style={styles.delete}>
                   <Text
@@ -84,6 +96,11 @@ class CapteurItem extends React.Component {
                      name={this.state.etatIcon}
                      size={18}
                      color={this.state.etatColor}
+                     style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginLeft: 5,
+                     }}
                   />
                </View>
             </TouchableOpacity>
@@ -136,7 +153,7 @@ let styles = StyleSheet.create({
       borderRadius: 5,
    },
    capteur_delete_text: {
-      marginLeft: 3,
+      marginLeft: 5,
    },
 });
 
