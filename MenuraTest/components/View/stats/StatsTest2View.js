@@ -323,7 +323,7 @@ class StatsTest2View extends React.Component {
                               styles.texte,
                               {color: theme.accent, marginBottom: 20},
                            ]}>
-                           Nombre de détection par mois
+                           Nombre de détections par mois
                         </Text>
                         <LineChart
                            data={dataLine}

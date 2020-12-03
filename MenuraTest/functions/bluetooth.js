@@ -138,6 +138,7 @@ class Bluetooth extends React.Component {
                            style={{
                               justifyContent: 'center',
                               alignItems: 'center',
+                              marginLeft: 5,
                            }}
                         />
                         <Text
@@ -235,6 +236,7 @@ const styles = StyleSheet.create({
    refresh_button_text: {
       textAlign: 'center',
       marginLeft: 10,
+      marginRight: 10,
    },
 });
 
