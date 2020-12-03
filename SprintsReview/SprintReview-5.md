@@ -18,7 +18,7 @@
 
 ## Etat d'avancement
 
--Le dévelopement des fonctionnalités de l'application est terminé, il reste uniquement du peaufinage à faire.
+Le dévelopement des fonctionnalités de l'application est terminé, il reste uniquement du peaufinage à faire.
 
 ## FeedBack
 
