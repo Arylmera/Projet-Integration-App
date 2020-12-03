@@ -33,6 +33,10 @@ target 'MenuraTest' do
           if targets_to_ignore.include? target.name
             target.remove_from_project
           end
+          
+          if target.name == "React-Core.common-AccessibilityResources"
+                  target.remove_from_project
+                end
     end
   end
 end
