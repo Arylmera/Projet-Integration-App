@@ -68,13 +68,8 @@ class Capteur extends React.Component {
    _mac_adresse_change(mac_adresse) {
       let newAddress = '';
       let len = mac_adresse.length;
-<<<<<<< Updated upstream
-      if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14) {
-         newAddress = mac_adresse + ':';
-=======
       if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14 && len > this.state.mac_add_capteur.length) {
          newAddress = mac_adresse + ':'
->>>>>>> Stashed changes
          this.setState({mac_add_capteur: newAddress});
       } else {
          this.setState({mac_add_capteur: mac_adresse});
