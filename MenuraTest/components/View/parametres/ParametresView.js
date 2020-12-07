@@ -1,4 +1,4 @@
-'use strict'
+
 
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import Bluetooth from './bluetooth';
 import firebase from 'firebase';
 import Capteur from './capteur';
-import {useNavigation} from "@react-navigation/core";
+import {useNavigation} from '@react-navigation/core';
 
 class ParametresView extends React.Component {
    constructor(props) {
