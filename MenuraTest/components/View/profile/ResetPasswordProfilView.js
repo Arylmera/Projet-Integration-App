@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    StyleSheet,
@@ -33,7 +35,6 @@ class ResetPasswordProfilView extends React.Component {
          .auth()
          .sendPasswordResetEmail(email)
          .then(() => {
-            console.log('email sent');
             navigation.navigate('connexion');
          })
          .catch((error) => {

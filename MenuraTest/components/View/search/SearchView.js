@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, FlatList, Image, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
@@ -24,8 +26,8 @@ class SearchView extends React.Component {
     * @param search
     * @private
     */
-   updateSearch = (search) => {
-      this.setState({search});
+   _updateSearch(search) {
+      this.setState({search: search});
    };
 
    _easter_egg() {
@@ -243,7 +245,7 @@ class SearchView extends React.Component {
                   placeholder="Entrez un nom d'oiseau"
                   placeholderTextColor={theme.highlight}
                   autoCapitalize={'none'}
-                  onChangeText={this.updateSearch}
+                  onChangeText={(text) => {this._updateSearch(text)}}
                   searchIcon={{color: theme.highlight}}
                   clearIcon={{color: theme.highlight}}
                   value={search}

@@ -1,6 +1,7 @@
+'use strict'
+
 import React from 'react';
 import {
-   StyleSheet,
    Text,
    View,
    TouchableOpacity,
@@ -13,7 +14,7 @@ import {Divider} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CapteurItem from './capteurItem';
 import firebase from 'firebase';
-import {addCapteur, getCapteurListById} from '../api/capteur_api';
+import {addCapteur, getCapteurListById} from '../../../api/capteur_api';
 import {useNavigation} from '@react-navigation/core';
 
 class Capteur extends React.Component {
@@ -41,7 +42,7 @@ class Capteur extends React.Component {
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
-            this.load_capteur_list(user);
+            this._load_capteur_list(user);
          } else {
             this.props.navigation.navigate('connexion');
          }
@@ -52,7 +53,7 @@ class Capteur extends React.Component {
     * récupération de la liste des capteur de l'utilisateur par la requete get
     * @param user
     */
-   load_capteur_list(user) {
+   _load_capteur_list(user) {
       user.getIdToken(true).then((idToken) => {
          getCapteurListById(user.uid, idToken).then((data) =>
             this.setState({capteur_list: data.data}),

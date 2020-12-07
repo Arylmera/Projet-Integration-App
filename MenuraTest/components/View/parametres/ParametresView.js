@@ -1,16 +1,16 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
-import Bluetooth from '../../../functions/bluetooth';
+import Bluetooth from './bluetooth';
 import firebase from 'firebase';
-import Capteur from '../../../functions/capteur';
-import {LogBox} from 'react-native';
+import Capteur from './capteur';
 import {useNavigation} from "@react-navigation/core";
 
 class ParametresView extends React.Component {
    constructor(props) {
-      LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
       super(props);
       this.state = {
          id: '',
@@ -107,7 +107,6 @@ class ParametresView extends React.Component {
             style={[styles.main_container, {backgroundColor: theme.primary}]}>
             <View
                style={[
-                  styles.capteur_component,
                   styles.lineBox,
                   {backgroundColor: theme.secondary},
                ]}>

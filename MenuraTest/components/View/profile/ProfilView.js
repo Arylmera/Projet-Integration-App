@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    StyleSheet,
@@ -54,9 +56,7 @@ class ProfilView extends React.Component {
       firebase
          .auth()
          .signOut()
-         .then(() => {
-            console.log('déconnecté');
-         })
+         .then(() => {})
          .catch((error) => {
             console.log(error);
          });
@@ -89,18 +89,15 @@ class ProfilView extends React.Component {
          this.state.password,
       );
       user.getIdToken(true).then((idToken) => {
-         deleteUtilisateur(id, idToken).then((data) => console.log(data));
+         deleteUtilisateur(id, idToken).then((data) => {});
       });
       user
          .reauthenticateWithCredential(credential)
-         .then(() => {
-            console.log('use authentifié à nouveau !!');
-         })
+         .then(() => {})
          .catch((error) => console.log(error));
       user
          .delete()
          .then(() => {
-            console.log('compte supprimé');
             this.setState({deleteAccountModal: false});
             this.props.navigation.navigate('connexion');
          })
@@ -117,12 +114,11 @@ class ProfilView extends React.Component {
       );
       user
          .reauthenticateWithCredential(credential)
-         .then(() => console.log('authentifié !'))
+         .then(() => {})
          .catch((error) => console.log(error));
       user
          .updatePassword(this.state.newPassword)
          .then(() => {
-            console.log('mot de passe modifié');
             this.setState({updatePasswordModal: false});
             this.props.navigation.navigate('modificationProfil');
          })
@@ -175,6 +171,8 @@ class ProfilView extends React.Component {
                      modifier le mot de passe
                   </Text>
                </TouchableOpacity>
+
+               //Modal changement de mot de passe
                <Modal visible={this.state.updatePasswordModal}>
                   <ScrollView
                      style={[
@@ -239,6 +237,8 @@ class ProfilView extends React.Component {
                         </TouchableOpacity>
                      </View>
                   </ScrollView>
+
+                  //Modal de déconnexion
                </Modal>
                <TouchableOpacity
                   style={[styles.button, {backgroundColor: theme.secondary}]}
@@ -285,6 +285,8 @@ class ProfilView extends React.Component {
                         </TouchableOpacity>
                      </View>
                   </ScrollView>
+
+                  //Modal de supression de compte
                </Modal>
                <TouchableOpacity
                   style={[styles.button, {backgroundColor: theme.secondary}]}

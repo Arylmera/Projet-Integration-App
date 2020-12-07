@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchView from '../View/search/SearchView';

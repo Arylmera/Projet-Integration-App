@@ -1,11 +1,12 @@
+'use strict'
+
 import React from 'react';
-import {StyleSheet, View, FlatList, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, FlatList, Text} from 'react-native';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 import {getHistoriqueByID} from '../../../api/historique_api';
 import HistoriqueItem from './historiqueItem';
 import {useNavigation} from '@react-navigation/core';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class HistoriqueView extends React.Component {
    constructor(props) {
@@ -31,7 +32,7 @@ class HistoriqueView extends React.Component {
          if (user) {
             this._load_user_historique(user);
          } else {
-            console.log('no user');
+            this.props.navigation.navigate('connexion')
          }
       });
    }
@@ -57,9 +58,6 @@ class HistoriqueView extends React.Component {
     */
    _handle_data_historique(data) {
       this.setState({oiseauxListe: data.data});
-      for (let item of this.state.oiseauxListe) {
-         console.log(item);
-      }
    }
 
    /**
@@ -68,7 +66,6 @@ class HistoriqueView extends React.Component {
     */
    render() {
       let theme = this.props.currentStyle;
-      const {navigation} = this.props;
       return (
          <View
             style={[styles.main_container, {backgroundColor: theme.primary}]}>
@@ -95,18 +92,6 @@ class HistoriqueView extends React.Component {
       );
    }
 }
-
-/*
-<TouchableOpacity
-                  style={[styles.addButton, {backgroundColor: theme.secondary}]}
-                  onPress={() =>
-                     navigation.navigate('HistoriqueAdd', {
-                        root: 'HistoriqueView',
-                     })
-                  }>
-                  <Icon name="add" size={50} color={theme.highlight} />
-               </TouchableOpacity>
- */
 
 const styles = StyleSheet.create({
    main_container: {

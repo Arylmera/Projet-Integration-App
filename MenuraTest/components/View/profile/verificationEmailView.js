@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
@@ -19,9 +21,7 @@ class ConnexionProfilView extends React.Component {
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
-            console.log('DISPLAYNAME : ' + user.displayName);
             this.setState({prenom: user.displayName.split(' ')[1]});
-            console.log('DISPLAYNAME STATE: ' + user.displayName);
          } else {
             this.props.navigation.navigate('connexion');
          }

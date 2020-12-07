@@ -1,3 +1,5 @@
+'use strict'
+
 const url_getOiseaux = 'https://menura.be:3000/v1/api/oiseaux?recherche=';
 const url_addOiseaux = 'https://menura.be:3000/v1/api/historiques';
 

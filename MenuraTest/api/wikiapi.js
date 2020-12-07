@@ -1,3 +1,5 @@
+'use strict'
+
 const wtf = require('wtf_wikipedia');
 
 const url = 'https://fr.wikipedia.org/api/rest_v1/page/summary/';

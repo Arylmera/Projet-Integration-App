@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -6,9 +8,10 @@ import {Provider} from 'react-redux';
 import Store from './Store/configureStore';
 import firebase from 'firebase';
 import {firebaseConfig} from './config';
-
 import {LogBox} from 'react-native';
+
 LogBox.ignoreAllLogs(true);
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

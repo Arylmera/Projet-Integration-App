@@ -1,34 +1,9 @@
+'use strict'
+
 /*
 Définition des themes
  */
 import {getDataStorage, storeDataStorage} from '../../functions/storageHelper';
-
-/* color backup
-const winterStyle = {
-   primary: '#004c8c',
-   secondary: '#0277bd',
-   accent: '#58a5f0',
-   highlight: '#FFFFFF',
-};
-const autumnStyle = {
-   primary: '#bb4d00',
-   secondary: '#f57c00',
-   accent: '#ffad42',
-   highlight: '#000000',
-};
-const springStyle = {
-   primary: '#bf5f82',
-   secondary: '#f48fb1',
-   accent: '#ffc1e3',
-   highlight: '#000000',
-};
-const summerStyle = {
-   primary: '#6b9b37',
-   secondary: '#9ccc65',
-   accent: '#cfff95',
-   highlight: '#000000',
-};
-*/
 
 const winterStyle = {
    primary: '#274c77',

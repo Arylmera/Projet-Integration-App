@@ -1,75 +1,44 @@
+'use strict'
+
 import React from 'react';
-import {StyleSheet, View, Text, Dimensions, ScrollView, ActivityIndicator} from 'react-native';
+import {
+   StyleSheet,
+   View,
+   Text,
+   ScrollView,
+   Dimensions,
+   ActivityIndicator,
+} from 'react-native';
 import firebase from 'firebase';
 import {connect} from 'react-redux';
 import {getDataStorage} from '../../../functions/storageHelper';
-import LineChart from "react-native-chart-kit/dist/line-chart";
-import {getHistoriqueAll, getHistoriqueByID} from '../../../api/historique_api'
-import {getOiseaux} from "../../../api/oiseaux_api";
-import PieChart from "react-native-chart-kit/dist/PieChart";
-import {Divider} from "react-native-paper";
-import ContributionGraph from "react-native-chart-kit/dist/contribution-graph";
-
+import {getHistoriqueByID} from '../../../api/historique_api';
+import {useNavigation} from '@react-navigation/core';
+import PieChart from 'react-native-chart-kit/dist/PieChart';
+import LineChart from 'react-native-chart-kit/dist/line-chart';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class StatsView extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         id: '',
-         historiqueListeGeneral: [],
-         historiqueListeCapteur: [],
-         historiqueListeNomGeneral: [],
-         historiqueListeNomCapteur: [],
-         historiqueCountGeneral: [],
-         historiqueCountCapteur: [],
          isLoading: true,
+         prenom: '',
+         historique: [],
+         countTotal: 0,
+         premier: {},
+         dernier: {},
+         countByOiseau: {},
+         dataLine: [0],
+         dataPie: [],
+         record: [],
       };
    }
-
-
-   _showHistoriqueAll(){
-      getHistoriqueAll().then((data) => {
-         this.setState({historiqueListeGeneral: data.data});
-         let historiqueNom_loading = [];
-         data.data.forEach((oiseau) =>
-             historiqueNom_loading.push(oiseau.oiseau),
-         );
-         this.setState({
-            historiqueListeNomGeneral: historiqueNom_loading,
-         });
-         this.setState({historiqueCountGeneral: this._countItem(this.state.historiqueListeNomGeneral)
-         });
-      })
-   }
-
-
-   _showHistoriqueCapteur(user){
-      console.log('loading user historique for user : ' + user.uid);
-      user.getIdToken(true).then((idToken) => {
-         getHistoriqueByID(user.uid, idToken).then((data) =>
-         {
-            this.setState({historiqueListeCapteur: data.data});
-            let historiqueNom_loading = [];
-            data.data.forEach((oiseau) =>
-                historiqueNom_loading.push(oiseau.oiseau),
-            );
-            this.setState({
-               historiqueListeNomCapteur: historiqueNom_loading,
-            });
-            this.setState({historiqueCountCapteur: this._countItem(this.state.historiqueListeNomCapteur)
-            });
-         })
-      });
-
-   }
-
 
    componentDidMount() {
       this._checkIfLoggedIn();
       this._reloadTheme();
-      this._showHistoriqueAll();
    }
-
 
    /**
     * check si l'utilisateur est connécté et récupère ces info
@@ -78,15 +47,149 @@ class StatsView extends React.Component {
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
-            this.setState({id: user.uid});
-            this._showHistoriqueCapteur(user);
+            this.setState({
+               prenom: user.displayName.split(' ')[1],
+            });
+            this._getStatistiques(user);
          } else {
-            console.log('no user');
+            this.props.navigation.navigate('connexion')
          }
       });
    }
 
+   _getStatistiques(user) {
+      user
+         .getIdToken(true)
+         .then((idToken) => {
+            getHistoriqueByID(user.uid, idToken)
+               .then((data) => {
+                  let donnees = data.data;
+                  let countTotal = this._getTotal(donnees);
+                  let countByOiseau = this._getCountByOiseau(donnees);
+                  this.setState({
+                     historique: donnees,
+                     countTotal: countTotal,
+                     premier: this._getFirst(donnees, countTotal),
+                     dernier: this._getLast(donnees),
+                     countByOiseau: countByOiseau,
+                     dataPie: this._handleDataPie(countByOiseau),
+                     dataLine: this._handleDataLine(donnees),
+                     record: this._getRecord(countByOiseau),
+                     isLoading: false,
+                  });
+               })
+               .catch((error) => {
+                  console.log(error);
+               });
+         })
+         .catch((error) => {
+            console.log(error);
+         });
+   }
 
+   _handleDataPie(oiseaux) {
+      let data = [];
+      for (let [key, value] of Object.entries(oiseaux)) {
+         let couleur = this._getRandomColor();
+         let nom = key;
+         if (nom.length > 12) {
+            let handle = nom.split(' ');
+            nom = handle[0];
+            nom += ' ';
+            nom += handle[1].substring(0, 1).toUpperCase();
+            nom += handle[1].substring(1, 2);
+            nom += '.';
+         }
+         data.push({
+            name: nom,
+            population: value,
+            color: couleur,
+            legendFontColor: '#FFFFFF',
+            legendFontSize: 12,
+         });
+      }
+      data.sort(function (a, b) {
+         return b.population - a.population;
+      });
+      return data;
+   }
+
+   _handleDataLine(oiseaux) {
+      let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      oiseaux.forEach((i) => {
+         let mois = new Date(i.date).getUTCMonth();
+         data[mois]++;
+      });
+      return data;
+   }
+
+   _getTotal(donnees) {
+      return donnees.length;
+   }
+
+   _getFirst(donnees, len) {
+      return donnees[len - 1];
+   }
+
+   _getLast(donnees) {
+      return donnees[0];
+   }
+
+   _getCountByOiseau(donnees) {
+      let count = {};
+      donnees.forEach((i) => {
+         count[i.oiseau.normalize('NFC')] =
+            (count[i.oiseau.normalize('NFC')] || 0) + 1;
+      });
+      return count;
+   }
+
+   _getRecord(countByOiseau) {
+      let max = 0;
+      let min = Infinity;
+      let record = [];
+      for (let [key, value] of Object.entries(countByOiseau)) {
+         if (value > max) {
+            max = value;
+            record[0] = value;
+            record[1] = key;
+         }
+         if (value < min) {
+            min = value;
+            record[2] = value;
+            record[3] = key;
+         }
+      }
+      return record;
+   }
+
+   _renderDate(date) {
+      let tempDate = new Date(date);
+      let year = tempDate.getFullYear();
+      let month = tempDate.getUTCMonth() + 1;
+      let day = tempDate.getUTCDate();
+      let dayInt = tempDate.getUTCDay();
+      let week = [
+         'lundi',
+         'mardi',
+         'mercredi',
+         'jeudi',
+         'vendredi',
+         'samedi',
+         'dimanche',
+      ];
+      let dayName = week[dayInt - 1];
+      return dayName + ' ' + day + '/' + month + '/' + year;
+   }
+
+   _getRandomColor() {
+      let letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+         color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+   }
 
    _reloadTheme() {
       getDataStorage('theme_key').then((r) => {
@@ -108,332 +211,333 @@ class StatsView extends React.Component {
       });
    }
 
-
-   /**
-    * compte le nombres d'oiseaux identique et tri par ordre décroissant
-    * @param tab
-    * @returns {*[]}
-    * @private
-    */
-   _countItem(tab) {
-      let count = {};
-      let result = [];
-
-      tab.forEach(item => {
-         if (count[item]) {
-            count[item] +=1;
-            return
-         }
-         count[item] = 1
-      });
-      for(let i in count) {
-         let obj = {};
-         obj.name = i;
-         obj.value = count[i];
-         result.push(obj);
-      }
-      result.sort(function (a, b) {
-         return a.value - b.value;
-      });
-      return result.reverse();
-   }
-
-
-   /**
-    * La fonction prend un string et créer un objet a partir de ce sring et retourne le mois
-    * @param datestring
-    * @returns {number}
-    * @private
-    */
-   _findMonth(datestring) {
-      let date = new Date(datestring);
-      return date.getMonth();
-   };
-
-   /**
-    *
-    * @param orders
-    * @returns {number[]}
-    * @private
-    */
-   _makeDateArray(orders) {
-      let monthFreq = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-      for (const order of orders) {
-         const month = parseInt(this._findMonth(order.date));
-         monthFreq[month] = monthFreq[month] + 1;
-      }
-      return monthFreq;
-   };
-
-
-   _displayCount(tab) {
-      let theme = this.props.currentStyle;
-      let data = [];
-      const count = tab;
-
-      switch (true) {
-         case (count.length >= 4):
-            this.state.isLoading = false;
-            data = [
-               {
-                  name: count[0].name,
-                  population: count[0].value,
-                  color: theme.primary,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-               {
-                  name: count[1].name,
-                  population: count[1].value,
-                  color: '#FFFACD',
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-               {
-                  name: count[2].name,
-                  population: count[2].value,
-                  color: theme.accent,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-               {
-                  name: count[3].name,
-                  population: count[3].value,
-                  color: theme.highlight,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-            ];
-            break;
-         case (count.length === 3):
-            this.state.isLoading = false;
-            data = [
-               {
-                  name: count[0].name,
-                  population: count[0].value,
-                  color: theme.primary,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-               {
-                  name: count[1].name,
-                  population: count[1].value,
-                  color: '#FFFACD',
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-               {
-                  name: count[2].name,
-                  population: count[2].value,
-                  color: theme.accent,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-            ];
-            break;
-         case (count.length === 2):
-            this.state.isLoading = false;
-            data = [
-               {
-                  name: count[0].name,
-                  population: count[0].value,
-                  color: theme.primary,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-               {
-                  name: count[1].name,
-                  population: count[1].value,
-                  color: '#FFFACD',
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-            ];
-            break;
-         case (count.length === 1):
-            this.state.isLoading = false;
-            data = [
-               {
-                  name: count[0].name,
-                  population: count[0].value,
-                  color: theme.primary,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-            ];
-            break;
-         case (count.length === 0):
-            this.state.isLoading = false;
-            data = [
-               {
-                  name: "innexistant",
-                  population: 1,
-                  color: theme.primary,
-                  legendFontColor: theme.highlight,
-                  legendFontSize: 11,
-               },
-            ];
-            break;
-      }
-         return (
-             <PieChart
-                 data={data}
-                 width={Dimensions.get('window').width -16 }
-                 height={220}
-                 chartConfig={{
-                    backgroundColor: '#1cc910',
-                    backgroundGradientFrom: '#eff3ff',
-                    backgroundGradientTo: '#efefef',
-                    decimalPlaces: 2,
-                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-                    style: {
-                       borderRadius: 16,
-                    },
-                 }}
-                 style={{
-                    marginVertical: 8,
-                    borderRadius: 16,
-                 }}
-                 accessor="population"
-                 backgroundColor="transparent"
-                 paddingLeft="15"
-                 absolute //for the absolute number remove if you want percentage
-             />
-         );
-   }
-
-
-   _displayDate(tab){
-      let theme = this.props.currentStyle;
-      return (
-          <LineChart
-              data={{
-                 labels: ['jan', 'fev', 'mar', 'avr','mai', 'jun', 'jul', 'aou', 'sep', 'oct', 'nov', 'dec' ],
-                 datasets: [
-                    {
-                       data: this._makeDateArray(tab)
-                    },
-                 ],
-              }}
-              width={Dimensions.get('window').width - 16}
-              // from react-native
-              height={220}
-              //yAxisLabel={'RS'}
-              chartConfig={{
-                 backgroundColor: theme.primary,
-                 backgroundGradientFrom: theme.primary,
-                 backgroundGradientTo: theme.primary,
-                 decimalPlaces: 2, // optional, defaults to 2dp
-                 color: (opacity = 255) => theme.accent,
-                 style: {
-                    borderRadius: 16,
-                    alignSelf: "center"
-                 },
-              }}
-              bezier
-              style={{
-                 marginVertical: 8,
-                 borderRadius: 16,
-
-              }}
-          />
-      )
-   }
-
-
-
    render() {
-      //console.log(this.state.historiqueCountCapteur);
-      //console.log(this.state.historiqueListeNom);
-      //console.log(this.state.historiqueListe);
       let theme = this.props.currentStyle;
+      const dataPie = this.state.dataPie;
+      const screenWidth = Dimensions.get('window').width;
+      const chartConfigPie = {
+         backgroundGradientFrom: '#1E2923',
+         backgroundGradientFromOpacity: 0,
+         backgroundGradientTo: '#08130D',
+         backgroundGradientToOpacity: 0.5,
+         color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      };
+      const dataLine = {
+         labels: [
+            'Jan',
+            'Fev',
+            'Mar',
+            'Avr',
+            'Mai',
+            'jui',
+            'Jui',
+            'Aou',
+            'sep',
+            'oct',
+            'nov',
+            'dec',
+         ],
+         datasets: [
+            {
+               data: this.state.dataLine,
+            },
+         ],
+      };
+      const chartConfigLine = {
+         backgroudColor: theme.accent,
+         backgroundGradientFrom: theme.primary,
+         backgroundGradientFromOpacity: 0,
+         backgroundGradientTo: theme.primary,
+         backgroundGradientToOpacity: 0,
+         decimalPlaces: 0,
+         color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+         propsForDots: {
+            r: '4',
+            strokeWidth: '2',
+            stroke: theme.accent,
+            fill: theme.highlight,
+         },
+         propsForBackgroundLines: {
+            strokeOpacity: 1,
+            stroke: theme.secondary,
+            strokeDasharray: [2],
+         },
+         propsForLabels: {
+            stroke: theme.accent,
+         },
+      };
       return (
-          <ScrollView
-              style={[styles.main_container, {backgroundColor: theme.primary}]}>
-         <View>
-            <Text
-                style={[
-                   styles.list_header,
-                   {backgroundColor: theme.accent, color: theme.highlight},
-                ]}>
-               Statistiques des oiseaux
-            </Text>
-            <View
-                style={[
-                   styles.item_container,
-                   {backgroundColor: theme.secondary},
-                ]}>
-               <View
-                   style={[
-                      styles.container_item,
-                      {backgroundColor: theme.secondary},
-                   ]}>
-                  <Text style={[styles.title_text, {color: theme.highlight}]}>
-                     Statistiques générales :
-                  </Text>
+         <ScrollView
+            style={[styles.main_container, {backgroundColor: theme.primary}]}>
+            {this.state.isLoading ? (
+               <View style={styles.loading}>
+                  <ActivityIndicator size="large" color="#000000" />
                </View>
-               <Divider style={[{backgroundColor: theme.highlight}]} />
-               <View style={styles.pieChart}>
-                  <Text style={[{color: theme.highlight}, styles.title_item]}>
-                     Oiseaux les plus capturés :
-                  </Text>
-                  <View>
-                     {this.state.isLoading ? (
-                             <View style={styles.loading_container}>
-                                <ActivityIndicator size="large" color="#000000" />
-                             </View>
-                         ) : (
-                     this._displayCount(this.state.historiqueCountGeneral)
-                        )}
-                  </View>
-               </View>
-
-            <View>
-               <Text style={[{color: theme.highlight}, styles.title_item]}>
-                  Captures totales par mois :
-               </Text>
+            ) : (
                <View>
-                  {this._displayDate(this.state.historiqueListeGeneral)}
-               </View>
-            </View>
-
-            </View>
-            <View
-                style={[
-                   styles.item_container,
-                   {backgroundColor: theme.secondary},
-                ]}>
-               <View
-                   style={[
-                      styles.container_item,
-                      {backgroundColor: theme.secondary},
-                   ]}>
-                  <Text style={[styles.title_text, {color: theme.highlight}]}>
-                     Statistiques Capteur :
-                  </Text>
-               </View>
-               <Divider style={[{backgroundColor: theme.highlight}]} />
-               <View style={styles.pieChart}>
-                  <Text style={[{color: theme.highlight}, styles.title_item]}>
-                     Oiseaux les plus capturés :
-                  </Text>
-                  <View>
-                     {this._displayCount(this.state.historiqueCountCapteur)}
+                  <View
+                     style={[styles.welcome, {backgroundColor: theme.primary}]}>
+                     <Text style={[styles.titre, {color: theme.highlight}]}>
+                        Bienvenue {this.state.prenom}
+                     </Text>
+                  </View>
+                  <View
+                     style={[styles.header, {backgroundColor: theme.accent}]}>
+                     <Text style={[styles.titre, {color: theme.highlight}]}>
+                        Vos statistiques
+                     </Text>
+                  </View>
+                  <View style={styles.charts}>
+                     <View
+                        style={[
+                           styles.pie_container,
+                           {backgroundColor: theme.primary},
+                        ]}>
+                        <Text
+                           style={[
+                              styles.texte,
+                              {color: theme.accent, marginBottom: 10},
+                           ]}>
+                           Proportion des détections par espèce
+                        </Text>
+                        <PieChart
+                           data={dataPie}
+                           width={screenWidth}
+                           height={200}
+                           chartConfig={chartConfigPie}
+                           accessor="population"
+                           backgroundColor="transparent"
+                           paddingLeft="10"
+                           paddingRight="10"
+                           avoidFalseZero={true}
+                        />
+                     </View>
+                     <View
+                        style={[
+                           styles.line_container,
+                           {backgroundColor: theme.primary},
+                        ]}>
+                        <Text
+                           style={[
+                              styles.texte,
+                              {color: theme.accent, marginBottom: 20},
+                           ]}>
+                           Nombre de détections par mois
+                        </Text>
+                        <LineChart
+                           data={dataLine}
+                           width={screenWidth}
+                           height={256}
+                           verticalLabelRotation={60}
+                           chartConfig={chartConfigLine}
+                           bezier
+                        />
+                     </View>
+                  </View>
+                  <View
+                     style={[
+                        styles.header,
+                        {backgroundColor: theme.accent, marginTop: 20},
+                     ]}>
+                     <Text style={[styles.titre, {color: theme.highlight}]}>
+                        Récapitulatif
+                     </Text>
+                  </View>
+                  <View
+                     style={[styles.recap, {backgroundColor: theme.primary}]}>
+                     <Text
+                        style={[
+                           styles.texte,
+                           styles.recap_parapgraphe,
+                           {color: theme.highlight},
+                        ]}>
+                        {this.state.prenom} vous avez déjà détecté{' '}
+                        {this.state.countTotal} oiseaux depuis que vous avez
+                        rejoint l'équipe Menura !
+                     </Text>
+                     <Text
+                        style={[
+                           styles.texte,
+                           styles.recap_parapgraphe,
+                           {color: theme.highlight},
+                        ]}>
+                        L'oiseau le plus courant près de chez vous semble être{' '}
+                        {this.state.record[1]} avec {this.state.record[0]}{' '}
+                        détection(s).
+                     </Text>
+                     <Text
+                        style={[
+                           styles.texte,
+                           styles.recap_parapgraphe,
+                           {color: theme.highlight},
+                        ]}>
+                        Par contre, {this.state.record[3]} est bien plus rare
+                        avec seulement {this.state.record[2]} détection(s).
+                     </Text>
+                     <View
+                        style={[
+                           styles.bird_container,
+                           {backgroundColor: theme.accent},
+                        ]}>
+                        <Text
+                           style={[
+                              styles.texte,
+                              styles.bird_container_title,
+                              {color: theme.highlight},
+                           ]}>
+                           Premier oiseau détecté:
+                        </Text>
+                        <View
+                           style={[
+                              styles.bird_info_container,
+                              {backgroundColor: theme.primary},
+                           ]}>
+                           <View style={styles.bird_info_container_line}>
+                              <Icon
+                                 name="waves"
+                                 size={18}
+                                 color={theme.highlight}
+                                 style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingRight: 10,
+                                 }}
+                              />
+                              <Text
+                                 style={[
+                                    styles.texte,
+                                    styles.bird_info,
+                                    {color: theme.highlight},
+                                 ]}>
+                                 {this.state.premier.oiseau}
+                              </Text>
+                           </View>
+                           <View style={styles.bird_info_container_line}>
+                              <Icon
+                                 name="home"
+                                 size={18}
+                                 color={theme.highlight}
+                                 style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingRight: 10,
+                                 }}
+                              />
+                              <Text
+                                 style={[
+                                    styles.texte,
+                                    styles.bird_info,
+                                    {color: theme.highlight},
+                                 ]}>
+                                 {this.state.premier.localisation}
+                              </Text>
+                           </View>
+                           <View style={styles.bird_info_container_line}>
+                              <Icon
+                                 name="query-builder"
+                                 size={18}
+                                 color={theme.highlight}
+                                 style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingRight: 10,
+                                 }}
+                              />
+                              <Text
+                                 style={[
+                                    styles.texte,
+                                    styles.bird_info,
+                                    {color: theme.highlight},
+                                 ]}>
+                                 {this._renderDate(this.state.premier.date)}
+                              </Text>
+                           </View>
+                        </View>
+                     </View>
+                     <View
+                        style={[
+                           styles.bird_container,
+                           {backgroundColor: theme.accent},
+                        ]}>
+                        <Text
+                           style={[
+                              styles.texte,
+                              styles.bird_container_title,
+                              {color: theme.highlight},
+                           ]}>
+                           Dernier oiseau détecté:
+                        </Text>
+                        <View
+                           style={[
+                              styles.bird_info_container,
+                              {backgroundColor: theme.primary},
+                           ]}>
+                           <View style={styles.bird_info_container_line}>
+                              <Icon
+                                 name="waves"
+                                 size={18}
+                                 color={theme.highlight}
+                                 style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingRight: 10,
+                                 }}
+                              />
+                              <Text
+                                 style={[
+                                    styles.texte,
+                                    styles.bird_info,
+                                    {color: theme.highlight},
+                                 ]}>
+                                 {this.state.dernier.oiseau}{' '}
+                              </Text>
+                           </View>
+                           <View style={styles.bird_info_container_line}>
+                              <Icon
+                                 name="home"
+                                 size={18}
+                                 color={theme.highlight}
+                                 style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingRight: 10,
+                                 }}
+                              />
+                              <Text
+                                 style={[
+                                    styles.texte,
+                                    styles.bird_info,
+                                    {color: theme.highlight},
+                                 ]}>
+                                 {this.state.dernier.localisation}{' '}
+                              </Text>
+                           </View>
+                           <View style={styles.bird_info_container_line}>
+                              <Icon
+                                 name="query-builder"
+                                 size={18}
+                                 color={theme.highlight}
+                                 style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingRight: 10,
+                                 }}
+                              />
+                              <Text
+                                 style={[
+                                    styles.texte,
+                                    styles.bird_info,
+                                    {color: theme.highlight},
+                                 ]}>
+                                 {this._renderDate(this.state.dernier.date)}
+                              </Text>
+                           </View>
+                        </View>
+                     </View>
                   </View>
                </View>
-
-               <View>
-                  <Text style={[{color: theme.highlight}, styles.title_item]}>
-                     Captures totales par mois :
-                  </Text>
-                  <View>
-                     {this._displayDate(this.state.historiqueListeCapteur)}
-                  </View>
-               </View>
-
-            </View>
-         </View>
-          </ScrollView>
+            )}
+         </ScrollView>
       );
    }
 }
@@ -442,11 +546,16 @@ const styles = StyleSheet.create({
    main_container: {
       flex: 1,
    },
-   list_header: {
-      textAlign: 'center',
-      fontSize: 18,
-      fontWeight: 'bold',
-      padding: 20,
+   loading: {
+      marginTop: '50%',
+      justifyContent: 'center',
+   },
+   charts: {
+      marginRight: 20,
+   },
+   header: {
+      fontSize: 20,
+      alignItems: 'center',
       // shadow
       shadowColor: 'rgba(0,0,0, .7)',
       shadowOffset: {height: 0, width: 0},
@@ -454,36 +563,74 @@ const styles = StyleSheet.create({
       shadowRadius: 2,
       elevation: 3,
    },
-   item_container: {
-      flexDirection: 'column',
-      margin: 10,
+   welcome: {
+      fontSize: 20,
+      alignItems: 'center',
+      paddingTop: 10,
+   },
+   recap: {
+      marginTop: 10,
+      marginRight: 10,
+      marginLeft: 10,
       borderRadius: 5,
-      // shadow
-      shadowColor: 'rgba(0,0,0, .7)',
-      shadowOffset: {height: 0, width: 0},
-      shadowOpacity: 0.5,
-      shadowRadius: 2,
-      elevation: 3,
-   },
-   container_item: {
-      flex: 1,
-      borderTopLeftRadius: 5,
-      borderTopRightRadius: 5,
-   },
-   title_text: {
-      fontSize: 28,
-      textAlign: 'center',
       padding: 5,
    },
-   pieChart:{
-
-   },
-   title_item: {
-      margin: 15,
-      textAlign: 'center',
-      fontStyle: 'italic',
+   titre: {
+      marginTop: 5,
+      marginBottom: 10,
+      padding: 5,
+      fontSize: 22,
       fontWeight: 'bold',
+   },
+   texte: {
+      fontSize: 16,
+   },
+   pie_container: {
+      flex: 1,
+      marginTop: 20,
+      marginBottom: 25,
+      marginLeft: '5%',
+      marginRight: '7%',
+      borderRadius: 5,
+      alignItems: 'center',
+   },
+   line_container: {
+      flex: 1,
+      marginTop: 20,
+      marginLeft: '5%',
+      marginRight: '7%',
+      borderRadius: 5,
+      alignItems: 'center',
+   },
+   recap_parapgraphe: {
+      padding: 5,
+   },
+   bird_container: {
+      flex: 1,
+      width: '90%',
+      padding: 10,
+      margin: 10,
+      borderRadius: 5,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+   },
+   bird_info: {
+      fontSize: 16,
+   },
+   bird_info_container: {
+      flex: 1,
+      padding: 10,
+      margin: 10,
+      borderRadius: 5,
+   },
+   bird_container_title: {
+      textAlign: 'center',
       fontSize: 18,
+      fontWeight: 'bold',
+   },
+   bird_info_container_line: {
+      marginLeft: 30,
+      flexDirection: 'row',
    },
 });
 
@@ -493,4 +640,7 @@ const mapStateToProps = (state) => {
    };
 };
 
-export default connect(mapStateToProps)(StatsView);
+export default connect(mapStateToProps)(function (props) {
+   const navigation = useNavigation();
+   return <StatsView {...props} navigation={navigation} />;
+});
