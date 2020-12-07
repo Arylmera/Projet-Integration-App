@@ -18,6 +18,12 @@ class HistoriqueItem extends React.Component {
       };
    }
 
+   /**
+    * parsig de la date
+    * @param date
+    * @return {string}
+    * @private
+    */
    _parseDate(date) {
       let day = date.substring(8, 10);
       let month = date.substring(5, 7);
@@ -25,6 +31,10 @@ class HistoriqueItem extends React.Component {
       return day + '/' + month + '/' + year;
    }
 
+   /**
+    * render de l'app
+    * @return {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       let theme = this.props.currentStyle;

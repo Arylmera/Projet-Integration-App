@@ -14,6 +14,10 @@ class TipsNiche extends React.Component {
       this.state = {};
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       let theme = this.props.currentStyle;

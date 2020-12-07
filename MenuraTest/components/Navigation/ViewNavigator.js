@@ -19,6 +19,10 @@ class ViewNavigator extends React.Component {
       this.state = {};
    }
 
+    /**
+     * render
+     * @return {JSX.Element}
+     */
    render() {
       let theme = this.props.currentStyle;
       return (

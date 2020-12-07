@@ -17,6 +17,10 @@ class TipsSaisonNourritureItem extends React.Component {
         };
     }
 
+    /**
+     * render
+     * @return {JSX.Element}
+     */
     render() {
         let theme = this.props.currentStyle;
         return (

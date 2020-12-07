@@ -15,6 +15,9 @@ class BlueTooth_Item extends React.Component {
       };
    }
 
+   /**
+    * Connection a l'appareil
+    */
    connect_to_device() {
       this.state.device
          .connect()
@@ -33,10 +36,17 @@ class BlueTooth_Item extends React.Component {
          });
    }
 
+   /**
+    * déconection de l'appareil
+    */
    disconnect_from_device() {
       console.log('handle disconnection');
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       return (

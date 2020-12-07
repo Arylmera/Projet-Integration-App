@@ -23,6 +23,11 @@ class QuizItem extends React.Component {
       };
    }
 
+   /**
+    * vérification de la réponse
+    * @param reponse
+    * @private
+    */
    _checkResponse(reponse) {
       if (reponse === this.state.reponseCorrecte) {
          console.log('correct !');
@@ -45,6 +50,10 @@ class QuizItem extends React.Component {
       }
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       return (

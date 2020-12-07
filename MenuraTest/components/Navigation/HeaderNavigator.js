@@ -1,4 +1,4 @@
-'use strict'
+
 
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -18,6 +18,10 @@ class HeaderNavigator extends React.Component {
       };
    }
 
+    /**
+     * render
+     * @return {JSX.Element}
+     */
    render() {
       let theme = this.props.currentStyle;
       return (

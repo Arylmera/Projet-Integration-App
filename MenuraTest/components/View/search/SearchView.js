@@ -30,6 +30,11 @@ class SearchView extends React.Component {
       this.setState({search: search});
    };
 
+   /**
+    * easter egg
+    * @return {boolean}
+    * @private
+    */
    _easter_egg() {
       let test_text = this.state.search.toLowerCase();
       switch (test_text) {
@@ -194,6 +199,10 @@ class SearchView extends React.Component {
       }
    }
 
+   /**
+    * chargement des oiseaux sur base de la liste
+    * @private
+    */
    _loadOiseaux() {
       if (this.state.search.length > 0) {
          if (this._easter_egg()) {
@@ -223,6 +232,10 @@ class SearchView extends React.Component {
       }
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       const {search} = this.state;
       let theme = this.props.currentStyle;

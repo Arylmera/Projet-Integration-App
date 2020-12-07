@@ -16,10 +16,17 @@ class LoadingScreen extends React.Component {
       this.state = {};
    }
 
+   /**
+    * au chargement
+    */
    componentDidMount() {
       this._checkIfLoggedIn();
    }
 
+   /**
+    * check si le user est logging
+    * @private
+    */
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user && user.emailVerified) {
@@ -30,6 +37,10 @@ class LoadingScreen extends React.Component {
       });
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       return (
          <View style={styles.main_container}>

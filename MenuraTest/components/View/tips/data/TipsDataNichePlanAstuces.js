@@ -1,5 +1,6 @@
-
-
+/**
+ * data plan niches
+ */
 export default data = [
 
 

@@ -1,4 +1,4 @@
-'use strict'
+
 
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -7,6 +7,11 @@ import AvatarView from "../View/profile/AvatarView";
 
 const Stack = createStackNavigator();
 
+/**
+ * fonction gestion du navigateur profil
+ * @return {JSX.Element}
+ * @constructor
+ */
 function ProfilNavigator() {
    return (
       <Stack.Navigator

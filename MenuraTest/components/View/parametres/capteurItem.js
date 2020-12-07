@@ -18,10 +18,17 @@ class CapteurItem extends React.Component {
       };
    }
 
+   /**
+    * au chargement
+    */
    componentDidMount() {
       this._checkEtat();
    }
 
+   /**
+    * vérification de l'état
+    * @private
+    */
    _checkEtat() {
       if (this.props.data.capteur.actif === 1) {
          this.setState({etat: 'actif', etatIcon: 'check', etatColor: 'green'});

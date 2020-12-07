@@ -1,4 +1,4 @@
-'use strict'
+
 
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -12,6 +12,11 @@ import QuizView from "../View/tips/QuizView";
 
 const Stack = createStackNavigator();
 
+/**
+ * fonction gestion du navigateur tips
+ * @return {JSX.Element}
+ * @constructor
+ */
 function TipsNavigator() {
    return (
       <Stack.Navigator

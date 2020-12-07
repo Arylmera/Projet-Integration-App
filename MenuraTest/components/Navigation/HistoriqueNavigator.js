@@ -1,4 +1,4 @@
-'use strict'
+
 
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -7,6 +7,11 @@ import DetailOiseaux from '../View/details/detailOiseaux';
 
 const Stack = createStackNavigator();
 
+/**
+ * fonction gestion du navigateur de l'historique
+ * @return {JSX.Element}
+ * @constructor
+ */
 function HistoriqueNavigator() {
    return (
       <Stack.Navigator

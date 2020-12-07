@@ -27,6 +27,10 @@ class TipsMangeoirePlan extends React.Component {
       };
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       console.log(this.state.id);
       let theme = this.props.currentStyle;

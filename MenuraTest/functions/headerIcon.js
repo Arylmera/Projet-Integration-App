@@ -14,10 +14,17 @@ class HeaderIcon extends React.Component {
       };
    }
 
+   /**
+    * au chargement du component
+    */
    componentDidMount() {
       this._checkIfLoggedIn();
    }
 
+   /**
+    * vérification du user
+    * @private
+    */
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
@@ -29,6 +36,10 @@ class HeaderIcon extends React.Component {
       });
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       let theme = this.props.currentStyle;

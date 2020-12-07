@@ -1,5 +1,6 @@
-
-
+/**
+ * data pour le quizz
+ */
 export default data = [
 
 

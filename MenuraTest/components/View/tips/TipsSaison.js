@@ -56,6 +56,10 @@ class TipsSaison extends React.Component {
       };
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       let theme = this.props.currentStyle;

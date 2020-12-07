@@ -53,10 +53,18 @@ class TipsView extends React.Component {
       }
    }
 
+   /**
+    * update de l'index
+    * @param selectedIndex
+    */
    updateIndex(selectedIndex) {
       this.setState({selectedIndex});
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       const component1 = () => <Text>Automne</Text>;

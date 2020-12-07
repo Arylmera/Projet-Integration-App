@@ -18,10 +18,17 @@ class ParametresView extends React.Component {
       };
    }
 
+   /**
+    * au chargement
+    */
    componentDidMount() {
       this._checkIfLoggedIn();
    }
 
+   /**
+    * vérification du logging du user
+    * @private
+    */
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
@@ -100,6 +107,10 @@ class ParametresView extends React.Component {
       this.props.dispatch(action);
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       return (

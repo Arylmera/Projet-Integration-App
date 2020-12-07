@@ -1,4 +1,4 @@
-'use strict'
+
 
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -10,6 +10,11 @@ import InscriptionProfilView from '../View/profile/InscriptionProfilView';
 
 const Stack = createStackNavigator();
 
+/**
+ * fonction gestion du navigateur loading
+ * @return {JSX.Element}
+ * @constructor
+ */
 function LoadingNavigator() {
    return (
       <Stack.Navigator

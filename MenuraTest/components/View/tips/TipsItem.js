@@ -13,6 +13,10 @@ class TipsItem extends React.Component {
       this.state = {};
    }
 
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       const id = this.props.data.infos_saison.id;
