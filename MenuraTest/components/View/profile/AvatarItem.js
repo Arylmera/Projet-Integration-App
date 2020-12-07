@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
@@ -18,7 +20,6 @@ class AvatarItem extends React.Component {
                 user.updateProfile({
                     photoURL: this.state.img
                 }).then(() => {
-                    console.log('avatar changed');
                     this.props.navigation.navigate('modificationProfil');
                 }).catch(function(error) {
                     console.log(error)

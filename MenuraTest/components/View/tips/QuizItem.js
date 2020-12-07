@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';

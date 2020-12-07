@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    ImageBackground,
@@ -21,7 +23,6 @@ class LoadingScreen extends React.Component {
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user && user.emailVerified) {
-            console.log(user.emailVerified);
             this.props.navigation.navigate('Views');
          } else {
             this.props.navigation.navigate('connexion');

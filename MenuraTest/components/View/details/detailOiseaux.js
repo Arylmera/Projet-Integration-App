@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    StyleSheet,
@@ -183,8 +185,8 @@ class DetailOiseaux extends React.Component {
                         this.state.wikiWTF.sections[3].paragraphs[0].text,
                   });
                }
-            } catch (e) {
-               console.log("Can't read wikiWTF");
+            } catch (error) {
+               console.log(error);
             }
          }
       });

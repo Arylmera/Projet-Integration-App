@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
@@ -17,12 +19,10 @@ class BlueTooth_Item extends React.Component {
       this.state.device
          .connect()
          .then((device) => {
-            console.log('connecting to device : ' + device.name);
             this.setState({status_diplay: 'connection'});
             return device.discoverAllServicesAndCharacteristics();
          })
          .then((device) => {
-            console.log('connected to device : ' + device.name);
             this.setState({connected: true});
             this.setState({status_diplay: 'connecté'});
             console.log(device);

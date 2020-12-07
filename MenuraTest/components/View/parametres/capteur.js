@@ -1,6 +1,7 @@
+'use strict'
+
 import React from 'react';
 import {
-   StyleSheet,
    Text,
    View,
    TouchableOpacity,
@@ -13,7 +14,7 @@ import {Divider} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CapteurItem from './capteurItem';
 import firebase from 'firebase';
-import {addCapteur, getCapteurListById} from '../api/capteur_api';
+import {addCapteur, getCapteurListById} from '../../../api/capteur_api';
 import {useNavigation} from '@react-navigation/core';
 
 class Capteur extends React.Component {
@@ -41,7 +42,7 @@ class Capteur extends React.Component {
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
-            this.load_capteur_list(user);
+            this._load_capteur_list(user);
          } else {
             this.props.navigation.navigate('connexion');
          }
@@ -52,7 +53,7 @@ class Capteur extends React.Component {
     * récupération de la liste des capteur de l'utilisateur par la requete get
     * @param user
     */
-   load_capteur_list(user) {
+   _load_capteur_list(user) {
       user.getIdToken(true).then((idToken) => {
          getCapteurListById(user.uid, idToken).then((data) =>
             this.setState({capteur_list: data.data}),
@@ -68,13 +69,8 @@ class Capteur extends React.Component {
    _mac_adresse_change(mac_adresse) {
       let newAddress = '';
       let len = mac_adresse.length;
-<<<<<<< Updated upstream
-      if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14) {
-         newAddress = mac_adresse + ':';
-=======
       if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14 && len > this.state.mac_add_capteur.length) {
          newAddress = mac_adresse + ':'
->>>>>>> Stashed changes
          this.setState({mac_add_capteur: newAddress});
       } else {
          this.setState({mac_add_capteur: mac_adresse});

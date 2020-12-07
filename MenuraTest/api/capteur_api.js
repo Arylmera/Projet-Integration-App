@@ -1,3 +1,5 @@
+'use strict'
+
 const url_capteur_byID =
    'https://menura.be:3000/v1/api/capteurs?utilisateur=';
 const url_capteur_add = 'https://menura.be:3000/v1/api/capteurs';
@@ -7,6 +9,7 @@ const url_capteur_delete_byID =
 /**
  *
  * @param id
+ * @param idToken
  * @return {Promise<Response | void>}
  */
 export function getCapteurListById(id, idToken) {

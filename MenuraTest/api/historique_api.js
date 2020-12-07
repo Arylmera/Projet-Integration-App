@@ -1,7 +1,7 @@
+'use strict'
+
 const url_historique_byID =
    'https://menura.be:3000/v1/api/historiques?utilisateur=';
-
-const url_historique_all = 'https://menura.be:3000/v1/api/historiques/all';
 
 /**
  *
@@ -15,17 +15,6 @@ export function getHistoriqueByID(utilisateur, idToken) {
          Accept: 'application/json',
          'Content-Type': 'application/json',
          Authorization: 'Bearer ' + idToken,
-      },
-   })
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
-}
-
-export function getHistoriqueAll() {
-   return fetch(url_historique_all, {
-      headers: {
-         Accept: 'application/json',
-         'Content-Type': 'application/json',
       },
    })
       .then((response) => response.json())

@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    StyleSheet,
@@ -60,7 +62,6 @@ class InscriptionProfilView extends React.Component {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then(() => {
-               console.log('User created and signed in!');
                const user = firebase.auth().currentUser;
                const id = user.uid;
                user.getIdToken(true).then((idToken) => {
@@ -70,19 +71,16 @@ class InscriptionProfilView extends React.Component {
                      prenom,
                      email,
                      idToken,
-                  ).then((data) => console.log(data));
+                  ).then((data) => {});
                });
                user
                   .updateProfile({displayName: nom + ' ' + prenom, photoURL: require('../../../assets/images/profileIcon.png')})
                   .then(() => {
-                     console.log('display name added');
                      navigation.navigate('verificationEmail');
                   });
                user
                   .sendEmailVerification()
-                  .then(() => {
-                     // email sent
-                  })
+                  .then(() => {})
                   .catch((error) => {
                      console.log(error);
                   });

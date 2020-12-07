@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    StyleSheet,
@@ -39,7 +41,6 @@ class ConnexionProfilView extends React.Component {
          .auth()
          .signInWithEmailAndPassword(email, password)
          .then(() => {
-            console.log('User signed in!');
             this.setState({
                errorMessage: '',
                borderEmail: this.normalBorderColor,

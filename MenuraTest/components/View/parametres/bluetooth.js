@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import {
    StyleSheet,
@@ -37,31 +39,6 @@ class Bluetooth extends React.Component {
    componentWillUnmount() {
       this.state.bl_manager.destroy();
    }
-   /*
-  async requestLocationPermission() {
-    try {
-      const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION, {
-            title: 'Location permission for bluetooth scanning',
-            message: 'wahtever',
-            buttonNeutral: 'Ask Me Later',
-            buttonNegative: 'Cancel',
-            buttonPositive: 'OK',
-          },
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log('Location permission for bluetooth scanning granted');
-        return true;
-      } else {
-        console.log('Location permission for bluetooth scanning revoked');
-        return false;
-      }
-    } catch (err) {
-      console.warn(err);
-      return false;
-    }
-  }
-  */
 
    /**
     * scan des appareils blueTooth a portée
@@ -70,13 +47,9 @@ class Bluetooth extends React.Component {
       this.setState({status_text: 'Scan des appareils Bluetooth en cours'});
       this.setState({bl_device_list: []});
       this.state.bl_manager = new BleManager();
-      console.log('searching Bluetooth devices');
       const subscription = this.state.bl_manager.onStateChange((state) => {
          if (state === 'PoweredOn') {
-            console.log('poweredOn');
-            //this.requestLocationPermission().then(() => this.scan_bluetooth_device())
             this.scan_bluetooth_device();
-            console.log('poweredOn2');
             subscription.remove();
          }
       }, true);
@@ -86,14 +59,11 @@ class Bluetooth extends React.Component {
     * scan des appareils blueTooth a portée
     */
    scan_bluetooth_device() {
-      console.log('scan devices start');
       this.state.bl_manager.startDeviceScan([], null, (error, device) => {
-         console.log('scan devices start2');
          if (error) {
             console.log(error);
          } else {
             if (device.name != null) {
-               console.log('if device.name');
                let already_found = false;
                this.state.bl_device_list.forEach((e) => {
                   if (e.name === device.name) {
@@ -101,7 +71,6 @@ class Bluetooth extends React.Component {
                   }
                });
                if (!already_found) {
-                  console.log('already_found');
                   this.setState({
                      bl_device_list: this.state.bl_device_list.concat(device),
                   });

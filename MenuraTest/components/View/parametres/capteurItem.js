@@ -1,7 +1,9 @@
+'use strict'
+
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {deleteCapteur, updateCapteur} from '../api/capteur_api';
+import {deleteCapteur, updateCapteur} from '../../../api/capteur_api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import firebase from 'firebase';
 import {useNavigation} from '@react-navigation/core';

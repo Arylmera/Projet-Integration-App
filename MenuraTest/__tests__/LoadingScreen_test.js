@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import renderer from 'react-test-renderer';
 import LoadingScreen from '../components/View/LoadingScreen';
