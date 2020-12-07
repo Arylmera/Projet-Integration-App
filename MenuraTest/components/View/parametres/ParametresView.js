@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import Menu, {MenuItem} from 'react-native-material-menu';
@@ -116,11 +114,7 @@ class ParametresView extends React.Component {
       return (
          <ScrollView
             style={[styles.main_container, {backgroundColor: theme.primary}]}>
-            <View
-               style={[
-                  styles.lineBox,
-                  {backgroundColor: theme.secondary},
-               ]}>
+            <View style={[styles.lineBox, {backgroundColor: theme.secondary}]}>
                <Capteur />
             </View>
             <View

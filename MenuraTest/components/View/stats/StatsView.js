@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -35,13 +33,16 @@ class StatsView extends React.Component {
       };
    }
 
+   /**
+    * au chargement
+    */
    componentDidMount() {
       this._checkIfLoggedIn();
       this._reloadTheme();
    }
 
    /**
-    * check si l'utilisateur est connécté et récupère ces info
+    * vérification si l'utilisateur est connécté et récupère ses infos
     * @private
     */
    _checkIfLoggedIn() {
@@ -52,11 +53,16 @@ class StatsView extends React.Component {
             });
             this._getStatistiques(user);
          } else {
-            this.props.navigation.navigate('connexion')
+            this.props.navigation.navigate('connexion');
          }
       });
    }
 
+   /**
+    * fonction de récupération des statistiques sur les données de l'utilisateur
+    * @param user
+    * @private
+    */
    _getStatistiques(user) {
       user
          .getIdToken(true)
@@ -87,6 +93,12 @@ class StatsView extends React.Component {
          });
    }
 
+   /**
+    * construction des données du graphique en tarte
+    * @param oiseaux
+    * @returns {[]}
+    * @private
+    */
    _handleDataPie(oiseaux) {
       let data = [];
       for (let [key, value] of Object.entries(oiseaux)) {
@@ -114,6 +126,12 @@ class StatsView extends React.Component {
       return data;
    }
 
+   /**
+    * construction des données du graphique en ligne
+    * @param oiseaux
+    * @returns {number[]}
+    * @private
+    */
    _handleDataLine(oiseaux) {
       let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       oiseaux.forEach((i) => {
@@ -123,18 +141,43 @@ class StatsView extends React.Component {
       return data;
    }
 
+   /**
+    * calcul du total des détections
+    * @param donnees
+    * @returns {*}
+    * @private
+    */
    _getTotal(donnees) {
       return donnees.length;
    }
 
+   /**
+    * retourne le premier oiseau détecté
+    * @param donnees
+    * @param len
+    * @returns {*}
+    * @private
+    */
    _getFirst(donnees, len) {
       return donnees[len - 1];
    }
 
+   /**
+    * retourne le dernier oiseau détecté
+    * @param donnees
+    * @returns {*}
+    * @private
+    */
    _getLast(donnees) {
       return donnees[0];
    }
 
+   /**
+    * calcul le nombre de détection par espèce
+    * @param donnees
+    * @returns {{}}
+    * @private
+    */
    _getCountByOiseau(donnees) {
       let count = {};
       donnees.forEach((i) => {
@@ -144,6 +187,12 @@ class StatsView extends React.Component {
       return count;
    }
 
+   /**
+    * calcul l'oiseau le plus détecté et l'oiseau le moins détecté
+    * @param countByOiseau
+    * @returns {[]}
+    * @private
+    */
    _getRecord(countByOiseau) {
       let max = 0;
       let min = Infinity;
@@ -163,6 +212,12 @@ class StatsView extends React.Component {
       return record;
    }
 
+   /**
+    * mise en forme de la date
+    * @param date
+    * @returns {string}
+    * @private
+    */
    _renderDate(date) {
       let tempDate = new Date(date);
       let year = tempDate.getFullYear();
@@ -182,6 +237,11 @@ class StatsView extends React.Component {
       return dayName + ' ' + day + '/' + month + '/' + year;
    }
 
+   /**
+    * retourne une couleur aléatoire
+    * @returns {string}
+    * @private
+    */
    _getRandomColor() {
       let letters = '0123456789ABCDEF';
       let color = '#';
@@ -191,6 +251,10 @@ class StatsView extends React.Component {
       return color;
    }
 
+   /**
+    * chargement du thème de l'utilisateur
+    * @private
+    */
    _reloadTheme() {
       getDataStorage('theme_key').then((r) => {
          if (r !== null) {
@@ -211,6 +275,10 @@ class StatsView extends React.Component {
       });
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       const dataPie = this.state.dataPie;

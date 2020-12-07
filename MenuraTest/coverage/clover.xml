@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1604880123596" clover="3.2.0">
-  <project timestamp="1604880123596" name="All files">
-    <metrics statements="13" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0" elements="22" coveredelements="2" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
+<coverage generated="1607358420738" clover="3.2.0">
+  <project timestamp="1607358420738" name="All files">
+    <metrics statements="11" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="1" elements="21" coveredelements="3" complexity="0" loc="11" ncloc="11" packages="1" files="1" classes="1"/>
     <file name="LoadingScreen.js" path="C:\Site-perso\MenuraTest\components\View\LoadingScreen.js">
-      <metrics statements="13" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="1"/>
+      <line num="13" count="0" type="stmt"/>
       <line num="14" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
-      <line num="19" count="0" type="stmt"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="25" count="0" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="29" count="0" type="stmt"/>
+      <line num="30" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="31" count="0" type="stmt"/>
       <line num="33" count="0" type="stmt"/>
-      <line num="50" count="1" type="stmt"/>
-      <line num="66" count="1" type="stmt"/>
-      <line num="67" count="0" type="stmt"/>
-      <line num="73" count="0" type="stmt"/>
-      <line num="75" count="0" type="stmt"/>
+      <line num="43" count="0" type="stmt"/>
+      <line num="60" count="1" type="stmt"/>
+      <line num="78" count="1" type="stmt"/>
+      <line num="80" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

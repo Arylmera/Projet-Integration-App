@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, FlatList, Text} from 'react-native';
 import {connect} from 'react-redux';
@@ -24,7 +22,7 @@ class HistoriqueView extends React.Component {
    }
 
    /**
-    * check si l'utilisateur est connécté et récupère ces info
+    * vérifie si l'utilisateur est connécté et récupère ces infos
     * @private
     */
    _checkIfLoggedIn() {
@@ -32,13 +30,13 @@ class HistoriqueView extends React.Component {
          if (user) {
             this._load_user_historique(user);
          } else {
-            this.props.navigation.navigate('connexion')
+            this.props.navigation.navigate('connexion');
          }
       });
    }
 
    /**
-    *
+    * charge l'historique de l'utilisateur
     * @param user
     * @private
     */
@@ -52,7 +50,7 @@ class HistoriqueView extends React.Component {
    }
 
    /**
-    * gestion des données recu par la requete get
+    * gestion des données recues par la requête get
     * @param data
     * @private
     */

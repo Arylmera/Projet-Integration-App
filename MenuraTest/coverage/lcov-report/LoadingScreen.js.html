@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">16.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>1/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.38% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/13</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
@@ -133,8 +133,12 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,15 +155,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,93 +213,93 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import {
-  ImageBackground,
-  View,
-  ActivityIndicator,
-  StyleSheet,
+   ImageBackground,
+   View,
+   ActivityIndicator,
+   StyleSheet,
 } from 'react-native';
 import firebase from 'firebase';
-import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
 &nbsp;
 class LoadingScreen extends React.Component {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
-<span class="cstat-no" title="statement not covered" >    super(props);</span>
-<span class="cstat-no" title="statement not covered" >    this.state = {};</span>
-  }
+<span class="fstat-no" title="function not covered" >   co</span>nstructor(props) {
+<span class="cstat-no" title="statement not covered" >      super(props);</span>
+<span class="cstat-no" title="statement not covered" >      this.state = {};</span>
+   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
-<span class="cstat-no" title="statement not covered" >    this._checkIfLoggedIn();</span>
-  }
+   /**
+    * au chargement
+    */
+<span class="fstat-no" title="function not covered" >   co</span>mponentDidMount() {
+<span class="cstat-no" title="statement not covered" >      this._checkIfLoggedIn();</span>
+   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  _c</span>heckIfLoggedIn() {
-<span class="cstat-no" title="statement not covered" >    firebase.auth().onAuthStateChanged(<span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (user) {</span>
-<span class="cstat-no" title="statement not covered" >        this.props.navigation.navigate('Views');</span>
-      } else {
-<span class="cstat-no" title="statement not covered" >        this.props.navigation.navigate('connexion');</span>
-      }
-    });
-  }
+   /**
+    * check si le user est logging
+    * @private
+    */
+<span class="fstat-no" title="function not covered" >   _c</span>heckIfLoggedIn() {
+<span class="cstat-no" title="statement not covered" >      firebase.auth().onAuthStateChanged(<span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >         if (user &amp;&amp; user.emailVerified) {</span>
+<span class="cstat-no" title="statement not covered" >            this.props.navigation.navigate('Views');</span>
+         } else {
+<span class="cstat-no" title="statement not covered" >            this.props.navigation.navigate('connexion');</span>
+         }
+      });
+   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-<span class="cstat-no" title="statement not covered" >    return (</span>
-      &lt;View style={[styles.main_container, {backgroundColor: '#FFFFFF'}]}&gt;
-        &lt;ImageBackground
-          style={styles.image}
-          resizeMode="center"
-          source={require('../../assets/images/searchImage.png')}&gt;
-          &lt;ActivityIndicator
-            style={styles.loading}
-            size="large"
-            color="#0b4200"
-          /&gt;
-        &lt;/ImageBackground&gt;
-      &lt;/View&gt;
-    );
-  }
+   /**
+    * render
+    * @return {JSX.Element}
+    */
+<span class="fstat-no" title="function not covered" >   re</span>nder() {
+<span class="cstat-no" title="statement not covered" >      return (</span>
+         &lt;View style={styles.main_container}&gt;
+            &lt;ImageBackground
+               style={styles.image}
+               resizeMode="center"
+               source={require('../../assets/images/searchImage.png')}&gt;
+               &lt;ActivityIndicator
+                  style={styles.loading}
+                  size="large"
+                  color="#0b4200"
+               /&gt;
+            &lt;/ImageBackground&gt;
+         &lt;/View&gt;
+      );
+   }
 }
 &nbsp;
 const styles = StyleSheet.create({
-  main_container: {
-    flex: 1,
-    padding: 0,
-  },
-  loading: {
-    marginTop: 150,
-  },
-  image: {
-    flex: 1,
-    resizeMode: 'cover',
-    height: '100%',
-    width: '105%',
-  },
+   main_container: {
+      flex: 1,
+      padding: 0,
+      backgroundColor: '#FFFFFF',
+   },
+   loading: {
+      marginTop: 150,
+   },
+   image: {
+      flex: 1,
+      resizeMode: 'cover',
+      height: '100%',
+      width: '105%',
+   },
 });
 &nbsp;
-const mapStateToProps = <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return {</span>
-    currentStyle: state.currentStyle,
-  };
-};
+export default function (props) {
+   const navigation = useNavigation();
 &nbsp;
-export default connect(mapStateToProps)(<span class="fstat-no" title="function not covered" >fu</span>nction (props) {
-  const navigation = <span class="cstat-no" title="statement not covered" >useNavigation();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return &lt;LoadingScreen {...props} navigation={navigation} /&gt;;</span>
-});
+<span class="cstat-no" title="statement not covered" >   return &lt;LoadingScreen {...props} navigation={navigation} /&gt;;</span>
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -292,7 +307,7 @@ export default connect(mapStateToProps)(<span class="fstat-no" title="function n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Nov 09 2020 01:02:03 GMT+0100 (heure normale d’Europe centrale)
+                at Mon Dec 07 2020 17:27:00 GMT+0100 (heure normale d’Europe centrale)
             </div>
         </div>
         <script src="prettify.js"></script>

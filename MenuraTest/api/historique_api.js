@@ -1,10 +1,8 @@
-'use strict'
-
 const url_historique_byID =
    'https://menura.be:3000/v1/api/historiques?utilisateur=';
 
 /**
- *
+ * requête retournant l'historique d'un utilisateur
  * @return {Promise<Response | void>}
  * @param utilisateur
  * @param idToken

@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 Définition des themes
  */

@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
@@ -16,7 +14,7 @@ class BlueTooth_Item extends React.Component {
    }
 
    /**
-    * Connection a l'appareil
+    * Connection à l'appareil
     */
    connect_to_device() {
       this.state.device
@@ -37,7 +35,7 @@ class BlueTooth_Item extends React.Component {
    }
 
    /**
-    * déconection de l'appareil
+    * déconnexion de l'appareil
     */
    disconnect_from_device() {
       console.log('handle disconnection');

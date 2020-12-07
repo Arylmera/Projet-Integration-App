@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -37,7 +35,7 @@ class Capteur extends React.Component {
    }
 
    /**
-    * check du login utilisateur et récupération des informations
+    * vérification du login utilisateur et récupération des informations
     * @private
     */
    _checkIfLoggedIn() {
@@ -51,7 +49,7 @@ class Capteur extends React.Component {
    }
 
    /**
-    * récupération de la liste des capteur de l'utilisateur par la requete get
+    * récupération de la liste des capteurs de l'utilisateur par la requête get
     * @param user
     */
    _load_capteur_list(user) {
@@ -70,8 +68,14 @@ class Capteur extends React.Component {
    _mac_adresse_change(mac_adresse) {
       let newAddress = '';
       let len = mac_adresse.length;
-      if (len === 2 || len === 5 || len === 8 || len === 11 || len === 14 && len > this.state.mac_add_capteur.length) {
-         newAddress = mac_adresse + ':'
+      if (
+         len === 2 ||
+         len === 5 ||
+         len === 8 ||
+         len === 11 ||
+         (len === 14 && len > this.state.mac_add_capteur.length)
+      ) {
+         newAddress = mac_adresse + ':';
          this.setState({mac_add_capteur: newAddress});
       } else {
          this.setState({mac_add_capteur: mac_adresse});
@@ -81,7 +85,7 @@ class Capteur extends React.Component {
    /**
     * ajout d'un capteur
     * vérification de la valeur de la mac adresse
-    * envois par requete POST a la base de donnée
+    * envoi par requête POST à la base de donnée
     * @private
     */
    _add_capteur() {

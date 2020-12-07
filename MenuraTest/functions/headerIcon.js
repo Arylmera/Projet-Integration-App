@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
@@ -22,7 +20,7 @@ class HeaderIcon extends React.Component {
    }
 
    /**
-    * vérification du user
+    * vérification de l'utilisateur et utilisation de l'avatar
     * @private
     */
    _checkIfLoggedIn() {

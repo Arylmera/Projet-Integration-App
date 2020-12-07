@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -41,7 +39,7 @@ class Bluetooth extends React.Component {
    }
 
    /**
-    * scan des appareils blueTooth a portée
+    * scan des appareils blueTooth à portée
     */
    scan_device() {
       this.setState({status_text: 'Scan des appareils Bluetooth en cours'});
@@ -56,7 +54,7 @@ class Bluetooth extends React.Component {
    }
 
    /**
-    * scan des appareils blueTooth a portée
+    * scan des appareils blueTooth à portée
     */
    scan_bluetooth_device() {
       this.state.bl_manager.startDeviceScan([], null, (error, device) => {

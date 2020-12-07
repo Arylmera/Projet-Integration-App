@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -36,26 +34,61 @@ class InscriptionProfilView extends React.Component {
       };
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param nom
+    * @private
+    */
    _nomTextInputChanged(nom) {
       this.nom = nom;
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param prenom
+    * @private
+    */
    _prenomTextInputChanged(prenom) {
       this.prenom = prenom;
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param email
+    * @private
+    */
    _emailTextInputChanged(email) {
       this.email = email;
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param password
+    * @private
+    */
    _passwordTextInputChanged(password) {
       this.password = password;
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param password2
+    * @private
+    */
    _password2TextInputChanged(password2) {
       this.password2 = password2;
    }
 
+   /**
+    * inscription de l'utilisateur
+    * @param nom
+    * @param prenom
+    * @param email
+    * @param password
+    * @param password2
+    * @param navigation
+    * @private
+    */
    _register(nom, prenom, email, password, password2, navigation) {
       if (password === password2) {
          firebase
@@ -74,7 +107,10 @@ class InscriptionProfilView extends React.Component {
                   ).then((data) => {});
                });
                user
-                  .updateProfile({displayName: nom + ' ' + prenom, photoURL: require('../../../assets/images/profileIcon.png')})
+                  .updateProfile({
+                     displayName: nom + ' ' + prenom,
+                     photoURL: require('../../../assets/images/profileIcon.png'),
+                  })
                   .then(() => {
                      navigation.navigate('verificationEmail');
                   });
@@ -103,6 +139,10 @@ class InscriptionProfilView extends React.Component {
       }
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       return (

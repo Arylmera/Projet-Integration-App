@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import ViewNavigator from './ViewNavigator';
@@ -18,10 +16,10 @@ class HeaderNavigator extends React.Component {
       };
    }
 
-    /**
-     * render
-     * @return {JSX.Element}
-     */
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       return (

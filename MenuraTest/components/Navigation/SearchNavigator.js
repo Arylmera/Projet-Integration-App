@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import SearchView from '../View/search/SearchView';
@@ -8,7 +6,7 @@ import DetailOiseaux from '../View/details/detailOiseaux';
 const Stack = createStackNavigator();
 
 /**
- * fonction gestion du navigateur search
+ * fonction de gestion du navigateur search
  * @return {JSX.Element}
  * @constructor
  */

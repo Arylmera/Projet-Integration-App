@@ -1,5 +1,3 @@
-'use strict'
-
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -21,6 +19,10 @@ class App extends React.Component {
       this.state = {};
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       return (
          <Provider store={Store}>

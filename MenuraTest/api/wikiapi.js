@@ -1,11 +1,9 @@
-'use strict'
-
 const wtf = require('wtf_wikipedia');
 
 const url = 'https://fr.wikipedia.org/api/rest_v1/page/summary/';
 
 /**
- * récupération des info de l api rest wikipedia
+ * récupération des infos de l'api rest wikipedia
  * @param name
  * @return {Promise<any | void>}
  */
@@ -16,7 +14,7 @@ export function getWikiInfo(name) {
 }
 
 /**
- * récupération des info de WTFwikipedia
+ * récupération des infos de WTFwikipedia
  * @param name
  * @return {Promise<T | void>}
  */

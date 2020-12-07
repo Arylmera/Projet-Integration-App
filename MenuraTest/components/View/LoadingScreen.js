@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    ImageBackground,
@@ -24,7 +22,7 @@ class LoadingScreen extends React.Component {
    }
 
    /**
-    * check si le user est logging
+    * vérification si l'utilisateur est connecté avec un email vérifié
     * @private
     */
    _checkIfLoggedIn() {
