@@ -20,6 +20,16 @@ const MockedNavigator = ({component, params = {}}) => {
                     component={component}
                     initialParams={params}
                 />
+                <Stack.Screen
+                    name="verificationEmail"
+                    component={component}
+                    initialParams={params}
+                />
+                <Stack.Screen
+                    name="InscriptionProfil"
+                    component={component}
+                    initialParams={params}
+                />
             </Stack.Navigator>
             </Provider>
         </NavigationContainer>
