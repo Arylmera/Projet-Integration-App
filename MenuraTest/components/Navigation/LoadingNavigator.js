@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoadingScreen from '../View/LoadingScreen';
@@ -11,7 +9,7 @@ import InscriptionProfilView from '../View/profile/InscriptionProfilView';
 const Stack = createStackNavigator();
 
 /**
- * fonction gestion du navigateur loading
+ * fonction de gestion du navigateur loading
  * @return {JSX.Element}
  * @constructor
  */

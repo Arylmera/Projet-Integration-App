@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, Text, ActivityIndicator, Image} from 'react-native';
 import {connect} from 'react-redux';

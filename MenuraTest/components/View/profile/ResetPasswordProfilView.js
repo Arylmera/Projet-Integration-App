@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -26,10 +24,21 @@ class ResetPasswordProfilView extends React.Component {
       };
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param email
+    * @private
+    */
    _emailTextInputChanged(email) {
       this.email = email;
    }
 
+   /**
+    * envoi d'un mail de reset de mot de passe
+    * @param email
+    * @param navigation
+    * @private
+    */
    _resetPassword(email, navigation) {
       firebase
          .auth()
@@ -46,6 +55,10 @@ class ResetPasswordProfilView extends React.Component {
          });
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       return (

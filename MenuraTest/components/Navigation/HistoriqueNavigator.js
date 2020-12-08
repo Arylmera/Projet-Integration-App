@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HistoriqueView from '../View/historique/HistoriqueView';
@@ -8,7 +6,7 @@ import DetailOiseaux from '../View/details/detailOiseaux';
 const Stack = createStackNavigator();
 
 /**
- * fonction gestion du navigateur de l'historique
+ * fonction de gestion du navigateur de l'historique
  * @return {JSX.Element}
  * @constructor
  */

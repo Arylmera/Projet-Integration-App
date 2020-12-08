@@ -4,7 +4,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet} from 'react-native';
 import StatsView from '../View/stats/StatsView';
 import ParametresView from '../View/parametres/ParametresView';
-
 import SearchNavigator from './SearchNavigator';
 import TipsNavigator from './TipsNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
@@ -19,10 +18,10 @@ class ViewNavigator extends React.Component {
       this.state = {};
    }
 
-    /**
-     * render
-     * @return {JSX.Element}
-     */
+   /**
+    * render
+    * @return {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       return (

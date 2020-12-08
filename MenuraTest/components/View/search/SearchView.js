@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, FlatList, Image, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
@@ -28,7 +26,7 @@ class SearchView extends React.Component {
     */
    _updateSearch(search) {
       this.setState({search: search});
-   };
+   }
 
    /**
     * easter egg
@@ -258,7 +256,9 @@ class SearchView extends React.Component {
                   placeholder="Entrez un nom d'oiseau"
                   placeholderTextColor={theme.highlight}
                   autoCapitalize={'none'}
-                  onChangeText={(text) => {this._updateSearch(text)}}
+                  onChangeText={(text) => {
+                     this._updateSearch(text);
+                  }}
                   searchIcon={{color: theme.highlight}}
                   clearIcon={{color: theme.highlight}}
                   value={search}

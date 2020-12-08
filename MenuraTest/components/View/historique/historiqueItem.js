@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
@@ -19,7 +17,7 @@ class HistoriqueItem extends React.Component {
    }
 
    /**
-    * parsig de la date
+    * parsing de la date
     * @param date
     * @return {string}
     * @private

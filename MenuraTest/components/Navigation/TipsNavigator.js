@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import TipsView from '../View/tips/TipsView';
@@ -8,12 +6,12 @@ import TipsNichePlan from '../View/tips/TipsNichePlan';
 import TipsMangeoire from '../View/tips/TipsMangeoire';
 import TipsSaison from '../View/tips/TipsSaison';
 import TipsMangeoirePlan from '../View/tips/TipsMangeoirePlan';
-import QuizView from "../View/tips/QuizView";
+import QuizView from '../View/tips/QuizView';
 
 const Stack = createStackNavigator();
 
 /**
- * fonction gestion du navigateur tips
+ * fonction de gestion du navigateur tips
  * @return {JSX.Element}
  * @constructor
  */

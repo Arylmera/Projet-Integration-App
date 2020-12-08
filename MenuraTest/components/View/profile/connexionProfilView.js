@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -28,14 +26,30 @@ class ConnexionProfilView extends React.Component {
       };
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param email
+    * @private
+    */
    _emailTextInputChanged(email) {
       this.email = email;
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param password
+    * @private
+    */
    _passwordTextInputChanged(password) {
       this.password = password;
    }
 
+   /**
+    * connexion de l'utilisateur
+    * @param email
+    * @param password
+    * @private
+    */
    _signIn(email, password) {
       firebase
          .auth()
@@ -58,6 +72,10 @@ class ConnexionProfilView extends React.Component {
          });
    }
 
+   /**
+    * vérification que l'utilisateur ait confirmé son email
+    * @private
+    */
    _verifierEmailConfirme() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user && user.emailVerified) {
@@ -68,6 +86,10 @@ class ConnexionProfilView extends React.Component {
       });
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       const {navigation} = this.props;
       return (

@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
@@ -14,10 +12,17 @@ class ConnexionProfilView extends React.Component {
       };
    }
 
+   /**
+    * au chargement
+    */
    componentDidMount() {
       this._checkIfLoggedIn();
    }
 
+   /**
+    * récupération du nom de l'utilisateur connecté
+    * @private
+    */
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
@@ -28,6 +33,10 @@ class ConnexionProfilView extends React.Component {
       });
    }
 
+   /**
+    * envoi d'un nouveau mail de confirmation de l'email
+    * @private
+    */
    _reenvoyerConfirmation() {
       firebase.auth().onAuthStateChanged((user) => {
          let prenom = user.displayName.split(' ')[1];
@@ -45,6 +54,10 @@ class ConnexionProfilView extends React.Component {
       });
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       return (
          <View style={styles.main_container}>

@@ -1,14 +1,12 @@
-
-
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import ProfilView from '../View/profile/ProfilView';
-import AvatarView from "../View/profile/AvatarView";
+import AvatarView from '../View/profile/AvatarView';
 
 const Stack = createStackNavigator();
 
 /**
- * fonction gestion du navigateur profil
+ * fonction de gestion du navigateur profil
  * @return {JSX.Element}
  * @constructor
  */
@@ -26,13 +24,13 @@ function ProfilNavigator() {
                title: 'Profil',
             }}
          />
-          <Stack.Screen
-              name="avatar"
-              component={AvatarView}
-              options={{
-                  title: 'Avatar',
-              }}
-          />
+         <Stack.Screen
+            name="avatar"
+            component={AvatarView}
+            options={{
+               title: 'Avatar',
+            }}
+         />
       </Stack.Navigator>
    );
 }

@@ -1,7 +1,14 @@
-'use strict'
-
 const url = 'https://menura.be:3000/v1/api/utilisateurs';
 
+/**
+ * requête de création d'un nouvel utilisateur
+ * @param id
+ * @param nom
+ * @param prenom
+ * @param email
+ * @param idToken
+ * @returns {Promise<any | void>}
+ */
 export function createUtilisateur(id, nom, prenom, email, idToken) {
    return fetch(url, {
       method: 'POST',
@@ -21,6 +28,12 @@ export function createUtilisateur(id, nom, prenom, email, idToken) {
       .catch((error) => console.log(error));
 }
 
+/**
+ * requête de suppression d'un utilisateur
+ * @param id
+ * @param idToken
+ * @returns {Promise<any | void>}
+ */
 export function deleteUtilisateur(id, idToken) {
    return fetch(url + '?id=' + id, {
       method: 'DELETE',

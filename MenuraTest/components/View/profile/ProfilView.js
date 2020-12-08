@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -33,10 +31,17 @@ class ProfilView extends React.Component {
       };
    }
 
+   /**
+    * au chargement
+    */
    componentDidMount() {
       this._checkIfLoggedIn();
    }
 
+   /**
+    * récupération des données de l'utilisateur connecté
+    * @private
+    */
    _checkIfLoggedIn() {
       firebase.auth().onAuthStateChanged((user) => {
          if (user) {
@@ -45,13 +50,23 @@ class ProfilView extends React.Component {
             let nom = user.displayName.split(' ')[0];
             let prenom = user.displayName.split(' ')[1];
             let avatar = user.photoURL;
-            this.setState({email: email, nom: nom, prenom: prenom, id: uid, profileIcon: avatar});
+            this.setState({
+               email: email,
+               nom: nom,
+               prenom: prenom,
+               id: uid,
+               profileIcon: avatar,
+            });
          } else {
             this.props.navigation.navigate('connexion');
          }
       });
    }
 
+   /**
+    * déconnexion de l'utilisateur
+    * @private
+    */
    _logOut() {
       firebase
          .auth()
@@ -62,25 +77,52 @@ class ProfilView extends React.Component {
          });
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param password
+    * @private
+    */
    _passwordTextInputChanged(password) {
       this.setState({password: password});
    }
 
+   /**
+    * modification du state en fonction du textInput
+    * @param newPassword
+    * @private
+    */
    _newPasswordTextInputChanged(newPassword) {
       this.setState({newPassword: newPassword});
    }
 
+   /**
+    * modal de suppression visible
+    * @private
+    */
    _askDeleteAccount() {
       this.setState({deleteAccountModal: true});
    }
+
+   /**
+    * modal de déconnexion visible
+    * @private
+    */
    _askDeconnexion() {
       this.setState({deconnexionModal: true});
    }
 
+   /**
+    * modal de changement de mot de passe visible
+    * @private
+    */
    _askUpdatePassword() {
       this.setState({updatePasswordModal: true});
    }
 
+   /**
+    * suppression du compte utilisateur
+    * @private
+    */
    _deleteAccount() {
       const user = firebase.auth().currentUser;
       const id = user.uid;
@@ -89,7 +131,7 @@ class ProfilView extends React.Component {
          this.state.password,
       );
       user.getIdToken(true).then((idToken) => {
-         deleteUtilisateur(id, idToken).then((data) => {});
+         deleteUtilisateur(id, idToken).then(() => {});
       });
       user
          .reauthenticateWithCredential(credential)
@@ -106,6 +148,10 @@ class ProfilView extends React.Component {
          });
    }
 
+   /**
+    * modification du mot de passe utilisateur
+    * @private
+    */
    _updatePassword() {
       const user = firebase.auth().currentUser;
       const credential = firebase.auth.EmailAuthProvider.credential(
@@ -127,6 +173,10 @@ class ProfilView extends React.Component {
          });
    }
 
+   /**
+    * render
+    * @returns {JSX.Element}
+    */
    render() {
       let theme = this.props.currentStyle;
       return (
@@ -145,15 +195,14 @@ class ProfilView extends React.Component {
                   </Text>
                </View>
                <TouchableOpacity
-                   onPress={() => this.props.navigation.navigate('avatar')}
-               >
-               <Image
-                  source={this.state.profileIcon}
-                  style={[
-                     styles.profileIcon,
-                     {backgroundColor: theme.secondary},
-                  ]}
-               />
+                  onPress={() => this.props.navigation.navigate('avatar')}>
+                  <Image
+                     source={this.state.profileIcon}
+                     style={[
+                        styles.profileIcon,
+                        {backgroundColor: theme.secondary},
+                     ]}
+                  />
                </TouchableOpacity>
             </View>
             <View style={styles.container_row}>
@@ -171,8 +220,6 @@ class ProfilView extends React.Component {
                      modifier le mot de passe
                   </Text>
                </TouchableOpacity>
-
-               //Modal changement de mot de passe
                <Modal visible={this.state.updatePasswordModal}>
                   <ScrollView
                      style={[
@@ -237,8 +284,6 @@ class ProfilView extends React.Component {
                         </TouchableOpacity>
                      </View>
                   </ScrollView>
-
-                  //Modal de déconnexion
                </Modal>
                <TouchableOpacity
                   style={[styles.button, {backgroundColor: theme.secondary}]}
@@ -285,8 +330,6 @@ class ProfilView extends React.Component {
                         </TouchableOpacity>
                      </View>
                   </ScrollView>
-
-                  //Modal de supression de compte
                </Modal>
                <TouchableOpacity
                   style={[styles.button, {backgroundColor: theme.secondary}]}

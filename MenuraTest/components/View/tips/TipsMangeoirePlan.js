@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {
    StyleSheet,
@@ -158,7 +156,7 @@ const styles = StyleSheet.create({
       shadowOffset: {height: 0, width: 0},
       shadowOpacity: 0.5,
       shadowRadius: 2,
-      width: "90%",
+      width: '90%',
       height: 360,
       alignSelf: 'center',
       margin: 5,

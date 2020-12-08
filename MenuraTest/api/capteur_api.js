@@ -1,13 +1,10 @@
-'use strict'
-
-const url_capteur_byID =
-   'https://menura.be:3000/v1/api/capteurs?utilisateur=';
+const url_capteur_byID = 'https://menura.be:3000/v1/api/capteurs?utilisateur=';
 const url_capteur_add = 'https://menura.be:3000/v1/api/capteurs';
 const url_capteur_delete_byID =
    'https://menura.be:3000/v1/api/capteurs?macAddress=';
 
 /**
- *
+ * requête retournant les capteurs d'un utilisateur
  * @param id
  * @param idToken
  * @return {Promise<Response | void>}
@@ -25,7 +22,7 @@ export function getCapteurListById(id, idToken) {
 }
 
 /**
- *
+ * requête ajoutant un capteur à un utilisateur
  * @param id
  * @param idToken
  * @param capteur_adresse
@@ -48,7 +45,7 @@ export async function addCapteur(id, idToken, capteur_adresse) {
 }
 
 /**
- *
+ * requête de suppression d'un capteur d'un utilisateur
  * @param idToken
  * @param capteur_adresse
  * @return {Promise<void>}
@@ -67,7 +64,7 @@ export async function deleteCapteur(idToken, capteur_adresse) {
 }
 
 /**
- *
+ * requête de modification d'un capteur d'un utilisateur
  * @param idToken
  * @param capteur_adresse
  * @return {Promise<void>}
@@ -84,7 +81,6 @@ export async function updateCapteur(idToken, capteur_adresse) {
          macAddress: capteur_adresse,
       }),
    })
-       .then((response) => console.log(response.json()))
-       .catch((error) => console.log(error));
+      .then((response) => console.log(response.json()))
+      .catch((error) => console.log(error));
 }
-

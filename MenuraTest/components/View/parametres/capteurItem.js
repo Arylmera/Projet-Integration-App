@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
@@ -38,7 +36,7 @@ class CapteurItem extends React.Component {
    }
 
    /**
-    * suppression du capteur dans la db par requete POST
+    * suppression du capteur dans la db par requête POST
     * @private
     */
    _modif_capteur() {
