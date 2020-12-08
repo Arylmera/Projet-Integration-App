@@ -106,6 +106,18 @@ class ParametresView extends React.Component {
    }
 
    /**
+    * helper set theme contraste
+    * @private
+    */
+   _setThemeContraste() {
+      this._menu.hide();
+
+      this.setState({currentTheme: 'Contraste'});
+      const action = {type: 'SET_CONTRASTE'};
+      this.props.dispatch(action);
+   }
+
+   /**
     * render
     * @return {JSX.Element}
     */
@@ -183,6 +195,14 @@ class ParametresView extends React.Component {
                            {backgroundColor: theme.accent},
                         ]}>
                         <Text style={{color: theme.highlight}}>Eté</Text>
+                     </MenuItem>
+                     <MenuItem
+                         onPress={this._setThemeContraste.bind(this)}
+                         style={[
+                            styles.theme_menu_entry,
+                            {backgroundColor: theme.accent},
+                         ]}>
+                        <Text style={{color: theme.highlight}}>Contraste</Text>
                      </MenuItem>
                   </Menu>
                </View>

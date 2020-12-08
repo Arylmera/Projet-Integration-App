@@ -65,10 +65,18 @@ class TipsView extends React.Component {
     */
    render() {
       const {navigation} = this.props;
-      const component1 = () => <Text>Automne</Text>;
-      const component2 = () => <Text>Hiver</Text>;
-      const component3 = () => <Text>Printemps</Text>;
-      const component4 = () => <Text>Été</Text>;
+      const component1 = () => (
+         <Text style={{color: theme.highlight}}>Automne</Text>
+      );
+      const component2 = () => (
+         <Text style={{color: theme.highlight}}>Hiver</Text>
+      );
+      const component3 = () => (
+         <Text style={{color: theme.highlight}}>Printemps</Text>
+      );
+      const component4 = () => (
+         <Text style={{color: theme.highlight}}>Été</Text>
+      );
       const buttons = [
          {element: component1},
          {element: component2},

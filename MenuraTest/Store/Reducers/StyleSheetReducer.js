@@ -4,7 +4,7 @@ Définition des themes
 import {getDataStorage, storeDataStorage} from '../../functions/storageHelper';
 
 const winterStyle = {
-   primary: '#274c77',
+   primary: '#2f5c8f',
    secondary: '#619fc8',
    accent: '#9ceaef',
    highlight: '#000000',
@@ -16,15 +16,21 @@ const autumnStyle = {
    highlight: '#f3e9dc',
 };
 const springStyle = {
-   primary: '#B4FFB6',
-   secondary: '#CFFFD0',
-   accent: '#FFB5D6',
+   primary: '#b3f3aa',
+   secondary: '#82ddad',
+   accent: '#ffb0b0',
    highlight: '#000000',
 };
 const summerStyle = {
-   primary: '#C0EBFC',
-   secondary: '#DBF5FF',
-   accent: '#FCE0C0',
+   primary: '#609ab7',
+   secondary: '#97D4DF',
+   accent: '#EFCEC4',
+   highlight: '#000000',
+};
+const contrasteStyle = {
+   primary: '#FFFFF0',
+   secondary: '#f6ed19',
+   accent: '#00c4c4',
    highlight: '#000000',
 };
 
@@ -70,6 +76,13 @@ function switchTheme(state = currentStyle, action) {
             currentStyle: summerStyle,
          };
          storeDataStorage('theme_key', 'summerStyle').then(() => {});
+         return nextState || state;
+      case 'SET_CONTRASTE':
+         nextState = {
+            ...state,
+            currentStyle: contrasteStyle,
+         };
+         storeDataStorage('theme_key', 'contrasteStyle').then(() => {});
          return nextState || state;
       default:
          nextState = {

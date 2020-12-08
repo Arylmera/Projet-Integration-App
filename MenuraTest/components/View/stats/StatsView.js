@@ -116,7 +116,7 @@ class StatsView extends React.Component {
             name: nom,
             population: value,
             color: couleur,
-            legendFontColor: '#FFFFFF',
+            legendFontColor: this.props.currentStyle.highlight,
             legendFontSize: 12,
          });
       }
@@ -364,7 +364,7 @@ class StatsView extends React.Component {
                         <Text
                            style={[
                               styles.texte,
-                              {color: theme.accent, marginBottom: 10},
+                              {color: theme.highlight, marginBottom: 10},
                            ]}>
                            Proportion des détections par espèce
                         </Text>
@@ -388,7 +388,7 @@ class StatsView extends React.Component {
                         <Text
                            style={[
                               styles.texte,
-                              {color: theme.accent, marginBottom: 20},
+                              {color: theme.highlight, marginBottom: 20},
                            ]}>
                            Nombre de détections par mois
                         </Text>
