@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quizz data test 1`] = `
+Array [
+  Object {
+    "id": "1",
+    "image": Object {
+      "testUri": "../../../assets/quizz/mesange.jpg",
+    },
+    "reponse1": "mésange",
+    "reponse2": "hibou",
+    "reponse3": "pic vert",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "mésange",
+  },
+  Object {
+    "id": "2",
+    "image": Object {
+      "testUri": "../../../assets/quizz/moineau.jpg",
+    },
+    "reponse1": "canard",
+    "reponse2": "hibou",
+    "reponse3": "moineau",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "moineau",
+  },
+  Object {
+    "id": "3",
+    "image": Object {
+      "testUri": "../../../assets/quizz/mouette.jpg",
+    },
+    "reponse1": "mésange",
+    "reponse2": "mouette",
+    "reponse3": "pic vert",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "mouette",
+  },
+  Object {
+    "id": "4",
+    "image": Object {
+      "testUri": "../../../assets/quizz/picvert.jpg",
+    },
+    "reponse1": "mésange",
+    "reponse2": "hibou",
+    "reponse3": "pic vert",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "pic vert",
+  },
+  Object {
+    "id": "5",
+    "image": Object {
+      "testUri": "../../../assets/quizz/bargerousse.jpg",
+    },
+    "reponse1": "mésange",
+    "reponse2": "hibou",
+    "reponse3": "bargerousse",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "bargerousse",
+  },
+  Object {
+    "id": "6",
+    "image": Object {
+      "testUri": "../../../assets/quizz/tarier.jpg",
+    },
+    "reponse1": "tarier",
+    "reponse2": "hibou",
+    "reponse3": "pic vert",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "tarier",
+  },
+  Object {
+    "id": "7",
+    "image": Object {
+      "testUri": "../../../assets/quizz/grandduc.jpg",
+    },
+    "reponse1": "grand duc",
+    "reponse2": "hibou",
+    "reponse3": "pic vert",
+    "reponse4": "bruant jaune",
+    "reponseCorrecte": "grand duc",
+  },
+  Object {
+    "id": "8",
+    "image": Object {
+      "testUri": "../../../assets/quizz/MACREUSE.jpg",
+    },
+    "reponse1": "mésange",
+    "reponse2": "bruant jaune",
+    "reponse3": "pic vert",
+    "reponse4": "macreuse",
+    "reponseCorrecte": "macreuse",
+  },
+  Object {
+    "id": "9",
+    "image": Object {
+      "testUri": "../../../assets/quizz/VERDIER.jpg",
+    },
+    "reponse1": "mouette",
+    "reponse2": "hibou",
+    "reponse3": "verdier",
+    "reponse4": "macreuse",
+    "reponseCorrecte": "verdier",
+  },
+  Object {
+    "id": "10",
+    "image": Object {
+      "testUri": "../../../assets/quizz/PIEBAVARDE.jpg",
+    },
+    "reponse1": "pie bavarde",
+    "reponse2": "verdier",
+    "reponse3": "macreuse",
+    "reponse4": "hibou",
+    "reponseCorrecte": "pie bavarde",
+  },
+]
+`;

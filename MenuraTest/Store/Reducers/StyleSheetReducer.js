@@ -48,36 +48,28 @@ function switchTheme(state = currentStyle, action) {
             ...state,
             currentStyle: winterStyle,
          };
-         storeDataStorage('theme_key', 'winterStyle').then((r) => {
-            console.log('theme saved');
-         });
+         storeDataStorage('theme_key', 'winterStyle').then(() => {});
          return nextState || state;
       case 'SET_AUTUMN':
          nextState = {
             ...state,
             currentStyle: autumnStyle,
          };
-         storeDataStorage('theme_key', 'autumnStyle').then((r) => {
-            console.log('theme saved');
-         });
+         storeDataStorage('theme_key', 'autumnStyle').then(() => {});
          return nextState || state;
       case 'SET_SPRING':
          nextState = {
             ...state,
             currentStyle: springStyle,
          };
-         storeDataStorage('theme_key', 'springStyle').then((r) => {
-            console.log('theme saved');
-         });
+         storeDataStorage('theme_key', 'springStyle').then(() => {});
          return nextState || state;
       case 'SET_SUMMER':
          nextState = {
             ...state,
             currentStyle: summerStyle,
          };
-         storeDataStorage('theme_key', 'summerStyle').then((r) => {
-            console.log('theme saved');
-         });
+         storeDataStorage('theme_key', 'summerStyle').then(() => {});
          return nextState || state;
       default:
          nextState = {
@@ -90,13 +82,9 @@ function switchTheme(state = currentStyle, action) {
                   ...state,
                   currentStyle: r,
                };
-               console.log(
-                  'Theme : ' + r + ' from the localStorage (AsyncStorage)',
-               );
                return nextState || state;
             }
          });
-         console.log('set default theme || switch default not in localStorage');
          return nextState || state;
    }
 }
