@@ -364,7 +364,11 @@ class StatsView extends React.Component {
                         <Text
                            style={[
                               styles.texte,
-                              {color: theme.highlight, marginBottom: 10},
+                              {
+                                 color: theme.highlight,
+                                 marginBottom: 10,
+                                 fontSize: 18,
+                              },
                            ]}>
                            Proportion des détections par espèce
                         </Text>
@@ -388,7 +392,11 @@ class StatsView extends React.Component {
                         <Text
                            style={[
                               styles.texte,
-                              {color: theme.highlight, marginBottom: 20},
+                              {
+                                 color: theme.highlight,
+                                 marginBottom: 20,
+                                 fontSize: 18,
+                              },
                            ]}>
                            Nombre de détections par mois
                         </Text>
