@@ -84,8 +84,7 @@ class StatsView extends React.Component {
                         record: this._getRecord(countByOiseau),
                         isLoading: false,
                      });
-                  }
-                  else {
+                  } else {
                      this.props.navigation.navigate('noData');
                   }
                })

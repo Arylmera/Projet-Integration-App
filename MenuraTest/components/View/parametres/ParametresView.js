@@ -197,11 +197,11 @@ class ParametresView extends React.Component {
                         <Text style={{color: theme.highlight}}>Eté</Text>
                      </MenuItem>
                      <MenuItem
-                         onPress={this._setThemeContraste.bind(this)}
-                         style={[
-                            styles.theme_menu_entry,
-                            {backgroundColor: theme.accent},
-                         ]}>
+                        onPress={this._setThemeContraste.bind(this)}
+                        style={[
+                           styles.theme_menu_entry,
+                           {backgroundColor: theme.accent},
+                        ]}>
                         <Text style={{color: theme.highlight}}>Contraste</Text>
                      </MenuItem>
                   </Menu>
