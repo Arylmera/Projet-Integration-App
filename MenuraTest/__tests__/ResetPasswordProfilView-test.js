@@ -6,10 +6,16 @@ import MockedNavigator from "../__mocks__/MockedNavigator";
 import firebase from "firebase";
 import {firebaseConfig} from "../config";
 
-
 afterEach(cleanup);
 
 firebase.initializeApp(firebaseConfig);
+
+test('render without crashing', () => {
+    const {toJSON} = render(
+        <MockedNavigator component={ResetPasswordProfilView} />
+    )
+    expect(toJSON()).toBeTruthy();
+})
 
 test('should match snapshot', () => {
     const {toJSON} = render(

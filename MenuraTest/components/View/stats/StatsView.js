@@ -69,20 +69,25 @@ class StatsView extends React.Component {
          .then((idToken) => {
             getHistoriqueByID(user.uid, idToken)
                .then((data) => {
-                  let donnees = data.data;
-                  let countTotal = this._getTotal(donnees);
-                  let countByOiseau = this._getCountByOiseau(donnees);
-                  this.setState({
-                     historique: donnees,
-                     countTotal: countTotal,
-                     premier: this._getFirst(donnees, countTotal),
-                     dernier: this._getLast(donnees),
-                     countByOiseau: countByOiseau,
-                     dataPie: this._handleDataPie(countByOiseau),
-                     dataLine: this._handleDataLine(donnees),
-                     record: this._getRecord(countByOiseau),
-                     isLoading: false,
-                  });
+                  if (data.data.length !== 0) {
+                     let donnees = data.data;
+                     let countTotal = this._getTotal(donnees);
+                     let countByOiseau = this._getCountByOiseau(donnees);
+                     this.setState({
+                        historique: donnees,
+                        countTotal: countTotal,
+                        premier: this._getFirst(donnees, countTotal),
+                        dernier: this._getLast(donnees),
+                        countByOiseau: countByOiseau,
+                        dataPie: this._handleDataPie(countByOiseau),
+                        dataLine: this._handleDataLine(donnees),
+                        record: this._getRecord(countByOiseau),
+                        isLoading: false,
+                     });
+                  }
+                  else {
+                     this.props.navigation.navigate('noData');
+                  }
                })
                .catch((error) => {
                   console.log(error);

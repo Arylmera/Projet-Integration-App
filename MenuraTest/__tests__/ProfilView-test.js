@@ -6,7 +6,6 @@ import MockedNavigator from "../__mocks__/MockedNavigator";
 import firebase from "firebase";
 import {firebaseConfig} from "../config";
 
-
 afterEach(cleanup);
 
 firebase.initializeApp(firebaseConfig);

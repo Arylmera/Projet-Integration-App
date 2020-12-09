@@ -2,13 +2,13 @@ import React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {StyleSheet} from 'react-native';
-import StatsView from '../View/stats/StatsView';
 import ParametresView from '../View/parametres/ParametresView';
 import SearchNavigator from './SearchNavigator';
 import TipsNavigator from './TipsNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import StatsNavigator from "./StatsNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -52,7 +52,7 @@ class ViewNavigator extends React.Component {
             <Tab.Screen
                style={[styles.screen, {backgroundColor: theme.highlight}]}
                name="StatsView"
-               component={StatsView}
+               component={StatsNavigator}
                options={{
                   tabBarLabel: 'Statistiques',
                   tabBarIcon: (tabInfo) => (

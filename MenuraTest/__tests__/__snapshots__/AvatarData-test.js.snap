@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quizz data test 1`] = `
+Array [
+  Object {
+    "id": "1",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar1.png",
+    },
+  },
+  Object {
+    "id": "2",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar2.png",
+    },
+  },
+  Object {
+    "id": "3",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar3.png",
+    },
+  },
+  Object {
+    "id": "4",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar4.png",
+    },
+  },
+  Object {
+    "id": "5",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar5.png",
+    },
+  },
+  Object {
+    "id": "6",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar6.png",
+    },
+  },
+  Object {
+    "id": "7",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar7.png",
+    },
+  },
+  Object {
+    "id": "8",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar8.png",
+    },
+  },
+  Object {
+    "id": "9",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar9.png",
+    },
+  },
+  Object {
+    "id": "10",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar10.png",
+    },
+  },
+  Object {
+    "id": "11",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar11.png",
+    },
+  },
+  Object {
+    "id": "12",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar12.png",
+    },
+  },
+  Object {
+    "id": "13",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar13.png",
+    },
+  },
+  Object {
+    "id": "14",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar14.png",
+    },
+  },
+  Object {
+    "id": "15",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar15.png",
+    },
+  },
+  Object {
+    "id": "16",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar16.png",
+    },
+  },
+  Object {
+    "id": "17",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar17.png",
+    },
+  },
+  Object {
+    "id": "18",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar18.png",
+    },
+  },
+  Object {
+    "id": "19",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar19.png",
+    },
+  },
+  Object {
+    "id": "20",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar20.png",
+    },
+  },
+  Object {
+    "id": "21",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar21.png",
+    },
+  },
+  Object {
+    "id": "22",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar22.png",
+    },
+  },
+  Object {
+    "id": "23",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar23.png",
+    },
+  },
+  Object {
+    "id": "24",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar24.png",
+    },
+  },
+  Object {
+    "id": "25",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar25.png",
+    },
+  },
+  Object {
+    "id": "26",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar26.png",
+    },
+  },
+  Object {
+    "id": "27",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar27.png",
+    },
+  },
+  Object {
+    "id": "28",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar28.png",
+    },
+  },
+  Object {
+    "id": "29",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar29.png",
+    },
+  },
+  Object {
+    "id": "30",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar30.png",
+    },
+  },
+  Object {
+    "id": "31",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar31.png",
+    },
+  },
+  Object {
+    "id": "32",
+    "img": Object {
+      "testUri": "../../../assets/avatars/avatar32.png",
+    },
+  },
+]
+`;
