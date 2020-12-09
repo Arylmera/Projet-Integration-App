@@ -1,7 +1,11 @@
+/*
+* Insert des oiseaux disponibles dans l'application
+*/
+
 INSERT INTO oiseaux (nom, espece, details)
 	VALUES
 		("Bergeronnette grise","Motacilla alba","plus d'information"),
-		("Bruant Jaune","Emberiza citrinella","plus d'information"),
+		("Bruant jaune","Emberiza citrinella","plus d'information"),
 		("Mésange bleue","Cyanistes caeruleus","plus d'information"),
 		("Moineau domestique","Passer domesticus","plus d'information"),
 		("Merle noir","Turdus merula","plus d'information"),
