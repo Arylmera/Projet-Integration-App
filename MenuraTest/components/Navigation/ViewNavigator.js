@@ -8,7 +8,7 @@ import TipsNavigator from './TipsNavigator';
 import HistoriqueNavigator from './HistoriqueNavigator';
 import {connect} from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import StatsNavigator from "./StatsNavigator";
+import StatsNavigator from './StatsNavigator';
 
 const Tab = createBottomTabNavigator();
 
