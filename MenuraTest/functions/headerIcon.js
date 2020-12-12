@@ -10,6 +10,9 @@ class HeaderIcon extends React.Component {
       this.state = {
          headerIcon: require('../assets/images/profileIcon.png'),
       };
+      this.focus = this.props.navigation.addListener('focus', () => {
+         this._checkIfLoggedIn();
+      });
    }
 
    /**
