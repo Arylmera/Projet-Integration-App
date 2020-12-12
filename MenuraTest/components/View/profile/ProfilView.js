@@ -7,7 +7,7 @@ import {
    TouchableOpacity,
    ScrollView,
    Modal,
-   TextInput,
+   TextInput, BackHandler,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
@@ -29,6 +29,9 @@ class ProfilView extends React.Component {
          deconnexionModal: false,
          deleteAccountModal: false,
       };
+      this.focus = this.props.navigation.addListener('focus', () => {
+         this._checkIfLoggedIn();
+      });
    }
 
    /**

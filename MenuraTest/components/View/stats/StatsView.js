@@ -6,6 +6,7 @@ import {
    ScrollView,
    Dimensions,
    ActivityIndicator,
+   BackHandler,
 } from 'react-native';
 import firebase from 'firebase';
 import {connect} from 'react-redux';
@@ -31,6 +32,12 @@ class StatsView extends React.Component {
          dataPie: [],
          record: [],
       };
+      this.focus = this.props.navigation.addListener('focus', () => {
+         BackHandler.addEventListener('hardwareBackPress', this.handleBack)
+      });
+      this.blur = this.props.navigation.addListener('blur', () => {
+         BackHandler.removeEventListener('hardwareBackPress', this.handleBack)
+      });
    }
 
    /**
@@ -39,6 +46,14 @@ class StatsView extends React.Component {
    componentDidMount() {
       this._checkIfLoggedIn();
       this._reloadTheme();
+   }
+
+   /**
+    * gestion du retour natif
+    * @returns {boolean}
+    */
+   handleBack() {
+      return true;
    }
 
    /**

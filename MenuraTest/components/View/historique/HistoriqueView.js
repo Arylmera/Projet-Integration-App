@@ -5,12 +5,15 @@ import firebase from 'firebase';
 import {getHistoriqueByID} from '../../../api/historique_api';
 import HistoriqueItem from './historiqueItem';
 import {useNavigation} from '@react-navigation/core';
+import NoDataView from "../stats/NoDataView";
 
 class HistoriqueView extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
          oiseauxListe: [],
+         noData: false,
+         isFetching: false,
       };
    }
 
@@ -36,16 +39,31 @@ class HistoriqueView extends React.Component {
    }
 
    /**
+    * rafraichissement de l'historique
+    * @private
+    */
+   _onRefresh() {
+      this.setState({isFetching: true,},() => {this._checkIfLoggedIn();});
+   }
+
+   /**
     * charge l'historique de l'utilisateur
     * @param user
     * @private
     */
    _load_user_historique(user) {
-      console.log('loading user historique for user : ' + user.uid);
       user.getIdToken(true).then((idToken) => {
-         getHistoriqueByID(user.uid, idToken).then((data) =>
-            this._handle_data_historique(data),
-         );
+         getHistoriqueByID(user.uid, idToken).then((data) => {
+         if (data.data.length !== 0) {
+            this._handle_data_historique(data);
+         }
+         else {
+            this.setState({
+               noData: true
+            })
+         }
+         this.setState({ isFetching: false })
+      });
       });
    }
 
@@ -66,7 +84,8 @@ class HistoriqueView extends React.Component {
       let theme = this.props.currentStyle;
       return (
          <View
-            style={[styles.main_container, {backgroundColor: theme.primary}]}>
+            style={[styles.main_container, {backgroundColor: theme.primary}]}
+         >
             <View style={[styles.condition_container]}>
                <Text
                   style={[
@@ -75,8 +94,13 @@ class HistoriqueView extends React.Component {
                   ]}>
                   Liste des oiseaux détecté par votre capteur
                </Text>
+               {this.state.noData ? (
+                   <NoDataView/>
+               ) : (
                <FlatList
                   data={this.state.oiseauxListe}
+                  onRefresh={() => this._onRefresh()}
+                  refreshing={this.state.isFetching}
                   style={styles.FlatlistItem}
                   keyExtractor={(item) => item.idhistoriques}
                   renderItem={({item}) => (
@@ -85,6 +109,7 @@ class HistoriqueView extends React.Component {
                      />
                   )}
                />
+                   )}
             </View>
          </View>
       );
