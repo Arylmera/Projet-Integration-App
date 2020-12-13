@@ -48,7 +48,7 @@ Github :
 
 Lien des applications :
 - IOS: [Lien Mega .ipa](https://mega.nz/file/sR5xmI6T#CaIXGXCmtJ_bfjuQqs7xJcme5EtPd_3Kc5lyk5Stz2E)
-- Android : [PKA](https://github.com/Arylmera/Projet-Integration-App/tree/develop/pka)
+- Android : [PKA](https://github.com/Arylmera/Projet-Integration-App/blob/Profil/MenuraTest/android/app/release/app-release.apk)
 
 Planning :
 - [Trello](https://trello.com/b/cVyeFlzv/projet-dint%C3%A9gration)
