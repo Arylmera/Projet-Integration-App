@@ -7,7 +7,7 @@ import {
    TouchableOpacity,
    ScrollView,
    Modal,
-   TextInput, BackHandler,
+   TextInput,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';

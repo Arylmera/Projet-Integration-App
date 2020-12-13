@@ -4,9 +4,9 @@ Définition des themes
 import {getDataStorage, storeDataStorage} from '../../functions/storageHelper';
 
 const winterStyle = {
-   primary: '#2f5c8f',
-   secondary: '#619fc8',
-   accent: '#9ceaef',
+   primary: '#c5d7f0',
+   secondary: '#b8bbbf',
+   accent: '#a1c2f0',
    highlight: '#000000',
 };
 const autumnStyle = {
@@ -16,9 +16,9 @@ const autumnStyle = {
    highlight: '#f3e9dc',
 };
 const springStyle = {
-   primary: '#b3f3aa',
-   secondary: '#82ddad',
-   accent: '#ffb0b0',
+   primary: '#7fd4d1',
+   secondary: '#b0eef5',
+   accent: '#edcee1',
    highlight: '#000000',
 };
 const summerStyle = {
@@ -32,6 +32,12 @@ const contrasteStyle = {
    secondary: '#f6ed19',
    accent: '#00c4c4',
    highlight: '#000000',
+};
+const narutoStyle = {
+   primary: '#f2a30b',
+   secondary: '#ffe182',
+   accent: '#fbe407',
+   highlight: '#0c2fdf',
 };
 
 /*
@@ -83,6 +89,13 @@ function switchTheme(state = currentStyle, action) {
             currentStyle: contrasteStyle,
          };
          storeDataStorage('theme_key', 'contrasteStyle').then(() => {});
+         return nextState || state;
+      case 'SET_NARUTO':
+         nextState = {
+            ...state,
+            currentStyle: narutoStyle,
+         };
+         storeDataStorage('theme_key', 'narutoStyle').then(() => {});
          return nextState || state;
       default:
          nextState = {

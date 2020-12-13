@@ -118,6 +118,18 @@ class ParametresView extends React.Component {
    }
 
    /**
+    * helper set theme belgium
+    * @private
+    */
+   _setThemeNaruto() {
+      this._menu.hide();
+
+      this.setState({currentTheme: 'Naruto'});
+      const action = {type: 'SET_NARUTO'};
+      this.props.dispatch(action);
+   }
+
+   /**
     * render
     * @return {JSX.Element}
     */
@@ -203,6 +215,14 @@ class ParametresView extends React.Component {
                            {backgroundColor: theme.accent},
                         ]}>
                         <Text style={{color: theme.highlight}}>Contraste</Text>
+                     </MenuItem>
+                     <MenuItem
+                        onPress={this._setThemeNaruto.bind(this)}
+                        style={[
+                           styles.theme_menu_entry,
+                           {backgroundColor: theme.accent},
+                        ]}>
+                        <Text style={{color: theme.highlight}}>Naruto</Text>
                      </MenuItem>
                   </Menu>
                </View>

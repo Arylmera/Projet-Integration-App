@@ -5,7 +5,8 @@ import {
    TextInput,
    Text,
    TouchableOpacity,
-   ScrollView, BackHandler,
+   ScrollView,
+   BackHandler,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {connect} from 'react-redux';
@@ -25,10 +26,10 @@ class ConnexionProfilView extends React.Component {
          borderPassword: this.normalBorderColor,
       };
       this.focus = this.props.navigation.addListener('focus', () => {
-         BackHandler.addEventListener('hardwareBackPress', this.handleBack)
+         BackHandler.addEventListener('hardwareBackPress', this.handleBack);
       });
       this.blur = this.props.navigation.addListener('blur', () => {
-         BackHandler.removeEventListener('hardwareBackPress', this.handleBack)
+         BackHandler.removeEventListener('hardwareBackPress', this.handleBack);
       });
    }
 
