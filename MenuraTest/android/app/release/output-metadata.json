@@ -12,7 +12,7 @@
       "filters": [],
       "versionCode": 2,
       "versionName": "1.1",
-      "outputFile": "app-update.apk"
+      "outputFile": "app-release.apk"
     }
   ]
 }
