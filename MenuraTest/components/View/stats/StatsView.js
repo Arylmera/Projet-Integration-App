@@ -33,10 +33,10 @@ class StatsView extends React.Component {
          record: [],
       };
       this.focus = this.props.navigation.addListener('focus', () => {
-         BackHandler.addEventListener('hardwareBackPress', this.handleBack)
+         BackHandler.addEventListener('hardwareBackPress', this.handleBack);
       });
       this.blur = this.props.navigation.addListener('blur', () => {
-         BackHandler.removeEventListener('hardwareBackPress', this.handleBack)
+         BackHandler.removeEventListener('hardwareBackPress', this.handleBack);
       });
    }
 
@@ -288,6 +288,12 @@ class StatsView extends React.Component {
                this.props.dispatch(action);
             } else if (r === 'summerStyle') {
                const action = {type: 'SET_SUMMER'};
+               this.props.dispatch(action);
+            } else if (r === 'contrasteStyle') {
+               const action = {type: 'SET_CONTRASTE'};
+               this.props.dispatch(action);
+            } else if (r === 'narutoStyle') {
+               const action = {type: 'SET_NARUTO'};
                this.props.dispatch(action);
             }
          }

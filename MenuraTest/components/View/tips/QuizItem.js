@@ -28,7 +28,6 @@ class QuizItem extends React.Component {
     */
    _checkResponse(reponse) {
       if (reponse === this.state.reponseCorrecte) {
-         console.log('correct !');
          this.setState({
             helperText: 'Bien joué !',
             helperTextColor: 'green',
@@ -36,8 +35,8 @@ class QuizItem extends React.Component {
             disable: true,
             opacity: 0.4,
          });
+         this.props.changeScore(1);
       } else {
-         console.log('faux !');
          this.setState({
             helperText: 'mauvaise réponse !',
             helperTextColor: 'red',
@@ -45,6 +44,7 @@ class QuizItem extends React.Component {
             disable: true,
             opacity: 0.4,
          });
+         this.props.changeScore(0);
       }
    }
 
