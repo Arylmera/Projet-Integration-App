@@ -720,6 +720,7 @@ const styles = StyleSheet.create({
    },
    bird_info_container: {
       flex: 1,
+      width: '90%',
       padding: 10,
       margin: 10,
       borderRadius: 5,
